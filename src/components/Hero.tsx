@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
@@ -43,10 +44,22 @@ const Hero = () => {
           formattedMarketCap = formatCurrency(marketCapValue);
         }
         
-        console.log('Formatted market cap:', formattedMarketCap);
+        // Get holders count - we can fetch this from another API if available
+        // For now, we'll use the most up-to-date holder count we have
+        let holdersCount = '4,400+'; // Default fallback
         
-        // Get holders count - updated to 4,400+
-        const holdersCount = '4,400+';
+        // Since the DEXScreener API doesn't provide holder data directly, 
+        // we can consider adding a separate API endpoint in the future
+        // For now, we'll try to extract it if it's somewhere in the data
+        if (data && data.pair && data.pair.info && data.pair.info.holders) {
+          holdersCount = formatNumber(data.pair.info.holders) + '+';
+        } else if (data && data.pairs && data.pairs.length > 0 && 
+                   data.pairs[0].info && data.pairs[0].info.holders) {
+          holdersCount = formatNumber(data.pairs[0].info.holders) + '+';
+        }
+        
+        console.log('Formatted market cap:', formattedMarketCap);
+        console.log('Holders count:', holdersCount);
         
         setMarketData({
           marketCap: formattedMarketCap,
@@ -54,7 +67,6 @@ const Hero = () => {
           countries: '14'
         });
         
-        console.log('Updated market data:', formattedMarketCap, holdersCount);
       } catch (error) {
         console.error('Failed to fetch market data:', error);
         // Fallback to default values if API call fails
@@ -62,6 +74,12 @@ const Hero = () => {
         setIsLoading(false);
       }
     };
+    
+    // Set up a refresh interval
+    fetchMarketData();
+    
+    // Refresh data every 5 minutes (300000 ms)
+    const refreshInterval = setInterval(fetchMarketData, 300000);
 
     // Helper function to format currency values
     const formatCurrency = (value: number): string => {
@@ -75,9 +93,12 @@ const Hero = () => {
         return `$${Math.round(value).toLocaleString()}+`;
       }
     };
-
-    fetchMarketData();
     
+    // Helper function to format number values with commas
+    const formatNumber = (value: number): string => {
+      return Math.round(value).toLocaleString();
+    };
+
     // Add subtle floating animation to heading elements
     const animateHeading = () => {
       if (financialRef.current && secureRef.current && futureRef.current) {
@@ -101,6 +122,7 @@ const Hero = () => {
     
     return () => {
       cancelAnimationFrame(animationId);
+      clearInterval(refreshInterval);
       // Reset overflow when component unmounts
       document.body.style.overflow = '';
     };
@@ -213,3 +235,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
