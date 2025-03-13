@@ -97,7 +97,7 @@ const About = () => {
                 }}>
                   <div className="absolute inset-0 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full opacity-70"></div>
                   <img 
-                    src="/lovable-uploads/ff02018c-616e-4c3b-a2f5-d75b82641f8d.png" 
+                    src="/lovable-uploads/bcbd7898-814b-4214-8df2-b0363c8680c6.png" 
                     alt="Gold coin" 
                     className="w-full h-full object-contain relative z-10"
                   />
@@ -112,7 +112,7 @@ const About = () => {
                 }}>
                   <div className="absolute inset-0 bg-gradient-to-br from-gold-500 to-gold-700 rounded-full opacity-70"></div>
                   <img 
-                    src="/lovable-uploads/ff02018c-616e-4c3b-a2f5-d75b82641f8d.png" 
+                    src="/lovable-uploads/bcbd7898-814b-4214-8df2-b0363c8680c6.png" 
                     alt="Gold coin" 
                     className="w-full h-full object-contain relative z-10 transform rotate-y-180"
                   />
