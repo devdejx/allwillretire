@@ -96,11 +96,13 @@ const About = () => {
                   boxShadow: 'inset 0 0 30px rgba(0,0,0,0.4)'
                 }}>
                   <div className="absolute inset-0 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full opacity-70"></div>
-                  <img 
-                    src="/lovable-uploads/bcbd7898-814b-4214-8df2-b0363c8680c6.png" 
-                    alt="Gold coin" 
-                    className="w-full h-full object-contain relative z-10"
-                  />
+                  <div className="absolute inset-0 flex items-center justify-center p-8">
+                    <img 
+                      src="/lovable-uploads/69cd8a37-ae97-4391-8d42-5e7882275a60.png" 
+                      alt="AWR Lifestyle" 
+                      className="w-full h-full object-contain relative z-10"
+                    />
+                  </div>
                   {/* Enhanced lighting effect */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-transparent rounded-full opacity-60 z-20"></div>
                 </div>
@@ -111,11 +113,13 @@ const About = () => {
                   boxShadow: 'inset 0 0 30px rgba(0,0,0,0.4)'
                 }}>
                   <div className="absolute inset-0 bg-gradient-to-br from-gold-500 to-gold-700 rounded-full opacity-70"></div>
-                  <img 
-                    src="/lovable-uploads/bcbd7898-814b-4214-8df2-b0363c8680c6.png" 
-                    alt="Gold coin" 
-                    className="w-full h-full object-contain relative z-10 transform rotate-y-180"
-                  />
+                  <div className="absolute inset-0 flex items-center justify-center p-8">
+                    <img 
+                      src="/lovable-uploads/69cd8a37-ae97-4391-8d42-5e7882275a60.png" 
+                      alt="AWR Lifestyle" 
+                      className="w-full h-full object-contain relative z-10"
+                    />
+                  </div>
                   {/* Enhanced lighting effect */}
                   <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-white/40 to-transparent rounded-full opacity-60 z-20"></div>
                 </div>
