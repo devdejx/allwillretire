@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Coins, Shield, TrendingUp } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const About = () => {
   return (
@@ -61,11 +62,19 @@ const About = () => {
                   </div>
                 </div>
                 
-                {/* Coin back side (only visible during flip) */}
-                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-back">
+                {/* Coin back side (only visible during flip) with BUY NOW button */}
+                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex flex-col items-center justify-center border-4 border-gold-400 shadow-inner coin-back">
                   <div className="text-center">
                     <div className="font-display font-bold text-2xl md:text-3xl text-black text-stroke">RETIREMENT</div>
-                    <div className="text-xs md:text-sm text-black font-medium mt-1">IN 2025</div>
+                    <div className="text-xs md:text-sm text-black font-medium mt-1 mb-4">IN 2025</div>
+                    <Button 
+                      variant="default" 
+                      size="sm" 
+                      className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                      onClick={() => window.open('https://example.com/buy', '_blank')}
+                    >
+                      BUY NOW
+                    </Button>
                   </div>
                 </div>
                 
