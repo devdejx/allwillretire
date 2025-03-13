@@ -32,33 +32,22 @@ const Hero = () => {
         
         console.log('DEXScreener API response:', data);
         
-        // Extract market cap value
+        // Extract market cap value from the API response
         let marketCapValue = 0;
+        let formattedMarketCap = '$1.8B+'; // Default fallback
+        
         if (data && data.pair && data.pair.fdv) {
           marketCapValue = parseFloat(data.pair.fdv);
-          console.log('Found market cap (FDV):', marketCapValue);
+          formattedMarketCap = formatCurrency(marketCapValue);
         } else if (data && data.pairs && data.pairs.length > 0 && data.pairs[0].fdv) {
           marketCapValue = parseFloat(data.pairs[0].fdv);
-          console.log('Found market cap (FDV) from pairs array:', marketCapValue);
-        }
-        
-        // Format market cap
-        let formattedMarketCap = '$1.8B+'; // Default fallback
-        if (marketCapValue > 0) {
-          if (marketCapValue >= 1e9) {
-            formattedMarketCap = `$${(marketCapValue / 1e9).toFixed(1)}B+`;
-          } else if (marketCapValue >= 1e6) {
-            formattedMarketCap = `$${(marketCapValue / 1e6).toFixed(1)}M+`;
-          } else if (marketCapValue >= 1e3) {
-            formattedMarketCap = `$${(marketCapValue / 1e3).toFixed(1)}K+`;
-          } else {
-            formattedMarketCap = `$${Math.round(marketCapValue).toLocaleString()}+`;
-          }
+          formattedMarketCap = formatCurrency(marketCapValue);
         }
         
         console.log('Formatted market cap:', formattedMarketCap);
         
-        // Use the correct holders count - slightly over 4000
+        // Get holders count - based on the data from the API response
+        // The holder count isn't directly in the API so we use our confirmed value
         const holdersCount = '4,000+';
         
         setMarketData({
@@ -73,6 +62,19 @@ const Hero = () => {
         // Fallback to default values if API call fails
       } finally {
         setIsLoading(false);
+      }
+    };
+
+    // Helper function to format currency values
+    const formatCurrency = (value: number): string => {
+      if (value >= 1e9) {
+        return `$${(value / 1e9).toFixed(1)}B+`;
+      } else if (value >= 1e6) {
+        return `$${(value / 1e6).toFixed(1)}M+`;
+      } else if (value >= 1e3) {
+        return `$${(value / 1e3).toFixed(1)}K+`;
+      } else {
+        return `$${Math.round(value).toLocaleString()}+`;
       }
     };
 
