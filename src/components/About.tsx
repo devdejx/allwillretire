@@ -29,24 +29,19 @@ const About = () => {
             <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square coin-container">
               <div className="coin-face">
                 {/* Coin exterior */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gold-500 via-gold-400 to-gold-600 rounded-full border-8 border-gold-400/80 shadow-inner"></div>
-                
-                {/* Coin texture */}
-                <div className="absolute inset-0 rounded-full opacity-30">
-                  <div className="w-full h-full bg-[radial-gradient(circle_at_center,_transparent_30%,_rgba(0,0,0,0.2)_70%)]"></div>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full border-8 border-gold-300 shadow-inner"></div>
                 
                 {/* Coin shine effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent rounded-full"></div>
                 
-                {/* Coin edge texture - small dots around the edge */}
+                {/* Coin ridges/serrations */}
                 <div className="absolute inset-0 rounded-full">
-                  {Array.from({ length: 120 }).map((_, i) => (
+                  {Array.from({ length: 32 }).map((_, i) => (
                     <div 
                       key={i} 
-                      className="absolute w-1 h-1.5 bg-gold-300/70" 
+                      className="absolute w-1 h-4 bg-gold-300/70" 
                       style={{ 
-                        transform: `rotate(${i * 3}deg) translateY(-49.5%)`,
+                        transform: `rotate(${i * 11.25}deg) translateY(-50%)`,
                         top: '50%',
                         left: '0',
                         transformOrigin: 'right center'
@@ -55,41 +50,9 @@ const About = () => {
                   ))}
                 </div>
                 
-                {/* Coin ridges/serrations */}
-                <div className="absolute inset-0 rounded-full">
-                  {Array.from({ length: 60 }).map((_, i) => (
-                    <div 
-                      key={i} 
-                      className="absolute w-1.5 h-3 bg-gold-600/40" 
-                      style={{ 
-                        transform: `rotate(${i * 6}deg) translateY(-50%)`,
-                        top: '50%',
-                        left: '2px',
-                        transformOrigin: 'right center'
-                      }}
-                    ></div>
-                  ))}
-                </div>
-                
                 {/* Coin front with AWR text */}
                 <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-front">
-                  {/* Decorative circle pattern */}
-                  <div className="absolute inset-0 overflow-hidden">
-                    {Array.from({ length: 12 }).map((_, i) => (
-                      <div 
-                        key={i} 
-                        className="absolute w-full h-[1px] bg-gold-300/30" 
-                        style={{ 
-                          top: '50%',
-                          transform: `rotate(${i * 15}deg) translateY(-50%)`
-                        }}
-                      ></div>
-                    ))}
-                    <div className="absolute inset-[15%] border-[1px] border-gold-300/30 rounded-full"></div>
-                    <div className="absolute inset-[30%] border-[1px] border-gold-300/30 rounded-full"></div>
-                  </div>
-                  
-                  <div className="text-center z-10">
+                  <div className="text-center">
                     <div className="font-display font-bold text-4xl md:text-5xl text-white text-stroke">AWR</div>
                     <div className="text-xs md:text-sm text-gold-200 font-medium mt-1">AllWillRetire</div>
                   </div>
@@ -97,37 +60,7 @@ const About = () => {
                 
                 {/* Coin back side (only visible during flip) - UPDATED TEXT HERE */}
                 <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-back">
-                  {/* Decorative pattern for back side */}
-                  <div className="absolute inset-0 overflow-hidden">
-                    {Array.from({ length: 8 }).map((_, i) => (
-                      <div 
-                        key={i} 
-                        className="absolute w-full h-[1px] bg-gold-300/30" 
-                        style={{ 
-                          top: '50%',
-                          transform: `rotate(${i * 22.5}deg) translateY(-50%)`
-                        }}
-                      ></div>
-                    ))}
-                    <div className="absolute inset-[10%] border-[1px] border-gold-300/30 rounded-full"></div>
-                    <div className="absolute inset-[25%] border-[1px] border-gold-300/30 rounded-full"></div>
-                    <div className="absolute inset-[40%] border-[1px] border-gold-300/30 rounded-full"></div>
-                    
-                    {/* Small stars pattern */}
-                    {Array.from({ length: 8 }).map((_, i) => (
-                      <div 
-                        key={i} 
-                        className="absolute w-2 h-2 text-gold-300/50 flex items-center justify-center text-[8px]" 
-                        style={{ 
-                          top: `calc(50% + ${Math.sin(i * Math.PI/4) * 35}%)`,
-                          left: `calc(50% + ${Math.cos(i * Math.PI/4) * 35}%)`,
-                          transform: 'translate(-50%, -50%)'
-                        }}
-                      >★</div>
-                    ))}
-                  </div>
-                  
-                  <div className="text-center z-10">
+                  <div className="text-center">
                     <div className="font-display font-bold text-2xl md:text-3xl text-white text-stroke">RETIREMENT</div>
                     <div className="text-xs md:text-sm text-gold-200 font-medium mt-1">IN 2025</div>
                   </div>
@@ -135,7 +68,6 @@ const About = () => {
                 
                 {/* Reflective shine */}
                 <div className="absolute top-0 left-[5%] right-[40%] h-[20%] bg-white/20 blur-sm rounded-full transform -rotate-12"></div>
-                <div className="absolute bottom-[15%] right-[10%] w-[25%] h-[10%] bg-white/15 blur-sm rounded-full"></div>
               </div>
             </div>
             
