@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+
 const About = () => {
   const [showCoinOrbit, setShowCoinOrbit] = useState(false);
 
@@ -39,6 +40,7 @@ const About = () => {
     month: 'Oct',
     value: 350
   }];
+
   return <section id="about" className="py-24 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute top-1/4 -right-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
@@ -122,39 +124,37 @@ const About = () => {
                     <div className="absolute bottom-0.5 left-0.5 w-1 h-1 bg-gold-700 rounded-full shadow-inner"></div>
                     <div className="absolute bottom-0.5 right-0.5 w-1 h-1 bg-gold-700 rounded-full shadow-inner"></div>
                     
-                    {/* Engraved text with shadow effect - SMALLER TEXT */}
+                    {/* Engraved text with shadow effect - INCREASED TEXT SIZE */}
                     <div className="text-center z-10">
-                      <div className="font-artistic text-sm mb-0.5 text-gold-800 font-bold tracking-wider" style={{
+                      <div className="font-artistic text-base mb-0.5 text-gold-800 font-bold tracking-wider" style={{
                       textShadow: "0 0.5px 0 rgba(255,255,255,0.4)"
                     }}>I will retire
 we will retire
 all will retire</div>
                       <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-700 to-transparent my-0.5"></div>
-                      <div className="font-elegant text-[9px] text-gold-900 italic" style={{
+                      <div className="font-elegant text-[10px] text-gold-900 italic" style={{
                       textShadow: "0 0.3px 0 rgba(255,255,255,0.3)"
                     }}>
-                        Financial Freedom Awaits
-                      </div>
-                      
-                      {/* Gold growth chart with more dramatic profit curve */}
-                      <div className="mt-1 h-[20px] w-full">
-                        <ResponsiveContainer width="100%" height="100%">
-                          <AreaChart data={goldGrowthData} margin={{
-                          top: 0,
-                          right: 0,
-                          left: 0,
-                          bottom: 0
-                        }}>
-                            <defs>
-                              <linearGradient id="colorGold" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#FFC300" stopOpacity={0.8} />
-                                <stop offset="95%" stopColor="#FFC300" stopOpacity={0.2} />
-                              </linearGradient>
-                            </defs>
-                            <Area type="monotone" dataKey="value" stroke="#CC9C00" strokeWidth={1.5} fill="url(#colorGold)" />
-                          </AreaChart>
-                        </ResponsiveContainer>
-                      </div>
+                      Financial Freedom Awaits
+                    </div>
+                    
+                    {/* Gold growth chart with more dramatic profit curve */}
+                    <div className="mt-1 h-[20px] w-full">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart data={goldGrowthData} margin={{
+                        top: 0,
+                        right: 0,
+                        left: 0,
+                        bottom: 0
+                      }}>
+                        <defs>
+                          <linearGradient id="colorGold" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#FFC300" stopOpacity={0.8} />
+                            <stop offset="95%" stopColor="#FFC300" stopOpacity={0.2} />
+                          </linearGradient>
+                        </defs>
+                        <Area type="monotone" dataKey="value" stroke="#CC9C00" strokeWidth={1.5} fill="url(#colorGold)" />
+                      </AreaChart>
                     </div>
                   </div>
                   
@@ -228,4 +228,5 @@ all will retire</div>
       </div>
     </section>;
 };
+
 export default About;
