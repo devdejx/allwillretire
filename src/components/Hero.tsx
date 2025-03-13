@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
+import { Skeleton } from './ui/skeleton';
 
 const Hero = () => {
   const orbitRef = useRef<HTMLDivElement>(null);
@@ -21,33 +22,45 @@ const Hero = () => {
     const fetchMarketData = async () => {
       try {
         setIsLoading(true);
-        // Use the exact URL provided by the user
+        
+        // Try with the direct API endpoint which is most reliable
+        const apiResponse = await fetch('https://api.dexscreener.com/latest/dex/pairs/solana/fo7vnhaddvnmx4axjo7cc1wwb9ko2pk2dfdzl3dybxkp');
+        const apiData = await apiResponse.json();
+        
+        console.log('DEXScreener API response:', apiData);
+        
+        if (apiData && apiData.pair) {
+          updateMarketDataFromPair(apiData.pair);
+        } else if (apiData && apiData.pairs && apiData.pairs.length > 0) {
+          // If using the pairs endpoint
+          updateMarketDataFromPair(apiData.pairs[0]);
+        } else {
+          // If we can't get data from the API, try to scrape the website directly
+          tryToScrapeWebsite();
+        }
+      } catch (error) {
+        console.error('Failed to fetch market data:', error);
+        tryToScrapeWebsite();
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    // Try to scrape the website directly as a fallback
+    const tryToScrapeWebsite = async () => {
+      try {
+        // This is likely to fail due to CORS but we try anyway
+        console.log('Attempting to scrape website directly');
         const response = await fetch('https://dexscreener.com/solana/fo7vnhaddvnmx4axjo7cc1wwb9ko2pk2dfdzl3dybxkp', {
           headers: {
             'Accept': 'application/json'
           }
         });
         
-        // If we can't use the direct site URL, use the API endpoint
-        if (!response.ok) {
-          console.log('Falling back to API endpoint');
-          const apiResponse = await fetch('https://api.dexscreener.com/latest/dex/pairs/solana/fo7vnhaddvnmx4axjo7cc1wwb9ko2pk2dfdzl3dybxkp');
-          const apiData = await apiResponse.json();
-          
-          console.log('DEXScreener API response:', apiData);
-          
-          if (apiData && apiData.pair) {
-            const pair = apiData.pair;
-            updateMarketDataFromPair(pair);
-          } else {
-            console.log('No pair data found in API, using fallback values');
-          }
-        } else {
-          // Try to extract data from the HTML response (this may not work due to CORS)
+        if (response.ok) {
           const htmlText = await response.text();
-          console.log('Received HTML response, attempting to extract data');
           
-          // Extract market cap using regex (basic approach)
+          // Extract market cap
           const marketCapMatch = htmlText.match(/FDV<\/dt><dd[^>]*>\$([\d,.]+)(B|M|K)?/i);
           if (marketCapMatch) {
             let value = parseFloat(marketCapMatch[1].replace(/,/g, ''));
@@ -59,35 +72,113 @@ const Hero = () => {
             
             formatAndSetMarketCap(value);
           }
+          
+          // Extract holders count
+          const holdersMatch = htmlText.match(/Holders<\/dt><dd[^>]*>([\d,.]+)(B|M|K)?/i);
+          if (holdersMatch) {
+            let value = parseFloat(holdersMatch[1].replace(/,/g, ''));
+            const suffix = holdersMatch[2] || '';
+            
+            let formattedHolders;
+            if (suffix === 'B') formattedHolders = `${(value).toFixed(1)}B+`;
+            else if (suffix === 'M') formattedHolders = `${(value).toFixed(1)}M+`;
+            else if (suffix === 'K') formattedHolders = `${(value).toFixed(1)}K+`;
+            else formattedHolders = `${Math.round(value).toLocaleString()}+`;
+            
+            setMarketData(prev => ({
+              ...prev,
+              holders: formattedHolders
+            }));
+            
+            console.log(`Set holders count to: ${formattedHolders}`);
+          }
+        } else {
+          // One last attempt using another API endpoint
+          trySecondaryApiEndpoint();
         }
       } catch (error) {
-        console.error('Failed to fetch market data:', error);
-        // Try one more direct API call as a last resort
-        try {
-          const lastResortResponse = await fetch('https://api.dexscreener.com/latest/dex/pairs/solana/fo7vnhaddvnmx4axjo7cc1wwb9ko2pk2dfdzl3dybxkp');
-          const lastResortData = await lastResortResponse.json();
+        console.error('Failed to scrape website:', error);
+        trySecondaryApiEndpoint();
+      }
+    };
+    
+    // Try a secondary API endpoint that might have holders info
+    const trySecondaryApiEndpoint = async () => {
+      try {
+        console.log('Trying secondary API endpoint');
+        const response = await fetch('https://api.dexscreener.com/latest/dex/tokens/solana/Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump');
+        const data = await response.json();
+        
+        console.log('Secondary API response:', data);
+        
+        // Check if we have pairs with holder info
+        if (data && data.pairs && data.pairs.length > 0) {
+          const pair = data.pairs[0];
           
-          console.log('Last resort API response:', lastResortData);
-          
-          if (lastResortData && lastResortData.pairs && lastResortData.pairs.length > 0) {
-            const pair = lastResortData.pairs[0];
-            updateMarketDataFromPair(pair);
+          // Update market cap if available
+          if (pair.fdv) {
+            formatAndSetMarketCap(parseFloat(pair.fdv));
           }
-        } catch (finalError) {
-          console.error('All attempts to fetch market data failed:', finalError);
+          
+          // If this endpoint has holders information (it might not)
+          if (pair.holders) {
+            const holders = pair.holders;
+            let formattedHolders;
+            
+            if (holders >= 1e6) {
+              formattedHolders = `${(holders / 1e6).toFixed(1)}M+`;
+            } else if (holders >= 1e3) {
+              formattedHolders = `${(holders / 1e3).toFixed(1)}K+`;
+            } else {
+              formattedHolders = `${Math.round(holders).toLocaleString()}+`;
+            }
+            
+            setMarketData(prev => ({
+              ...prev,
+              holders: formattedHolders
+            }));
+            
+            console.log(`Set holders count to: ${formattedHolders}`);
+          }
         }
-      } finally {
-        setIsLoading(false);
+      } catch (error) {
+        console.error('Failed with secondary API endpoint:', error);
       }
     };
     
     // Helper function to update market data from a pair object
     const updateMarketDataFromPair = (pair) => {
+      // Update market cap if available
       if (pair.fdv) {
         const marketCapValue = parseFloat(pair.fdv);
         formatAndSetMarketCap(marketCapValue);
       }
       
+      // Update holders if available (not all endpoints provide this)
+      if (pair.holders) {
+        const holdersValue = parseFloat(pair.holders);
+        
+        let formattedHolders;
+        if (holdersValue >= 1e6) {
+          formattedHolders = `${(holdersValue / 1e6).toFixed(1)}M+`;
+        } else if (holdersValue >= 1e3) {
+          formattedHolders = `${(holdersValue / 1e3).toFixed(1)}K+`;
+        } else {
+          formattedHolders = `${Math.round(holdersValue).toLocaleString()}+`;
+        }
+        
+        setMarketData(prev => ({
+          ...prev,
+          holders: formattedHolders
+        }));
+        
+        console.log(`Set holders count to: ${formattedHolders}`);
+      } else {
+        // If the API doesn't provide holders info, we can try to get it from another endpoint
+        trySecondaryApiEndpoint();
+      }
+      
+      // Log other useful data for debugging
       if (pair.liquidity?.usd) {
         console.log(`Liquidity: $${pair.liquidity.usd}`);
       }
@@ -222,14 +313,24 @@ const Hero = () => {
             
             <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up" style={{ animationDelay: '0.8s' }}>
               <div className="flex flex-col items-center">
-                <span className={`text-4xl font-artistic font-bold ${isLoading ? 'animate-pulse' : ''}`}>
-                  {marketData.marketCap}
-                </span>
+                {isLoading ? (
+                  <Skeleton className="h-10 w-24 rounded-md" />
+                ) : (
+                  <span className="text-4xl font-artistic font-bold">
+                    {marketData.marketCap}
+                  </span>
+                )}
                 <span className="text-sm text-muted-foreground">Market Cap</span>
               </div>
               <div className="w-px h-12 bg-black/10"></div>
               <div className="flex flex-col items-center">
-                <span className="text-4xl font-artistic font-bold">{marketData.holders}</span>
+                {isLoading ? (
+                  <Skeleton className="h-10 w-24 rounded-md" />
+                ) : (
+                  <span className="text-4xl font-artistic font-bold">
+                    {marketData.holders}
+                  </span>
+                )}
                 <span className="text-sm text-muted-foreground">Holders</span>
               </div>
               <div className="w-px h-12 bg-black/10"></div>
