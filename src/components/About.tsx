@@ -64,7 +64,7 @@ const About = () => {
                 {/* Coin back side (only visible during flip) */}
                 <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-back">
                   <div className="text-center">
-                    <div className="font-display font-bold text-2xl md:text-3xl text-white text-stroke">RETIREMENT</div>
+                    <div className="font-display font-bold text-2xl md:text-3xl text-black text-stroke">RETIREMENT</div>
                     <div className="text-xs md:text-sm text-black font-medium mt-1">IN 2025</div>
                   </div>
                 </div>
