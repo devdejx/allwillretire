@@ -35,22 +35,7 @@ const About = () => {
                 {/* Enhanced metallic shine effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-gold-700/30 rounded-full"></div>
                 
-                {/* More detailed coin ridges/serrations */}
-                <div className="absolute inset-0 rounded-full">
-                  {Array.from({ length: 48 }).map((_, i) => (
-                    <div 
-                      key={i} 
-                      className="absolute w-1 h-4 bg-gradient-to-r from-gold-400 to-gold-600" 
-                      style={{ 
-                        transform: `rotate(${i * 7.5}deg) translateY(-50%)`,
-                        top: '50%',
-                        left: '-1px',
-                        transformOrigin: 'right center',
-                        boxShadow: '0 0 2px rgba(0,0,0,0.3)'
-                      }}
-                    ></div>
-                  ))}
-                </div>
+                {/* Removed the coin ridges/serrations that were here */}
                 
                 {/* Enhanced coin front with embossed effect */}
                 <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-[6px] border-gold-400/90 shadow-inner coin-front">
