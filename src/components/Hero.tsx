@@ -12,8 +12,7 @@ const Hero = () => {
   const [showOrbit, setShowOrbit] = useState(true);
   const [marketData, setMarketData] = useState({
     marketCap: '$1.8B+',
-    holders: '4,400+',
-    countries: '14'
+    holders: '4,400+'
   });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -63,8 +62,7 @@ const Hero = () => {
         
         setMarketData({
           marketCap: formattedMarketCap,
-          holders: holdersCount,
-          countries: '14'
+          holders: holdersCount
         });
         
       } catch (error) {
@@ -221,11 +219,6 @@ const Hero = () => {
                 )}
                 <span className="text-sm text-muted-foreground">Holders</span>
               </div>
-              <div className="w-px h-12 bg-black/10"></div>
-              <div className="flex flex-col items-center">
-                <span className="text-4xl font-artistic font-bold">{marketData.countries}</span>
-                <span className="text-sm text-muted-foreground">Countries</span>
-              </div>
             </div>
           </div>
         </div>
@@ -235,4 +228,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
