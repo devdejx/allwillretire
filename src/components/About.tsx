@@ -26,15 +26,39 @@ const About = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl neo-glass aspect-square">
-              <div className="absolute inset-0 bg-luxury opacity-90"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-40 h-40 bg-gold-500 rounded-full flex items-center justify-center animate-spin-slow">
-                  <div className="w-36 h-36 bg-black rounded-full flex items-center justify-center text-gold-500 font-display font-bold text-4xl">
-                    AWR
-                  </div>
+            <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square">
+              {/* Coin exterior */}
+              <div className="absolute inset-0 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full border-8 border-gold-300 shadow-inner"></div>
+              
+              {/* Coin shine effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent rounded-full"></div>
+              
+              {/* Coin ridges/serrations */}
+              <div className="absolute inset-0 rounded-full">
+                {Array.from({ length: 32 }).map((_, i) => (
+                  <div 
+                    key={i} 
+                    className="absolute w-1 h-4 bg-gold-300/70" 
+                    style={{ 
+                      transform: `rotate(${i * 11.25}deg) translateY(-50%)`,
+                      top: '50%',
+                      left: '0',
+                      transformOrigin: 'right center'
+                    }}
+                  ></div>
+                ))}
+              </div>
+              
+              {/* Coin center with AWR text */}
+              <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner animate-spin-slow">
+                <div className="text-center">
+                  <div className="font-display font-bold text-4xl md:text-5xl text-white text-stroke">AWR</div>
+                  <div className="text-xs md:text-sm text-gold-200 font-medium mt-1">AllWillRetire</div>
                 </div>
               </div>
+              
+              {/* Reflective shine */}
+              <div className="absolute top-0 left-[5%] right-[40%] h-[20%] bg-white/20 blur-sm rounded-full transform -rotate-12"></div>
             </div>
             
             {/* Decorative elements */}
