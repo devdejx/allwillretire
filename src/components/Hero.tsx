@@ -52,13 +52,14 @@ const Hero = () => {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mb-6 animate-fade-up" style={{ animationDelay: '0.2s' }}>
-            <span className="relative">
-              Secure Your 
-              <span className="absolute -bottom-2 left-0 right-0 h-3 bg-gold-500/20 rounded-full"></span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mb-6 animate-fade-up tracking-tight" style={{ animationDelay: '0.2s', letterSpacing: '-0.02em' }}>
+            <span className="relative italic font-display text-stroke">
+              Secure Your
+              <span className="absolute -bottom-2 left-0 right-0 h-2 bg-gold-500/30 rounded-full"></span>
             </span>
             {' '}
-            <span className="text-gold-500">Financial</span> Future
+            <span className="text-gold-500 font-display font-bold">Financial</span>{' '}
+            <span className="font-display italic">Future</span>
           </h1>
           
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto animate-fade-up" style={{ animationDelay: '0.4s' }}>
