@@ -50,7 +50,7 @@ const About = () => {
                   ))}
                 </div>
                 
-                {/* Coin front with AWR text and image */}
+                {/* Coin front with image only - text removed */}
                 <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-front">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <img 
@@ -58,10 +58,6 @@ const About = () => {
                       alt="Coin image" 
                       className="w-[80%] h-[80%] object-contain"
                     />
-                  </div>
-                  <div className="relative text-center z-10">
-                    <div className="font-display font-bold text-4xl md:text-5xl text-white text-stroke">AWR</div>
-                    <div className="text-xs md:text-sm text-gold-200 font-medium mt-1">AllWillRetire</div>
                   </div>
                 </div>
                 
