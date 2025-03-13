@@ -41,10 +41,17 @@ const Hero = () => {
   }, []);
 
   const handleLearnMoreClick = () => {
-    // Scroll to the About section smoothly
+    // Find the About section
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+      // Calculate position to scroll to (just enough to see the stats at the top)
+      const offset = aboutSection.getBoundingClientRect().top + window.scrollY - 150;
+      
+      // Scroll to the calculated position
+      window.scrollTo({
+        top: offset,
+        behavior: 'smooth'
+      });
     }
   };
 
