@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Coins, Shield, TrendingUp } from 'lucide-react';
 
@@ -84,50 +83,22 @@ const About = () => {
                   ))}
                 </div>
                 
-                {/* Coin exterior - increased depth */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full border-8 border-gold-300 shadow-inner" style={{ transform: 'translateZ(0)' }}></div>
-                
-                {/* Coin shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent rounded-full" style={{ transform: 'translateZ(1px)' }}></div>
-                
-                {/* Coin ridges/serrations - more pronounced */}
-                <div className="absolute inset-0 rounded-full" style={{ transform: 'translateZ(2px)' }}>
-                  {Array.from({ length: 48 }).map((_, i) => (
-                    <div 
-                      key={i} 
-                      className="absolute w-1 h-5 bg-gold-300/70" 
-                      style={{ 
-                        transform: `rotate(${i * 7.5}deg) translateY(-50%)`,
-                        top: '50%',
-                        left: '0',
-                        transformOrigin: 'right center'
-                      }}
-                    ></div>
-                  ))}
+                {/* Coin front - Using the new coin image */}
+                <div className="absolute inset-0 coin-front" style={{ transform: 'translateZ(8px)' }}>
+                  <img 
+                    src="/lovable-uploads/bcbd7898-814b-4214-8df2-b0363c8680c6.png" 
+                    alt="Gold coin" 
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 
-                {/* Coin front with image only - positioned further out for more depth */}
-                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-front" style={{ transform: 'translateZ(8px)' }}>
-                  <div className="absolute inset-0 flex items-center justify-center" style={{ transform: 'translateZ(1px)' }}>
-                    <img 
-                      src="/lovable-uploads/1a3e2030-93ba-48a8-bad1-11bf6f691350.png" 
-                      alt="Coin image" 
-                      className="w-[60%] h-[60%] object-contain"
-                    />
-                  </div>
-                </div>
-                
-                {/* Coin back side (only visible during flip) - positioned further in for more depth */}
-                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-back" style={{ transform: 'translateZ(-8px) rotateY(180deg)' }}>
-                  <div className="text-center">
-                    <div className="font-display font-bold text-2xl md:text-3xl text-white text-stroke">RETIREMENT</div>
-                    <div className="text-xs md:text-sm text-gold-200 font-medium mt-1">IN 2025</div>
-                  </div>
-                </div>
-                
-                {/* Additional inner thickness ring to enhance 3D appearance */}
-                <div className="absolute inset-[10%] rounded-full" style={{ transform: 'translateZ(-4px)' }}>
-                  <div className="w-full h-full rounded-full border-8 border-gold-600 opacity-70"></div>
+                {/* Coin back side (only visible during flip) */}
+                <div className="absolute inset-0 coin-back" style={{ transform: 'translateZ(-8px) rotateY(180deg)' }}>
+                  <img 
+                    src="/lovable-uploads/bcbd7898-814b-4214-8df2-b0363c8680c6.png" 
+                    alt="Gold coin" 
+                    className="w-full h-full object-contain transform rotate-y-180"
+                  />
                 </div>
                 
                 {/* Reflective shine */}
@@ -195,4 +166,3 @@ const About = () => {
 };
 
 export default About;
-

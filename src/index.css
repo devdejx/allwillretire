@@ -71,7 +71,7 @@
     @apply py-20 px-6 md:px-12 lg:px-24;
   }
 
-  /* Coin flip animation - updated for thicker coin */
+  /* Coin flip animation */
   .coin-container {
     perspective: 1000px;
   }
@@ -122,4 +122,3 @@
 html {
   @apply smooth-scroll;
 }
-
