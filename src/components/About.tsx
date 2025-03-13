@@ -97,8 +97,8 @@ const About = () => {
                 }}>
                   <div className="absolute inset-0 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full opacity-70"></div>
                   <img 
-                    src="/lovable-uploads/bcbd7898-814b-4214-8df2-b0363c8680c6.png" 
-                    alt="Gold coin" 
+                    src="/lovable-uploads/34959641-54e6-4ffa-b918-cb9f4fc76e54.png" 
+                    alt="AWR Lifestyle logo" 
                     className="w-full h-full object-contain relative z-10"
                   />
                   {/* Enhanced lighting effect */}
@@ -112,8 +112,8 @@ const About = () => {
                 }}>
                   <div className="absolute inset-0 bg-gradient-to-br from-gold-500 to-gold-700 rounded-full opacity-70"></div>
                   <img 
-                    src="/lovable-uploads/bcbd7898-814b-4214-8df2-b0363c8680c6.png" 
-                    alt="Gold coin" 
+                    src="/lovable-uploads/34959641-54e6-4ffa-b918-cb9f4fc76e54.png" 
+                    alt="AWR Lifestyle logo" 
                     className="w-full h-full object-contain relative z-10 transform rotate-y-180"
                   />
                   {/* Enhanced lighting effect */}
