@@ -67,16 +67,16 @@ const About = () => {
               style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
             >
               <div className="coin-face" style={{ transformStyle: 'preserve-3d' }}>
-                {/* Coin edge/thickness */}
-                <div className="absolute inset-0 rounded-full" style={{ transform: 'translateZ(-4px)' }}>
-                  {Array.from({ length: 36 }).map((_, i) => (
+                {/* Coin edge/thickness - now with more segments for smoother appearance and positioned further out */}
+                <div className="absolute inset-0 rounded-full" style={{ transform: 'translateZ(-8px)' }}>
+                  {Array.from({ length: 72 }).map((_, i) => (
                     <div 
                       key={i} 
                       className="absolute bg-gold-700" 
                       style={{ 
                         height: '100%',
                         width: '8px',
-                        transform: `rotateY(${i * 10}deg) translateZ(calc(50% - 4px))`,
+                        transform: `rotateY(${i * 5}deg) translateZ(calc(50% - 4px))`,
                         transformOrigin: 'center',
                         left: 'calc(50% - 4px)',
                       }}
@@ -84,20 +84,20 @@ const About = () => {
                   ))}
                 </div>
                 
-                {/* Coin exterior */}
+                {/* Coin exterior - increased depth */}
                 <div className="absolute inset-0 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full border-8 border-gold-300 shadow-inner" style={{ transform: 'translateZ(0)' }}></div>
                 
                 {/* Coin shine effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent rounded-full" style={{ transform: 'translateZ(1px)' }}></div>
                 
-                {/* Coin ridges/serrations */}
+                {/* Coin ridges/serrations - more pronounced */}
                 <div className="absolute inset-0 rounded-full" style={{ transform: 'translateZ(2px)' }}>
-                  {Array.from({ length: 32 }).map((_, i) => (
+                  {Array.from({ length: 48 }).map((_, i) => (
                     <div 
                       key={i} 
-                      className="absolute w-1 h-4 bg-gold-300/70" 
+                      className="absolute w-1 h-5 bg-gold-300/70" 
                       style={{ 
-                        transform: `rotate(${i * 11.25}deg) translateY(-50%)`,
+                        transform: `rotate(${i * 7.5}deg) translateY(-50%)`,
                         top: '50%',
                         left: '0',
                         transformOrigin: 'right center'
@@ -106,8 +106,8 @@ const About = () => {
                   ))}
                 </div>
                 
-                {/* Coin front with image only */}
-                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-front" style={{ transform: 'translateZ(4px)' }}>
+                {/* Coin front with image only - positioned further out for more depth */}
+                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-front" style={{ transform: 'translateZ(8px)' }}>
                   <div className="absolute inset-0 flex items-center justify-center" style={{ transform: 'translateZ(1px)' }}>
                     <img 
                       src="/lovable-uploads/1a3e2030-93ba-48a8-bad1-11bf6f691350.png" 
@@ -117,16 +117,21 @@ const About = () => {
                   </div>
                 </div>
                 
-                {/* Coin back side (only visible during flip) */}
-                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-back" style={{ transform: 'translateZ(-4px) rotateY(180deg)' }}>
+                {/* Coin back side (only visible during flip) - positioned further in for more depth */}
+                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-back" style={{ transform: 'translateZ(-8px) rotateY(180deg)' }}>
                   <div className="text-center">
                     <div className="font-display font-bold text-2xl md:text-3xl text-white text-stroke">RETIREMENT</div>
                     <div className="text-xs md:text-sm text-gold-200 font-medium mt-1">IN 2025</div>
                   </div>
                 </div>
                 
+                {/* Additional inner thickness ring to enhance 3D appearance */}
+                <div className="absolute inset-[10%] rounded-full" style={{ transform: 'translateZ(-4px)' }}>
+                  <div className="w-full h-full rounded-full border-8 border-gold-600 opacity-70"></div>
+                </div>
+                
                 {/* Reflective shine */}
-                <div className="absolute top-0 left-[5%] right-[40%] h-[20%] bg-white/20 blur-sm rounded-full transform -rotate-12" style={{ transform: 'translateZ(5px)' }}></div>
+                <div className="absolute top-0 left-[5%] right-[40%] h-[20%] bg-white/20 blur-sm rounded-full transform -rotate-12" style={{ transform: 'translateZ(9px)' }}></div>
               </div>
             </div>
             
@@ -190,3 +195,4 @@ const About = () => {
 };
 
 export default About;
+
