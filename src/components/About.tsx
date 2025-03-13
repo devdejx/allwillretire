@@ -56,7 +56,7 @@ const About = () => {
                     <img 
                       src="/lovable-uploads/1a3e2030-93ba-48a8-bad1-11bf6f691350.png" 
                       alt="Coin image" 
-                      className="w-[80%] h-[80%] object-contain"
+                      className="w-[60%] h-[60%] object-contain"
                     />
                   </div>
                 </div>
