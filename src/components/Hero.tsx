@@ -1,5 +1,7 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
+import { toast } from 'sonner';
 
 const Hero = () => {
   const orbitRef = useRef<HTMLDivElement>(null);
@@ -7,6 +9,7 @@ const Hero = () => {
   const secureRef = useRef<HTMLSpanElement>(null);
   const futureRef = useRef<HTMLSpanElement>(null);
   const [scrollLocked, setScrollLocked] = useState(true);
+  const [showOrbit, setShowOrbit] = useState(true);
 
   useEffect(() => {
     // Add subtle floating animation to heading elements
@@ -42,6 +45,14 @@ const Hero = () => {
     setScrollLocked(false);
     document.body.style.overflow = '';
     
+    // Hide the orbit animation with a transition
+    setShowOrbit(false);
+    
+    // Show a toast notification
+    toast("Exploring AllWillRetire", {
+      description: "Discover the future of financial independence",
+    });
+    
     // Scroll to the section below Hero
     window.scrollTo({
       top: window.innerHeight,
@@ -52,14 +63,14 @@ const Hero = () => {
   return (
     <>
       {/* Fixed orbit background that stays visible when scrolling */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+      <div className={`fixed inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-1000 ${showOrbit ? 'opacity-100' : 'opacity-0'}`}>
         <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-gold-200/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-gold-300/10 rounded-full blur-3xl" />
         
         {/* Animated orbit - now fixed position and no mouse movement effect */}
         <div 
           ref={orbitRef} 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px]"
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] transition-all duration-1000 ${showOrbit ? 'scale-100' : 'scale-0'}`}
         >
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-gold-500/10 rounded-full" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-gold-500/20 rounded-full" />
