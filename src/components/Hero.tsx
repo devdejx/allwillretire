@@ -1,6 +1,5 @@
 
 import React, { useEffect, useRef } from 'react';
-import { Button } from './ui/button';
 
 const Hero = () => {
   const orbitRef = useRef<HTMLDivElement>(null);
@@ -40,21 +39,6 @@ const Hero = () => {
       cancelAnimationFrame(animationId);
     };
   }, []);
-
-  const handleLearnMoreClick = () => {
-    // Find the About section
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      // Calculate position to scroll to (just enough to see the stats at the top)
-      const offset = aboutSection.getBoundingClientRect().top + window.scrollY - 200;
-      
-      // Scroll to the calculated position
-      window.scrollTo({
-        top: offset,
-        behavior: 'smooth'
-      });
-    }
-  };
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
@@ -103,10 +87,7 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up" style={{ animationDelay: '0.6s' }}>
-            <button 
-              className="bg-white/80 backdrop-blur border border-black/10 text-black px-8 py-4 rounded-xl font-medium hover:bg-white/90 transition-colors"
-              onClick={handleLearnMoreClick}
-            >
+            <button className="bg-white/80 backdrop-blur border border-black/10 text-black px-8 py-4 rounded-xl font-medium hover:bg-white/90 transition-colors">
               Learn More
             </button>
           </div>
