@@ -8,7 +8,6 @@ const Hero = () => {
   const secureRef = useRef<HTMLSpanElement>(null);
   const futureRef = useRef<HTMLSpanElement>(null);
   const [scrollLocked, setScrollLocked] = useState(true);
-  const [animationPaused, setAnimationPaused] = useState(true);
 
   useEffect(() => {
     const moveParticles = (e: MouseEvent) => {
@@ -23,20 +22,12 @@ const Hero = () => {
     // Add subtle floating animation to heading elements
     const animateHeading = () => {
       if (financialRef.current && secureRef.current && futureRef.current) {
-        if (animationPaused) {
-          // Hold animation at starting position
-          secureRef.current.style.transform = `translateY(0px)`;
-          financialRef.current.style.transform = `translateY(0px)`;
-          futureRef.current.style.transform = `translateY(0px)`;
-        } else {
-          // Continue with animation
-          const time = Date.now() / 1000;
-          
-          // Subtle floating movements with different phases
-          secureRef.current.style.transform = `translateY(${Math.sin(time * 0.8) * 5}px)`;
-          financialRef.current.style.transform = `translateY(${Math.sin(time * 0.8 + 1) * 5}px)`;
-          futureRef.current.style.transform = `translateY(${Math.sin(time * 0.8 + 2) * 5}px)`;
-        }
+        const time = Date.now() / 1000;
+        
+        // Subtle floating movements with different phases
+        secureRef.current.style.transform = `translateY(${Math.sin(time * 0.8) * 5}px)`;
+        financialRef.current.style.transform = `translateY(${Math.sin(time * 0.8 + 1) * 5}px)`;
+        futureRef.current.style.transform = `translateY(${Math.sin(time * 0.8 + 2) * 5}px)`;
       }
       
       requestAnimationFrame(animateHeading);
@@ -56,15 +47,12 @@ const Hero = () => {
       // Reset overflow when component unmounts
       document.body.style.overflow = '';
     };
-  }, [scrollLocked, animationPaused]);
+  }, [scrollLocked]);
 
   const handleLearnMoreClick = () => {
     // Unlock scrolling
     setScrollLocked(false);
     document.body.style.overflow = '';
-    
-    // Resume animation
-    setAnimationPaused(false);
     
     // Scroll to the section below Hero
     window.scrollTo({
