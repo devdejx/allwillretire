@@ -91,28 +91,28 @@ const About = () => {
                 
                 {/* Coin back side (only visible during flip) with stylized inscription plaque */}
                 <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex flex-col items-center justify-center border-4 border-gold-400 shadow-inner coin-back">
-                  {/* Decorative plaque/sign with inscription */}
-                  <div className="w-[80%] h-[70%] bg-gradient-to-b from-gold-300 to-gold-400 rounded-lg relative overflow-hidden flex flex-col items-center justify-center px-3 py-2">
+                  {/* Decorative plaque/sign with inscription - SMALLER SIZE */}
+                  <div className="w-[65%] h-[55%] bg-gradient-to-b from-gold-300 to-gold-400 rounded-lg relative overflow-hidden flex flex-col items-center justify-center px-3 py-2">
                     {/* Plaque shine effect */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none"></div>
                     
                     {/* Plaque border with decorative rivets/nails */}
                     <div className="absolute inset-0 border-2 border-gold-600/60 rounded-lg pointer-events-none"></div>
-                    <div className="absolute top-1 left-1 w-2 h-2 bg-gold-700 rounded-full shadow-inner"></div>
-                    <div className="absolute top-1 right-1 w-2 h-2 bg-gold-700 rounded-full shadow-inner"></div>
-                    <div className="absolute bottom-1 left-1 w-2 h-2 bg-gold-700 rounded-full shadow-inner"></div>
-                    <div className="absolute bottom-1 right-1 w-2 h-2 bg-gold-700 rounded-full shadow-inner"></div>
+                    <div className="absolute top-1 left-1 w-1.5 h-1.5 bg-gold-700 rounded-full shadow-inner"></div>
+                    <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-gold-700 rounded-full shadow-inner"></div>
+                    <div className="absolute bottom-1 left-1 w-1.5 h-1.5 bg-gold-700 rounded-full shadow-inner"></div>
+                    <div className="absolute bottom-1 right-1 w-1.5 h-1.5 bg-gold-700 rounded-full shadow-inner"></div>
                     
-                    {/* Engraved text with shadow effect */}
+                    {/* Engraved text with shadow effect - SMALLER TEXT */}
                     <div className="text-center z-10">
-                      <div className="font-artistic text-xl mb-1 text-gold-800 font-bold tracking-wider" style={{ textShadow: "0 0.5px 0 rgba(255,255,255,0.4)" }}>
+                      <div className="font-artistic text-base mb-1 text-gold-800 font-bold tracking-wider" style={{ textShadow: "0 0.5px 0 rgba(255,255,255,0.4)" }}>
                         ALL WILL RETIRE
                       </div>
-                      <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-700 to-transparent my-1"></div>
-                      <div className="font-elegant text-sm text-gold-900 italic" style={{ textShadow: "0 0.3px 0 rgba(255,255,255,0.3)" }}>
+                      <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-700 to-transparent my-0.5"></div>
+                      <div className="font-elegant text-xs text-gold-900 italic" style={{ textShadow: "0 0.3px 0 rgba(255,255,255,0.3)" }}>
                         Financial Freedom Awaits
                       </div>
-                      <div className="text-xs text-gold-800 mt-1 font-semibold">
+                      <div className="text-[10px] text-gold-800 mt-0.5 font-semibold">
                         EST. 2024
                       </div>
                     </div>
