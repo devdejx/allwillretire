@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 
@@ -21,13 +20,16 @@ const Hero = () => {
     const fetchMarketData = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch('https://api.dexscreener.com/latest/dex/tokens/fo7vnhaddvnmx4axjo7cc1wwb9ko2pk2dfdzl3dybxkp');
+        // Try a different API endpoint that might return actual data
+        const response = await fetch('https://api.dexscreener.com/latest/dex/search?q=AllWillRetire');
         const data = await response.json();
+        
+        console.log('DEXScreener API response:', data);
         
         if (data && data.pairs && data.pairs.length > 0) {
           const pair = data.pairs[0];
           // Format market cap with appropriate suffix (B for billions, M for millions)
-          let formattedMarketCap = '$1.8B+'; // Default fallback
+          let formattedMarketCap = marketData.marketCap; // Use existing value as fallback
           
           if (pair.fdv) {
             const marketCapValue = parseFloat(pair.fdv);
@@ -38,13 +40,32 @@ const Hero = () => {
             } else {
               formattedMarketCap = `$${Math.round(marketCapValue).toLocaleString()}+`;
             }
+            
+            setMarketData(prev => ({
+              ...prev,
+              marketCap: formattedMarketCap
+            }));
           }
           
-          setMarketData({
-            marketCap: formattedMarketCap,
-            holders: marketData.holders, // Keep existing holders data
-            countries: marketData.countries // Keep existing countries data
-          });
+          // If holders count is available
+          if (pair.holders) {
+            const holdersCount = parseInt(pair.holders);
+            let formattedHolders = marketData.holders;
+            
+            if (holdersCount >= 1000) {
+              formattedHolders = `${(holdersCount / 1000).toFixed(0)}K+`;
+            } else {
+              formattedHolders = `${holdersCount}+`;
+            }
+            
+            setMarketData(prev => ({
+              ...prev,
+              holders: formattedHolders
+            }));
+          }
+        } else {
+          console.log('No pairs data found, using fallback values');
+          // If no data is found, we'll keep using the default values
         }
       } catch (error) {
         console.error('Failed to fetch market data:', error);
