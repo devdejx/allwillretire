@@ -37,9 +37,11 @@ const Navbar = () => {
           href="#" 
           className="relative text-2xl font-display font-bold flex items-center"
         >
-          <span className="mr-2 text-gold-500 text-3xl">
-            ⦿
-          </span>
+          <img 
+            src="/lovable-uploads/9736f09c-0f57-4e9f-86de-eb5f875fad9b.png" 
+            alt="AWR Lifestyle" 
+            className="mr-2 h-8 w-auto"
+          />
           <span className="relative z-10">
             AllWillRetire
           </span>
