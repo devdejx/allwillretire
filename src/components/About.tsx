@@ -26,52 +26,54 @@ const About = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square coin-container">
+            {/* Enhanced 3D coin with shadow */}
+            <div className="relative z-10 mx-auto rounded-full overflow-hidden shadow-2xl aspect-square coin-container w-[280px] md:w-[320px]">
               <div className="coin-face">
-                {/* Coin exterior */}
-                <div className="absolute inset-0 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full border-8 border-gold-300 shadow-inner"></div>
-                
-                {/* Coin shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent rounded-full"></div>
-                
-                {/* Coin ridges/serrations */}
-                <div className="absolute inset-0 rounded-full">
-                  {Array.from({ length: 32 }).map((_, i) => (
-                    <div 
-                      key={i} 
-                      className="absolute w-1 h-4 bg-gold-300/70" 
-                      style={{ 
-                        transform: `rotate(${i * 11.25}deg) translateY(-50%)`,
-                        top: '50%',
-                        left: '0',
-                        transformOrigin: 'right center'
-                      }}
-                    ></div>
-                  ))}
-                </div>
-                
-                {/* Coin front with the new AWR LIFESTYLE image */}
-                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-front">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <img 
-                      src="/lovable-uploads/82199989-9426-49c0-b494-3fe93ddaac2a.png" 
-                      alt="AWR LIFESTYLE" 
-                      className="w-[65%] h-[65%] object-contain"
-                    />
+                {/* Coin front side */}
+                <div className="coin-front">
+                  {/* 3D front coin exterior with gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 rounded-full border-8 border-gold-300 shadow-inner overflow-hidden">
+                    {/* Front side reflective shine */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent rounded-full"></div>
+                    
+                    {/* 3D inner content on front */}
+                    <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner overflow-hidden">
+                      <div className="absolute inset-0 flex items-center justify-center coin-inner-element">
+                        <img 
+                          src="/lovable-uploads/82199989-9426-49c0-b494-3fe93ddaac2a.png" 
+                          alt="AWR LIFESTYLE" 
+                          className="w-[65%] h-[65%] object-contain"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
                 
-                {/* Coin back side (only visible during flip) */}
-                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-back">
-                  <div className="text-center">
-                    <div className="font-display font-bold text-2xl md:text-3xl text-black text-stroke">RETIREMENT</div>
-                    <div className="text-xs md:text-sm text-black font-medium mt-1">IN 2025</div>
+                {/* Coin back side */}
+                <div className="coin-back">
+                  {/* 3D back coin exterior with gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-gold-500 via-gold-600 to-gold-500 rounded-full border-8 border-gold-300 shadow-inner overflow-hidden">
+                    {/* Back side reflective shine */}
+                    <div className="absolute inset-0 bg-gradient-to-tl from-white/30 via-transparent to-transparent rounded-full"></div>
+                    
+                    {/* 3D inner content on back */}
+                    <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner overflow-hidden">
+                      <div className="absolute inset-0 flex flex-col items-center justify-center coin-inner-element">
+                        <div className="text-center">
+                          <div className="font-display font-bold text-2xl md:text-3xl text-black text-stroke">RETIREMENT</div>
+                          <div className="text-xs md:text-sm text-black font-medium mt-1">IN 2025</div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 
-                {/* Reflective shine */}
-                <div className="absolute top-0 left-[5%] right-[40%] h-[20%] bg-white/20 blur-sm rounded-full transform -rotate-12"></div>
+                {/* 3D coin edge - visible during rotation */}
+                <div className="coin-edge"></div>
               </div>
+              
+              {/* Dynamic shadow beneath coin */}
+              <div className="coin-shadow"></div>
             </div>
             
             {/* Decorative elements */}
