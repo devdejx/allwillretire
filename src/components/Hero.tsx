@@ -144,12 +144,6 @@ const Hero = () => {
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden z-10">
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-            <div className="inline-block mb-6 animate-fade-in">
-              <span className="bg-black/5 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium">
-                The Future of Wealth Accumulation
-              </span>
-            </div>
-
             <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight" style={{ animationDelay: '0.2s', letterSpacing: '-0.015em' }}>
               <span ref={secureRef} className="relative font-artistic font-semibold inline-block transition-transform duration-1000">
                 Secure Your
