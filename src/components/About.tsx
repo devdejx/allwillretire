@@ -56,7 +56,7 @@ const About = () => {
                     <img 
                       src="/lovable-uploads/82199989-9426-49c0-b494-3fe93ddaac2a.png" 
                       alt="AWR LIFESTYLE" 
-                      className="w-[80%] h-[80%] object-contain"
+                      className="w-[65%] h-[65%] object-contain"
                     />
                   </div>
                 </div>
