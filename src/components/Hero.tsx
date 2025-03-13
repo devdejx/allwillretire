@@ -55,7 +55,6 @@ const Hero = () => {
           <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight" style={{ animationDelay: '0.2s', letterSpacing: '-0.015em' }}>
             <span className="relative font-artistic font-semibold">
               Secure Your
-              <span className="absolute -bottom-2 left-0 right-0 h-1.5 bg-gold-500/30 rounded-full"></span>
             </span>
             {' '}
             <span className="text-gold-500 font-artistic font-bold">Financial</span>{' '}
