@@ -23,7 +23,7 @@ const Features = () => {
             Our cryptocurrency is designed with exceptional features that set it apart from others in the market.
           </p>
           
-          <div className="max-w-2xl mx-auto rounded-xl overflow-hidden shadow-2xl">
+          <div className="max-w-3xl mx-auto rounded-xl overflow-hidden shadow-2xl">
             <img 
               src="/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png" 
               alt="AllWillRetire Community" 
