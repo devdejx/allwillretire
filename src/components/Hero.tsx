@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 
@@ -10,15 +9,6 @@ const Hero = () => {
   const [scrollLocked, setScrollLocked] = useState(true);
 
   useEffect(() => {
-    const moveParticles = (e: MouseEvent) => {
-      if (!orbitRef.current) return;
-      
-      const x = e.clientX / window.innerWidth - 0.5;
-      const y = e.clientY / window.innerHeight - 0.5;
-      
-      orbitRef.current.style.transform = `translateX(${x * 20}px) translateY(${y * 20}px)`;
-    };
-
     // Add subtle floating animation to heading elements
     const animateHeading = () => {
       if (financialRef.current && secureRef.current && futureRef.current) {
@@ -33,7 +23,6 @@ const Hero = () => {
       requestAnimationFrame(animateHeading);
     };
 
-    window.addEventListener('mousemove', moveParticles);
     const animationId = requestAnimationFrame(animateHeading);
     
     // Lock scrolling when the component mounts
@@ -42,7 +31,6 @@ const Hero = () => {
     }
     
     return () => {
-      window.removeEventListener('mousemove', moveParticles);
       cancelAnimationFrame(animationId);
       // Reset overflow when component unmounts
       document.body.style.overflow = '';
@@ -68,10 +56,10 @@ const Hero = () => {
         <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-gold-200/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-gold-300/10 rounded-full blur-3xl" />
         
-        {/* Animated orbit */}
+        {/* Animated orbit - now fixed position and no mouse movement effect */}
         <div 
           ref={orbitRef} 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] transition-transform duration-300 ease-out"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px]"
         >
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-gold-500/10 rounded-full" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-gold-500/20 rounded-full" />
