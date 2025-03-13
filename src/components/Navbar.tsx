@@ -48,8 +48,8 @@ const Navbar = () => {
           <span className="absolute -bottom-1 left-9 right-0 h-[6px] bg-gold-500/20 rounded-full"></span>
         </a>
         
-        <nav className="hidden md:flex space-x-8 items-center">
-          {['About', 'Features', 'Community', 'Roadmap', 'Contact'].map((item) => (
+        <nav className="hidden md:flex space-x-10 items-center">
+          {['About', 'Features', 'Community', 'Contact'].map((item) => (
             <a 
               key={item} 
               href={`#${item.toLowerCase()}`}
@@ -83,7 +83,7 @@ const Navbar = () => {
         )}
       >
         <div className="container mx-auto px-6 flex flex-col space-y-4">
-          {['About', 'Features', 'Community', 'Roadmap', 'Contact'].map((item) => (
+          {['About', 'Features', 'Community', 'Contact'].map((item) => (
             <a 
               key={item} 
               href={`#${item.toLowerCase()}`}
