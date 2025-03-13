@@ -64,17 +64,22 @@ const About = () => {
                 
                 {/* Coin back side (only visible during flip) with BUY NOW button */}
                 <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex flex-col items-center justify-center border-4 border-gold-400 shadow-inner coin-back">
-                  <div className="text-center">
-                    <div className="font-display font-bold text-2xl md:text-3xl text-black text-stroke">RETIREMENT</div>
-                    <div className="text-xs md:text-sm text-black font-medium mt-1 mb-4">IN 2025</div>
-                    <Button 
-                      variant="default" 
-                      size="sm" 
-                      className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-bold py-2 px-6 rounded-full border border-gold-300 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                      onClick={() => window.open('https://example.com/buy', '_blank')}
-                    >
-                      BUY NOW
-                    </Button>
+                  <div className="text-center px-3">
+                    <div className="font-display font-bold text-xl md:text-2xl text-black text-stroke">
+                      <div>I will retire,</div>
+                      <div>We will retire,</div>
+                      <div>All will retire</div>
+                    </div>
+                    <div className="mt-3 mb-4">
+                      <Button 
+                        variant="default" 
+                        size="sm" 
+                        className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-bold py-2 px-6 rounded-full border border-gold-300 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                        onClick={() => window.open('https://example.com/buy', '_blank')}
+                      >
+                        BUY NOW
+                      </Button>
+                    </div>
                   </div>
                 </div>
                 
