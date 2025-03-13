@@ -65,12 +65,18 @@ const About = () => {
                 {/* Coin back side (only visible during flip) with BUY NOW button */}
                 <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex flex-col items-center justify-center border-4 border-gold-400 shadow-inner coin-back">
                   <div className="text-center px-3">
-                    <div className="font-display font-bold text-xl md:text-2xl text-black text-stroke">
-                      <div>I will retire,</div>
-                      <div>We will retire,</div>
-                      <div>All will retire</div>
+                    <div className="font-artistic italic tracking-wider text-shadow">
+                      <div className="text-xl md:text-2xl text-gold-200 mb-1 transform -rotate-3 hover:rotate-0 transition-transform">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-gold-200 to-gold-300">I will retire,</span>
+                      </div>
+                      <div className="text-xl md:text-2xl text-gold-100 mb-1 transform rotate-1 hover:rotate-0 transition-transform">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-gold-100 to-gold-200">We will retire,</span>
+                      </div>
+                      <div className="text-xl md:text-2xl text-gold-50 transform rotate-2 hover:rotate-0 transition-transform">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gold-100">All will retire</span>
+                      </div>
                     </div>
-                    <div className="mt-3 mb-4">
+                    <div className="mt-4 mb-4">
                       <Button 
                         variant="default" 
                         size="sm" 
