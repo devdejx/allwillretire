@@ -29,17 +29,17 @@ const About = () => {
             <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square coin-container">
               <div className="coin-face">
                 {/* Coin exterior */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gold-500 via-gold-400 to-gold-600 rounded-full border-8 border-gold-400/80 shadow-inner"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-gold-400 via-gold-300 to-gold-500 rounded-full border-8 border-gold-400/80 shadow-inner"></div>
                 
-                {/* Coin texture */}
+                {/* Enhanced coin texture */}
                 <div className="absolute inset-0 rounded-full opacity-30">
-                  <div className="w-full h-full bg-[radial-gradient(circle_at_center,_transparent_30%,_rgba(0,0,0,0.2)_70%)]"></div>
+                  <div className="w-full h-full bg-[radial-gradient(circle_at_center,_transparent_30%,_rgba(0,0,0,0.3)_70%)]"></div>
                 </div>
                 
-                {/* Coin shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent rounded-full"></div>
+                {/* Enhanced coin shine effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-transparent rounded-full"></div>
                 
-                {/* Coin edge texture - small dots around the edge */}
+                {/* Enhanced coin edge texture - small dots around the edge */}
                 <div className="absolute inset-0 rounded-full">
                   {Array.from({ length: 120 }).map((_, i) => (
                     <div 
@@ -55,7 +55,7 @@ const About = () => {
                   ))}
                 </div>
                 
-                {/* Coin ridges/serrations */}
+                {/* Enhanced coin ridges/serrations */}
                 <div className="absolute inset-0 rounded-full">
                   {Array.from({ length: 60 }).map((_, i) => (
                     <div 
@@ -71,75 +71,110 @@ const About = () => {
                   ))}
                 </div>
                 
-                {/* Coin front with AWR text */}
-                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-front">
-                  {/* Decorative circle pattern */}
+                {/* Enhanced coin front with AWR text */}
+                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-600 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-front">
+                  {/* Added circular engraved pattern */}
                   <div className="absolute inset-0 overflow-hidden">
+                    {Array.from({ length: 24 }).map((_, i) => (
+                      <div 
+                        key={i} 
+                        className="absolute w-full h-[1px] bg-gold-300/30" 
+                        style={{ 
+                          top: '50%',
+                          transform: `rotate(${i * 7.5}deg) translateY(-50%)`
+                        }}
+                      ></div>
+                    ))}
+                    <div className="absolute inset-[15%] border-[1px] border-gold-300/40 rounded-full"></div>
+                    <div className="absolute inset-[30%] border-[1px] border-gold-300/40 rounded-full"></div>
+                    <div className="absolute inset-[45%] border-[1px] border-gold-300/40 rounded-full"></div>
+                    <div className="absolute inset-[60%] border-[1px] border-gold-300/40 rounded-full"></div>
+                  </div>
+                  
+                  {/* Added small decorative dots */}
+                  <div className="absolute inset-0">
                     {Array.from({ length: 12 }).map((_, i) => (
                       <div 
                         key={i} 
-                        className="absolute w-full h-[1px] bg-gold-300/30" 
+                        className="absolute w-1 h-1 bg-gold-300/50 rounded-full" 
                         style={{ 
-                          top: '50%',
-                          transform: `rotate(${i * 15}deg) translateY(-50%)`
+                          top: `${Math.sin(i * Math.PI/6) * 45 + 50}%`,
+                          left: `${Math.cos(i * Math.PI/6) * 45 + 50}%`,
+                          transform: 'translate(-50%, -50%)'
                         }}
                       ></div>
                     ))}
-                    <div className="absolute inset-[15%] border-[1px] border-gold-300/30 rounded-full"></div>
-                    <div className="absolute inset-[30%] border-[1px] border-gold-300/30 rounded-full"></div>
                   </div>
                   
                   <div className="text-center z-10">
-                    <div className="font-display font-bold text-4xl md:text-5xl text-white text-stroke">AWR</div>
-                    <div className="text-xs md:text-sm text-gold-200 font-medium mt-1">AllWillRetire</div>
+                    <div className="font-display font-bold text-4xl md:text-5xl text-white text-stroke shadow-sm">AWR</div>
+                    <div className="text-xs md:text-sm text-gold-100 font-medium mt-1 drop-shadow-sm">AllWillRetire</div>
                   </div>
                 </div>
                 
-                {/* Coin back side (only visible during flip) - UPDATED TEXT HERE */}
-                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-back">
-                  {/* Decorative pattern for back side */}
+                {/* Enhanced coin back side with RETIREMENT IN 2025 text */}
+                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-700 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-back">
+                  {/* Enhanced decorative pattern for back side */}
                   <div className="absolute inset-0 overflow-hidden">
-                    {Array.from({ length: 8 }).map((_, i) => (
+                    {Array.from({ length: 16 }).map((_, i) => (
                       <div 
                         key={i} 
                         className="absolute w-full h-[1px] bg-gold-300/30" 
                         style={{ 
                           top: '50%',
-                          transform: `rotate(${i * 22.5}deg) translateY(-50%)`
+                          transform: `rotate(${i * 11.25}deg) translateY(-50%)`
                         }}
                       ></div>
                     ))}
-                    <div className="absolute inset-[10%] border-[1px] border-gold-300/30 rounded-full"></div>
-                    <div className="absolute inset-[25%] border-[1px] border-gold-300/30 rounded-full"></div>
-                    <div className="absolute inset-[40%] border-[1px] border-gold-300/30 rounded-full"></div>
+                    <div className="absolute inset-[10%] border-[1px] border-gold-300/40 rounded-full"></div>
+                    <div className="absolute inset-[25%] border-[1px] border-gold-300/40 rounded-full"></div>
+                    <div className="absolute inset-[40%] border-[1px] border-gold-300/40 rounded-full"></div>
+                    <div className="absolute inset-[55%] border-[1px] border-gold-300/40 rounded-full"></div>
+                    <div className="absolute inset-[70%] border-[1px] border-gold-300/40 rounded-full"></div>
                     
-                    {/* Small stars pattern */}
-                    {Array.from({ length: 8 }).map((_, i) => (
+                    {/* Enhanced stars pattern */}
+                    {Array.from({ length: 16 }).map((_, i) => (
                       <div 
                         key={i} 
-                        className="absolute w-2 h-2 text-gold-300/50 flex items-center justify-center text-[8px]" 
+                        className="absolute w-2 h-2 text-gold-300/60 flex items-center justify-center text-[8px]" 
                         style={{ 
-                          top: `calc(50% + ${Math.sin(i * Math.PI/4) * 35}%)`,
-                          left: `calc(50% + ${Math.cos(i * Math.PI/4) * 35}%)`,
+                          top: `calc(50% + ${Math.sin(i * Math.PI/8) * 35}%)`,
+                          left: `calc(50% + ${Math.cos(i * Math.PI/8) * 35}%)`,
                           transform: 'translate(-50%, -50%)'
                         }}
                       >★</div>
                     ))}
                   </div>
                   
+                  {/* Add small decorative dots around the edge */}
+                  <div className="absolute inset-[5%] rounded-full">
+                    {Array.from({ length: 40 }).map((_, i) => (
+                      <div 
+                        key={i} 
+                        className="absolute w-0.5 h-0.5 bg-gold-300/60 rounded-full" 
+                        style={{ 
+                          top: `${Math.sin(i * Math.PI/20) * 45 + 50}%`,
+                          left: `${Math.cos(i * Math.PI/20) * 45 + 50}%`,
+                          transform: 'translate(-50%, -50%)'
+                        }}
+                      ></div>
+                    ))}
+                  </div>
+                  
                   <div className="text-center z-10">
-                    <div className="font-display font-bold text-2xl md:text-3xl text-white text-stroke">RETIREMENT</div>
-                    <div className="text-xs md:text-sm text-gold-200 font-medium mt-1">IN 2025</div>
+                    <div className="font-display font-bold text-2xl md:text-3xl text-white text-stroke shadow-sm">RETIREMENT</div>
+                    <div className="text-xs md:text-sm text-gold-100 font-medium mt-1 drop-shadow-sm">IN 2025</div>
                   </div>
                 </div>
                 
-                {/* Reflective shine */}
-                <div className="absolute top-0 left-[5%] right-[40%] h-[20%] bg-white/20 blur-sm rounded-full transform -rotate-12"></div>
-                <div className="absolute bottom-[15%] right-[10%] w-[25%] h-[10%] bg-white/15 blur-sm rounded-full"></div>
+                {/* Enhanced reflective shine effects */}
+                <div className="absolute top-0 left-[5%] right-[40%] h-[20%] bg-white/30 blur-sm rounded-full transform -rotate-12"></div>
+                <div className="absolute bottom-[15%] right-[10%] w-[25%] h-[10%] bg-white/20 blur-sm rounded-full"></div>
+                <div className="absolute top-[30%] left-[20%] w-[15%] h-[8%] bg-white/15 blur-sm rounded-full"></div>
               </div>
             </div>
             
-            {/* Decorative elements */}
+            {/* Enhanced decorative elements */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-gold-500/20 rounded-full" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] border border-gold-500/10 rounded-full" />
             <div className="absolute -top-8 -right-8 w-16 h-16 bg-gold-500/20 rounded-full blur-xl" />
@@ -199,3 +234,4 @@ const About = () => {
 };
 
 export default About;
+
