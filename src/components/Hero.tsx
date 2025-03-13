@@ -1,11 +1,13 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Button } from './ui/button';
 
 const Hero = () => {
   const orbitRef = useRef<HTMLDivElement>(null);
   const financialRef = useRef<HTMLSpanElement>(null);
   const secureRef = useRef<HTMLSpanElement>(null);
   const futureRef = useRef<HTMLSpanElement>(null);
+  const [scrollLocked, setScrollLocked] = useState(true);
 
   useEffect(() => {
     const moveParticles = (e: MouseEvent) => {
@@ -34,11 +36,30 @@ const Hero = () => {
     window.addEventListener('mousemove', moveParticles);
     const animationId = requestAnimationFrame(animateHeading);
     
+    // Lock scrolling when the component mounts
+    if (scrollLocked) {
+      document.body.style.overflow = 'hidden';
+    }
+    
     return () => {
       window.removeEventListener('mousemove', moveParticles);
       cancelAnimationFrame(animationId);
+      // Reset overflow when component unmounts
+      document.body.style.overflow = '';
     };
-  }, []);
+  }, [scrollLocked]);
+
+  const handleLearnMoreClick = () => {
+    // Unlock scrolling
+    setScrollLocked(false);
+    document.body.style.overflow = '';
+    
+    // Scroll to the section below Hero
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
@@ -87,7 +108,10 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up" style={{ animationDelay: '0.6s' }}>
-            <button className="bg-white/80 backdrop-blur border border-black/10 text-black px-8 py-4 rounded-xl font-medium hover:bg-white/90 transition-colors">
+            <button 
+              className="bg-white/80 backdrop-blur border border-black/10 text-black px-8 py-4 rounded-xl font-medium hover:bg-white/90 transition-colors"
+              onClick={handleLearnMoreClick}
+            >
               Learn More
             </button>
           </div>
