@@ -1,6 +1,5 @@
 
 import React, { useEffect, useRef } from 'react';
-import { ChevronDown } from 'lucide-react';
 
 const Hero = () => {
   const orbitRef = useRef<HTMLDivElement>(null);
@@ -109,12 +108,6 @@ const Hero = () => {
               <span className="text-sm text-muted-foreground">Countries</span>
             </div>
           </div>
-        </div>
-        
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <a href="#about" className="flex flex-col items-center text-muted-foreground hover:text-foreground transition-colors">
-            <ChevronDown size={20} />
-          </a>
         </div>
       </div>
     </section>
