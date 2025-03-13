@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
+import { Button } from './ui/button';
 
 const Hero = () => {
   const orbitRef = useRef<HTMLDivElement>(null);
@@ -45,7 +46,7 @@ const Hero = () => {
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
       // Calculate position to scroll to (just enough to see the stats at the top)
-      const offset = aboutSection.getBoundingClientRect().top + window.scrollY - 150;
+      const offset = aboutSection.getBoundingClientRect().top + window.scrollY - 80;
       
       // Scroll to the calculated position
       window.scrollTo({
