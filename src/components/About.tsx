@@ -70,7 +70,7 @@ const About = () => {
                     <Button 
                       variant="default" 
                       size="sm" 
-                      className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                      className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-bold py-2 px-6 rounded-full border border-gold-300 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                       onClick={() => window.open('https://example.com/buy', '_blank')}
                     >
                       BUY NOW
