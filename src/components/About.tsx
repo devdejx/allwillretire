@@ -26,9 +26,9 @@ const About = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square">
+            <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square coin-container">
               {/* Coin exterior */}
-              <div className="absolute inset-0 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full border-8 border-gold-300 shadow-inner"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full border-8 border-gold-300 shadow-inner coin-face"></div>
               
               {/* Coin shine effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent rounded-full"></div>
@@ -49,11 +49,19 @@ const About = () => {
                 ))}
               </div>
               
-              {/* Coin center with AWR text */}
-              <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner animate-spin-slow">
+              {/* Coin front with AWR text */}
+              <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-front">
                 <div className="text-center">
                   <div className="font-display font-bold text-4xl md:text-5xl text-white text-stroke">AWR</div>
                   <div className="text-xs md:text-sm text-gold-200 font-medium mt-1">AllWillRetire</div>
+                </div>
+              </div>
+              
+              {/* Coin back side (only visible during flip) */}
+              <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-back">
+                <div className="text-center">
+                  <div className="font-display font-bold text-3xl md:text-4xl text-white text-stroke">2024</div>
+                  <div className="text-xs md:text-sm text-gold-200 font-medium mt-1">Financial Freedom</div>
                 </div>
               </div>
               
