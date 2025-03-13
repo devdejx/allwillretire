@@ -1,7 +1,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
-import { toast } from 'sonner';
 
 const Hero = () => {
   const orbitRef = useRef<HTMLDivElement>(null);
@@ -47,11 +46,6 @@ const Hero = () => {
     
     // Hide the orbit animation with a transition
     setShowOrbit(false);
-    
-    // Show a toast notification
-    toast("Exploring AllWillRetire", {
-      description: "Discover the future of financial independence",
-    });
     
     // Scroll to the section below Hero
     window.scrollTo({
