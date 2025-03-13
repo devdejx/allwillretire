@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 
@@ -57,7 +58,7 @@ const Hero = () => {
               <span className="absolute -bottom-2 left-0 right-0 h-3 bg-gold-500/20 rounded-full"></span>
             </span>
             {' '}
-            <span className="text-gold-500">Luxurious</span> Finance
+            <span className="text-gold-500">Luxurious</span> Retirement
           </h1>
           
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto animate-fade-up" style={{ animationDelay: '0.4s' }}>
