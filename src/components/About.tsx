@@ -26,62 +26,73 @@ const About = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            {/* Coin shadow beneath */}
-            <div className="absolute inset-0 rounded-full bg-black/50 blur-xl translate-y-2 scale-95"></div>
+            {/* Enhanced shadow beneath the coin */}
+            <div className="absolute inset-0 rounded-full bg-black/40 blur-xl translate-y-3 scale-95 opacity-70"></div>
             
-            {/* Main coin container */}
-            <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square">
-              {/* Coin base exterior with realistic gold gradient */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-gold-600/90 via-gold-400 to-gold-500 rounded-full border-8 border-gold-500/80">
-                {/* Embossed edge */}
-                <div className="absolute inset-0 border-[12px] border-gold-600/30 rounded-full"></div>
+            {/* Main coin container with perspective */}
+            <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square perspective-coin transform hover:rotate-y-12 transition-transform duration-700">
+              {/* Coin base exterior with enhanced realistic gold gradient */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-gold-700/90 via-gold-400 to-gold-600 rounded-full border-8 border-gold-500/80">
+                {/* Enhanced embossed edge */}
+                <div className="absolute inset-0 border-[14px] border-gold-600/30 rounded-full"></div>
               </div>
               
-              {/* Coin texture overlay */}
-              <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiPjwvcmVjdD4KPC9zdmc+')] opacity-30 rounded-full"></div>
+              {/* Coin texture overlay - more detailed */}
+              <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiPjwvcmVjdD4KPC9zdmc+')] opacity-20 rounded-full"></div>
               
-              {/* Coin shine effect - more pronounced */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-gold-200/30 to-transparent rounded-full"></div>
+              {/* Additional coin noise texture */}
+              <div className="absolute inset-0 bg-noise-pattern opacity-10 rounded-full mix-blend-overlay"></div>
               
-              {/* Coin ridges/serrations - more defined */}
+              {/* Enhanced coin shine effect with multiple highlights */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-gold-200/30 to-transparent rounded-full"></div>
+              <div className="absolute top-[5%] right-[10%] w-[25%] h-[15%] bg-white/40 rounded-full blur-sm transform rotate-15"></div>
+              <div className="absolute bottom-[20%] left-[15%] w-[20%] h-[10%] bg-white/20 rounded-full blur-sm"></div>
+              
+              {/* Enhanced coin ridges/serrations with more depth */}
               <div className="absolute inset-0 rounded-full">
-                {Array.from({ length: 60 }).map((_, i) => (
+                {Array.from({ length: 72 }).map((_, i) => (
                   <div 
                     key={i} 
-                    className="absolute w-1 h-5 bg-gradient-to-r from-gold-600 to-gold-400" 
+                    className="absolute w-1 h-5 bg-gradient-to-r from-gold-600 to-gold-500" 
                     style={{ 
-                      transform: `rotate(${i * 6}deg) translateY(-50%)`,
+                      transform: `rotate(${i * 5}deg) translateY(-50%)`,
                       top: '50%',
                       left: '0',
                       transformOrigin: 'right center',
-                      boxShadow: '0 0 2px rgba(0,0,0,0.3)'
+                      boxShadow: '0 0 3px rgba(0,0,0,0.4)'
                     }}
                   ></div>
                 ))}
               </div>
               
-              {/* Coin center with AWR text - more metallic look */}
-              <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 via-gold-500 to-gold-600 rounded-full flex items-center justify-center border-[6px] border-gold-500/70 shadow-inner animate-spin-slow">
-                {/* Inner circular detail */}
+              {/* Coin center with enhanced AWR text - more metallic, embossed look */}
+              <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 via-gold-500 to-gold-700 rounded-full flex items-center justify-center border-[6px] border-gold-500/70 shadow-inner animate-spin-slow">
+                {/* Inner circular details - more pronounced */}
                 <div className="absolute inset-[8%] rounded-full border-2 border-gold-700/30"></div>
+                <div className="absolute inset-[15%] rounded-full border border-gold-300/20"></div>
                 
-                {/* Light reflections */}
-                <div className="absolute top-[10%] left-[10%] w-[20%] h-[20%] bg-white/20 rounded-full blur-sm"></div>
-                <div className="absolute bottom-[20%] right-[15%] w-[15%] h-[10%] bg-white/10 rounded-full blur-sm"></div>
+                {/* Enhanced light reflections */}
+                <div className="absolute top-[10%] left-[10%] w-[20%] h-[20%] bg-white/30 rounded-full blur-sm"></div>
+                <div className="absolute bottom-[20%] right-[15%] w-[15%] h-[10%] bg-white/15 rounded-full blur-sm"></div>
+                <div className="absolute top-[30%] right-[25%] w-[10%] h-[8%] bg-white/10 rounded-full blur-sm"></div>
                 
-                {/* Text content with embossed effect */}
+                {/* Enhanced text content with better embossed effect */}
                 <div className="text-center relative z-10">
                   <div className="font-display font-bold text-4xl md:text-5xl text-gold-100 text-stroke-gold">AWR</div>
-                  <div className="text-xs md:text-sm text-gold-200 font-medium mt-1">AllWillRetire</div>
+                  <div className="text-xs md:text-sm text-gold-200 font-medium mt-1 tracking-wider">AllWillRetire</div>
                 </div>
               </div>
               
-              {/* Multiple reflective highlights for more depth */}
+              {/* Multiple enhanced reflective highlights for more depth and realism */}
               <div className="absolute top-0 left-[5%] right-[40%] h-[15%] bg-white/30 blur-sm rounded-full transform -rotate-12"></div>
               <div className="absolute bottom-[10%] right-[15%] w-[25%] h-[8%] bg-white/20 blur-sm rounded-full"></div>
+              <div className="absolute top-[60%] left-[20%] w-[15%] h-[5%] bg-white/15 blur-sm rounded-full"></div>
+              
+              {/* Edge burnishing effect */}
+              <div className="absolute inset-0 rounded-full border-[3px] border-gold-800/10"></div>
             </div>
             
-            {/* Decorative elements */}
+            {/* Enhanced decorative elements */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-gold-500/20 rounded-full" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] border border-gold-500/10 rounded-full" />
             <div className="absolute -top-8 -right-8 w-16 h-16 bg-gold-500/20 rounded-full blur-xl" />
