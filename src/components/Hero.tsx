@@ -52,17 +52,17 @@ const Hero = () => {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mb-6 animate-fade-up tracking-tight" style={{ animationDelay: '0.2s', letterSpacing: '-0.02em' }}>
-            <span className="relative italic font-display text-stroke">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight" style={{ animationDelay: '0.2s', letterSpacing: '-0.015em' }}>
+            <span className="relative font-artistic font-semibold">
               Secure Your
-              <span className="absolute -bottom-2 left-0 right-0 h-2 bg-gold-500/30 rounded-full"></span>
+              <span className="absolute -bottom-2 left-0 right-0 h-1.5 bg-gold-500/30 rounded-full"></span>
             </span>
             {' '}
-            <span className="text-gold-500 font-display font-bold">Financial</span>{' '}
-            <span className="font-display italic">Future</span>
+            <span className="text-gold-500 font-artistic font-bold">Financial</span>{' '}
+            <span className="font-elegant italic font-semibold">Future</span>
           </h1>
           
-          <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto animate-fade-up" style={{ animationDelay: '0.4s' }}>
+          <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto animate-fade-up font-elegant" style={{ animationDelay: '0.4s' }}>
             AllWillRetire is more than a cryptocurrency — it's a promise of financial independence and a future filled with opulence and comfort.
           </p>
           
@@ -78,17 +78,17 @@ const Hero = () => {
           
           <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up" style={{ animationDelay: '0.8s' }}>
             <div className="flex flex-col items-center">
-              <span className="text-4xl font-display font-bold">$1.8B+</span>
+              <span className="text-4xl font-artistic font-bold">$1.8B+</span>
               <span className="text-sm text-muted-foreground">Market Cap</span>
             </div>
             <div className="w-px h-12 bg-black/10"></div>
             <div className="flex flex-col items-center">
-              <span className="text-4xl font-display font-bold">127K+</span>
+              <span className="text-4xl font-artistic font-bold">127K+</span>
               <span className="text-sm text-muted-foreground">Holders</span>
             </div>
             <div className="w-px h-12 bg-black/10"></div>
             <div className="flex flex-col items-center">
-              <span className="text-4xl font-display font-bold">14</span>
+              <span className="text-4xl font-artistic font-bold">14</span>
               <span className="text-sm text-muted-foreground">Countries</span>
             </div>
           </div>
@@ -96,7 +96,7 @@ const Hero = () => {
         
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
           <a href="#about" className="flex flex-col items-center text-muted-foreground hover:text-foreground transition-colors">
-            <span className="text-sm mb-2">Discover More</span>
+            <span className="text-sm mb-2 font-elegant">Discover More</span>
             <ChevronDown size={20} />
           </a>
         </div>

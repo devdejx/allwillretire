@@ -126,7 +126,9 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Playfair Display', 'serif']
+        display: ['Playfair Display', 'serif'],
+        artistic: ['Cinzel', 'serif'],
+        elegant: ['Cormorant Garamond', 'serif']
       },
       backgroundImage: {
         'gold-gradient': 'linear-gradient(90deg, #FFC300, #FFD700, #FFC300)',
