@@ -26,64 +26,74 @@ const About = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square coin-container group">
-              {/* Enhanced coin with more details */}
-              <div className="coin-face transition-all duration-700">
-                {/* Improved coin exterior with metallic gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-gold-500 via-gold-400 to-gold-600 rounded-full border-[12px] border-gold-300/80 shadow-inner"></div>
-                
-                {/* Enhanced metallic shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-gold-700/30 rounded-full"></div>
-                
-                {/* Removed the coin ridges/serrations that were here */}
-                
-                {/* Enhanced coin front with embossed effect */}
-                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-[6px] border-gold-400/90 shadow-inner coin-front">
-                  {/* Concentric circles for more texture */}
-                  <div className="absolute inset-[10%] border-[2px] border-gold-600/30 rounded-full"></div>
-                  <div className="absolute inset-[20%] border-[1px] border-gold-600/20 rounded-full"></div>
-                  
-                  {/* Logo with embossed effect */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative w-[65%] h-[65%]">
-                      <img 
-                        src="/lovable-uploads/82199989-9426-49c0-b494-3fe93ddaac2a.png" 
-                        alt="AWR LIFESTYLE" 
-                        className="w-full h-full object-contain relative z-10 drop-shadow-lg"
-                      />
-                      {/* Drop shadow effect under the logo */}
-                      <div className="absolute top-1 left-1 w-full h-full bg-black/10 blur-sm z-0"></div>
+            <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square perspective-1000 w-full max-w-[400px] mx-auto coin-wrapper">
+              {/* Enhanced 3D coin with perspective */}
+              <div className="coin relative w-full h-full preserve-3d transition-all duration-1500 ease-in-out">
+                {/* Common styling for both faces */}
+                <div className="absolute inset-0 backface-hidden rounded-full border-[12px] border-gold-400/80 shadow-inner overflow-hidden">
+                  {/* Front face */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-gold-500 via-gold-400 to-gold-600 rounded-full">
+                    {/* Metallic shine effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-gold-700/30 rounded-full"></div>
+                    
+                    {/* Inner coin area */}
+                    <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-[6px] border-gold-400/90 shadow-inner">
+                      {/* Concentric circles for texture */}
+                      <div className="absolute inset-[10%] border-[2px] border-gold-600/30 rounded-full"></div>
+                      <div className="absolute inset-[20%] border-[1px] border-gold-600/20 rounded-full"></div>
+                      
+                      {/* Logo with 3D effect */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="relative w-[65%] h-[65%] transform hover:scale-105 transition-transform">
+                          <img 
+                            src="/lovable-uploads/82199989-9426-49c0-b494-3fe93ddaac2a.png" 
+                            alt="AWR LIFESTYLE" 
+                            className="w-full h-full object-contain relative z-10 drop-shadow-lg"
+                          />
+                          {/* Enhanced shadow for 3D effect */}
+                          <div className="absolute top-2 left-2 w-full h-full bg-black/15 blur-md z-0 rounded-full"></div>
+                        </div>
+                      </div>
                     </div>
+                    
+                    {/* Enhanced reflective shine effects */}
+                    <div className="absolute top-0 left-[5%] right-[40%] h-[15%] bg-white/30 blur-sm rounded-full transform -rotate-12"></div>
+                    <div className="absolute bottom-[10%] right-[5%] w-[25%] h-[10%] bg-white/20 blur-sm rounded-full"></div>
                   </div>
                 </div>
                 
-                {/* Enhanced coin back side with more details */}
-                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex items-center justify-center border-[6px] border-gold-400/90 shadow-inner coin-back">
-                  {/* Concentric circles for more texture */}
-                  <div className="absolute inset-[10%] border-[2px] border-gold-600/30 rounded-full"></div>
-                  <div className="absolute inset-[20%] border-[1px] border-gold-600/20 rounded-full"></div>
-                  
-                  <div className="text-center relative">
-                    {/* Embossed text effect */}
-                    <div className="absolute top-0.5 left-0.5 font-display font-bold text-2xl md:text-3xl text-black/20 text-stroke blur-[0.5px]">RETIREMENT</div>
-                    <div className="font-display font-bold text-2xl md:text-3xl text-gold-300 text-stroke">RETIREMENT</div>
+                {/* Back face - rotated 180deg */}
+                <div className="absolute inset-0 backface-hidden rounded-full border-[12px] border-gold-400/80 shadow-inner overflow-hidden rotate-y-180">
+                  <div className="absolute inset-0 bg-gradient-to-br from-gold-600 to-gold-800 rounded-full">
+                    {/* Metallic shine effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-gold-800/50 rounded-full"></div>
                     
-                    <div className="absolute top-0.5 left-0.5 text-xs md:text-sm text-black/20 font-medium mt-1 blur-[0.5px]">IN 2025</div>
-                    <div className="text-xs md:text-sm text-gold-300 font-medium mt-1">IN 2025</div>
+                    {/* Inner coin area */}
+                    <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex items-center justify-center border-[6px] border-gold-500/90 shadow-inner">
+                      {/* Concentric circles for texture */}
+                      <div className="absolute inset-[10%] border-[2px] border-gold-600/30 rounded-full"></div>
+                      <div className="absolute inset-[20%] border-[1px] border-gold-600/20 rounded-full"></div>
+                      
+                      <div className="text-center relative">
+                        {/* Embossed text with enhanced 3D effect */}
+                        <div className="absolute top-1 left-1 font-display font-bold text-2xl md:text-3xl text-black/20 blur-[1px]">RETIREMENT</div>
+                        <div className="font-display font-bold text-2xl md:text-3xl text-gold-300 text-stroke relative z-10">RETIREMENT</div>
+                        
+                        <div className="absolute top-1 left-1 text-xs md:text-sm text-black/20 font-medium mt-1 blur-[1px]">IN 2025</div>
+                        <div className="text-xs md:text-sm text-gold-300 font-medium mt-1 relative z-10">IN 2025</div>
+                        
+                        {/* Small decorative stars */}
+                        <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-gold-300 text-sm">★</div>
+                        <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-gold-300 text-sm">★</div>
+                      </div>
+                    </div>
                     
-                    {/* Small decorative stars */}
-                    <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-gold-300 text-sm">★</div>
-                    <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-gold-300 text-sm">★</div>
+                    {/* Enhanced reflective shine effects */}
+                    <div className="absolute top-0 left-[5%] right-[40%] h-[15%] bg-white/20 blur-sm rounded-full transform -rotate-12"></div>
+                    <div className="absolute bottom-[10%] right-[5%] w-[25%] h-[10%] bg-white/10 blur-sm rounded-full"></div>
                   </div>
                 </div>
-                
-                {/* Enhanced reflective shine effects */}
-                <div className="absolute top-0 left-[5%] right-[40%] h-[15%] bg-white/30 blur-sm rounded-full transform -rotate-12"></div>
-                <div className="absolute bottom-[10%] right-[5%] w-[25%] h-[10%] bg-white/20 blur-sm rounded-full"></div>
               </div>
-
-              {/* Hover reflection animation */}
-              <div className="absolute inset-0 bg-gradient-to-t from-transparent via-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
             </div>
             
             {/* Enhanced decorative elements */}
