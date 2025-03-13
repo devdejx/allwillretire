@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Coins, Shield, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -47,6 +46,26 @@ const About = () => {
       <div className="absolute top-1/4 -right-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 -left-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
 
+      {/* Orbital animation that appears on coin hover */}
+      <div className={`fixed inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-1000 ${showCoinOrbit ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-gold-200/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-gold-300/10 rounded-full blur-3xl" />
+        
+        {/* Animated orbit */}
+        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] transition-all duration-1000 ${showCoinOrbit ? 'scale-100' : 'scale-0'}`}>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-gold-500/10 rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-gold-500/20 rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-gold-500/30 rounded-full" />
+          
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100px] h-[100px]">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[200px] w-10 h-10 bg-gold-500/80 rounded-full blur-sm animate-pulse" />
+            <div className="absolute top-1/2 left-0 -translate-x-[300px] -translate-y-1/2 w-8 h-8 bg-gold-500/80 rounded-full blur-sm animate-pulse" />
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[200px] w-12 h-12 bg-gold-500/80 rounded-full blur-sm animate-pulse" />
+            <div className="absolute top-1/2 right-0 translate-x-[300px] -translate-y-1/2 w-6 h-6 bg-gold-500/80 rounded-full blur-sm animate-pulse" />
+          </div>
+        </div>
+      </div>
+
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto mb-16 text-center">
           <div className="inline-block mb-4">
@@ -93,6 +112,57 @@ const About = () => {
                 
                 {/* Coin back side (only visible during flip) with stylized inscription plaque */}
                 <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex flex-col items-center justify-center border-4 border-gold-400 shadow-inner coin-back">
+                  {/* Decorative plaque/sign with inscription - EVEN SMALLER SIZE */}
+                  <div className="w-[55%] h-[45%] bg-gradient-to-b from-gold-300 to-gold-400 rounded-lg relative overflow-hidden flex flex-col items-center justify-center px-2 py-1.5">
+                    {/* Plaque shine effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none"></div>
+                    
+                    {/* Plaque border with decorative rivets/nails */}
+                    <div className="absolute inset-0 border-2 border-gold-600/60 rounded-lg pointer-events-none"></div>
+                    <div className="absolute top-0.5 left-0.5 w-1 h-1 bg-gold-700 rounded-full shadow-inner"></div>
+                    <div className="absolute top-0.5 right-0.5 w-1 h-1 bg-gold-700 rounded-full shadow-inner"></div>
+                    <div className="absolute bottom-0.5 left-0.5 w-1 h-1 bg-gold-700 rounded-full shadow-inner"></div>
+                    <div className="absolute bottom-0.5 right-0.5 w-1 h-1 bg-gold-700 rounded-full shadow-inner"></div>
+                    
+                    {/* Engraved text with shadow effect - SMALLER TEXT with each phrase on its own line */}
+                    <div className="text-center z-10">
+                      <div className="font-artistic text-sm mb-0.5 text-gold-800 font-bold tracking-wider flex flex-col" style={{
+                        textShadow: "0 0.5px 0 rgba(255,255,255,0.4)"
+                      }}>
+                        <span>I will retire</span>
+                        <span>we will retire</span>
+                        <span>all will retire</span>
+                      </div>
+                      <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-700 to-transparent my-0.5"></div>
+                      <div className="font-elegant text-[9px] text-gold-900 italic" style={{
+                        textShadow: "0 0.3px 0 rgba(255,255,255,0.3)"
+                      }}>
+                        Financial Freedom Awaits
+                      </div>
+                      
+                      {/* Gold growth chart with more dramatic profit curve */}
+                      <div className="mt-1 h-[20px] w-full">
+                        <ResponsiveContainer width="100%" height="100%">
+                          <AreaChart data={goldGrowthData} margin={{
+                            top: 0,
+                            right: 0,
+                            left: 0,
+                            bottom: 0
+                          }}>
+                            <defs>
+                              <linearGradient id="colorGold" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="#FFC300" stopOpacity={0.8} />
+                                <stop offset="95%" stopColor="#FFC300" stopOpacity={0.2} />
+                              </linearGradient>
+                            </defs>
+                            <Area type="monotone" dataKey="value" stroke="#CC9C00" strokeWidth={1.5} fill="url(#colorGold)" />
+                          </AreaChart>
+                        </ResponsiveContainer>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Buy button below the plaque */}
                   <div className="mt-4">
                     <Button variant="default" size="sm" className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-bold py-2 px-6 rounded-full border border-gold-300 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105" onClick={() => window.open('https://example.com/buy', '_blank')}>
                       BUY NOW
