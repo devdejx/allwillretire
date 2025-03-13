@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const Hero = () => {
   const orbitRef = useRef<HTMLDivElement>(null);
@@ -88,10 +88,6 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up" style={{ animationDelay: '0.6s' }}>
-            <button className="bg-black text-white px-8 py-4 rounded-xl font-medium hover:bg-black/90 transition-colors flex items-center">
-              <span>Get Started</span>
-              <ArrowRight size={18} className="ml-2" />
-            </button>
             <button className="bg-white/80 backdrop-blur border border-black/10 text-black px-8 py-4 rounded-xl font-medium hover:bg-white/90 transition-colors">
               Learn More
             </button>
