@@ -3,9 +3,25 @@ import React, { useState } from 'react';
 import { Coins, Shield, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 
 const About = () => {
   const [showCoinOrbit, setShowCoinOrbit] = useState(false);
+
+  // Chart data for gold growth simulation
+  const goldGrowthData = [
+    { month: 'Jan', value: 100 },
+    { month: 'Feb', value: 110 },
+    { month: 'Mar', value: 108 },
+    { month: 'Apr', value: 118 },
+    { month: 'May', value: 125 },
+    { month: 'Jun', value: 132 },
+    { month: 'Jul', value: 140 },
+    { month: 'Aug', value: 155 },
+    { month: 'Sep', value: 180 },
+    { month: 'Oct', value: 200 },
+  ];
 
   return (
     <section id="about" className="py-24 relative overflow-hidden">
@@ -112,8 +128,29 @@ const About = () => {
                       <div className="font-elegant text-[9px] text-gold-900 italic" style={{ textShadow: "0 0.3px 0 rgba(255,255,255,0.3)" }}>
                         Financial Freedom Awaits
                       </div>
-                      <div className="text-[8px] text-gold-800 mt-0.5 font-semibold">
-                        EST. 2024
+                      
+                      {/* Gold growth chart instead of EST. 2024 text */}
+                      <div className="mt-1 h-[20px] w-full">
+                        <ResponsiveContainer width="100%" height="100%">
+                          <AreaChart
+                            data={goldGrowthData}
+                            margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
+                          >
+                            <defs>
+                              <linearGradient id="colorGold" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="#FFC300" stopOpacity={0.8}/>
+                                <stop offset="95%" stopColor="#FFC300" stopOpacity={0.2}/>
+                              </linearGradient>
+                            </defs>
+                            <Area 
+                              type="monotone" 
+                              dataKey="value" 
+                              stroke="#CC9C00" 
+                              strokeWidth={1.5}
+                              fill="url(#colorGold)" 
+                            />
+                          </AreaChart>
+                        </ResponsiveContainer>
                       </div>
                     </div>
                   </div>
