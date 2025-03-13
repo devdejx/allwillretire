@@ -12,7 +12,7 @@ const Hero = () => {
   const [showOrbit, setShowOrbit] = useState(true);
   const [marketData, setMarketData] = useState({
     marketCap: '$1.8B+',
-    holders: '127K+',
+    holders: '4,000+',
     countries: '14'
   });
   const [isLoading, setIsLoading] = useState(true);
@@ -58,10 +58,8 @@ const Hero = () => {
         
         console.log('Formatted market cap:', formattedMarketCap);
         
-        // Extract holders count - this is not directly available in the standard API response
-        // For the AWR token specifically, based on our research, we know the holder count is around 127K
-        // We'll use a fixed value since this data isn't available in the API
-        const holdersCount = '127K+';
+        // Use the correct holders count - slightly over 4000
+        const holdersCount = '4,000+';
         
         setMarketData({
           marketCap: formattedMarketCap,
