@@ -4,6 +4,9 @@ import { ArrowRight, ChevronDown } from 'lucide-react';
 
 const Hero = () => {
   const orbitRef = useRef<HTMLDivElement>(null);
+  const financialRef = useRef<HTMLSpanElement>(null);
+  const secureRef = useRef<HTMLSpanElement>(null);
+  const futureRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const moveParticles = (e: MouseEvent) => {
@@ -15,8 +18,27 @@ const Hero = () => {
       orbitRef.current.style.transform = `translateX(${x * 20}px) translateY(${y * 20}px)`;
     };
 
+    // Add subtle floating animation to heading elements
+    const animateHeading = () => {
+      if (financialRef.current && secureRef.current && futureRef.current) {
+        const time = Date.now() / 1000;
+        
+        // Subtle floating movements with different phases
+        secureRef.current.style.transform = `translateY(${Math.sin(time * 0.8) * 5}px)`;
+        financialRef.current.style.transform = `translateY(${Math.sin(time * 0.8 + 1) * 5}px)`;
+        futureRef.current.style.transform = `translateY(${Math.sin(time * 0.8 + 2) * 5}px)`;
+      }
+      
+      requestAnimationFrame(animateHeading);
+    };
+
     window.addEventListener('mousemove', moveParticles);
-    return () => window.removeEventListener('mousemove', moveParticles);
+    const animationId = requestAnimationFrame(animateHeading);
+    
+    return () => {
+      window.removeEventListener('mousemove', moveParticles);
+      cancelAnimationFrame(animationId);
+    };
   }, []);
 
   return (
@@ -53,12 +75,12 @@ const Hero = () => {
           </div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight" style={{ animationDelay: '0.2s', letterSpacing: '-0.015em' }}>
-            <span className="relative font-artistic font-semibold">
+            <span ref={secureRef} className="relative font-artistic font-semibold inline-block transition-transform duration-1000">
               Secure Your
             </span>
             {' '}
-            <span className="text-gold-500 font-artistic font-bold">Financial</span>{' '}
-            <span className="font-elegant italic font-semibold">Future</span>
+            <span ref={financialRef} className="text-gold-500 font-artistic font-bold inline-block transition-transform duration-1000">Financial</span>{' '}
+            <span ref={futureRef} className="font-elegant italic font-semibold inline-block transition-transform duration-1000">Future</span>
           </h1>
           
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto animate-fade-up font-elegant" style={{ animationDelay: '0.4s' }}>
