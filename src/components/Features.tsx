@@ -3,39 +3,6 @@ import React from 'react';
 import { ArrowUpRight, Lock, TrendingUp, Wallet, CoinsIcon, Users, LineChart } from 'lucide-react';
 
 const Features = () => {
-  const features = [
-    {
-      icon: <LineChart className="text-gold-500" size={24} />,
-      title: "Tokenomics",
-      description: "Deflationary model with burn mechanisms that increase scarcity and value over time.",
-    },
-    {
-      icon: <Lock className="text-gold-500" size={24} />,
-      title: "Security",
-      description: "Military-grade encryption and multi-signature protection for all transactions.",
-    },
-    {
-      icon: <CoinsIcon className="text-gold-500" size={24} />,
-      title: "Staking",
-      description: "Earn up to 15% APY by staking your tokens in our secure protocol.",
-    },
-    {
-      icon: <TrendingUp className="text-gold-500" size={24} />,
-      title: "Growth",
-      description: "Strategic partnerships and continuous development ensure long-term appreciation.",
-    },
-    {
-      icon: <Wallet className="text-gold-500" size={24} />,
-      title: "Liquidity",
-      description: "Deep liquidity pools and exchange listings for seamless trading experience.",
-    },
-    {
-      icon: <Users className="text-gold-500" size={24} />,
-      title: "Community",
-      description: "Vibrant community of investors supporting each other on the journey to financial freedom.",
-    },
-  ];
-
   return (
     <section id="features" className="py-24 bg-black text-white relative overflow-hidden">
       {/* Background elements */}
@@ -57,28 +24,7 @@ const Features = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div 
-              key={index} 
-              className="p-6 rounded-2xl backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group"
-            >
-              <div className="mb-4 p-3 rounded-xl inline-block bg-white/10">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-display font-bold mb-3 flex items-center">
-                {feature.title}
-                <ArrowUpRight 
-                  size={16} 
-                  className="ml-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" 
-                />
-              </h3>
-              <p className="text-gray-400">
-                {feature.description}
-              </p>
-            </div>
-          ))}
-        </div>
+        {/* Removed the feature cards grid that was here */}
         
         <div className="mt-20 max-w-4xl mx-auto">
           <div className="bg-gradient-to-br from-gold-500/10 to-transparent p-8 rounded-2xl backdrop-blur-sm border border-gold-500/20">
