@@ -50,17 +50,31 @@ const About = () => {
                   ))}
                 </div>
                 
-                {/* Coin front with AWR text */}
+                {/* Coin front with AWR text and image */}
                 <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-front">
-                  <div className="text-center">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <img 
+                      src="/lovable-uploads/1a3e2030-93ba-48a8-bad1-11bf6f691350.png" 
+                      alt="Coin image" 
+                      className="w-[80%] h-[80%] object-contain"
+                    />
+                  </div>
+                  <div className="relative text-center z-10">
                     <div className="font-display font-bold text-4xl md:text-5xl text-white text-stroke">AWR</div>
                     <div className="text-xs md:text-sm text-gold-200 font-medium mt-1">AllWillRetire</div>
                   </div>
                 </div>
                 
-                {/* Coin back side (only visible during flip) - UPDATED TEXT HERE */}
+                {/* Coin back side (only visible during flip) */}
                 <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-back">
-                  <div className="text-center">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <img 
+                      src="/lovable-uploads/1a3e2030-93ba-48a8-bad1-11bf6f691350.png" 
+                      alt="Coin image" 
+                      className="w-[80%] h-[80%] object-contain"
+                    />
+                  </div>
+                  <div className="relative text-center z-10">
                     <div className="font-display font-bold text-2xl md:text-3xl text-white text-stroke">RETIREMENT</div>
                     <div className="text-xs md:text-sm text-gold-200 font-medium mt-1">IN 2025</div>
                   </div>
