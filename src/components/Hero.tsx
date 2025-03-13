@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
@@ -17,12 +16,10 @@ const Hero = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch market data from DEXScreener API
     const fetchMarketData = async () => {
       try {
         setIsLoading(true);
         
-        // Direct API request to DEXScreener
         const apiUrl = 'https://api.dexscreener.com/latest/dex/pairs/solana/fo7vnhaddvnmx4axjo7cc1wwb9ko2pk2dfdzl3dybxkp';
         console.log('Fetching market data from:', apiUrl);
         
@@ -31,7 +28,6 @@ const Hero = () => {
         
         console.log('DEXScreener API response:', data);
         
-        // Extract market cap value from the API response
         let marketCapValue = 0;
         let formattedMarketCap = '$1.8B+'; // Default fallback
         
@@ -43,13 +39,8 @@ const Hero = () => {
           formattedMarketCap = formatCurrency(marketCapValue);
         }
         
-        // Get holders count - we can fetch this from another API if available
-        // For now, we'll use the most up-to-date holder count we have
         let holdersCount = '4,400+'; // Default fallback
         
-        // Since the DEXScreener API doesn't provide holder data directly, 
-        // we can consider adding a separate API endpoint in the future
-        // For now, we'll try to extract it if it's somewhere in the data
         if (data && data.pair && data.pair.info && data.pair.info.holders) {
           holdersCount = formatNumber(data.pair.info.holders) + '+';
         } else if (data && data.pairs && data.pairs.length > 0 && 
@@ -67,19 +58,15 @@ const Hero = () => {
         
       } catch (error) {
         console.error('Failed to fetch market data:', error);
-        // Fallback to default values if API call fails
       } finally {
         setIsLoading(false);
       }
     };
     
-    // Set up a refresh interval
     fetchMarketData();
     
-    // Refresh data every 5 minutes (300000 ms)
     const refreshInterval = setInterval(fetchMarketData, 300000);
 
-    // Helper function to format currency values
     const formatCurrency = (value: number): string => {
       if (value >= 1e9) {
         return `$${(value / 1e9).toFixed(1)}B+`;
@@ -92,17 +79,14 @@ const Hero = () => {
       }
     };
     
-    // Helper function to format number values with commas
     const formatNumber = (value: number): string => {
       return Math.round(value).toLocaleString();
     };
 
-    // Add subtle floating animation to heading elements
     const animateHeading = () => {
       if (financialRef.current && secureRef.current && futureRef.current) {
         const time = Date.now() / 1000;
         
-        // Subtle floating movements with different phases
         secureRef.current.style.transform = `translateY(${Math.sin(time * 0.8) * 5}px)`;
         financialRef.current.style.transform = `translateY(${Math.sin(time * 0.8 + 1) * 5}px)`;
         futureRef.current.style.transform = `translateY(${Math.sin(time * 0.8 + 2) * 5}px)`;
@@ -113,7 +97,6 @@ const Hero = () => {
 
     const animationId = requestAnimationFrame(animateHeading);
     
-    // Lock scrolling when the component mounts
     if (scrollLocked) {
       document.body.style.overflow = 'hidden';
     }
@@ -121,20 +104,14 @@ const Hero = () => {
     return () => {
       cancelAnimationFrame(animationId);
       clearInterval(refreshInterval);
-      // Reset overflow when component unmounts
       document.body.style.overflow = '';
     };
   }, [scrollLocked]);
 
   const handleLearnMoreClick = () => {
-    // Unlock scrolling
     setScrollLocked(false);
     document.body.style.overflow = '';
-    
-    // Hide the orbit animation with a transition
     setShowOrbit(false);
-    
-    // Scroll to the section below Hero
     window.scrollTo({
       top: window.innerHeight,
       behavior: 'smooth'
@@ -143,12 +120,10 @@ const Hero = () => {
 
   return (
     <>
-      {/* Fixed orbit background that stays visible when scrolling */}
       <div className={`fixed inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-1000 ${showOrbit ? 'opacity-100' : 'opacity-0'}`}>
         <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-gold-200/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-gold-300/10 rounded-full blur-3xl" />
         
-        {/* Animated orbit - now fixed position and no mouse movement effect */}
         <div 
           ref={orbitRef} 
           className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] transition-all duration-1000 ${showOrbit ? 'scale-100' : 'scale-0'}`}
@@ -190,10 +165,12 @@ const Hero = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up" style={{ animationDelay: '0.6s' }}>
               <button 
-                className="bg-white/80 backdrop-blur border border-black/10 text-black px-8 py-4 rounded-xl font-medium hover:bg-white/90 transition-colors"
+                className="bg-gold-500 backdrop-blur text-black px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-gold-400 transition-all duration-300 hover:scale-105 hover:shadow-gold-300/50 relative overflow-hidden group"
                 onClick={handleLearnMoreClick}
               >
-                Learn More
+                <span className="relative z-10">Learn More</span>
+                <span className="absolute inset-0 bg-gold-300 transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
+                <span className="absolute -inset-0.5 bg-gold-400/30 blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></span>
               </button>
             </div>
             
