@@ -9,8 +9,53 @@ const Hero = () => {
   const futureRef = useRef<HTMLSpanElement>(null);
   const [scrollLocked, setScrollLocked] = useState(true);
   const [showOrbit, setShowOrbit] = useState(true);
+  const [marketData, setMarketData] = useState({
+    marketCap: '$1.8B+',
+    holders: '127K+',
+    countries: '14'
+  });
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Fetch market data from DEXScreener
+    const fetchMarketData = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch('https://api.dexscreener.com/latest/dex/tokens/fo7vnhaddvnmx4axjo7cc1wwb9ko2pk2dfdzl3dybxkp');
+        const data = await response.json();
+        
+        if (data && data.pairs && data.pairs.length > 0) {
+          const pair = data.pairs[0];
+          // Format market cap with appropriate suffix (B for billions, M for millions)
+          let formattedMarketCap = '$1.8B+'; // Default fallback
+          
+          if (pair.fdv) {
+            const marketCapValue = parseFloat(pair.fdv);
+            if (marketCapValue >= 1e9) {
+              formattedMarketCap = `$${(marketCapValue / 1e9).toFixed(1)}B+`;
+            } else if (marketCapValue >= 1e6) {
+              formattedMarketCap = `$${(marketCapValue / 1e6).toFixed(1)}M+`;
+            } else {
+              formattedMarketCap = `$${Math.round(marketCapValue).toLocaleString()}+`;
+            }
+          }
+          
+          setMarketData({
+            marketCap: formattedMarketCap,
+            holders: marketData.holders, // Keep existing holders data
+            countries: marketData.countries // Keep existing countries data
+          });
+        }
+      } catch (error) {
+        console.error('Failed to fetch market data:', error);
+        // Fallback to default values if fetch fails
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchMarketData();
+    
     // Add subtle floating animation to heading elements
     const animateHeading = () => {
       if (financialRef.current && secureRef.current && futureRef.current) {
@@ -112,17 +157,19 @@ const Hero = () => {
             
             <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up" style={{ animationDelay: '0.8s' }}>
               <div className="flex flex-col items-center">
-                <span className="text-4xl font-artistic font-bold">$1.8B+</span>
+                <span className={`text-4xl font-artistic font-bold ${isLoading ? 'animate-pulse' : ''}`}>
+                  {marketData.marketCap}
+                </span>
                 <span className="text-sm text-muted-foreground">Market Cap</span>
               </div>
               <div className="w-px h-12 bg-black/10"></div>
               <div className="flex flex-col items-center">
-                <span className="text-4xl font-artistic font-bold">127K+</span>
+                <span className="text-4xl font-artistic font-bold">{marketData.holders}</span>
                 <span className="text-sm text-muted-foreground">Holders</span>
               </div>
               <div className="w-px h-12 bg-black/10"></div>
               <div className="flex flex-col items-center">
-                <span className="text-4xl font-artistic font-bold">14</span>
+                <span className="text-4xl font-artistic font-bold">{marketData.countries}</span>
                 <span className="text-sm text-muted-foreground">Countries</span>
               </div>
             </div>
