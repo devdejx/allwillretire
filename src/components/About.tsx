@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Coins, Shield, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -113,36 +112,36 @@ const About = () => {
                 
                 {/* Coin back side (only visible during flip) with stylized inscription plaque */}
                 <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex flex-col items-center justify-center border-4 border-gold-400 shadow-inner coin-back">
-                  {/* Decorative plaque/sign with inscription - LARGER SIZE */}
-                  <div className="w-[70%] h-[55%] bg-gradient-to-b from-gold-300 to-gold-400 rounded-lg relative overflow-hidden flex flex-col items-center justify-center px-3 py-2">
+                  {/* Decorative plaque/sign with inscription - EVEN SMALLER SIZE */}
+                  <div className="w-[55%] h-[45%] bg-gradient-to-b from-gold-300 to-gold-400 rounded-lg relative overflow-hidden flex flex-col items-center justify-center px-2 py-1.5">
                     {/* Plaque shine effect */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none"></div>
                     
                     {/* Plaque border with decorative rivets/nails */}
                     <div className="absolute inset-0 border-2 border-gold-600/60 rounded-lg pointer-events-none"></div>
-                    <div className="absolute top-1 left-1 w-1.5 h-1.5 bg-gold-700 rounded-full shadow-inner"></div>
-                    <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-gold-700 rounded-full shadow-inner"></div>
-                    <div className="absolute bottom-1 left-1 w-1.5 h-1.5 bg-gold-700 rounded-full shadow-inner"></div>
-                    <div className="absolute bottom-1 right-1 w-1.5 h-1.5 bg-gold-700 rounded-full shadow-inner"></div>
+                    <div className="absolute top-0.5 left-0.5 w-1 h-1 bg-gold-700 rounded-full shadow-inner"></div>
+                    <div className="absolute top-0.5 right-0.5 w-1 h-1 bg-gold-700 rounded-full shadow-inner"></div>
+                    <div className="absolute bottom-0.5 left-0.5 w-1 h-1 bg-gold-700 rounded-full shadow-inner"></div>
+                    <div className="absolute bottom-0.5 right-0.5 w-1 h-1 bg-gold-700 rounded-full shadow-inner"></div>
                     
-                    {/* Engraved text with shadow effect - LARGER TEXT with each phrase on its own line */}
+                    {/* Engraved text with shadow effect - SMALLER TEXT with each phrase on its own line */}
                     <div className="text-center z-10">
-                      <div className="font-artistic text-base mb-1 text-gold-800 font-bold tracking-wider flex flex-col" style={{
+                      <div className="font-artistic text-sm mb-0.5 text-gold-800 font-bold tracking-wider flex flex-col" style={{
                         textShadow: "0 0.5px 0 rgba(255,255,255,0.4)"
                       }}>
                         <span>I will retire</span>
                         <span>we will retire</span>
                         <span>all will retire</span>
                       </div>
-                      <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-700 to-transparent my-1"></div>
-                      <div className="font-elegant text-xs text-gold-900 italic" style={{
+                      <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-700 to-transparent my-0.5"></div>
+                      <div className="font-elegant text-[9px] text-gold-900 italic" style={{
                         textShadow: "0 0.3px 0 rgba(255,255,255,0.3)"
                       }}>
                         Financial Freedom Awaits
                       </div>
                       
-                      {/* Gold growth chart with more dramatic profit curve - LARGER SIZE */}
-                      <div className="mt-1.5 h-[30px] w-full">
+                      {/* Gold growth chart with more dramatic profit curve */}
+                      <div className="mt-1 h-[20px] w-full">
                         <ResponsiveContainer width="100%" height="100%">
                           <AreaChart data={goldGrowthData} margin={{
                             top: 0,
