@@ -46,7 +46,7 @@ const Hero = () => {
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
       // Calculate position to scroll to (just enough to see the stats at the top)
-      const offset = aboutSection.getBoundingClientRect().top + window.scrollY - 80;
+      const offset = aboutSection.getBoundingClientRect().top + window.scrollY - 200;
       
       // Scroll to the calculated position
       window.scrollTo({
