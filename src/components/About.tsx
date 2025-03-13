@@ -66,14 +66,14 @@ const About = () => {
                 <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex flex-col items-center justify-center border-4 border-gold-400 shadow-inner coin-back">
                   <div className="text-center px-3">
                     <div className="font-artistic italic tracking-wider text-shadow">
-                      <div className="text-2xl md:text-3xl lg:text-4xl text-gold-200 mb-2 transform -rotate-3 hover:rotate-0 transition-transform">
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-gold-200 to-gold-300">I will retire,</span>
+                      <div className="text-xl md:text-2xl lg:text-3xl text-gold-200 mb-2 transform -rotate-3 hover:rotate-0 transition-transform">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-gold-100 to-white">I will retire,</span>
                       </div>
-                      <div className="text-2xl md:text-3xl lg:text-4xl text-gold-100 mb-2 transform rotate-1 hover:rotate-0 transition-transform">
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-gold-100 to-gold-200">We will retire,</span>
+                      <div className="text-xl md:text-2xl lg:text-3xl text-gold-100 mb-2 transform rotate-1 hover:rotate-0 transition-transform">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-gold-50 to-white">We will retire,</span>
                       </div>
-                      <div className="text-2xl md:text-3xl lg:text-4xl text-gold-50 transform rotate-2 hover:rotate-0 transition-transform">
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gold-100">All will retire</span>
+                      <div className="text-xl md:text-2xl lg:text-3xl text-gold-50 transform rotate-2 hover:rotate-0 transition-transform">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gold-50">All will retire</span>
                       </div>
                     </div>
                     <div className="mt-4 mb-4">
