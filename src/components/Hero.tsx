@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 
@@ -16,63 +17,106 @@ const Hero = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch market data from DEXScreener
+    // Fetch market data from DEXScreener using the specific URL
     const fetchMarketData = async () => {
       try {
         setIsLoading(true);
-        // Try a different API endpoint that might return actual data
-        const response = await fetch('https://api.dexscreener.com/latest/dex/search?q=AllWillRetire');
-        const data = await response.json();
-        
-        console.log('DEXScreener API response:', data);
-        
-        if (data && data.pairs && data.pairs.length > 0) {
-          const pair = data.pairs[0];
-          // Format market cap with appropriate suffix (B for billions, M for millions)
-          let formattedMarketCap = marketData.marketCap; // Use existing value as fallback
-          
-          if (pair.fdv) {
-            const marketCapValue = parseFloat(pair.fdv);
-            if (marketCapValue >= 1e9) {
-              formattedMarketCap = `$${(marketCapValue / 1e9).toFixed(1)}B+`;
-            } else if (marketCapValue >= 1e6) {
-              formattedMarketCap = `$${(marketCapValue / 1e6).toFixed(1)}M+`;
-            } else {
-              formattedMarketCap = `$${Math.round(marketCapValue).toLocaleString()}+`;
-            }
-            
-            setMarketData(prev => ({
-              ...prev,
-              marketCap: formattedMarketCap
-            }));
+        // Use the exact URL provided by the user
+        const response = await fetch('https://dexscreener.com/solana/fo7vnhaddvnmx4axjo7cc1wwb9ko2pk2dfdzl3dybxkp', {
+          headers: {
+            'Accept': 'application/json'
           }
+        });
+        
+        // If we can't use the direct site URL, use the API endpoint
+        if (!response.ok) {
+          console.log('Falling back to API endpoint');
+          const apiResponse = await fetch('https://api.dexscreener.com/latest/dex/pairs/solana/fo7vnhaddvnmx4axjo7cc1wwb9ko2pk2dfdzl3dybxkp');
+          const apiData = await apiResponse.json();
           
-          // If holders count is available
-          if (pair.holders) {
-            const holdersCount = parseInt(pair.holders);
-            let formattedHolders = marketData.holders;
-            
-            if (holdersCount >= 1000) {
-              formattedHolders = `${(holdersCount / 1000).toFixed(0)}K+`;
-            } else {
-              formattedHolders = `${holdersCount}+`;
-            }
-            
-            setMarketData(prev => ({
-              ...prev,
-              holders: formattedHolders
-            }));
+          console.log('DEXScreener API response:', apiData);
+          
+          if (apiData && apiData.pair) {
+            const pair = apiData.pair;
+            updateMarketDataFromPair(pair);
+          } else {
+            console.log('No pair data found in API, using fallback values');
           }
         } else {
-          console.log('No pairs data found, using fallback values');
-          // If no data is found, we'll keep using the default values
+          // Try to extract data from the HTML response (this may not work due to CORS)
+          const htmlText = await response.text();
+          console.log('Received HTML response, attempting to extract data');
+          
+          // Extract market cap using regex (basic approach)
+          const marketCapMatch = htmlText.match(/FDV<\/dt><dd[^>]*>\$([\d,.]+)(B|M|K)?/i);
+          if (marketCapMatch) {
+            let value = parseFloat(marketCapMatch[1].replace(/,/g, ''));
+            const suffix = marketCapMatch[2] || '';
+            
+            if (suffix === 'B') value *= 1e9;
+            else if (suffix === 'M') value *= 1e6;
+            else if (suffix === 'K') value *= 1e3;
+            
+            formatAndSetMarketCap(value);
+          }
         }
       } catch (error) {
         console.error('Failed to fetch market data:', error);
-        // Fallback to default values if fetch fails
+        // Try one more direct API call as a last resort
+        try {
+          const lastResortResponse = await fetch('https://api.dexscreener.com/latest/dex/pairs/solana/fo7vnhaddvnmx4axjo7cc1wwb9ko2pk2dfdzl3dybxkp');
+          const lastResortData = await lastResortResponse.json();
+          
+          console.log('Last resort API response:', lastResortData);
+          
+          if (lastResortData && lastResortData.pairs && lastResortData.pairs.length > 0) {
+            const pair = lastResortData.pairs[0];
+            updateMarketDataFromPair(pair);
+          }
+        } catch (finalError) {
+          console.error('All attempts to fetch market data failed:', finalError);
+        }
       } finally {
         setIsLoading(false);
       }
+    };
+    
+    // Helper function to update market data from a pair object
+    const updateMarketDataFromPair = (pair) => {
+      if (pair.fdv) {
+        const marketCapValue = parseFloat(pair.fdv);
+        formatAndSetMarketCap(marketCapValue);
+      }
+      
+      if (pair.liquidity?.usd) {
+        console.log(`Liquidity: $${pair.liquidity.usd}`);
+      }
+      
+      if (pair.volume?.h24) {
+        console.log(`24h Volume: $${pair.volume.h24}`);
+      }
+    };
+    
+    // Helper function to format and set market cap
+    const formatAndSetMarketCap = (value) => {
+      let formattedMarketCap;
+      
+      if (value >= 1e9) {
+        formattedMarketCap = `$${(value / 1e9).toFixed(1)}B+`;
+      } else if (value >= 1e6) {
+        formattedMarketCap = `$${(value / 1e6).toFixed(1)}M+`;
+      } else if (value >= 1e3) {
+        formattedMarketCap = `$${(value / 1e3).toFixed(1)}K+`;
+      } else {
+        formattedMarketCap = `$${Math.round(value).toLocaleString()}+`;
+      }
+      
+      setMarketData(prev => ({
+        ...prev,
+        marketCap: formattedMarketCap
+      }));
+      
+      console.log(`Set market cap to: ${formattedMarketCap}`);
     };
 
     fetchMarketData();
