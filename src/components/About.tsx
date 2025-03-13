@@ -1,8 +1,43 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Coins, Shield, TrendingUp } from 'lucide-react';
 
 const About = () => {
+  const coinRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const coin = coinRef.current;
+    if (!coin) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const coinRect = coin.getBoundingClientRect();
+      const x = e.clientX - coinRect.left;
+      const y = e.clientY - coinRect.top;
+      
+      // Calculate the tilt based on mouse position
+      const centerX = coinRect.width / 2;
+      const centerY = coinRect.height / 2;
+      const tiltX = (y - centerY) / 20;
+      const tiltY = (centerX - x) / 20;
+      
+      // Apply the tilt effect
+      coin.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+    };
+    
+    const handleMouseLeave = () => {
+      // Reset the tilt when mouse leaves
+      coin.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+    };
+    
+    coin.addEventListener('mousemove', handleMouseMove);
+    coin.addEventListener('mouseleave', handleMouseLeave);
+    
+    return () => {
+      coin.removeEventListener('mousemove', handleMouseMove);
+      coin.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
+
   return (
     <section id="about" className="py-24 relative overflow-hidden">
       {/* Background elements */}
@@ -26,16 +61,37 @@ const About = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square coin-container">
-              <div className="coin-face">
+            <div 
+              ref={coinRef} 
+              className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square coin-container transition-transform duration-200 ease-out"
+              style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
+            >
+              <div className="coin-face" style={{ transformStyle: 'preserve-3d' }}>
+                {/* Coin edge/thickness */}
+                <div className="absolute inset-0 rounded-full" style={{ transform: 'translateZ(-4px)' }}>
+                  {Array.from({ length: 36 }).map((_, i) => (
+                    <div 
+                      key={i} 
+                      className="absolute bg-gold-700" 
+                      style={{ 
+                        height: '100%',
+                        width: '8px',
+                        transform: `rotateY(${i * 10}deg) translateZ(calc(50% - 4px))`,
+                        transformOrigin: 'center',
+                        left: 'calc(50% - 4px)',
+                      }}
+                    ></div>
+                  ))}
+                </div>
+                
                 {/* Coin exterior */}
-                <div className="absolute inset-0 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full border-8 border-gold-300 shadow-inner"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full border-8 border-gold-300 shadow-inner" style={{ transform: 'translateZ(0)' }}></div>
                 
                 {/* Coin shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent rounded-full"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent rounded-full" style={{ transform: 'translateZ(1px)' }}></div>
                 
                 {/* Coin ridges/serrations */}
-                <div className="absolute inset-0 rounded-full">
+                <div className="absolute inset-0 rounded-full" style={{ transform: 'translateZ(2px)' }}>
                   {Array.from({ length: 32 }).map((_, i) => (
                     <div 
                       key={i} 
@@ -50,9 +106,9 @@ const About = () => {
                   ))}
                 </div>
                 
-                {/* Coin front with image only - text removed */}
-                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-front">
-                  <div className="absolute inset-0 flex items-center justify-center">
+                {/* Coin front with image only */}
+                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-front" style={{ transform: 'translateZ(4px)' }}>
+                  <div className="absolute inset-0 flex items-center justify-center" style={{ transform: 'translateZ(1px)' }}>
                     <img 
                       src="/lovable-uploads/1a3e2030-93ba-48a8-bad1-11bf6f691350.png" 
                       alt="Coin image" 
@@ -61,8 +117,8 @@ const About = () => {
                   </div>
                 </div>
                 
-                {/* Coin back side (only visible during flip) - Removed image */}
-                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-back">
+                {/* Coin back side (only visible during flip) */}
+                <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-back" style={{ transform: 'translateZ(-4px) rotateY(180deg)' }}>
                   <div className="text-center">
                     <div className="font-display font-bold text-2xl md:text-3xl text-white text-stroke">RETIREMENT</div>
                     <div className="text-xs md:text-sm text-gold-200 font-medium mt-1">IN 2025</div>
@@ -70,7 +126,7 @@ const About = () => {
                 </div>
                 
                 {/* Reflective shine */}
-                <div className="absolute top-0 left-[5%] right-[40%] h-[20%] bg-white/20 blur-sm rounded-full transform -rotate-12"></div>
+                <div className="absolute top-0 left-[5%] right-[40%] h-[20%] bg-white/20 blur-sm rounded-full transform -rotate-12" style={{ transform: 'translateZ(5px)' }}></div>
               </div>
             </div>
             

@@ -78,6 +78,7 @@
 
   .coin-container:hover .coin-face {
     transform: rotateY(180deg);
+    transition: transform 1.5s;
   }
 
   .coin-face {
