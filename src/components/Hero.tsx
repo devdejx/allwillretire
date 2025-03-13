@@ -113,7 +113,6 @@ const Hero = () => {
         
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
           <a href="#about" className="flex flex-col items-center text-muted-foreground hover:text-foreground transition-colors">
-            <span className="text-sm mb-2 font-elegant">Discover More</span>
             <ChevronDown size={20} />
           </a>
         </div>
