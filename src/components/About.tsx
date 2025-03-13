@@ -1,14 +1,37 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Coins, Shield, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
 
 const About = () => {
+  const [showCoinOrbit, setShowCoinOrbit] = useState(false);
+
   return (
     <section id="about" className="py-24 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute top-1/4 -right-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 -left-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
+
+      {/* Orbital animation that appears on coin hover */}
+      <div className={`fixed inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-1000 ${showCoinOrbit ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-gold-200/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-gold-300/10 rounded-full blur-3xl" />
+        
+        {/* Animated orbit */}
+        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] transition-all duration-1000 ${showCoinOrbit ? 'scale-100' : 'scale-0'}`}>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-gold-500/10 rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-gold-500/20 rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-gold-500/30 rounded-full" />
+          
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100px] h-[100px]">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[200px] w-10 h-10 bg-gold-500/80 rounded-full blur-sm animate-pulse" />
+            <div className="absolute top-1/2 left-0 -translate-x-[300px] -translate-y-1/2 w-8 h-8 bg-gold-500/80 rounded-full blur-sm animate-pulse" />
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[200px] w-12 h-12 bg-gold-500/80 rounded-full blur-sm animate-pulse" />
+            <div className="absolute top-1/2 right-0 translate-x-[300px] -translate-y-1/2 w-6 h-6 bg-gold-500/80 rounded-full blur-sm animate-pulse" />
+          </div>
+        </div>
+      </div>
 
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto mb-16 text-center">
@@ -26,7 +49,11 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="relative">
+          <div 
+            className="relative"
+            onMouseEnter={() => setShowCoinOrbit(true)}
+            onMouseLeave={() => setShowCoinOrbit(false)}
+          >
             <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square coin-container">
               <div className="coin-face">
                 {/* Coin exterior */}
