@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { Coins, Shield, TrendingUp } from 'lucide-react';
 
@@ -16,16 +17,21 @@ const About = () => {
       // Calculate the tilt based on mouse position
       const centerX = coinRect.width / 2;
       const centerY = coinRect.height / 2;
-      const tiltX = (y - centerY) / 20;
-      const tiltY = (centerX - x) / 20;
+      // Increase tilt sensitivity for more dramatic 3D effect
+      const tiltX = (y - centerY) / 12;
+      const tiltY = (centerX - x) / 12;
       
-      // Apply the tilt effect
-      coin.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+      // Apply the tilt effect with more dramatic perspective
+      coin.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
     };
     
     const handleMouseLeave = () => {
-      // Reset the tilt when mouse leaves
-      coin.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+      // Reset the tilt when mouse leaves with a smooth transition
+      coin.style.transition = 'transform 0.5s ease';
+      coin.style.transform = 'perspective(800px) rotateX(0) rotateY(0)';
+      setTimeout(() => {
+        if (coin) coin.style.transition = '';
+      }, 500);
     };
     
     coin.addEventListener('mousemove', handleMouseMove);
@@ -66,47 +72,63 @@ const About = () => {
               style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
             >
               <div className="coin-face" style={{ transformStyle: 'preserve-3d' }}>
-                {/* Coin edge/thickness - now with more segments for smoother appearance and positioned further out */}
-                <div className="absolute inset-0 rounded-full" style={{ transform: 'translateZ(-8px)' }}>
-                  {Array.from({ length: 72 }).map((_, i) => (
+                {/* Enhanced coin edge with more segments and depth */}
+                <div className="absolute inset-0 rounded-full" style={{ transform: 'translateZ(-12px)' }}>
+                  {Array.from({ length: 120 }).map((_, i) => (
                     <div 
                       key={i} 
-                      className="absolute bg-gold-700" 
+                      className="absolute bg-gradient-to-r from-gold-700 via-gold-600 to-gold-800" 
                       style={{ 
                         height: '100%',
-                        width: '8px',
-                        transform: `rotateY(${i * 5}deg) translateZ(calc(50% - 4px))`,
+                        width: '12px',
+                        transform: `rotateY(${i * 3}deg) translateZ(calc(50% - 6px))`,
                         transformOrigin: 'center',
-                        left: 'calc(50% - 4px)',
+                        left: 'calc(50% - 6px)',
+                        boxShadow: 'inset 0 0 10px rgba(0,0,0,0.3)'
                       }}
                     ></div>
                   ))}
                 </div>
                 
-                {/* Coin front - Using the new coin image */}
-                <div className="absolute inset-0 coin-front" style={{ transform: 'translateZ(8px)' }}>
+                {/* Coin front with enhanced 3D effects */}
+                <div className="absolute inset-0 coin-front" style={{ 
+                  transform: 'translateZ(12px)',
+                  boxShadow: 'inset 0 0 30px rgba(0,0,0,0.4)'
+                }}>
+                  <div className="absolute inset-0 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full opacity-70"></div>
                   <img 
                     src="/lovable-uploads/bcbd7898-814b-4214-8df2-b0363c8680c6.png" 
                     alt="Gold coin" 
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain relative z-10"
                   />
+                  {/* Enhanced lighting effect */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-transparent rounded-full opacity-60 z-20"></div>
                 </div>
                 
-                {/* Coin back side (only visible during flip) */}
-                <div className="absolute inset-0 coin-back" style={{ transform: 'translateZ(-8px) rotateY(180deg)' }}>
+                {/* Coin back side with enhanced 3D effects */}
+                <div className="absolute inset-0 coin-back" style={{ 
+                  transform: 'translateZ(-12px) rotateY(180deg)',
+                  boxShadow: 'inset 0 0 30px rgba(0,0,0,0.4)'
+                }}>
+                  <div className="absolute inset-0 bg-gradient-to-br from-gold-500 to-gold-700 rounded-full opacity-70"></div>
                   <img 
                     src="/lovable-uploads/bcbd7898-814b-4214-8df2-b0363c8680c6.png" 
                     alt="Gold coin" 
-                    className="w-full h-full object-contain transform rotate-y-180"
+                    className="w-full h-full object-contain relative z-10 transform rotate-y-180"
                   />
+                  {/* Enhanced lighting effect */}
+                  <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-white/40 to-transparent rounded-full opacity-60 z-20"></div>
                 </div>
                 
-                {/* Reflective shine */}
-                <div className="absolute top-0 left-[5%] right-[40%] h-[20%] bg-white/20 blur-sm rounded-full transform -rotate-12" style={{ transform: 'translateZ(9px)' }}></div>
+                {/* Enhanced reflective shine with dynamic positioning */}
+                <div className="absolute top-0 left-[5%] right-[40%] h-[20%] bg-white/20 blur-sm rounded-full transform -rotate-12" 
+                  style={{ transform: 'translateZ(13px)' }}></div>
+                <div className="absolute bottom-[30%] right-[10%] w-[25%] h-[15%] bg-white/30 blur-sm rounded-full" 
+                  style={{ transform: 'translateZ(13px)' }}></div>
               </div>
             </div>
             
-            {/* Decorative elements */}
+            {/* Enhanced decorative elements with shadows */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-gold-500/20 rounded-full" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] border border-gold-500/10 rounded-full" />
             <div className="absolute -top-8 -right-8 w-16 h-16 bg-gold-500/20 rounded-full blur-xl" />
