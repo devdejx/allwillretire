@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
@@ -12,7 +11,7 @@ const Hero = () => {
   const [showOrbit, setShowOrbit] = useState(true);
   const [marketData, setMarketData] = useState({
     marketCap: '$1.8B+',
-    holders: '4,000+',
+    holders: '4,400+',
     countries: '14'
   });
   const [isLoading, setIsLoading] = useState(true);
@@ -46,9 +45,8 @@ const Hero = () => {
         
         console.log('Formatted market cap:', formattedMarketCap);
         
-        // Get holders count - based on the data from the API response
-        // The holder count isn't directly in the API so we use our confirmed value
-        const holdersCount = '4,000+';
+        // Get holders count - updated to 4,400+
+        const holdersCount = '4,400+';
         
         setMarketData({
           marketCap: formattedMarketCap,
