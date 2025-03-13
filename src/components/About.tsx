@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Coins, Shield, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,18 +8,18 @@ import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 const About = () => {
   const [showCoinOrbit, setShowCoinOrbit] = useState(false);
 
-  // Chart data for gold growth simulation
+  // Chart data for gold growth simulation with more dramatic profit curve
   const goldGrowthData = [
     { month: 'Jan', value: 100 },
-    { month: 'Feb', value: 110 },
-    { month: 'Mar', value: 108 },
-    { month: 'Apr', value: 118 },
-    { month: 'May', value: 125 },
-    { month: 'Jun', value: 132 },
-    { month: 'Jul', value: 140 },
-    { month: 'Aug', value: 155 },
-    { month: 'Sep', value: 180 },
-    { month: 'Oct', value: 200 },
+    { month: 'Feb', value: 115 },
+    { month: 'Mar', value: 130 },
+    { month: 'Apr', value: 125 },
+    { month: 'May', value: 150 },
+    { month: 'Jun', value: 170 },
+    { month: 'Jul', value: 195 },
+    { month: 'Aug', value: 220 },
+    { month: 'Sep', value: 270 },
+    { month: 'Oct', value: 350 },
   ];
 
   return (
@@ -129,7 +128,7 @@ const About = () => {
                         Financial Freedom Awaits
                       </div>
                       
-                      {/* Gold growth chart instead of EST. 2024 text */}
+                      {/* Gold growth chart with more dramatic profit curve */}
                       <div className="mt-1 h-[20px] w-full">
                         <ResponsiveContainer width="100%" height="100%">
                           <AreaChart
