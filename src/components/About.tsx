@@ -4,26 +4,42 @@ import { Button } from '@/components/ui/button';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
-
 const About = () => {
   const [showCoinOrbit, setShowCoinOrbit] = useState(false);
 
   // Chart data for gold growth simulation with more dramatic profit curve
-  const goldGrowthData = [
-    { month: 'Jan', value: 100 },
-    { month: 'Feb', value: 115 },
-    { month: 'Mar', value: 130 },
-    { month: 'Apr', value: 125 },
-    { month: 'May', value: 150 },
-    { month: 'Jun', value: 170 },
-    { month: 'Jul', value: 195 },
-    { month: 'Aug', value: 220 },
-    { month: 'Sep', value: 270 },
-    { month: 'Oct', value: 350 },
-  ];
-
-  return (
-    <section id="about" className="py-24 relative overflow-hidden">
+  const goldGrowthData = [{
+    month: 'Jan',
+    value: 100
+  }, {
+    month: 'Feb',
+    value: 115
+  }, {
+    month: 'Mar',
+    value: 130
+  }, {
+    month: 'Apr',
+    value: 125
+  }, {
+    month: 'May',
+    value: 150
+  }, {
+    month: 'Jun',
+    value: 170
+  }, {
+    month: 'Jul',
+    value: 195
+  }, {
+    month: 'Aug',
+    value: 220
+  }, {
+    month: 'Sep',
+    value: 270
+  }, {
+    month: 'Oct',
+    value: 350
+  }];
+  return <section id="about" className="py-24 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute top-1/4 -right-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 -left-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
@@ -64,11 +80,7 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div 
-            className="relative"
-            onMouseEnter={() => setShowCoinOrbit(true)}
-            onMouseLeave={() => setShowCoinOrbit(false)}
-          >
+          <div className="relative" onMouseEnter={() => setShowCoinOrbit(true)} onMouseLeave={() => setShowCoinOrbit(false)}>
             <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square coin-container">
               <div className="coin-face">
                 {/* Coin exterior */}
@@ -79,28 +91,20 @@ const About = () => {
                 
                 {/* Coin ridges/serrations */}
                 <div className="absolute inset-0 rounded-full">
-                  {Array.from({ length: 32 }).map((_, i) => (
-                    <div 
-                      key={i} 
-                      className="absolute w-1 h-4 bg-gold-300/70" 
-                      style={{ 
-                        transform: `rotate(${i * 11.25}deg) translateY(-50%)`,
-                        top: '50%',
-                        left: '0',
-                        transformOrigin: 'right center'
-                      }}
-                    ></div>
-                  ))}
+                  {Array.from({
+                  length: 32
+                }).map((_, i) => <div key={i} className="absolute w-1 h-4 bg-gold-300/70" style={{
+                  transform: `rotate(${i * 11.25}deg) translateY(-50%)`,
+                  top: '50%',
+                  left: '0',
+                  transformOrigin: 'right center'
+                }}></div>)}
                 </div>
                 
                 {/* Coin front with the new AWR LIFESTYLE image */}
                 <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-front">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <img 
-                      src="/lovable-uploads/82199989-9426-49c0-b494-3fe93ddaac2a.png" 
-                      alt="AWR LIFESTYLE" 
-                      className="w-[65%] h-[65%] object-contain"
-                    />
+                    <img src="/lovable-uploads/82199989-9426-49c0-b494-3fe93ddaac2a.png" alt="AWR LIFESTYLE" className="w-[65%] h-[65%] object-contain" />
                   </div>
                 </div>
                 
@@ -120,34 +124,34 @@ const About = () => {
                     
                     {/* Engraved text with shadow effect - SMALLER TEXT */}
                     <div className="text-center z-10">
-                      <div className="font-artistic text-sm mb-0.5 text-gold-800 font-bold tracking-wider" style={{ textShadow: "0 0.5px 0 rgba(255,255,255,0.4)" }}>
-                        ALL WILL RETIRE
-                      </div>
+                      <div className="font-artistic text-sm mb-0.5 text-gold-800 font-bold tracking-wider" style={{
+                      textShadow: "0 0.5px 0 rgba(255,255,255,0.4)"
+                    }}>I will retire
+we will retire
+all will retire</div>
                       <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-700 to-transparent my-0.5"></div>
-                      <div className="font-elegant text-[9px] text-gold-900 italic" style={{ textShadow: "0 0.3px 0 rgba(255,255,255,0.3)" }}>
+                      <div className="font-elegant text-[9px] text-gold-900 italic" style={{
+                      textShadow: "0 0.3px 0 rgba(255,255,255,0.3)"
+                    }}>
                         Financial Freedom Awaits
                       </div>
                       
                       {/* Gold growth chart with more dramatic profit curve */}
                       <div className="mt-1 h-[20px] w-full">
                         <ResponsiveContainer width="100%" height="100%">
-                          <AreaChart
-                            data={goldGrowthData}
-                            margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
-                          >
+                          <AreaChart data={goldGrowthData} margin={{
+                          top: 0,
+                          right: 0,
+                          left: 0,
+                          bottom: 0
+                        }}>
                             <defs>
                               <linearGradient id="colorGold" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#FFC300" stopOpacity={0.8}/>
-                                <stop offset="95%" stopColor="#FFC300" stopOpacity={0.2}/>
+                                <stop offset="5%" stopColor="#FFC300" stopOpacity={0.8} />
+                                <stop offset="95%" stopColor="#FFC300" stopOpacity={0.2} />
                               </linearGradient>
                             </defs>
-                            <Area 
-                              type="monotone" 
-                              dataKey="value" 
-                              stroke="#CC9C00" 
-                              strokeWidth={1.5}
-                              fill="url(#colorGold)" 
-                            />
+                            <Area type="monotone" dataKey="value" stroke="#CC9C00" strokeWidth={1.5} fill="url(#colorGold)" />
                           </AreaChart>
                         </ResponsiveContainer>
                       </div>
@@ -156,12 +160,7 @@ const About = () => {
                   
                   {/* Buy button below the plaque */}
                   <div className="mt-4">
-                    <Button 
-                      variant="default" 
-                      size="sm" 
-                      className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-bold py-2 px-6 rounded-full border border-gold-300 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                      onClick={() => window.open('https://example.com/buy', '_blank')}
-                    >
+                    <Button variant="default" size="sm" className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-bold py-2 px-6 rounded-full border border-gold-300 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105" onClick={() => window.open('https://example.com/buy', '_blank')}>
                       BUY NOW
                     </Button>
                   </div>
@@ -227,8 +226,6 @@ const About = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;
