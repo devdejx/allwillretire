@@ -18,8 +18,8 @@ const Features = () => {
       
       if (rect.top < 0) {
         // As we scroll down, reduce the opacity
-        // Make the fade-out happen over a shorter distance for a more dramatic effect
-        const fadeDistance = windowHeight * 0.5; // Adjust this to control how quickly it fades
+        // Increased the fade distance to require more scrolling before image fully shows
+        const fadeDistance = windowHeight * 1.5; // Increased from 0.5 to 1.5 to require more scrolling
         const scrolledPastTop = Math.abs(rect.top);
         
         // Linear fade out
