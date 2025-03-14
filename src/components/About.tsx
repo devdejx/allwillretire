@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { Coins, Shield, TrendingUp } from 'lucide-react';
+import { Coins, Shield, TrendingUp, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
@@ -217,7 +218,7 @@ const About = () => {
 
               <div className="flex items-start gap-4 p-4 rounded-xl bg-white/50 backdrop-blur-sm border border-white/20 shadow-sm">
                 <div className="bg-gold-500/10 p-3 rounded-lg">
-                  <Coins size={24} className="text-gold-500" />
+                  <Users size={24} className="text-gold-500" />
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">Reward Mechanisms</h4>
