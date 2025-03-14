@@ -1,10 +1,11 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { ArrowUpRight, Lock, TrendingUp, Wallet, CoinsIcon, Users, LineChart } from 'lucide-react';
+
 const Features = () => {
   const [opacity, setOpacity] = useState(1);
   const sectionRef = useRef<HTMLElement>(null);
   const [isInView, setIsInView] = useState(false);
+
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
@@ -16,6 +17,7 @@ const Features = () => {
     observer.observe(section);
     return () => observer.disconnect();
   }, []);
+
   useEffect(() => {
     if (!isInView) return;
     const handleScroll = () => {
@@ -35,6 +37,7 @@ const Features = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [isInView]);
+
   return <section ref={sectionRef} id="features" className="py-24 text-white relative min-h-screen" style={{
     backgroundImage: "url('/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png')",
     backgroundSize: "cover",
@@ -66,6 +69,14 @@ const Features = () => {
         </div>
         
         <div className="mt-20 max-w-4xl mx-auto">
+          <div className="flex justify-center mb-10">
+            <img 
+              src="/lovable-uploads/75dc9d7a-13e3-4d9d-8a27-61e0981c29b9.png" 
+              alt="AWR Lifestyle Logo" 
+              className="h-28 md:h-36 w-auto"
+            />
+          </div>
+          
           <div className="rounded-2xl overflow-hidden">
             <img 
               src="/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png" 
@@ -81,4 +92,5 @@ const Features = () => {
     }} className="opacity-0"></div>
     </section>;
 };
+
 export default Features;
