@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Quote, ExternalLink } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -21,6 +20,14 @@ const mediumArticles = [
     image: "/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png",
     excerpt: "AWR is more than just a token - it's a movement towards financial independence and empowerment. In this article, we introduce our vision for a life by design, where community members take control of their financial future through innovative blockchain solutions. We discuss the core principles that guide our project and how we're building something truly unique...",
     url: "https://medium.com/@allwillretire/introducing-awr-life-by-design-6ebeb3bfced3"
+  },
+  {
+    title: "All Will Retire: Vision Statement",
+    publishDate: "July 10, 2023",
+    readTime: "6 min read",
+    image: "/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png",
+    excerpt: "Our vision at AllWillRetire is to create a world where financial freedom is accessible to everyone. Through community collaboration, innovative technology, and a shared commitment to mutual success, we're building a platform that enables people from all walks of life to achieve their retirement goals. This vision statement outlines our core values, long-term objectives, and the roadmap that will guide our journey...",
+    url: "https://medium.com/@allwillretire/all-will-retire-vision-statement-ea7ee2e09943"
   }
 ];
 
