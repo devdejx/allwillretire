@@ -9,6 +9,8 @@ const Cta = () => {
       {/* Video background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-black/70 z-10"></div>
+        
+        {/* First video */}
         <div style={{position: 'absolute', top: 0, left: 0, width: '100vw', height: '100%', zIndex: 0, overflow: 'hidden', marginLeft: 'calc(-50vw + 50%)'}}>
           <iframe 
             src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
@@ -26,6 +28,27 @@ const Cta = () => {
               minHeight: '150%'
             }} 
             title="Background Video"
+          ></iframe>
+        </div>
+        
+        {/* Second video - positioned to fill any gaps */}
+        <div style={{position: 'absolute', top: 0, right: -20, width: '50vw', height: '100%', zIndex: 0, overflow: 'hidden'}}>
+          <iframe 
+            src="https://player.vimeo.com/video/1065939107?h=96cbb5c847&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
+            frameBorder="0" 
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+            style={{
+              position: 'absolute', 
+              top: '50%', 
+              left: '50%', 
+              width: '150%', 
+              height: '150%', 
+              transform: 'translate(-50%, -50%)',
+              objectFit: 'cover',
+              minWidth: '150%',
+              minHeight: '150%'
+            }} 
+            title="Second Background Video"
           ></iframe>
         </div>
       </div>
