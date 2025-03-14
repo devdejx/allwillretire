@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { ArrowUpRight, Lock, TrendingUp, Wallet, CoinsIcon, Users, LineChart } from 'lucide-react';
 
 const Features = () => {
-  const [scrollOpacity, setScrollOpacity] = useState(0);
+  const [scrollOpacity, setScrollOpacity] = useState(1); // Start fully visible
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -13,24 +13,17 @@ const Features = () => {
       const rect = sectionRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       
-      // Only start showing content after scrolling 50% of the way through the section
-      // This makes the original image visible longer
-      let opacity = 0;
+      // Start with the overlay visible, then fade it out as we scroll down
+      let opacity = 1; // Default to fully visible
       
-      if (rect.top < windowHeight && rect.bottom > 0) {
-        // Delay the start of the fade-in effect until we're 50% through the section
-        // This means the user needs to scroll more to see the overlay and text
-        const scrollThreshold = 0.5; // Increase this value to require more scrolling
-        const visibleSectionHeight = Math.min(windowHeight, rect.bottom) - Math.max(0, rect.top);
-        const sectionHeight = rect.height;
-        const scrollProgress = 1 - (visibleSectionHeight / sectionHeight);
+      if (rect.top < 0) {
+        // As we scroll down, reduce the opacity
+        // Make the fade-out happen over a shorter distance for a more dramatic effect
+        const fadeDistance = windowHeight * 0.5; // Adjust this to control how quickly it fades
+        const scrolledPastTop = Math.abs(rect.top);
         
-        // Only start fading in after we've scrolled past the threshold
-        if (scrollProgress > scrollThreshold) {
-          // Normalize the progress to be between 0-1 after threshold
-          const normalizedProgress = (scrollProgress - scrollThreshold) / (1 - scrollThreshold);
-          opacity = Math.max(0, Math.min(1, normalizedProgress * 2)); // Multiply by 2 for faster fade-in
-        }
+        // Linear fade out
+        opacity = Math.max(0, 1 - (scrolledPastTop / fadeDistance));
       }
       
       setScrollOpacity(opacity);
