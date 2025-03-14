@@ -8,7 +8,7 @@ const Cta = () => {
     <section className="py-24 relative overflow-hidden">
       {/* Video background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-black/70 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/90 z-10"></div>
         
         {/* Video - positioned to fill the background */}
         <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -25,8 +25,15 @@ const Cta = () => {
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent z-10"></div>
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent z-10"></div>
-      <div className="absolute top-10 right-10 w-20 h-20 bg-gold-500/20 rounded-full blur-xl z-10"></div>
-      <div className="absolute bottom-10 left-10 w-20 h-20 bg-gold-500/20 rounded-full blur-xl z-10"></div>
+      
+      {/* Added side gradients to blend the edges */}
+      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-black/80 to-transparent z-10"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black/80 to-transparent z-10"></div>
+      
+      {/* Enhanced atmosphere effects */}
+      <div className="absolute top-10 right-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-10"></div>
+      <div className="absolute bottom-10 left-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-10"></div>
+      <div className="absolute top-1/3 left-1/4 w-32 h-32 bg-gold-500/10 rounded-full blur-2xl z-10"></div>
       
       <div className="container mx-auto px-6 relative z-20 text-white">
         <div className="max-w-4xl mx-auto text-center">
