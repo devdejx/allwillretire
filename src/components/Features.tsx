@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import { ArrowUpRight, Lock, TrendingUp, Wallet, CoinsIcon, Users, LineChart } from 'lucide-react';
 const Features = () => {
@@ -59,10 +60,11 @@ const Features = () => {
           </h2>
           <p className="text-lg text-gray-300 mb-4">Decentralizes responsibility of growth for AWR and financial security of the individual — everyone is the dev of AWR and their own financial security</p>
           
-          <p className="text-lg text-gray-300 mb-8">Makes its community members highly visible — we don't hide behind profile pictures or reduce ourselves to the sum of our social media timelines
-
-
-Is a family that provides emotional utility around being accepted for who you are regardless of our differences, the ability to self-express your feelings/views to the world, and have a global community to identify with based on the underlying message</p>
+          <p className="text-lg text-gray-300 mb-8">Makes its community members highly visible — we don't hide behind profile pictures or reduce ourselves to the sum of our social media timelines</p>
+          
+          <div className="bg-black/30 p-6 rounded-lg border border-gold-500/20 mb-8">
+            <p className="text-lg text-gray-300">Is a family that provides emotional utility around being accepted for who you are regardless of our differences, the ability to self-express your feelings/views to the world, and have a global community to identify with based on the underlying message</p>
+          </div>
         </div>
         
         <div className="mt-20 max-w-4xl mx-auto">
