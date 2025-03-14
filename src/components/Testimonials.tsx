@@ -2,6 +2,27 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Quote, ExternalLink } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Card, CardContent } from '@/components/ui/card';
+
+// Medium articles data
+const mediumArticles = [
+  {
+    title: "Why Now Is The Perfect Time To Tell Our Story",
+    publishDate: "May 15, 2023",
+    readTime: "5 min read",
+    image: "/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png",
+    excerpt: "The current macroeconomic environment has changed the way we think about personal finance, security, and wealth. With traditional systems showing their vulnerabilities, people are looking for alternatives that provide both stability and growth potential. That's exactly what AllWillRetire offers - a community-driven approach to financial security that empowers individuals...",
+    url: "https://medium.com/@allwillretire/why-now-is-the-perfect-time-to-tell-our-story-c8a2ab6b8943"
+  },
+  {
+    title: "Introducing AWR: Life By Design",
+    publishDate: "June 5, 2023",
+    readTime: "4 min read",
+    image: "/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png",
+    excerpt: "AWR is more than just a token - it's a movement towards financial independence and empowerment. In this article, we introduce our vision for a life by design, where community members take control of their financial future through innovative blockchain solutions. We discuss the core principles that guide our project and how we're building something truly unique...",
+    url: "https://medium.com/@allwillretire/introducing-awr-life-by-design-6ebeb3bfced3"
+  }
+];
 
 const testimonials = [
   {
@@ -30,11 +51,11 @@ const Testimonials = () => {
   const isMobile = useIsMobile();
 
   const next = () => {
-    setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    setCurrent((prev) => (prev === mediumArticles.length - 1 ? 0 : prev + 1));
   };
 
   const prev = () => {
-    setCurrent((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+    setCurrent((prev) => (prev === 0 ? mediumArticles.length - 1 : prev - 1));
   };
 
   useEffect(() => {
@@ -42,7 +63,7 @@ const Testimonials = () => {
     
     const interval = setInterval(() => {
       next();
-    }, 5000);
+    }, 7000);
     
     return () => clearInterval(interval);
   }, [autoplay, current]);
@@ -66,7 +87,7 @@ const Testimonials = () => {
             Why <span className="text-gold-500">Now</span> Is The Perfect Time
           </h2>
           <p className="text-lg text-muted-foreground">
-            Read our latest article on Medium about the AWR journey and vision
+            Follow our journey on Medium
           </p>
         </div>
 
@@ -76,74 +97,109 @@ const Testimonials = () => {
             onMouseEnter={() => setAutoplay(false)}
             onMouseLeave={() => setAutoplay(true)}
           >
-            <div className="w-full neo-glass rounded-2xl p-8 md:p-12 hover:shadow-lg transition-shadow duration-300">
+            {mediumArticles.map((article, index) => (
+              <div 
+                key={index}
+                className={`w-full neo-glass rounded-2xl p-8 md:p-12 hover:shadow-lg transition-shadow duration-300 absolute inset-0 ${
+                  index === current ? 'opacity-100 z-10 transform translate-x-0 transition-all duration-500' : 'opacity-0 -z-10 transform translate-x-full transition-all duration-500'
+                }`}
+              >
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center mb-6">
+                    <img 
+                      src="/lovable-uploads/1a3e2030-93ba-48a8-bad1-11bf6f691350.png"
+                      alt="Medium" 
+                      className="w-8 h-8 mr-3" 
+                    />
+                    <div>
+                      <h3 className="font-medium">AllWillRetire</h3>
+                      <p className="text-sm text-muted-foreground">{article.publishDate} · {article.readTime}</p>
+                    </div>
+                  </div>
+                  
+                  <h2 className="text-2xl font-bold mb-4">{article.title}</h2>
+                  
+                  <div className="mb-6 relative overflow-hidden rounded-lg" style={{ maxHeight: isMobile ? '150px' : '250px' }}>
+                    <img 
+                      src={article.image}
+                      alt="AWR Community" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  
+                  <div className="prose prose-sm max-w-none mb-6">
+                    <p className="line-clamp-3 md:line-clamp-4">
+                      {article.excerpt}
+                    </p>
+                  </div>
+                  
+                  <a 
+                    href={article.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="mt-auto inline-flex items-center text-gold-600 hover:text-gold-700 font-medium"
+                  >
+                    Read the full article on Medium
+                    <ExternalLink className="ml-2 h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+            ))}
+            
+            {/* Dummy div to maintain height */}
+            <div className="w-full neo-glass rounded-2xl p-8 md:p-12 invisible">
               <div className="flex flex-col h-full">
                 <div className="flex items-center mb-6">
-                  <img 
-                    src="/lovable-uploads/1a3e2030-93ba-48a8-bad1-11bf6f691350.png"
-                    alt="Medium" 
-                    className="w-8 h-8 mr-3" 
-                  />
+                  <div className="w-8 h-8 mr-3"></div>
                   <div>
-                    <h3 className="font-medium">AllWillRetire</h3>
-                    <p className="text-sm text-muted-foreground">May 15, 2023 · 5 min read</p>
+                    <h3 className="font-medium invisible">AllWillRetire</h3>
+                    <p className="text-sm text-muted-foreground invisible">Date</p>
                   </div>
                 </div>
                 
-                <h2 className="text-2xl font-bold mb-4">Why Now Is The Perfect Time To Tell Our Story</h2>
+                <h2 className="text-2xl font-bold mb-4 invisible">Title</h2>
                 
-                <div className="mb-6 relative overflow-hidden rounded-lg" style={{ maxHeight: isMobile ? '150px' : '250px' }}>
-                  <img 
-                    src="/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png"
-                    alt="AWR Community" 
-                    className="w-full h-full object-cover"
-                  />
+                <div className="mb-6 relative overflow-hidden rounded-lg" style={{ height: isMobile ? '150px' : '250px' }}>
                 </div>
                 
                 <div className="prose prose-sm max-w-none mb-6">
-                  <p className="line-clamp-3 md:line-clamp-4">
-                    The current macroeconomic environment has changed the way we think about personal finance, security, and wealth. With traditional systems showing their vulnerabilities, people are looking for alternatives that provide both stability and growth potential. That's exactly what AllWillRetire offers - a community-driven approach to financial security that empowers individuals...
+                  <p className="line-clamp-3 md:line-clamp-4 invisible">
+                    Placeholder text
                   </p>
                 </div>
                 
-                <a 
-                  href="https://medium.com/@allwillretire/why-now-is-the-perfect-time-to-tell-our-story-c8a2ab6b8943" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="mt-auto inline-flex items-center text-gold-600 hover:text-gold-700 font-medium"
-                >
-                  Read the full article on Medium
-                  <ExternalLink className="ml-2 h-4 w-4" />
-                </a>
+                <div className="mt-auto inline-flex items-center invisible">
+                  Read more
+                </div>
               </div>
             </div>
           </div>
 
           <div className="flex justify-center mt-8 gap-4">
-            {testimonials.map((_, index) => (
+            {mediumArticles.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrent(index)}
                 className={`w-3 h-3 rounded-full transition-colors ${
                   index === current ? 'bg-gold-500' : 'bg-gray-300'
                 }`}
-                aria-label={`Go to testimonial ${index + 1}`}
+                aria-label={`Go to article ${index + 1}`}
               />
             ))}
           </div>
 
           <button 
-            className="absolute top-1/2 -left-4 md:-left-12 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors"
+            className="absolute top-1/2 -left-4 md:-left-12 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-20"
             onClick={prev}
-            aria-label="Previous testimonial"
+            aria-label="Previous article"
           >
             <ChevronLeft size={20} />
           </button>
           
           <button 
-            className="absolute top-1/2 -right-4 md:-right-12 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors"
+            className="absolute top-1/2 -right-4 md:-right-12 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-20"
             onClick={next}
-            aria-label="Next testimonial"
+            aria-label="Next article"
           >
             <ChevronRight size={20} />
           </button>
