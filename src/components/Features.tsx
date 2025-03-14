@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import { ArrowUpRight, Lock, TrendingUp, Wallet, CoinsIcon, Users, LineChart } from 'lucide-react';
 
@@ -66,20 +67,6 @@ const Features = () => {
           <p className="text-lg text-gray-300 mb-8">*Makes its community members highly visible — we don't hide behind profile pictures or reduce ourselves to the sum of our social media timelines</p>
           
           <p className="text-lg text-gray-300 mb-8">*Is a family that provides emotional utility around being accepted for who you are regardless of our differences, the ability to self-express your feelings/views to the world, and have a global community to identify with based on the underlying message that everyone deserves financial security</p>
-        </div>
-        
-        <div className="mt-20 max-w-4xl mx-auto">
-          <div className="rounded-2xl overflow-hidden shadow-[0_0_20px_rgba(255,195,0,0.3)] transform transition-all hover:scale-[1.01] duration-500">
-            <img 
-              src="/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png" 
-              alt="AllWillRetire Community Members" 
-              className="w-full h-auto rounded-xl ring-2 ring-gold-300/30"
-              style={{
-                filter: "brightness(1.05) contrast(1.05)",
-                boxShadow: "0 0 30px rgba(255, 215, 0, 0.2)"
-              }}
-            />
-          </div>
         </div>
       </div>
 
