@@ -18,7 +18,7 @@ const mediumArticles = [
     title: "Introducing AWR: Life By Design",
     publishDate: "June 5, 2023",
     readTime: "4 min read",
-    image: "/lovable-uploads/b90d81ed-2f22-48a8-a677-870d3783b63e.png",
+    image: "/lovable-uploads/43532d3a-9463-44e9-af76-3cb49befadd9.png",
     excerpt: "AWR is more than just a token - it's a movement towards financial independence and empowerment. In this article, we introduce our vision for a life by design, where community members take control of their financial future through innovative blockchain solutions. We discuss the core principles that guide our project and how we're building something truly unique...",
     url: "https://medium.com/@allwillretire/introducing-awr-life-by-design-6ebeb3bfced3"
   },
