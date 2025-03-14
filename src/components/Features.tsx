@@ -1,10 +1,11 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { ArrowUpRight, Lock, TrendingUp, Wallet, CoinsIcon, Users, LineChart } from 'lucide-react';
+
 const Features = () => {
   const [opacity, setOpacity] = useState(1);
   const sectionRef = useRef<HTMLElement>(null);
   const [isInView, setIsInView] = useState(false);
+
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
@@ -16,6 +17,7 @@ const Features = () => {
     observer.observe(section);
     return () => observer.disconnect();
   }, []);
+
   useEffect(() => {
     if (!isInView) return;
     const handleScroll = () => {
@@ -35,6 +37,7 @@ const Features = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [isInView]);
+
   return <section ref={sectionRef} id="features" className="py-24 text-white relative min-h-screen" style={{
     backgroundImage: "url('/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png')",
     backgroundSize: "cover",
@@ -66,11 +69,15 @@ const Features = () => {
         </div>
         
         <div className="mt-20 max-w-4xl mx-auto">
-          <div className="rounded-2xl overflow-hidden">
+          <div className="rounded-2xl overflow-hidden shadow-[0_0_20px_rgba(255,195,0,0.3)] transform transition-all hover:scale-[1.01] duration-500">
             <img 
               src="/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png" 
               alt="AllWillRetire Community Members" 
-              className="w-full h-auto"
+              className="w-full h-auto rounded-xl ring-2 ring-gold-300/30"
+              style={{
+                filter: "brightness(1.05) contrast(1.05)",
+                boxShadow: "0 0 30px rgba(255, 215, 0, 0.2)"
+              }}
             />
           </div>
         </div>
@@ -81,4 +88,5 @@ const Features = () => {
     }} className="opacity-0"></div>
     </section>;
 };
+
 export default Features;
