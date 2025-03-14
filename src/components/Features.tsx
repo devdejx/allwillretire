@@ -7,30 +7,36 @@ const Features = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Get position of the features section
+      // Get scroll position
+      const scrollY = window.scrollY;
+      
+      // Get the position of the features section
       const featuresSection = document.getElementById('features');
       if (!featuresSection) return;
-
-      const rect = featuresSection.getBoundingClientRect();
-      const sectionTop = rect.top;
-      const sectionHeight = rect.height;
-      const windowHeight = window.innerHeight;
       
-      // Calculate scroll progress through the section
-      // Start fading when we're 20% into the section
-      const scrollStart = windowHeight * 0.2;
-      const scrollEnd = windowHeight * 0.6; // End fading at 60% through
+      const sectionTop = featuresSection.offsetTop;
+      const viewportHeight = window.innerHeight;
       
-      // How far have we scrolled into the section (normalized from 0 to 1)
-      let scrollProgress = 0;
+      // Calculate how far we've scrolled into the section
+      const scrollIntoSection = scrollY - sectionTop + viewportHeight;
       
-      if (sectionTop < scrollStart) {
-        // We've scrolled past the start point, begin fading
-        scrollProgress = Math.min(1, (scrollStart - sectionTop) / (scrollEnd - scrollStart));
+      // We want to start fading when we've scrolled about 20% into the viewport
+      const fadeStart = viewportHeight * 0.2;
+      
+      // End fading when we're 80% through the viewport
+      const fadeEnd = viewportHeight * 0.8;
+      
+      // Calculate opacity based on scroll position
+      if (scrollIntoSection < fadeStart) {
+        setOpacity(1); // Not scrolled enough, keep content visible
+      } else if (scrollIntoSection > fadeEnd) {
+        setOpacity(0); // Scrolled past threshold, hide content
+      } else {
+        // Calculate opacity between 1 and 0
+        const fadeRange = fadeEnd - fadeStart;
+        const fadeProgress = (scrollIntoSection - fadeStart) / fadeRange;
+        setOpacity(Math.max(0, 1 - fadeProgress));
       }
-      
-      // Invert opacity (1 -> 0) as we scroll down
-      setOpacity(Math.max(0, 1 - scrollProgress));
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -44,12 +50,13 @@ const Features = () => {
   return (
     <section 
       id="features" 
-      className="py-24 text-white relative overflow-hidden min-h-[100vh]"
+      className="py-24 text-white relative min-h-screen"
       style={{
         backgroundImage: "url('/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundRepeat: "no-repeat"
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed" // This makes the background stay in place during scroll
       }}
     >
       {/* Overlay that fades out with scroll */}
