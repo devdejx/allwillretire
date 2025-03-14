@@ -13,15 +13,24 @@ const Features = () => {
       const rect = sectionRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       
-      // Calculate how far into the section we've scrolled
-      // Start with 0 opacity when section just enters viewport
-      // Reach full opacity when section is 30% into the viewport
+      // Only start showing content after scrolling 50% of the way through the section
+      // This makes the original image visible longer
       let opacity = 0;
       
       if (rect.top < windowHeight && rect.bottom > 0) {
-        // Calculate progress based on how far we've scrolled into the section
-        const progress = Math.max(0, Math.min(1, (windowHeight - rect.top) / (windowHeight * 0.3)));
-        opacity = progress;
+        // Delay the start of the fade-in effect until we're 50% through the section
+        // This means the user needs to scroll more to see the overlay and text
+        const scrollThreshold = 0.5; // Increase this value to require more scrolling
+        const visibleSectionHeight = Math.min(windowHeight, rect.bottom) - Math.max(0, rect.top);
+        const sectionHeight = rect.height;
+        const scrollProgress = 1 - (visibleSectionHeight / sectionHeight);
+        
+        // Only start fading in after we've scrolled past the threshold
+        if (scrollProgress > scrollThreshold) {
+          // Normalize the progress to be between 0-1 after threshold
+          const normalizedProgress = (scrollProgress - scrollThreshold) / (1 - scrollThreshold);
+          opacity = Math.max(0, Math.min(1, normalizedProgress * 2)); // Multiply by 2 for faster fade-in
+        }
       }
       
       setScrollOpacity(opacity);
