@@ -183,9 +183,7 @@ const About = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               <h3 className="text-2xl font-display font-bold">The Vision</h3>
-              <p className="text-muted-foreground">
-                AllWillRetire was created with a singular vision: to democratize financial prosperity and ensure that anyone, regardless of background, can achieve a luxurious retirement through strategic cryptocurrency investment.
-              </p>
+              <p className="text-muted-foreground">AllWillRetire was created with a singular vision: to create the biggest retirement movement that ensure anyone, regardless of background, can achieve a luxurious retirement through strategic cryptocurrency investment and believe.</p>
             </div>
 
             <div className="space-y-4">
