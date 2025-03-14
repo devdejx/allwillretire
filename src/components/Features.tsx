@@ -1,43 +1,48 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { ArrowUpRight, Lock, TrendingUp, Wallet, CoinsIcon, Users, LineChart } from 'lucide-react';
 
 const Features = () => {
   const [opacity, setOpacity] = useState(1);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isInView) return;
+
     const handleScroll = () => {
-      // Get scroll position
+      const windowHeight = window.innerHeight;
       const scrollY = window.scrollY;
       
       // Get the position of the features section
-      const featuresSection = document.getElementById('features');
+      const featuresSection = sectionRef.current;
       if (!featuresSection) return;
       
       const sectionTop = featuresSection.offsetTop;
-      const viewportHeight = window.innerHeight;
+      const sectionHeight = featuresSection.offsetHeight;
       
-      // Calculate how far we've scrolled into the section
-      const scrollIntoSection = scrollY - sectionTop + viewportHeight;
+      // Calculate scroll percentage within the section
+      // We start counting when the section is at the top of the viewport
+      const scrollPosition = scrollY - sectionTop + windowHeight;
+      const scrollPercentage = Math.min(Math.max(scrollPosition / sectionHeight, 0), 1);
       
-      // Adjust the fade points to make the content stay visible longer
-      // Start fading much later (at 50% of viewport height)
-      const fadeStart = viewportHeight * 0.5;
-      
-      // End fading much later (at 200% of viewport height)
-      const fadeEnd = viewportHeight * 2;
-      
-      // Calculate opacity based on scroll position
-      if (scrollIntoSection < fadeStart) {
-        setOpacity(1); // Not scrolled enough, keep content fully visible
-      } else if (scrollIntoSection > fadeEnd) {
-        setOpacity(0); // Scrolled past threshold, hide content
-      } else {
-        // Calculate opacity between 1 and 0, but with a slower transition
-        const fadeRange = fadeEnd - fadeStart;
-        const fadeProgress = (scrollIntoSection - fadeStart) / fadeRange;
-        setOpacity(Math.max(0, 1 - fadeProgress));
-      }
+      // Inverse the opacity based on scroll percentage
+      setOpacity(1 - scrollPercentage);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -46,10 +51,11 @@ const Features = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isInView]);
 
   return (
     <section 
+      ref={sectionRef}
       id="features" 
       className="py-24 text-white relative min-h-screen"
       style={{
@@ -62,7 +68,7 @@ const Features = () => {
     >
       {/* Overlay that fades out with scroll */}
       <div 
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-500"
+        className="absolute inset-0 bg-black/70 backdrop-blur-md transition-opacity duration-500"
         style={{ opacity }}
       ></div>
       
@@ -103,6 +109,9 @@ const Features = () => {
           </div>
         </div>
       </div>
+
+      {/* This div prevents the page from jumping when scrolling */}
+      <div style={{ height: '100vh' }} className="opacity-0"></div>
     </section>
   );
 };

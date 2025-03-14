@@ -27,10 +27,22 @@ const Index = () => {
       observer.observe(el);
     });
 
+    // Add custom scroll handling for the features section
+    const handleScroll = () => {
+      const featuresSection = document.getElementById('features');
+      if (!featuresSection) return;
+      
+      // No need to modify the default scroll behavior further
+      // The Features component handles its own scroll effects
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
     return () => {
       document.querySelectorAll('.reveal').forEach((el) => {
         observer.unobserve(el);
       });
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
