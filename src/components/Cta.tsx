@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
@@ -40,7 +41,7 @@ const Cta = () => {
             </span>
           </h2>
           
-          <p className="text-base text-gray-300 mb-8 max-w-xl mx-auto">Join thousands of forward-thinking people who are already securing 
+          <p className="text-base text-gray-300 mb-8 max-w-xl mx-auto">Join thousands of forward-thinking people who are already securing 
 their luxurious future with AllWillRetire.</p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
@@ -53,7 +54,7 @@ their luxurious future with AllWillRetire.</p>
             </button>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3">
               <div className="text-2xl font-display font-bold mb-1">15%</div>
               <div className="text-xs text-gray-400">Early Investor Bonus</div>
@@ -65,10 +66,6 @@ their luxurious future with AllWillRetire.</p>
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3">
               <div className="text-2xl font-display font-bold mb-1">100%</div>
               <div className="text-xs text-gray-400">Secure Transactions</div>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3">
-              <div className="text-2xl font-display font-bold mb-1">3 Min</div>
-              <div className="text-xs text-gray-400">Setup Time</div>
             </div>
           </div>
         </div>
