@@ -28,6 +28,14 @@ const mediumArticles = [
     image: "/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png",
     excerpt: "Our vision at AllWillRetire is to create a world where financial freedom is accessible to everyone. Through community collaboration, innovative technology, and a shared commitment to mutual success, we're building a platform that enables people from all walks of life to achieve their retirement goals. This vision statement outlines our core values, long-term objectives, and the roadmap that will guide our journey...",
     url: "https://medium.com/@allwillretire/all-will-retire-vision-statement-ea7ee2e09943"
+  },
+  {
+    title: "What Does Success Look Like for AWR?",
+    publishDate: "August 20, 2023",
+    readTime: "5 min read",
+    image: "/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png",
+    excerpt: "Success for AllWillRetire isn't just measured in market cap or token price. In this article, we outline our holistic vision of success that encompasses community growth, technological innovation, real-world impact, and long-term sustainability. We discuss key metrics and milestones that will guide our development and how every member of our community plays a crucial role in achieving these goals...",
+    url: "https://medium.com/@allwillretire/what-does-success-look-like-for-awr-a2ed36071a54"
   }
 ];
 
