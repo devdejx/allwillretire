@@ -15,7 +15,7 @@ const Features = () => {
       }}
     >
       {/* Overlay to ensure text is readable */}
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 bg-black/70"></div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl mx-auto mb-16 text-center">
