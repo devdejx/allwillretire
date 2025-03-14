@@ -71,7 +71,13 @@ const Features = () => {
         </div>
         
         <div className="mt-20 max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-gold-500/10 to-transparent p-8 rounded-2xl backdrop-blur-sm border border-gold-500/20 mb-8">
+          <div className="bg-gradient-to-br from-slate-800/50 to-transparent p-8 rounded-2xl backdrop-blur-sm border border-slate-700/30 mb-8">
+            <p className="text-lg text-gray-200 italic">
+              Is a family that provides emotional utility around being accepted for who you are regardless of our differences, the ability to self-express your feelings/views to the world, and have a global community to identify with based on the underlying message
+            </p>
+          </div>
+          
+          <div className="bg-gradient-to-br from-gold-500/10 to-transparent p-8 rounded-2xl backdrop-blur-sm border border-gold-500/20">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-display font-bold mb-2">$0.0025</div>
@@ -86,12 +92,6 @@ const Features = () => {
                 <div className="text-sm text-gray-400">Max Supply</div>
               </div>
             </div>
-          </div>
-          
-          <div className="bg-gradient-to-br from-gold-500/10 to-transparent p-8 rounded-2xl backdrop-blur-sm border border-gold-500/20">
-            <p className="text-lg text-gray-200 italic">
-              Is a family that provides emotional utility around being accepted for who you are regardless of our differences, the ability to self-express your feelings/views to the world, and have a global community to identify with based on the underlying message
-            </p>
           </div>
         </div>
       </div>
