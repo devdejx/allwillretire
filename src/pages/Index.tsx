@@ -40,8 +40,6 @@ const Index = () => {
       <Hero />
       <About />
       <Features />
-      {/* Spacer div to maintain scroll height - same height as Features section */}
-      <div className="h-screen w-full"></div>
       <Testimonials />
       <Cta />
       <Footer />
