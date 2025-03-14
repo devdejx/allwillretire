@@ -9,14 +9,15 @@ const Cta = () => {
       {/* Video background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black/70 z-10"></div>
-        <iframe 
-          className="w-full h-full absolute inset-0 z-0"
-          src="https://player.vimeo.com/video/1065934410?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-          frameBorder="0"
-          allow="autoplay; fullscreen"
-          allowFullScreen
-          title="Background Video"
-        ></iframe>
+        <div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0}}>
+          <iframe 
+            src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
+            frameBorder="0" 
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+            style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} 
+            title="Background Video"
+          ></iframe>
+        </div>
       </div>
       
       {/* Decorative elements */}
