@@ -1,14 +1,15 @@
 
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Button } from './ui/button';
 
 const Cta = () => {
-  // Uporabite sliko za ozadje, če video ni na voljo
-  const useImageFallback = true;
-  const backgroundImageUrl = "/background-image.jpg"; // Nadomestite s potjo do vaše slike
+  // Nastavitve ozadja
+  const useImageFallback = true; // Spremenite na false, če želite uporabiti video
+  const backgroundImageUrl = "/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png"; // Uporabi eno od že naloženih slik
   
-  // Če imate video na zunanji povezavi, uporabite to
-  const videoUrl = "https://example.com/your-video.mp4"; // Nadomestite s pravo povezavo do videa
+  // Video URL (deluje le, če je useImageFallback nastavljen na false)
+  const videoUrl = "https://example.com/your-video.mp4"; // Nadomestite z URL-jem videa
 
   return (
     <section className="py-24 relative overflow-hidden">
@@ -63,13 +64,18 @@ const Cta = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-            <button className="bg-gold-500 text-black px-8 py-4 rounded-xl font-medium hover:bg-gold-600 transition-colors flex items-center justify-center">
+            <Button 
+              className="bg-gold-500 text-black px-8 py-4 h-auto rounded-xl font-medium hover:bg-gold-600 transition-colors"
+            >
               <span>Invest Now</span>
               <ArrowRight size={18} className="ml-2" />
-            </button>
-            <button className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-4 rounded-xl font-medium hover:bg-white/20 transition-colors">
+            </Button>
+            <Button 
+              variant="outline"
+              className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-4 h-auto rounded-xl font-medium hover:bg-white/20 transition-colors"
+            >
               View Whitepaper
-            </button>
+            </Button>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
