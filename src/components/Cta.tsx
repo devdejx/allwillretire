@@ -18,12 +18,12 @@ const Cta = () => {
               position: 'absolute', 
               top: '50%', 
               left: '50%', 
-              width: '120%', 
-              height: '120%', 
+              width: '150%', 
+              height: '150%', 
               transform: 'translate(-50%, -50%)',
               objectFit: 'cover',
-              minWidth: '120%',
-              minHeight: '120%'
+              minWidth: '150%',
+              minHeight: '150%'
             }} 
             title="Background Video"
           ></iframe>
