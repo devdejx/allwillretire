@@ -38,44 +38,44 @@ const Cta = () => {
             />
           </div>
           
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
             Begin Your Journey to 
             <span className="relative ml-2">
               <span className="relative z-10">Luxury</span>
-              <span className="absolute -bottom-2 left-0 right-0 h-3 bg-gold-500/30 rounded-full"></span>
+              <span className="absolute -bottom-1 left-0 right-0 h-2 bg-gold-500/30 rounded-full"></span>
             </span>
           </h2>
           
-          <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+          <p className="text-base text-gray-300 mb-8 max-w-xl mx-auto">
             Join thousands of forward-thinking investors who are already securing their luxurious future with AllWillRetire.
           </p>
           
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-            <button className="bg-gold-500 text-black px-8 py-4 rounded-xl font-medium hover:bg-gold-600 transition-colors flex items-center justify-center">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
+            <button className="bg-gold-500 text-black px-6 py-3 rounded-xl font-medium hover:bg-gold-600 transition-colors flex items-center justify-center">
               <span>Invest Now</span>
-              <ArrowRight size={18} className="ml-2" />
+              <ArrowRight size={16} className="ml-2" />
             </button>
-            <button className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-4 rounded-xl font-medium hover:bg-white/20 transition-colors">
+            <button className="bg-white/10 backdrop-blur border border-white/20 text-white px-6 py-3 rounded-xl font-medium hover:bg-white/20 transition-colors">
               View Whitepaper
             </button>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4">
-              <div className="text-3xl font-display font-bold mb-1">15%</div>
-              <div className="text-sm text-gray-400">Early Investor Bonus</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3">
+              <div className="text-2xl font-display font-bold mb-1">15%</div>
+              <div className="text-xs text-gray-400">Early Investor Bonus</div>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4">
-              <div className="text-3xl font-display font-bold mb-1">24/7</div>
-              <div className="text-sm text-gray-400">Support Available</div>
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3">
+              <div className="text-2xl font-display font-bold mb-1">24/7</div>
+              <div className="text-xs text-gray-400">Support Available</div>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4">
-              <div className="text-3xl font-display font-bold mb-1">100%</div>
-              <div className="text-sm text-gray-400">Secure Transactions</div>
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3">
+              <div className="text-2xl font-display font-bold mb-1">100%</div>
+              <div className="text-xs text-gray-400">Secure Transactions</div>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4">
-              <div className="text-3xl font-display font-bold mb-1">3 Min</div>
-              <div className="text-sm text-gray-400">Setup Time</div>
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3">
+              <div className="text-2xl font-display font-bold mb-1">3 Min</div>
+              <div className="text-xs text-gray-400">Setup Time</div>
             </div>
           </div>
         </div>
