@@ -2,6 +2,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
+
 const Cta = () => {
   return <section className="py-24 relative overflow-hidden">
       {/* Video background */}
@@ -41,8 +42,10 @@ const Cta = () => {
             </span>
           </h2>
           
-          <p className="text-gray-300 mb-8 max-w-xl mx-auto text-xs">Join thousands of forward-thinking people who are already securing 
-their luxurious future with AllWillRetire.</p>
+          <p className="text-gray-300 mb-8 max-w-xl mx-auto text-xs">
+            Join thousands of forward-thinking people<br />
+            who are already securing their luxurious future with AllWillRetire.
+          </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
             <button className="bg-gold-500 text-black px-6 py-3 rounded-xl font-medium hover:bg-gold-600 transition-colors flex items-center justify-center">
