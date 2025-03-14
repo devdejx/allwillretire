@@ -30,7 +30,7 @@ const Cta = () => {
       
       <div className="container mx-auto px-6 relative z-20 text-white pt-16">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block mb-10">
+          <div className="inline-block mb-10 mt-10">
             <img 
               src="/lovable-uploads/d523f3bd-5ac2-4e42-9b2b-0e3c68db822c.png" 
               alt="AWR Lifestyle" 
