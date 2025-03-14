@@ -72,10 +72,7 @@ const Features = () => {
           <p className="text-lg text-gray-300 mb-8">Decentralizes responsibility of growth for AWR and financial security of the individual — everyone is the dev of AWR and their own financial security
 
 
-
-
-
-        </p>
+Makes its community members highly visible — we don’t hide behind profile pictures or reduce ourselves to the sum of our X timelines</p>
         </div>
         
         <div className="mt-20 max-w-4xl mx-auto">
