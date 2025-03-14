@@ -121,11 +121,11 @@ const Hero = () => {
     
     // Start playing music when button is clicked
     if (audioRef.current && !isPlaying) {
-      // Load and play YouTube audio
+      // Load and play YouTube audio with enablejsapi=1 for external control
       if (audioRef.current.src === '') {
-        audioRef.current.src = 'https://www.youtube.com/embed/AKDLoUSaPV8?autoplay=1';
+        audioRef.current.src = 'https://www.youtube.com/embed/AKDLoUSaPV8?autoplay=1&enablejsapi=1';
       } else {
-        // If already loaded, just play it (for future play/pause functionality)
+        // If already loaded, just play it
         const contentWindow = audioRef.current.contentWindow;
         if (contentWindow) {
           contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
