@@ -28,13 +28,13 @@ const Cta = () => {
       <div className="absolute bottom-10 left-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-10"></div>
       <div className="absolute top-1/3 left-1/4 w-32 h-32 bg-gold-500/10 rounded-full blur-2xl z-10"></div>
       
-      <div className="container mx-auto px-6 relative z-20 text-white">
+      <div className="container mx-auto px-6 relative z-20 text-white pt-8">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block mb-6">
+          <div className="inline-block mb-10">
             <img 
               src="/lovable-uploads/d523f3bd-5ac2-4e42-9b2b-0e3c68db822c.png" 
               alt="AWR Lifestyle" 
-              className="h-20 w-auto mx-auto"
+              className="h-28 w-auto mx-auto"
             />
           </div>
           
