@@ -39,7 +39,10 @@ const Features = () => {
       // Calculate scroll percentage within the section
       // We start counting when the section is at the top of the viewport
       const scrollPosition = scrollY - sectionTop + windowHeight;
-      const scrollPercentage = Math.min(Math.max(scrollPosition / sectionHeight, 0), 1);
+      
+      // Make the fade-out happen more gradually by using a smaller divisor
+      // This will make the content stay visible longer
+      const scrollPercentage = Math.min(Math.max(scrollPosition / (sectionHeight * 2.5), 0), 1);
       
       // Inverse the opacity based on scroll percentage
       setOpacity(1 - scrollPercentage);
@@ -68,12 +71,12 @@ const Features = () => {
     >
       {/* Overlay that fades out with scroll */}
       <div 
-        className="absolute inset-0 bg-black/70 backdrop-blur-md transition-opacity duration-500"
+        className="absolute inset-0 bg-black/70 backdrop-blur-md transition-opacity duration-700"
         style={{ opacity }}
       ></div>
       
       <div 
-        className="container mx-auto px-6 relative z-10 transition-opacity duration-500"
+        className="container mx-auto px-6 relative z-10 transition-opacity duration-700"
         style={{ opacity }}
       >
         <div className="max-w-3xl mx-auto mb-16 text-center">
@@ -111,7 +114,7 @@ const Features = () => {
       </div>
 
       {/* This div prevents the page from jumping when scrolling */}
-      <div style={{ height: '100vh' }} className="opacity-0"></div>
+      <div style={{ height: '150vh' }} className="opacity-0"></div>
     </section>
   );
 };
