@@ -7,14 +7,24 @@ const Cta = () => {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Video background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-black/70 z-10"></div>
-        <div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0}}>
+        <div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, overflow: 'hidden'}}>
           <iframe 
             src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
             frameBorder="0" 
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-            style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover'}} 
+            style={{
+              position: 'absolute', 
+              top: '50%', 
+              left: '50%', 
+              width: '100%', 
+              height: '100%', 
+              transform: 'translate(-50%, -50%)',
+              objectFit: 'cover',
+              minWidth: '100%',
+              minHeight: '100%'
+            }} 
             title="Background Video"
           ></iframe>
         </div>
