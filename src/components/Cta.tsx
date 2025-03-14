@@ -9,7 +9,7 @@ const Cta = () => {
       {/* Video background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-black/70 z-10"></div>
-        <div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, overflow: 'hidden'}}>
+        <div style={{position: 'absolute', top: 0, left: 0, width: '100vw', height: '100%', zIndex: 0, overflow: 'hidden', marginLeft: 'calc(-50vw + 50%)'}}>
           <iframe 
             src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
             frameBorder="0" 
@@ -18,12 +18,12 @@ const Cta = () => {
               position: 'absolute', 
               top: '50%', 
               left: '50%', 
-              width: '100%', 
-              height: '100%', 
+              width: '120%', 
+              height: '120%', 
               transform: 'translate(-50%, -50%)',
               objectFit: 'cover',
-              minWidth: '100%',
-              minHeight: '100%'
+              minWidth: '120%',
+              minHeight: '120%'
             }} 
             title="Background Video"
           ></iframe>
