@@ -1,41 +1,12 @@
 
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import { Button } from './ui/button';
 
 const Cta = () => {
-  // Nastavitve ozadja
-  const useImageFallback = true; // Spremenite na false, če želite uporabiti video
-  const backgroundImageUrl = "/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png"; // Uporabi eno od že naloženih slik
-  
-  // Video URL (deluje le, če je useImageFallback nastavljen na false)
-  const videoUrl = "https://example.com/your-video.mp4"; // Nadomestite z URL-jem videa
-
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Ozadje - slika ali video */}
-      <div className="absolute inset-0 z-0">
-        {useImageFallback ? (
-          // Slikovno ozadje
-          <div 
-            className="absolute inset-0 w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: `url(${backgroundImageUrl})` }}
-          ></div>
-        ) : (
-          // Video ozadje
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source src={videoUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        )}
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
-      </div>
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-luxury opacity-95 z-0"></div>
       
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent"></div>
@@ -64,18 +35,13 @@ const Cta = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-            <Button 
-              className="bg-gold-500 text-black px-8 py-4 h-auto rounded-xl font-medium hover:bg-gold-600 transition-colors"
-            >
+            <button className="bg-gold-500 text-black px-8 py-4 rounded-xl font-medium hover:bg-gold-600 transition-colors flex items-center justify-center">
               <span>Invest Now</span>
               <ArrowRight size={18} className="ml-2" />
-            </Button>
-            <Button 
-              variant="outline"
-              className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-4 h-auto rounded-xl font-medium hover:bg-white/20 transition-colors"
-            >
+            </button>
+            <button className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-4 rounded-xl font-medium hover:bg-white/20 transition-colors">
               View Whitepaper
-            </Button>
+            </button>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
