@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
@@ -7,8 +8,10 @@ const Hero = () => {
   const financialRef = useRef<HTMLSpanElement>(null);
   const secureRef = useRef<HTMLSpanElement>(null);
   const futureRef = useRef<HTMLSpanElement>(null);
+  const audioRef = useRef<HTMLIFrameElement>(null);
   const [scrollLocked, setScrollLocked] = useState(true);
   const [showOrbit, setShowOrbit] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [marketData, setMarketData] = useState({
     marketCap: '$1.8B+',
     holders: '4,400+'
@@ -115,6 +118,21 @@ const Hero = () => {
       top: window.innerHeight,
       behavior: 'smooth'
     });
+    
+    // Start playing music when button is clicked
+    if (audioRef.current && !isPlaying) {
+      // Load and play YouTube audio
+      if (audioRef.current.src === '') {
+        audioRef.current.src = 'https://www.youtube.com/embed/AKDLoUSaPV8?autoplay=1';
+      } else {
+        // If already loaded, just play it (for future play/pause functionality)
+        const contentWindow = audioRef.current.contentWindow;
+        if (contentWindow) {
+          contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        }
+      }
+      setIsPlaying(true);
+    }
   };
 
   return (
@@ -139,6 +157,18 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      {/* Hidden YouTube audio player */}
+      <iframe 
+        ref={audioRef}
+        className="hidden" 
+        width="0" 
+        height="0" 
+        frameBorder="0" 
+        allow="autoplay; encrypted-media" 
+        allowFullScreen
+        title="Background Music"
+      ></iframe>
 
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden z-10">
         <div className="container mx-auto px-6 relative z-10">
