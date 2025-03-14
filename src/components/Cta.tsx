@@ -1,12 +1,24 @@
-
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
 const Cta = () => {
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-luxury opacity-95 z-0"></div>
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/video-background.mp4" type="video/mp4" />
+          {/* Fallback če brskalnik ne podpira video elementa */}
+          Your browser does not support the video tag.
+        </video>
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+      </div>
       
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent"></div>
