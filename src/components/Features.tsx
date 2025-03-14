@@ -20,11 +20,11 @@ const Features = () => {
       // Calculate how far we've scrolled into the section
       const scrollIntoSection = scrollY - sectionTop + viewportHeight;
       
-      // We want to start fading when we've scrolled about 20% into the viewport
-      const fadeStart = viewportHeight * 0.2;
+      // Start fading much earlier - at 10% into the viewport
+      const fadeStart = viewportHeight * 0.1;
       
-      // End fading when we're 80% through the viewport
-      const fadeEnd = viewportHeight * 0.8;
+      // End fading much later - at 150% of viewport height for a longer fade
+      const fadeEnd = viewportHeight * 1.5;
       
       // Calculate opacity based on scroll position
       if (scrollIntoSection < fadeStart) {
