@@ -13,13 +13,12 @@ const Features = () => {
 
       const rect = featuresSection.getBoundingClientRect();
       const sectionTop = rect.top;
-      const sectionHeight = rect.height;
       const windowHeight = window.innerHeight;
       
       // Calculate scroll progress through the section
       // Start fading when we're 20% into the section
       const scrollStart = windowHeight * 0.2;
-      const scrollEnd = windowHeight * 0.6; // End fading at 60% through
+      const scrollEnd = windowHeight * 0.8; // End fading at 80% through for a smoother transition
       
       // How far have we scrolled into the section (normalized from 0 to 1)
       let scrollProgress = 0;
@@ -44,12 +43,13 @@ const Features = () => {
   return (
     <section 
       id="features" 
-      className="py-24 text-white relative overflow-hidden min-h-[100vh]"
+      className="py-24 text-white fixed w-full h-screen overflow-hidden"
       style={{
         backgroundImage: "url('/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundRepeat: "no-repeat"
+        backgroundRepeat: "no-repeat",
+        zIndex: -2
       }}
     >
       {/* Overlay that fades out with scroll */}
