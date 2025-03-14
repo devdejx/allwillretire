@@ -1,58 +1,23 @@
 
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { ArrowUpRight, Lock, TrendingUp, Wallet, CoinsIcon, Users, LineChart } from 'lucide-react';
 
 const Features = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const sectionRef = useRef<HTMLElement>(null);
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      
-      const { top, height } = sectionRef.current.getBoundingClientRect();
-      const scrollPercentage = Math.max(0, Math.min(1, -top / (height * 0.6)));
-      setScrollPosition(scrollPercentage);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Calculate opacity based on scroll position
-  const overlayOpacity = Math.max(0, 0.7 - scrollPosition * 0.7);
-  const contentOpacity = Math.max(0, 1 - scrollPosition * 1.2);
-
   return (
     <section 
-      ref={sectionRef}
       id="features" 
-      className="py-24 text-white relative"
+      className="py-24 text-white relative overflow-hidden"
       style={{
-        minHeight: "100vh"
+        backgroundImage: "url('/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat"
       }}
     >
-      {/* Fixed background image */}
-      <div 
-        className="fixed inset-0 -z-10"
-        style={{
-          backgroundImage: "url('/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      ></div>
+      {/* Overlay to ensure text is readable */}
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
       
-      {/* Overlay with dynamic opacity */}
-      <div 
-        className="fixed inset-0 bg-black transition-opacity duration-300 -z-10"
-        style={{ opacity: overlayOpacity }}
-      ></div>
-      
-      <div 
-        className="container mx-auto px-6 relative z-10 transition-opacity duration-300"
-        style={{ opacity: contentOpacity }}
-      >
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl mx-auto mb-16 text-center">
           <div className="inline-block mb-4">
             <span className="uppercase tracking-wider text-sm font-medium text-gold-400">
@@ -86,9 +51,6 @@ const Features = () => {
           </div>
         </div>
       </div>
-      
-      {/* This is a spacer to ensure the fade effect has room to complete */}
-      <div className="h-screen"></div>
     </section>
   );
 };
