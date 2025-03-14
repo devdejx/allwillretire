@@ -22,8 +22,8 @@ const Cta = () => {
         </div>
       </div>
       
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent z-10"></div>
+      {/* Decorative elements - made top line thicker (h-1 instead of h-px) */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/50 to-transparent z-10"></div>
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent z-10"></div>
       
       {/* Added side gradients to blend the edges */}
