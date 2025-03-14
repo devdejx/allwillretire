@@ -1,23 +1,66 @@
 
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { ArrowUpRight, Lock, TrendingUp, Wallet, CoinsIcon, Users, LineChart } from 'lucide-react';
 
 const Features = () => {
+  const [scrollOpacity, setScrollOpacity] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      
+      const rect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Calculate how far into the section we've scrolled
+      // Start with 0 opacity when section just enters viewport
+      // Reach full opacity when section is 30% into the viewport
+      let opacity = 0;
+      
+      if (rect.top < windowHeight && rect.bottom > 0) {
+        // Calculate progress based on how far we've scrolled into the section
+        const progress = Math.max(0, Math.min(1, (windowHeight - rect.top) / (windowHeight * 0.3)));
+        opacity = progress;
+      }
+      
+      setScrollOpacity(opacity);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initialize on mount
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <section 
       id="features" 
-      className="py-24 text-white relative overflow-hidden"
+      ref={sectionRef}
+      className="py-24 text-white relative overflow-hidden min-h-screen"
       style={{
         backgroundImage: "url('/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundRepeat: "no-repeat"
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed"
       }}
     >
-      {/* Overlay to ensure text is readable */}
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+      {/* Overlay with dynamic opacity based on scroll */}
+      <div 
+        className="absolute inset-0 bg-black backdrop-blur-sm transition-opacity duration-500"
+        style={{ 
+          opacity: scrollOpacity,
+          backdropFilter: `blur(${scrollOpacity * 5}px)`
+        }}
+      ></div>
       
-      <div className="container mx-auto px-6 relative z-10">
+      <div 
+        className="container mx-auto px-6 relative z-10 transition-opacity duration-500"
+        style={{ opacity: scrollOpacity }}
+      >
         <div className="max-w-3xl mx-auto mb-16 text-center">
           <div className="inline-block mb-4">
             <span className="uppercase tracking-wider text-sm font-medium text-gold-400">
