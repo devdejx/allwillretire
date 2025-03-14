@@ -1,20 +1,31 @@
 
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Button } from './ui/button';
 
 const Cta = () => {
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-luxury opacity-95 z-0"></div>
+      {/* Video background */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-black/70 z-10"></div>
+        <iframe 
+          className="w-full h-full absolute inset-0 z-0"
+          src="https://player.vimeo.com/video/1065934410?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
+          frameBorder="0"
+          allow="autoplay; fullscreen"
+          allowFullScreen
+          title="Background Video"
+        ></iframe>
+      </div>
       
       {/* Decorative elements */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent"></div>
-      <div className="absolute top-10 right-10 w-20 h-20 bg-gold-500/20 rounded-full blur-xl"></div>
-      <div className="absolute bottom-10 left-10 w-20 h-20 bg-gold-500/20 rounded-full blur-xl"></div>
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent z-10"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent z-10"></div>
+      <div className="absolute top-10 right-10 w-20 h-20 bg-gold-500/20 rounded-full blur-xl z-10"></div>
+      <div className="absolute bottom-10 left-10 w-20 h-20 bg-gold-500/20 rounded-full blur-xl z-10"></div>
       
-      <div className="container mx-auto px-6 relative z-10 text-white">
+      <div className="container mx-auto px-6 relative z-20 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-block mb-6">
             <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium">
