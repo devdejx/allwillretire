@@ -10,7 +10,7 @@ const Cta = () => {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-black/70 z-10"></div>
         
-        {/* First video */}
+        {/* Main video */}
         <div style={{position: 'absolute', top: 0, left: 0, width: '100vw', height: '100%', zIndex: 0, overflow: 'hidden', marginLeft: 'calc(-50vw + 50%)'}}>
           <iframe 
             src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
