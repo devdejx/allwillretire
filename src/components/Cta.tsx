@@ -53,21 +53,6 @@ their luxurious future with AllWillRetire.</p>
               View Whitepaper
             </button>
           </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3">
-              <div className="text-2xl font-display font-bold mb-1">15%</div>
-              <div className="text-xs text-gray-400">Early Investor Bonus</div>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3">
-              <div className="text-2xl font-display font-bold mb-1">24/7</div>
-              <div className="text-xs text-gray-400">Support Available</div>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3">
-              <div className="text-2xl font-display font-bold mb-1">100%</div>
-              <div className="text-xs text-gray-400">Secure Transactions</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>;
