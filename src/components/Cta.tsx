@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
@@ -41,7 +40,7 @@ const Cta = () => {
             </span>
           </h2>
           
-          <p className="text-base text-gray-300 mb-8 max-w-xl mx-auto">Join thousands of forward-thinking people who are already securing 
+          <p className="text-gray-300 mb-8 max-w-xl mx-auto text-base">Join thousands of forward-thinking people who are already securing 
 their luxurious future with AllWillRetire.</p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
