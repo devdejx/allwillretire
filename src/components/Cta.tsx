@@ -1,22 +1,38 @@
+
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
 const Cta = () => {
+  // Uporabite sliko za ozadje, če video ni na voljo
+  const useImageFallback = true;
+  const backgroundImageUrl = "/background-image.jpg"; // Nadomestite s potjo do vaše slike
+  
+  // Če imate video na zunanji povezavi, uporabite to
+  const videoUrl = "https://example.com/your-video.mp4"; // Nadomestite s pravo povezavo do videa
+
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Video Background */}
+      {/* Ozadje - slika ali video */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/video-background.mp4" type="video/mp4" />
-          {/* Fallback če brskalnik ne podpira video elementa */}
-          Your browser does not support the video tag.
-        </video>
+        {useImageFallback ? (
+          // Slikovno ozadje
+          <div 
+            className="absolute inset-0 w-full h-full bg-cover bg-center"
+            style={{ backgroundImage: `url(${backgroundImageUrl})` }}
+          ></div>
+        ) : (
+          // Video ozadje
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src={videoUrl} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )}
         <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
       </div>
       
