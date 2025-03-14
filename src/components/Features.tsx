@@ -27,18 +27,25 @@ const Features = () => {
     <section 
       ref={sectionRef}
       id="features" 
-      className="py-24 text-white relative overflow-hidden"
+      className="py-24 text-white relative"
       style={{
-        backgroundImage: "url('/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
         minHeight: "100vh"
       }}
     >
+      {/* Fixed background image */}
+      <div 
+        className="fixed inset-0 -z-10"
+        style={{
+          backgroundImage: "url('/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      ></div>
+      
       {/* Overlay with dynamic opacity */}
       <div 
-        className="absolute inset-0 bg-black transition-opacity duration-300"
+        className="fixed inset-0 bg-black transition-opacity duration-300 -z-10"
         style={{ opacity: overlayOpacity }}
       ></div>
       
