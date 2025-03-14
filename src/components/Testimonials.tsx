@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Quote, ExternalLink } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -9,7 +10,7 @@ const mediumArticles = [
     title: "Why Now Is The Perfect Time To Tell Our Story",
     publishDate: "May 15, 2023",
     readTime: "5 min read",
-    image: "/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png",
+    image: "/lovable-uploads/9736f09c-0f57-4e9f-86de-eb5f875fad9b.png",
     excerpt: "The current macroeconomic environment has changed the way we think about personal finance, security, and wealth. With traditional systems showing their vulnerabilities, people are looking for alternatives that provide both stability and growth potential. That's exactly what AllWillRetire offers - a community-driven approach to financial security that empowers individuals...",
     url: "https://medium.com/@allwillretire/why-now-is-the-perfect-time-to-tell-our-story-c8a2ab6b8943"
   },
@@ -17,7 +18,7 @@ const mediumArticles = [
     title: "Introducing AWR: Life By Design",
     publishDate: "June 5, 2023",
     readTime: "4 min read",
-    image: "/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png",
+    image: "/lovable-uploads/82199989-9426-49c0-b494-3fe93ddaac2a.png",
     excerpt: "AWR is more than just a token - it's a movement towards financial independence and empowerment. In this article, we introduce our vision for a life by design, where community members take control of their financial future through innovative blockchain solutions. We discuss the core principles that guide our project and how we're building something truly unique...",
     url: "https://medium.com/@allwillretire/introducing-awr-life-by-design-6ebeb3bfced3"
   },
@@ -25,7 +26,7 @@ const mediumArticles = [
     title: "All Will Retire: Vision Statement",
     publishDate: "July 10, 2023",
     readTime: "6 min read",
-    image: "/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png",
+    image: "/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png",
     excerpt: "Our vision at AllWillRetire is to create a world where financial freedom is accessible to everyone. Through community collaboration, innovative technology, and a shared commitment to mutual success, we're building a platform that enables people from all walks of life to achieve their retirement goals. This vision statement outlines our core values, long-term objectives, and the roadmap that will guide our journey...",
     url: "https://medium.com/@allwillretire/all-will-retire-vision-statement-ea7ee2e09943"
   },
