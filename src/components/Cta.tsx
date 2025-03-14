@@ -1,8 +1,6 @@
-
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
-
 const Cta = () => {
   return <section className="py-24 relative overflow-hidden">
       {/* Video background */}
@@ -31,24 +29,19 @@ const Cta = () => {
       <div className="container mx-auto px-6 relative z-20 text-white pt-0">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-block mb-10 mt-[-40px]">
-            <img 
-              src="/lovable-uploads/d523f3bd-5ac2-4e42-9b2b-0e3c68db822c.png" 
-              alt="AWR Lifestyle" 
-              className="h-28 w-auto mx-auto"
-            />
+            <img src="/lovable-uploads/d523f3bd-5ac2-4e42-9b2b-0e3c68db822c.png" alt="AWR Lifestyle" className="h-28 w-auto mx-auto" />
           </div>
           
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
             Begin Your Journey to 
             <span className="relative ml-2">
-              <span className="relative z-10">Luxury</span>
+              <span className="relative z-10">Prosperity</span>
               <span className="absolute -bottom-1 left-0 right-0 h-2 bg-gold-500/30 rounded-full"></span>
             </span>
           </h2>
           
-          <p className="text-base text-gray-300 mb-8 max-w-xl mx-auto">
-            Join thousands of forward-thinking investors who are already securing their luxurious future with AllWillRetire.
-          </p>
+          <p className="text-base text-gray-300 mb-8 max-w-xl mx-auto">Join thousands of forward-thinking people who are already securing 
+their luxurious future with AllWillRetire.</p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
             <button className="bg-gold-500 text-black px-6 py-3 rounded-xl font-medium hover:bg-gold-600 transition-colors flex items-center justify-center">
@@ -82,5 +75,4 @@ const Cta = () => {
       </div>
     </section>;
 };
-
 export default Cta;
