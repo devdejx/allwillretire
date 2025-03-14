@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import { ArrowUpRight, Lock, TrendingUp, Wallet, CoinsIcon, Users, LineChart } from 'lucide-react';
 const Features = () => {
@@ -61,25 +62,16 @@ const Features = () => {
           
           <p className="text-lg text-gray-300 mb-8">*Makes its community members highly visible — we don't hide behind profile pictures or reduce ourselves to the sum of our social media timelines</p>
           
-          <p className="text-lg text-gray-300 mb-8">*Is a family that provides emotional utility around being accepted for who you are regardless of our differences, the ability to self-express your feelings/views to the world, and have a global community to identify with based on the underlying message that everyone deserves financial security</p>
+          <p className="text-lg text-gray-300 mb-8">*Is a family that provides emotional utility around being accepted for who you are regardless of our differences, the ability to self-express your feelings/views to the world, and have a global community to identify with based on the underlying message that everyone deserves financial security</p>
         </div>
         
         <div className="mt-20 max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-gold-500/10 to-transparent p-8 rounded-2xl backdrop-blur-sm border border-gold-500/20">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-display font-bold mb-2">$0.0025</div>
-                <div className="text-sm text-gray-400">Current Price</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-display font-bold mb-2">15%</div>
-                <div className="text-sm text-gray-400">Monthly Growth</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-display font-bold mb-2">10B</div>
-                <div className="text-sm text-gray-400">Max Supply</div>
-              </div>
-            </div>
+          <div className="rounded-2xl overflow-hidden">
+            <img 
+              src="/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png" 
+              alt="AllWillRetire Community Members" 
+              className="w-full h-auto"
+            />
           </div>
         </div>
       </div>
