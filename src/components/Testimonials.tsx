@@ -10,7 +10,7 @@ const mediumArticles = [
     title: "Why Now Is The Perfect Time To Tell Our Story",
     publishDate: "May 15, 2023",
     readTime: "5 min read",
-    image: "/lovable-uploads/9736f09c-0f57-4e9f-86de-eb5f875fad9b.png",
+    image: "/lovable-uploads/8e2a39de-5cfb-4f08-a1c9-de20997a9884.png",
     excerpt: "The current macroeconomic environment has changed the way we think about personal finance, security, and wealth. With traditional systems showing their vulnerabilities, people are looking for alternatives that provide both stability and growth potential. That's exactly what AllWillRetire offers - a community-driven approach to financial security that empowers individuals...",
     url: "https://medium.com/@allwillretire/why-now-is-the-perfect-time-to-tell-our-story-c8a2ab6b8943"
   },
