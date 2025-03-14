@@ -1,11 +1,9 @@
-
 import React, { useState } from 'react';
 import { Coins, Shield, TrendingUp, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
-
 const About = () => {
   const [showCoinOrbit, setShowCoinOrbit] = useState(false);
 
@@ -41,7 +39,6 @@ const About = () => {
     month: 'Oct',
     value: 350
   }];
-
   return <section id="about" className="py-24 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute top-1/4 -right-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
@@ -128,16 +125,16 @@ const About = () => {
                     {/* Engraved text with shadow effect - SMALLER TEXT with each phrase on its own line */}
                     <div className="text-center z-10">
                       <div className="font-artistic text-sm mb-0.5 text-gold-800 font-bold tracking-wider flex flex-col" style={{
-                        textShadow: "0 0.5px 0 rgba(255,255,255,0.4)"
-                      }}>
+                      textShadow: "0 0.5px 0 rgba(255,255,255,0.4)"
+                    }}>
                         <span>I will retire</span>
                         <span>we will retire</span>
                         <span>all will retire</span>
                       </div>
                       <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-700 to-transparent my-0.5"></div>
                       <div className="font-elegant text-[9px] text-gold-900 italic" style={{
-                        textShadow: "0 0.3px 0 rgba(255,255,255,0.3)"
-                      }}>
+                      textShadow: "0 0.3px 0 rgba(255,255,255,0.3)"
+                    }}>
                         Financial Freedom Awaits
                       </div>
                       
@@ -145,11 +142,11 @@ const About = () => {
                       <div className="mt-1 h-[20px] w-full">
                         <ResponsiveContainer width="100%" height="100%">
                           <AreaChart data={goldGrowthData} margin={{
-                            top: 0,
-                            right: 0,
-                            left: 0,
-                            bottom: 0
-                          }}>
+                          top: 0,
+                          right: 0,
+                          left: 0,
+                          bottom: 0
+                        }}>
                             <defs>
                               <linearGradient id="colorGold" x1="0" y1="0" x2="0" y2="1">
                                 <stop offset="5%" stopColor="#FFC300" stopOpacity={0.8} />
@@ -197,10 +194,8 @@ const About = () => {
                   <Shield size={24} className="text-gold-500" />
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">Unparalleled Security</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Built on a reinforced blockchain with advanced security protocols to protect your assets.
-                  </p>
+                  <h4 className="font-semibold mb-1">Cryptocurrency Based</h4>
+                  <p className="text-sm text-muted-foreground">Build on a solana network. Right now the biggest, most used and most developed blockchain.</p>
                 </div>
               </div>
 
@@ -210,9 +205,7 @@ const About = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">Strategic Growth</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Our tokenomics are designed to promote sustainable long-term growth and value appreciation.
-                  </p>
+                  <p className="text-sm text-muted-foreground">Our token is designed to promote sustainable long-term growth and value appreciation.</p>
                 </div>
               </div>
 
@@ -221,10 +214,8 @@ const About = () => {
                   <Users size={24} className="text-gold-500" />
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">Reward Mechanisms</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Innovative staking and rewards system to multiply your holdings passively over time.
-                  </p>
+                  <h4 className="font-semibold mb-1">Community Driven</h4>
+                  <p className="text-sm text-muted-foreground">Project is fully community driven. There is no team behind. It was built from scratch by people who believe in AWR movement.</p>
                 </div>
               </div>
             </div>
@@ -233,5 +224,4 @@ const About = () => {
       </div>
     </section>;
 };
-
 export default About;
