@@ -1,24 +1,15 @@
-
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
-
 const Cta = () => {
-  return (
-    <section className="py-24 relative overflow-hidden">
+  return <section className="py-24 relative overflow-hidden">
       {/* Video background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/90 z-10"></div>
         
         {/* Video - positioned to fill the background */}
         <div className="absolute inset-0 w-full h-full overflow-hidden">
-          <iframe 
-            src="https://player.vimeo.com/video/1065939107?h=96cbb5c847&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
-            frameBorder="0" 
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-            className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%]"
-            title="Background Video"
-          ></iframe>
+          <iframe src="https://player.vimeo.com/video/1065939107?h=96cbb5c847&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%]" title="Background Video"></iframe>
         </div>
       </div>
       
@@ -38,9 +29,7 @@ const Cta = () => {
       <div className="container mx-auto px-6 relative z-20 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-block mb-6">
-            <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium">
-              Limited Time Opportunity
-            </span>
+            <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium">Join us</span>
           </div>
           
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
@@ -85,8 +74,6 @@ const Cta = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Cta;
