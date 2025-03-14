@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Quote, ExternalLink } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const testimonials = [
   {
@@ -26,6 +27,7 @@ const testimonials = [
 const Testimonials = () => {
   const [current, setCurrent] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
+  const isMobile = useIsMobile();
 
   const next = () => {
     setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
@@ -57,14 +59,14 @@ const Testimonials = () => {
         <div className="max-w-3xl mx-auto mb-16 text-center">
           <div className="inline-block mb-4">
             <span className="uppercase tracking-wider text-sm font-medium text-muted-foreground">
-              Testimonials
+              Our Story
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
-            What Our <span className="text-gold-500">Community</span> Says
+            Why <span className="text-gold-500">Now</span> Is The Perfect Time
           </h2>
           <p className="text-lg text-muted-foreground">
-            Hear from investors who have already begun their journey to financial freedom with AllWillRetire.
+            Read our latest article on Medium about the AWR journey and vision
           </p>
         </div>
 
@@ -74,33 +76,46 @@ const Testimonials = () => {
             onMouseEnter={() => setAutoplay(false)}
             onMouseLeave={() => setAutoplay(true)}
           >
-            <div 
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${current * 100}%)` }}
-            >
-              {testimonials.map((item, index) => (
-                <div key={index} className="w-full flex-shrink-0 px-4">
-                  <div className="neo-glass rounded-2xl p-8 md:p-12">
-                    <Quote size={40} className="text-gold-500/30 mb-6" />
-                    <blockquote className="text-xl md:text-2xl font-display mb-8">
-                      "{item.quote}"
-                    </blockquote>
-                    <div className="flex items-center">
-                      <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
-                        <img 
-                          src={item.avatar} 
-                          alt={item.author} 
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div>
-                        <div className="font-semibold">{item.author}</div>
-                        <div className="text-sm text-muted-foreground">{item.title}</div>
-                      </div>
-                    </div>
+            <div className="w-full neo-glass rounded-2xl p-8 md:p-12 hover:shadow-lg transition-shadow duration-300">
+              <div className="flex flex-col h-full">
+                <div className="flex items-center mb-6">
+                  <img 
+                    src="/lovable-uploads/1a3e2030-93ba-48a8-bad1-11bf6f691350.png"
+                    alt="Medium" 
+                    className="w-8 h-8 mr-3" 
+                  />
+                  <div>
+                    <h3 className="font-medium">AllWillRetire</h3>
+                    <p className="text-sm text-muted-foreground">May 15, 2023 · 5 min read</p>
                   </div>
                 </div>
-              ))}
+                
+                <h2 className="text-2xl font-bold mb-4">Why Now Is The Perfect Time To Tell Our Story</h2>
+                
+                <div className="mb-6 relative overflow-hidden rounded-lg" style={{ maxHeight: isMobile ? '150px' : '250px' }}>
+                  <img 
+                    src="/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png"
+                    alt="AWR Community" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                
+                <div className="prose prose-sm max-w-none mb-6">
+                  <p className="line-clamp-3 md:line-clamp-4">
+                    The current macroeconomic environment has changed the way we think about personal finance, security, and wealth. With traditional systems showing their vulnerabilities, people are looking for alternatives that provide both stability and growth potential. That's exactly what AllWillRetire offers - a community-driven approach to financial security that empowers individuals...
+                  </p>
+                </div>
+                
+                <a 
+                  href="https://medium.com/@allwillretire/why-now-is-the-perfect-time-to-tell-our-story-c8a2ab6b8943" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center text-gold-600 hover:text-gold-700 font-medium"
+                >
+                  Read the full article on Medium
+                  <ExternalLink className="ml-2 h-4 w-4" />
+                </a>
+              </div>
             </div>
           </div>
 
