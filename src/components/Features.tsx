@@ -20,19 +20,20 @@ const Features = () => {
       // Calculate how far we've scrolled into the section
       const scrollIntoSection = scrollY - sectionTop + viewportHeight;
       
-      // We want to start fading when we've scrolled about 20% into the viewport
-      const fadeStart = viewportHeight * 0.2;
+      // Adjust the fade points to make the content stay visible longer
+      // Start fading much later (at 50% of viewport height)
+      const fadeStart = viewportHeight * 0.5;
       
-      // End fading when we're 80% through the viewport
-      const fadeEnd = viewportHeight * 0.8;
+      // End fading much later (at 200% of viewport height)
+      const fadeEnd = viewportHeight * 2;
       
       // Calculate opacity based on scroll position
       if (scrollIntoSection < fadeStart) {
-        setOpacity(1); // Not scrolled enough, keep content visible
+        setOpacity(1); // Not scrolled enough, keep content fully visible
       } else if (scrollIntoSection > fadeEnd) {
         setOpacity(0); // Scrolled past threshold, hide content
       } else {
-        // Calculate opacity between 1 and 0
+        // Calculate opacity between 1 and 0, but with a slower transition
         const fadeRange = fadeEnd - fadeStart;
         const fadeProgress = (scrollIntoSection - fadeStart) / fadeRange;
         setOpacity(Math.max(0, 1 - fadeProgress));
@@ -61,12 +62,12 @@ const Features = () => {
     >
       {/* Overlay that fades out with scroll */}
       <div 
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300"
+        className="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-500"
         style={{ opacity }}
       ></div>
       
       <div 
-        className="container mx-auto px-6 relative z-10 transition-opacity duration-300"
+        className="container mx-auto px-6 relative z-10 transition-opacity duration-500"
         style={{ opacity }}
       >
         <div className="max-w-3xl mx-auto mb-16 text-center">
