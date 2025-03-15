@@ -10,6 +10,17 @@ interface MuteButtonProps {
 const MuteButton = ({ className }: MuteButtonProps) => {
   const [isMuted, setIsMuted] = useState(false);
 
+  useEffect(() => {
+    // Load Vimeo player API if it's not already loaded
+    if (!window.Vimeo && !document.getElementById('vimeo-player-api')) {
+      const script = document.createElement('script');
+      script.id = 'vimeo-player-api';
+      script.src = 'https://player.vimeo.com/api/player.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
+
   const toggleMute = () => {
     setIsMuted(prev => !prev);
     
@@ -25,6 +36,20 @@ const MuteButton = ({ className }: MuteButtonProps) => {
           iframe.contentWindow?.postMessage(message, '*');
         } catch (error) {
           console.error('Error sending message to iframe:', error);
+        }
+      }
+      
+      // Handle Vimeo videos
+      if (iframe.src.includes('vimeo.com') && window.Vimeo) {
+        try {
+          const player = new window.Vimeo.Player(iframe);
+          if (isMuted) {
+            player.setVolume(1);
+          } else {
+            player.setVolume(0);
+          }
+        } catch (error) {
+          console.error('Error controlling Vimeo player:', error);
         }
       }
     });
@@ -48,5 +73,14 @@ const MuteButton = ({ className }: MuteButtonProps) => {
     </button>
   );
 };
+
+// Add Vimeo Player type for TypeScript
+declare global {
+  interface Window {
+    Vimeo?: {
+      Player: any;
+    };
+  }
+}
 
 export default MuteButton;
