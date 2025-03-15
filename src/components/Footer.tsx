@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { X, Instagram, Youtube, ArrowUp, ExternalLink, MessageSquare } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, Github, ArrowUp } from 'lucide-react';
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -24,36 +23,37 @@ const Footer = () => {
               The future of wealth accumulation, designed to secure your luxurious retirement with innovative blockchain technology.
             </p>
             <div className="flex space-x-4">
-              <a href="https://x.com/allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
-                <X size={20} />
+              <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors">
+                <Twitter size={20} />
               </a>
-              <a href="https://t.me/allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
-                <MessageSquare size={20} />
+              <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors">
+                <Facebook size={20} />
               </a>
-              <a href="https://www.instagram.com/allwillretire/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
+              <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="https://www.youtube.com/@allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
-                <Youtube size={20} />
+              <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors">
+                <Linkedin size={20} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors">
+                <Github size={20} />
               </a>
             </div>
           </div>
           
           <div>
             <h3 className="text-lg font-semibold mb-6">Quick links</h3>
-            <p className="text-gray-400 mb-4">Find more about AWR on CoinGecko/Dexscreener.</p>
-            <div className="flex flex-col sm:flex-row gap-3 mb-6">
-              <a href="https://www.coingecko.com/en/coins/all-will-retire" target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-gold-500 text-black px-4 py-2 rounded-lg hover:bg-gold-600 transition-colors">
-                Visit CoinGecko <ExternalLink size={18} className="ml-2" />
-              </a>
-              <a href="https://dexscreener.com/solana/fo7vnhaddvnmx4axjo7cc1wwb9ko2pk2dfdzl3dybxkp" target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-gold-500 text-black px-4 py-2 rounded-lg hover:bg-gold-600 transition-colors">
-                Visit Dexscreener <ExternalLink size={18} className="ml-2" />
-              </a>
-            </div>
+            <p className="text-gray-400 mb-4">Find more about AWR on coingecko/coinmarketcap.</p>
+            <form className="mb-6">
+              <div className="flex">
+                <input type="email" placeholder="Your email address" className="bg-white/10 border border-white/20 rounded-l-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-gold-500" />
+                <button type="submit" className="bg-gold-500 text-black px-4 py-2 rounded-r-lg hover:bg-gold-600 transition-colors">
+                  Subscribe
+                </button>
+              </div>
+            </form>
             <div className="text-sm text-gray-500">
-              <a href="https://linktr.ee/allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
-                Find all AWR links <ExternalLink size={14} className="inline ml-1" />
-              </a>
+              By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
             </div>
           </div>
         </div>
