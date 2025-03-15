@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
@@ -145,7 +146,7 @@ const Cta = () => {
             </h2>
             
             <p className="text-gray-300 mb-8 max-w-xl mx-auto text-xs">
-              Financial freedom is not about having money, its about having choices.
+              Join our movement and start believing.
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
