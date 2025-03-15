@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, Github, ArrowUp } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, Github, ArrowUp, ExternalLink } from 'lucide-react';
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -44,14 +45,16 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6">Quick links</h3>
             <p className="text-gray-400 mb-4">Find more about AWR on coingecko/coinmarketcap.</p>
-            <form className="mb-6">
-              <div className="flex">
-                <input type="email" placeholder="Your email address" className="bg-white/10 border border-white/20 rounded-l-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-gold-500" />
-                <button type="submit" className="bg-gold-500 text-black px-4 py-2 rounded-r-lg hover:bg-gold-600 transition-colors">
-                  Subscribe
-                </button>
-              </div>
-            </form>
+            <div className="mb-6">
+              <a 
+                href="https://www.coingecko.com/en/coins/all-will-retire"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center bg-gold-500 text-black px-4 py-2 rounded-lg hover:bg-gold-600 transition-colors"
+              >
+                Visit CoinGecko <ExternalLink size={18} className="ml-2" />
+              </a>
+            </div>
             <div className="text-sm text-gray-500">
               By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
             </div>
