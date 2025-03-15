@@ -60,16 +60,6 @@ const Footer = () => {
                   <ExternalLink size={14} className="ml-1" />
                 </a>
               </li>
-              {['Features', 'Community', 'Roadmap', 'Whitepaper', 'Team'].map((item) => (
-                <li key={item}>
-                  <a 
-                    href={`#${item.toLowerCase()}`}
-                    className="text-gray-400 hover:text-white transition-colors block"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
             </ul>
           </div>
         </div>
