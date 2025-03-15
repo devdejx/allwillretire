@@ -101,7 +101,8 @@ const Cta = () => {
               who are already securing their luxurious future with AllWillRetire.
             </p>
             
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
+            {/* This empty div was causing the layout issue - adding min-height to match the height when button was present */}
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10 min-h-[48px]">
               {/* Button removed from here */}
             </div>
           </div>
