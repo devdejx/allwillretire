@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { X, Instagram, ArrowUp, ExternalLink, Youtube, Send, Music } from 'lucide-react';
 import { Button } from './ui/button';
@@ -23,7 +22,6 @@ const Footer = () => {
           <div>
             <a href="#" className="inline-block text-2xl font-display font-bold mb-6 flex items-center">
               <span className="mr-2 text-gold-500 text-3xl">⦿</span>
-              <span>AllWillRetire</span>
             </a>
             <p className="text-gray-400 mb-6">
               The future of wealth accumulation, designed to secure your luxurious retirement with innovative blockchain technology.
