@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { X, Instagram, Linkedin, Github, ArrowUp, ExternalLink, Youtube, Send } from 'lucide-react';
+import { X, Instagram, ArrowUp, ExternalLink, Youtube, Send } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Footer = () => {
@@ -51,9 +51,6 @@ const Footer = () => {
               </a>
               <a href="https://t.me/allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
                 <Send size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors">
-                <Github size={20} />
               </a>
             </div>
           </div>
