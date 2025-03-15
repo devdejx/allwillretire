@@ -38,7 +38,7 @@ const Navbar = () => {
           className="relative text-2xl font-display font-bold flex items-center"
         >
           <img 
-            src="/lovable-uploads/478658b3-5853-4394-af3e-82b264c6d23d.png" 
+            src="/lovable-uploads/9736f09c-0f57-4e9f-86de-eb5f875fad9b.png" 
             alt="AWR Lifestyle" 
             className="mr-2 h-12 w-auto"
           />
