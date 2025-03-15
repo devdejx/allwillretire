@@ -39,21 +39,56 @@ const Footer = () => {
               </h3>
             </div>
             
-            <div className="flex space-x-4">
-              <a href="https://x.com/allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
-                <X size={20} />
+            <div className="flex space-x-6">
+              <a 
+                href="https://x.com/allwillretire" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-gold-500 transition-colors transform hover:scale-110 group"
+              >
+                <div className="p-3 rounded-full bg-black border border-gold-500/30 group-hover:border-gold-500 shadow-[0_0_10px_rgba(255,195,0,0.2)] group-hover:shadow-[0_0_15px_rgba(255,195,0,0.4)]">
+                  <X size={24} className="group-hover:animate-pulse" />
+                </div>
               </a>
-              <a href="https://www.youtube.com/@allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
-                <Youtube size={20} />
+              <a 
+                href="https://www.youtube.com/@allwillretire" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-gold-500 transition-colors transform hover:scale-110 group"
+              >
+                <div className="p-3 rounded-full bg-black border border-gold-500/30 group-hover:border-gold-500 shadow-[0_0_10px_rgba(255,195,0,0.2)] group-hover:shadow-[0_0_15px_rgba(255,195,0,0.4)]">
+                  <Youtube size={24} className="group-hover:animate-pulse" />
+                </div>
               </a>
-              <a href="https://www.instagram.com/awrlifebydesign/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
-                <Instagram size={20} />
+              <a 
+                href="https://www.instagram.com/awrlifebydesign/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-gold-500 transition-colors transform hover:scale-110 group"
+              >
+                <div className="p-3 rounded-full bg-black border border-gold-500/30 group-hover:border-gold-500 shadow-[0_0_10px_rgba(255,195,0,0.2)] group-hover:shadow-[0_0_15px_rgba(255,195,0,0.4)]">
+                  <Instagram size={24} className="group-hover:animate-pulse" />
+                </div>
               </a>
-              <a href="https://t.me/allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
-                <Send size={20} />
+              <a 
+                href="https://t.me/allwillretire" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-gold-500 transition-colors transform hover:scale-110 group"
+              >
+                <div className="p-3 rounded-full bg-black border border-gold-500/30 group-hover:border-gold-500 shadow-[0_0_10px_rgba(255,195,0,0.2)] group-hover:shadow-[0_0_15px_rgba(255,195,0,0.4)]">
+                  <Send size={24} className="group-hover:animate-pulse" />
+                </div>
               </a>
-              <a href="https://www.tiktok.com/@allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
-                <Music size={20} />
+              <a 
+                href="https://www.tiktok.com/@allwillretire" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-gold-500 transition-colors transform hover:scale-110 group"
+              >
+                <div className="p-3 rounded-full bg-black border border-gold-500/30 group-hover:border-gold-500 shadow-[0_0_10px_rgba(255,195,0,0.2)] group-hover:shadow-[0_0_15px_rgba(255,195,0,0.4)]">
+                  <Music size={24} className="group-hover:animate-pulse" />
+                </div>
               </a>
             </div>
           </div>
