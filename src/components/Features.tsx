@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
-import { ArrowUpRight, Lock, TrendingUp, Wallet, CoinsIcon, Users, LineChart } from 'lucide-react';
+import { ArrowUpRight, Lock, TrendingUp, Wallet, CoinsIcon, Users, LineChart, ChevronDown } from 'lucide-react';
+import { ScrollArea } from './ui/scroll-area';
 
 const Features = () => {
   const [opacity, setOpacity] = useState(1);
@@ -67,6 +68,19 @@ const Features = () => {
           <p className="text-lg text-gray-300 mb-8">*Makes its community members highly visible — we don't hide behind profile pictures or reduce ourselves to the sum of our social media timelines</p>
           
           <p className="text-lg text-gray-300 mb-8">*Is a family that provides emotional utility around being accepted for who you are regardless of our differences, the ability to self-express your feelings/views to the world, and have a global community to identify with based on the underlying message that everyone deserves financial security</p>
+        </div>
+      </div>
+
+      {/* Luxurious scroll indicator */}
+      <div className="absolute bottom-10 left-0 right-0 flex justify-center items-center z-20 transition-all duration-700" style={{ opacity }}>
+        <div className="flex flex-col items-center gap-3 animate-bounce">
+          <div className="text-gold-400 text-sm tracking-widest uppercase font-artistic">Scroll for more</div>
+          <div className="w-16 h-16 flex justify-center items-center relative">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-b from-gold-400/30 to-gold-600/10 backdrop-blur-sm animate-pulse"></div>
+            <div className="relative z-10">
+              <ChevronDown className="w-8 h-8 text-gold-500 animate-pulse" strokeWidth={1.5} />
+            </div>
+          </div>
         </div>
       </div>
 
