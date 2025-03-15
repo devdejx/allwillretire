@@ -28,6 +28,17 @@ const Footer = () => {
             <p className="text-gray-400 mb-6">
               The future of wealth accumulation, designed to secure your luxurious retirement with innovative blockchain technology.
             </p>
+            
+            {/* New section for social media with luxurious styling */}
+            <div className="mb-8">
+              <h3 className="text-lg font-artistic tracking-wider mb-4 relative inline-block">
+                <span className="bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 bg-clip-text text-transparent font-bold">
+                  Follow us on social media
+                </span>
+                <span className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent"></span>
+              </h3>
+            </div>
+            
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors">
                 <Twitter size={20} />
