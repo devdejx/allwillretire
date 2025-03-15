@@ -22,6 +22,15 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
+  
+  const scrollToBottom = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth',
+    });
+    closeMenu();
+  };
 
   return (
     <header 
@@ -49,7 +58,7 @@ const Navbar = () => {
         </a>
         
         <nav className="hidden md:flex space-x-12 items-center">
-          {['About', 'Community', 'Contact'].map((item) => (
+          {['About', 'Community'].map((item) => (
             <a 
               key={item} 
               href={`#${item.toLowerCase()}`}
@@ -60,6 +69,14 @@ const Navbar = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
+          <a 
+            href="#contact"
+            onClick={scrollToBottom} 
+            className="text-sm font-medium relative group"
+          >
+            <span>Contact</span>
+            <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span>
+          </a>
           <button className="bg-black text-white px-6 py-2 rounded-lg font-medium text-sm hover:opacity-90 transition-opacity">
             Buy Now
           </button>
@@ -83,7 +100,7 @@ const Navbar = () => {
         )}
       >
         <div className="container mx-auto px-6 flex flex-col space-y-4">
-          {['About', 'Community', 'Contact'].map((item) => (
+          {['About', 'Community'].map((item) => (
             <a 
               key={item} 
               href={`#${item.toLowerCase()}`}
@@ -93,6 +110,13 @@ const Navbar = () => {
               {item}
             </a>
           ))}
+          <a 
+            href="#contact"
+            onClick={scrollToBottom} 
+            className="text-base py-2 font-medium"
+          >
+            Contact
+          </a>
           <button className="bg-black text-white px-6 py-3 rounded-lg font-medium text-sm mt-2 hover:opacity-90 transition-opacity">
             Buy Now
           </button>
