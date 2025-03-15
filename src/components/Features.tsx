@@ -54,7 +54,7 @@ const Features = () => {
       <div className="container mx-auto px-6 relative z-10 transition-opacity duration-700" style={{
       opacity
     }}>
-        <div className="max-w-3xl mx-auto mb-16 text-center">
+        <div className="max-w-3xl mx-auto mb-8 text-center">
           <div className="inline-block mb-4">
             <span className="uppercase tracking-wider text-sm font-medium text-gold-400">
               Key Features
@@ -65,20 +65,20 @@ const Features = () => {
           </h2>
           <p className="text-lg text-gray-300 mb-4">*Decentralizes responsibility of growth for AWR and financial security of the individual — everyone is the dev of AWR and their own financial security</p>
           
-          <p className="text-lg text-gray-300 mb-8">*Makes its community members highly visible — we don't hide behind profile pictures or reduce ourselves to the sum of our social media timelines</p>
+          <p className="text-lg text-gray-300 mb-4">*Makes its community members highly visible — we don't hide behind profile pictures or reduce ourselves to the sum of our social media timelines</p>
           
-          <p className="text-lg text-gray-300 mb-8">*Is a family that provides emotional utility around being accepted for who you are regardless of our differences, the ability to self-express your feelings/views to the world, and have a global community to identify with based on the underlying message that everyone deserves financial security</p>
+          <p className="text-lg text-gray-300 mb-4">*Is a family that provides emotional utility around being accepted for who you are regardless of our differences, the ability to self-express your feelings/views to the world, and have a global community to identify with based on the underlying message that everyone deserves financial security</p>
         </div>
-      </div>
-
-      {/* Luxurious scroll indicator */}
-      <div className="absolute bottom-10 left-0 right-0 flex justify-center items-center z-20 transition-all duration-700" style={{ opacity }}>
-        <div className="flex flex-col items-center gap-3 animate-bounce">
-          <div className="text-gold-400 text-sm tracking-widest uppercase font-artistic">Scroll for more</div>
-          <div className="w-16 h-16 flex justify-center items-center relative">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-b from-gold-400/30 to-gold-600/10 backdrop-blur-sm animate-pulse"></div>
-            <div className="relative z-10">
-              <ChevronDown className="w-8 h-8 text-gold-500 animate-pulse" strokeWidth={1.5} />
+        
+        {/* Luxurious scroll indicator - moved up to appear right after the text */}
+        <div className="flex justify-center items-center my-10 z-20 transition-all duration-700">
+          <div className="flex flex-col items-center gap-3 animate-bounce">
+            <div className="text-gold-400 text-sm tracking-widest uppercase font-artistic">Scroll for more</div>
+            <div className="w-16 h-16 flex justify-center items-center relative">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-b from-gold-400/30 to-gold-600/10 backdrop-blur-sm animate-pulse"></div>
+              <div className="relative z-10">
+                <ChevronDown className="w-8 h-8 text-gold-500 animate-pulse" strokeWidth={1.5} />
+              </div>
             </div>
           </div>
         </div>
