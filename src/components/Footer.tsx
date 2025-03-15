@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { X, Instagram, ArrowUp, ExternalLink, Youtube, Send } from 'lucide-react';
+import { X, Instagram, ArrowUp, ExternalLink, Youtube, Send, Music } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Footer = () => {
@@ -51,6 +51,9 @@ const Footer = () => {
               </a>
               <a href="https://t.me/allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
                 <Send size={20} />
+              </a>
+              <a href="https://www.tiktok.com/@allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
+                <Music size={20} />
               </a>
             </div>
           </div>
