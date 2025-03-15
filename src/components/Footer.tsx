@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, Github, ArrowUp, ExternalLink } from 'lucide-react';
+import { Facebook, X, Instagram, Linkedin, Github, ArrowUp, ExternalLink } from 'lucide-react';
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -23,8 +24,8 @@ const Footer = () => {
               The future of wealth accumulation, designed to secure your luxurious retirement with innovative blockchain technology.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors">
-                <Twitter size={20} />
+              <a href="https://x.com/allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
+                <X size={20} />
               </a>
               <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors">
                 <Facebook size={20} />
