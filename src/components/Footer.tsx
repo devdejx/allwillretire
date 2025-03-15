@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           <div>
             <a href="#" className="inline-block text-2xl font-display font-bold mb-6 flex items-center">
-              <img src="/lovable-uploads/dc72b22e-996f-4d01-8525-1c671661db53.png" alt="AWR Lifestyle" className="mr-2 h-20 w-auto" />
+              <img src="/lovable-uploads/73e439bf-9fba-428b-86ad-84fea890807e.png" alt="AWR Lifestyle" className="mr-2 h-20 w-auto" />
             </a>
             <p className="text-gray-400 mb-3">The future of wealth accumulation, designed to secure your luxurious retirement with innovative blockchain technology.</p>
             <div className="inline-block mb-6 py-2 px-4 bg-black border border-gold-500 rounded-lg">
