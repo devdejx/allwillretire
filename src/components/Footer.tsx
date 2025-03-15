@@ -25,7 +25,7 @@ const Footer = () => {
               <img 
                 src="/lovable-uploads/79de4c21-363e-44ae-9950-2529769150cc.png" 
                 alt="AWR Logo" 
-                className="h-10 w-auto mr-2" 
+                className="h-16 w-auto mr-2" 
               />
             </a>
             <p className="text-gray-400 mb-6">
