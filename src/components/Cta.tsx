@@ -43,8 +43,7 @@ const Cta = () => {
             </h2>
             
             <p className="text-gray-300 mb-8 max-w-xl mx-auto text-xs">
-              Join thousands of forward-thinking people<br />
-              who are already securing their luxurious future with AllWillRetire.
+              Financial freedom is not about having money, its about having choices.
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
@@ -96,8 +95,7 @@ const Cta = () => {
             </h2>
             
             <p className="text-gray-300 mb-8 max-w-xl mx-auto text-xs">
-              Join thousands of forward-thinking people<br />
-              who are already securing their luxurious future with AllWillRetire.
+              Financial freedom is not about having money, its about having choices.
             </p>
             
             {/* This empty div was causing the layout issue - adding min-height to match the height when button was present */}
@@ -148,8 +146,7 @@ const Cta = () => {
             </h2>
             
             <p className="text-gray-300 mb-8 max-w-xl mx-auto text-xs">
-              Join thousands of forward-thinking people<br />
-              who are already securing their luxurious future with AllWillRetire.
+              Financial freedom is not about having money, its about having choices.
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
