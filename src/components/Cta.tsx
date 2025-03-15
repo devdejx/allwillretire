@@ -84,10 +84,9 @@ const Cta = () => {
         
         <div className="container mx-auto px-6 relative z-20 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
-            {/* Logo has been removed from this section */}
-            {/* Adding a min-height div to maintain proper layout */}
-            <div className="min-h-[112px] mb-10 mt-[-40px]">
-              {/* This empty div with min-height replaces the logo container */}
+            {/* Logo placeholder with sufficient height to maintain proper layout */}
+            <div className="h-28 mb-10 mt-[-40px] w-full">
+              {/* Empty placeholder that maintains the same height as the logo in other sections */}
             </div>
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
@@ -103,9 +102,9 @@ const Cta = () => {
               who are already securing their luxurious future with AllWillRetire.
             </p>
             
-            {/* This empty div was causing the layout issue - adding min-height to match the height when button was present */}
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10 min-h-[48px]">
-              {/* Button removed from here */}
+            {/* Button placeholder to maintain consistent spacing */}
+            <div className="flex justify-center h-[48px] mb-10">
+              {/* Empty placeholder with the same height as the button in other sections */}
             </div>
           </div>
         </div>
