@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Facebook, Twitter, Instagram, Linkedin, Github, ArrowUp } from 'lucide-react';
 
@@ -20,12 +19,13 @@ const Footer = () => {
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
-            <a href="#" className="inline-block mb-6 flex items-center">
+            <a href="#" className="inline-block text-2xl font-display font-bold mb-6 flex items-center">
               <img 
-                src="/lovable-uploads/ac58b2e6-a5d5-4713-b3c6-6ac008cc4743.png" 
+                src="/lovable-uploads/478658b3-5853-4394-af3e-82b264c6d23d.png" 
                 alt="AWR Lifestyle" 
-                className="h-10 w-auto"
+                className="mr-2 h-10 w-auto"
               />
+              <span>AllWillRetire</span>
             </a>
             <p className="text-gray-400 mb-6">
               The future of wealth accumulation, designed to secure your luxurious retirement with innovative blockchain technology.
