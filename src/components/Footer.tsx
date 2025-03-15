@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Facebook, Twitter, Instagram, Linkedin, Github, ArrowUp, ExternalLink } from 'lucide-react';
+import { Button } from './ui/button';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -58,6 +59,34 @@ const Footer = () => {
                 >
                   Get more info about token on CoinGecko/DexScreener
                   <ExternalLink size={14} className="ml-1" />
+                </a>
+              </li>
+              <li className="flex space-x-3 mt-5">
+                <a 
+                  href="https://www.coingecko.com/en/coins/all-will-retire"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button 
+                    variant="outline" 
+                    className="bg-black border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-black flex items-center"
+                  >
+                    CoinGecko
+                    <ExternalLink size={14} className="ml-2" />
+                  </Button>
+                </a>
+                <a 
+                  href="https://dexscreener.com/solana/fo7vnhaddvnmx4axjo7cc1wwb9ko2pk2dfdzl3dybxkp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button 
+                    variant="outline" 
+                    className="bg-black border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-black flex items-center"
+                  >
+                    DexScreener
+                    <ExternalLink size={14} className="ml-2" />
+                  </Button>
                 </a>
               </li>
             </ul>
