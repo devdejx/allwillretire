@@ -35,17 +35,13 @@ const Navbar = () => {
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a 
           href="#" 
-          className="relative text-2xl font-display font-bold flex items-center"
+          className="relative flex items-center"
         >
           <img 
-            src="/lovable-uploads/478658b3-5853-4394-af3e-82b264c6d23d.png" 
+            src="/lovable-uploads/ac58b2e6-a5d5-4713-b3c6-6ac008cc4743.png" 
             alt="AWR Lifestyle" 
-            className="mr-2 h-12 w-auto"
+            className="h-12 w-auto"
           />
-          <span className="relative z-10">
-            AllWillRetire
-          </span>
-          <span className="absolute -bottom-1 left-9 right-0 h-[6px] bg-gold-500/20 rounded-full"></span>
         </a>
         
         <nav className="hidden md:flex space-x-12 items-center">

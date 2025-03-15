@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowRight, Copy, Check } from 'lucide-react';
 import { Button } from './ui/button';
@@ -43,7 +44,7 @@ const Cta = () => {
         <div className="container mx-auto px-6 relative z-20 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-10 mt-[-40px]">
-              <img src="/lovable-uploads/478658b3-5853-4394-af3e-82b264c6d23d.png" alt="AWR Lifestyle" className="h-28 w-auto mx-auto" />
+              <img src="/lovable-uploads/ac58b2e6-a5d5-4713-b3c6-6ac008cc4743.png" alt="AWR Lifestyle" className="h-28 w-auto mx-auto" />
             </div>
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
@@ -54,7 +55,7 @@ const Cta = () => {
               </span>
             </h2>
             
-            <p className="text-gray-300 mb-8 max-w-xl mx-auto text-xs">Join thousands of forward-thinking people who believe in AllWillRetire.</p>
+            <p className="text-gray-300 mb-8 max-w-xl mx-auto text-xs">Join thousands of forward-thinking people who are already securing their luxurious future with AllWillRetire.</p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
               <button className="bg-white/10 backdrop-blur border border-white/20 text-white px-6 py-3 rounded-xl font-medium hover:bg-white/20 transition-colors">
@@ -77,7 +78,7 @@ const Cta = () => {
         <div className="container mx-auto px-6 relative z-20 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-10 mt-[-40px]">
-              <img src="/lovable-uploads/478658b3-5853-4394-af3e-82b264c6d23d.png" alt="AWR Lifestyle" className="h-28 w-auto mx-auto" />
+              <img src="/lovable-uploads/ac58b2e6-a5d5-4713-b3c6-6ac008cc4743.png" alt="AWR Lifestyle" className="h-28 w-auto mx-auto" />
             </div>
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
@@ -110,7 +111,7 @@ const Cta = () => {
         <div className="container mx-auto px-6 relative z-20 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-10 mt-[-40px]">
-              <img src="/lovable-uploads/478658b3-5853-4394-af3e-82b264c6d23d.png" alt="AWR Lifestyle" className="h-28 w-auto mx-auto" />
+              <img src="/lovable-uploads/ac58b2e6-a5d5-4713-b3c6-6ac008cc4743.png" alt="AWR Lifestyle" className="h-28 w-auto mx-auto" />
             </div>
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
