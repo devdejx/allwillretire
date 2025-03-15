@@ -18,7 +18,7 @@ const Footer = () => {
       <div className="absolute bottom-10 left-10 w-20 h-20 bg-gold-500/10 rounded-full blur-xl"></div>
 
       <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           <div>
             <a href="#" className="inline-block text-2xl font-display font-bold mb-6 flex items-center">
               <span className="mr-2 text-gold-500 text-3xl">⦿</span>
@@ -76,33 +76,6 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-semibold mb-6">Newsletter</h3>
-            <p className="text-gray-400 mb-4">
-              Subscribe to receive updates about AllWillRetire and exclusive offers.
-            </p>
-            <form className="mb-6">
-              <div className="flex">
-                <input 
-                  type="email" 
-                  placeholder="Your email address" 
-                  className="bg-white/10 border border-white/20 rounded-l-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-gold-500"
-                />
-                <a 
-                  href="https://www.coingecko.com/en/coins/all-will-retire" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="bg-gold-500 text-black px-4 py-2 rounded-r-lg hover:bg-gold-600 transition-colors flex items-center"
-                >
-                  CoinGecko <ExternalLink size={16} className="ml-1" />
-                </a>
-              </div>
-            </form>
-            <div className="text-sm text-gray-500">
-              By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
-            </div>
           </div>
         </div>
         
