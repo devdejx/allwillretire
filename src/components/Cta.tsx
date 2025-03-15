@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight, Copy, Check } from 'lucide-react';
 import { Button } from './ui/button';
@@ -183,8 +182,10 @@ const Cta = () => {
                 onClick={handleCopy}
                 className="bg-white/10 backdrop-blur border border-white/20 text-white px-6 py-3 rounded-xl font-medium hover:bg-white/20 transition-colors flex items-center justify-center gap-2"
               >
-                Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump
-                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                <span className="truncate max-w-[200px] sm:max-w-[250px] md:max-w-[300px]">
+                  Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump
+                </span>
+                {copied ? <Check className="h-4 w-4 flex-shrink-0" /> : <Copy className="h-4 w-4 flex-shrink-0" />}
               </button>
             </div>
           </div>
