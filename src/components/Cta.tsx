@@ -86,7 +86,7 @@ const Cta = () => {
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/90 z-10"></div>
           
-          {/* Video - positioned to fill the background - Updated to match first video styling */}
+          {/* Video - positioned to fill the background - Updated to new video */}
           <div className="absolute inset-0 w-full h-full overflow-hidden">
             <iframe src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%]" title="Background Video"></iframe>
           </div>
@@ -124,6 +124,7 @@ const Cta = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10 min-h-[48px]">
+              {/* Button removed from here */}
             </div>
           </div>
         </div>
@@ -135,7 +136,7 @@ const Cta = () => {
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/90 z-10"></div>
           
-          {/* Video - positioned to fill the background - Updated to match first video styling */}
+          {/* Video - positioned to fill the background - Updated to newest video */}
           <div className="absolute inset-0 w-full h-full overflow-hidden">
             <iframe src="https://player.vimeo.com/video/1065940999?h=4705f6f507&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%]" title="Background Video"></iframe>
           </div>
