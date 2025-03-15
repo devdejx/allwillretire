@@ -47,7 +47,11 @@ const Cta = () => {
               who are already securing their luxurious future with AllWillRetire.
             </p>
             
-            
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
+              <button className="bg-white/10 backdrop-blur border border-white/20 text-white px-6 py-3 rounded-xl font-medium hover:bg-white/20 transition-colors">
+                View Whitepaper
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -86,7 +90,7 @@ const Cta = () => {
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
               Secure your 
               <span className="relative ml-2">
-                <span className="relative z-10">Future</span>
+                <span className="relative z-10">Luxurious</span>
                 <span className="absolute -bottom-1 left-0 right-0 h-2 bg-gold-500/30 rounded-full"></span>
               </span>
             </h2>
