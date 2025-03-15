@@ -18,7 +18,7 @@ const Footer = () => {
       <div className="absolute bottom-10 left-10 w-20 h-20 bg-gold-500/10 rounded-full blur-xl"></div>
 
       <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
             <a href="#" className="inline-block text-2xl font-display font-bold mb-6 flex items-center">
               <span className="mr-2 text-gold-500 text-3xl">⦿</span>
@@ -53,22 +53,6 @@ const Footer = () => {
                 <li key={item}>
                   <a 
                     href={`#${item.toLowerCase()}`}
-                    className="text-gray-400 hover:text-white transition-colors block"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-semibold mb-6">Resources</h3>
-            <ul className="space-y-3">
-              {['How to Buy', 'Tokenomics', 'FAQ', 'Privacy Policy', 'Terms of Service', 'Contact Us'].map((item) => (
-                <li key={item}>
-                  <a 
-                    href="#"
                     className="text-gray-400 hover:text-white transition-colors block"
                   >
                     {item}
