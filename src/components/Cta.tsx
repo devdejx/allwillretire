@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
@@ -83,10 +84,7 @@ const Cta = () => {
         
         <div className="container mx-auto px-6 relative z-20 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
-            {/* Logo placeholder with sufficient height to maintain proper layout */}
-            <div className="h-28 mb-10 mt-[-40px] w-full flex items-center justify-center">
-              {/* Empty placeholder to maintain same height as the logo in other sections */}
-            </div>
+            {/* Logo has been removed from this section */}
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
               Secure your 
@@ -101,9 +99,9 @@ const Cta = () => {
               who are already securing their luxurious future with AllWillRetire.
             </p>
             
-            {/* Button placeholder to maintain consistent spacing */}
-            <div className="flex justify-center h-[48px] mb-10">
-              {/* Empty placeholder with the same height as the button in other sections */}
+            {/* This empty div was causing the layout issue - adding min-height to match the height when button was present */}
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10 min-h-[48px]">
+              {/* Button removed from here */}
             </div>
           </div>
         </div>
