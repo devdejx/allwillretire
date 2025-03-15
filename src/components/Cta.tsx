@@ -58,7 +58,7 @@ const Cta = () => {
         </div>
       </section>
 
-      {/* Duplicated section with the same gradient background */}
+      {/* Duplicated section with identical content */}
       <section className="py-24 relative overflow-hidden">
         {/* Video background */}
         <div className="absolute inset-0 z-0 overflow-hidden">
@@ -85,7 +85,28 @@ const Cta = () => {
         
         <div className="container mx-auto px-6 relative z-20 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
-            {/* Empty section that just extends the black background */}
+            <div className="inline-block mb-10 mt-[-40px]">
+              <img src="/lovable-uploads/d523f3bd-5ac2-4e42-9b2b-0e3c68db822c.png" alt="AWR Lifestyle" className="h-28 w-auto mx-auto" />
+            </div>
+            
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
+              Begin Your Journey to 
+              <span className="relative ml-2">
+                <span className="relative z-10">Prosperity</span>
+                <span className="absolute -bottom-1 left-0 right-0 h-2 bg-gold-500/30 rounded-full"></span>
+              </span>
+            </h2>
+            
+            <p className="text-gray-300 mb-8 max-w-xl mx-auto text-xs">
+              Join thousands of forward-thinking people<br />
+              who are already securing their luxurious future with AllWillRetire.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
+              <button className="bg-white/10 backdrop-blur border border-white/20 text-white px-6 py-3 rounded-xl font-medium hover:bg-white/20 transition-colors">
+                View Whitepaper
+              </button>
+            </div>
           </div>
         </div>
       </section>
