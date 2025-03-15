@@ -54,7 +54,9 @@ const Footer = () => {
               </a>
             </div>
             <div className="text-sm text-gray-500">
-              By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
+              <a href="https://linktr.ee/allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
+                Find all AWR links <ExternalLink size={14} className="inline ml-1" />
+              </a>
             </div>
           </div>
         </div>
