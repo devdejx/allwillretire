@@ -22,13 +22,6 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
-  
-  const scrollToBottom = () => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth',
-    });
-  };
 
   return (
     <header 
@@ -67,10 +60,7 @@ const Navbar = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
-          <button 
-            className="bg-black text-white px-6 py-2 rounded-lg font-medium text-sm hover:opacity-90 transition-opacity"
-            onClick={scrollToBottom}
-          >
+          <button className="bg-black text-white px-6 py-2 rounded-lg font-medium text-sm hover:opacity-90 transition-opacity">
             Buy Now
           </button>
         </nav>
@@ -103,10 +93,7 @@ const Navbar = () => {
               {item}
             </a>
           ))}
-          <button 
-            className="bg-black text-white px-6 py-3 rounded-lg font-medium text-sm mt-2 hover:opacity-90 transition-opacity"
-            onClick={scrollToBottom}
-          >
+          <button className="bg-black text-white px-6 py-3 rounded-lg font-medium text-sm mt-2 hover:opacity-90 transition-opacity">
             Buy Now
           </button>
         </div>
