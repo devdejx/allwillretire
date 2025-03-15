@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+
 const About = () => {
   const [showCoinOrbit, setShowCoinOrbit] = useState(false);
 
@@ -39,6 +40,7 @@ const About = () => {
     month: 'Oct',
     value: 350
   }];
+
   return <section id="about" className="py-24 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute top-1/4 -right-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
@@ -162,9 +164,14 @@ const About = () => {
                   
                   {/* Buy button below the plaque */}
                   <div className="mt-4">
-                    <Button variant="default" size="sm" className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-bold py-2 px-6 rounded-full border border-gold-300 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105" onClick={() => window.open('https://example.com/buy', '_blank')}>
+                    <a 
+                      href="https://jup.ag/swap/USDC-Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-bold py-2 px-6 rounded-full border border-gold-300 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 inline-block"
+                    >
                       BUY NOW
-                    </Button>
+                    </a>
                   </div>
                 </div>
                 
@@ -222,4 +229,5 @@ const About = () => {
       </div>
     </section>;
 };
+
 export default About;
