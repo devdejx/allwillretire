@@ -1,11 +1,8 @@
-
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
-
 const Cta = () => {
-  return (
-    <>
+  return <>
       {/* First section with original video */}
       <section className="py-24 relative overflow-hidden">
         {/* Video background */}
@@ -93,7 +90,7 @@ const Cta = () => {
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
               Begin Your Journey to 
               <span className="relative ml-2">
-                <span className="relative z-10">Prosperity</span>
+                <span className="relative z-10">Luxurious</span>
                 <span className="absolute -bottom-1 left-0 right-0 h-2 bg-gold-500/30 rounded-full"></span>
               </span>
             </h2>
@@ -164,8 +161,6 @@ const Cta = () => {
           </div>
         </div>
       </section>
-    </>
-  );
+    </>;
 };
-
 export default Cta;
