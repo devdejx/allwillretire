@@ -1,7 +1,37 @@
+
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Copy, Check } from 'lucide-react';
 import { Button } from './ui/button';
+import { useToast } from "@/hooks/use-toast";
+
 const Cta = () => {
+  const { toast } = useToast();
+  const [copied, setCopied] = React.useState(false);
+
+  const handleCopy = () => {
+    const textToCopy = "Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump";
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => {
+        setCopied(true);
+        toast({
+          title: "Copied to clipboard",
+          description: "Address has been copied to your clipboard",
+        });
+        
+        // Reset copied state after 2 seconds
+        setTimeout(() => {
+          setCopied(false);
+        }, 2000);
+      })
+      .catch((err) => {
+        toast({
+          title: "Failed to copy",
+          description: "Please try again",
+          variant: "destructive",
+        });
+      });
+  };
+
   return <>
       {/* First section with original video */}
       <section className="py-24 relative overflow-hidden">
@@ -149,7 +179,13 @@ const Cta = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-              <button className="bg-white/10 backdrop-blur border border-white/20 text-white px-6 py-3 rounded-xl font-medium hover:bg-white/20 transition-colors">Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump</button>
+              <button 
+                onClick={handleCopy}
+                className="bg-white/10 backdrop-blur border border-white/20 text-white px-6 py-3 rounded-xl font-medium hover:bg-white/20 transition-colors flex items-center justify-center gap-2"
+              >
+                Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump
+                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+              </button>
             </div>
           </div>
         </div>
