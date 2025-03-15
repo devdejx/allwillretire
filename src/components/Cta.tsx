@@ -68,8 +68,7 @@ const Cta = () => {
               </span>
             </h2>
             
-            <p className="text-gray-300 mb-8 max-w-xl mx-auto text-xs">Join thousands of forward-thinking people
-who are already believe in AWR</p>
+            <p className="text-gray-300 mb-8 max-w-xl mx-auto text-xs">Join thousands of forward-thinking people who believe in AllWillRetire.</p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
               <button className="bg-white/10 backdrop-blur border border-white/20 text-white px-6 py-3 rounded-xl font-medium hover:bg-white/20 transition-colors">
