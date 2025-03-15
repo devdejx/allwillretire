@@ -98,7 +98,6 @@ const Cta = () => {
               Financial freedom is not about having money, its about having choices.
             </p>
             
-            {/* This empty div was causing the layout issue - adding min-height to match the height when button was present */}
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10 min-h-[48px]">
               {/* Button removed from here */}
             </div>
@@ -138,7 +137,7 @@ const Cta = () => {
             </div>
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
-              Begin Your Journey to 
+              In life we need 
               <span className="relative ml-2">
                 <span className="relative z-10">Prosperity</span>
                 <span className="absolute -bottom-1 left-0 right-0 h-2 bg-gold-500/30 rounded-full"></span>
