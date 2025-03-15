@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Facebook, Twitter, Instagram, Linkedin, Github, ArrowUp } from 'lucide-react';
 
@@ -25,7 +26,6 @@ const Footer = () => {
                 alt="AWR Lifestyle" 
                 className="mr-2 h-10 w-auto"
               />
-              <span>AllWillRetire</span>
             </a>
             <p className="text-gray-400 mb-6">
               The future of wealth accumulation, designed to secure your luxurious retirement with innovative blockchain technology.
