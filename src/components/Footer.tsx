@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { X, Instagram, Youtube, ArrowUp, ExternalLink, MessageSquare } from 'lucide-react';
 const Footer = () => {
@@ -19,8 +20,10 @@ const Footer = () => {
             <a href="#" className="inline-block text-2xl font-display font-bold mb-6 flex items-center">
               <img src="/lovable-uploads/73e439bf-9fba-428b-86ad-84fea890807e.png" alt="AWR Lifestyle" className="mr-2 h-20 w-auto" />
             </a>
-            <p className="text-gray-400 mb-6">The future of wealth accumulation, designed to secure your luxurious retirement with innovative blockchain technology.  
-Follow us on Social media</p>
+            <p className="text-gray-400 mb-3">The future of wealth accumulation, designed to secure your luxurious retirement with innovative blockchain technology.</p>
+            <div className="inline-block mb-6 py-2 px-4 bg-black border border-gold-500 rounded-lg">
+              <p className="text-gold-500 font-semibold">Follow us on Social media</p>
+            </div>
             <div className="flex space-x-6">
               <a href="https://x.com/allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 hover:scale-110 transition-all p-2 rounded-full bg-white/5">
                 <X size={28} className="text-gold-400" />
