@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { X, Instagram, ArrowUp, ExternalLink, Youtube, Send, Music } from 'lucide-react';
 import { Button } from './ui/button';
@@ -21,7 +22,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
             <a href="#" className="inline-block text-2xl font-display font-bold mb-6 flex items-center">
-              <span className="mr-2 text-gold-500 text-3xl">⦿</span>
+              <img 
+                src="/lovable-uploads/79de4c21-363e-44ae-9950-2529769150cc.png" 
+                alt="AWR Logo" 
+                className="h-10 w-auto mr-2" 
+              />
             </a>
             <p className="text-gray-400 mb-6">
               The future of wealth accumulation, designed to secure your luxurious retirement with innovative blockchain technology.
