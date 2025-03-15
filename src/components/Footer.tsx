@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Facebook, X, Instagram, Linkedin, Github, ArrowUp, ExternalLink, MessageSquare } from 'lucide-react';
+import { X, Instagram, Youtube, Github, ArrowUp, ExternalLink, MessageSquare } from 'lucide-react';
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -33,8 +33,8 @@ const Footer = () => {
               <a href="https://www.instagram.com/allwillretire/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors">
-                <Linkedin size={20} />
+              <a href="https://www.youtube.com/@allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
+                <Youtube size={20} />
               </a>
               <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors">
                 <Github size={20} />
