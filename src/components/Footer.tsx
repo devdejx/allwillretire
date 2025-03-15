@@ -23,7 +23,7 @@ const Footer = () => {
               <img 
                 src="/lovable-uploads/73e439bf-9fba-428b-86ad-84fea890807e.png" 
                 alt="AWR Lifestyle" 
-                className="mr-2 h-16 w-auto"
+                className="mr-2 h-20 w-auto"
               />
             </a>
             <p className="text-gray-400 mb-6">
