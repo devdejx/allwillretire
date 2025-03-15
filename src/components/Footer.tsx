@@ -49,7 +49,18 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
             <ul className="space-y-3">
-              {['About', 'Features', 'Community', 'Roadmap', 'Whitepaper', 'Team'].map((item) => (
+              <li>
+                <a 
+                  href="https://www.coingecko.com/en/coins/all-will-retire"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors block flex items-center"
+                >
+                  Get more info about token on CoinGecko/DexScreener
+                  <ExternalLink size={14} className="ml-1" />
+                </a>
+              </li>
+              {['Features', 'Community', 'Roadmap', 'Whitepaper', 'Team'].map((item) => (
                 <li key={item}>
                   <a 
                     href={`#${item.toLowerCase()}`}
