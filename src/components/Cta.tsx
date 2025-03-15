@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
@@ -101,9 +102,7 @@ const Cta = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-              <button className="bg-white/10 backdrop-blur border border-white/20 text-white px-6 py-3 rounded-xl font-medium hover:bg-white/20 transition-colors">
-                View Whitepaper
-              </button>
+              {/* Button removed from here */}
             </div>
           </div>
         </div>
