@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { X, Instagram, Youtube, ArrowUp, ExternalLink, MessageSquare } from 'lucide-react';
+
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -8,6 +9,7 @@ const Footer = () => {
       behavior: 'smooth'
     });
   };
+
   return <footer className="relative bg-black text-white overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
@@ -23,18 +25,18 @@ const Footer = () => {
             <p className="text-gray-400 mb-6">
               The future of wealth accumulation, designed to secure your luxurious retirement with innovative blockchain technology.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://x.com/allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
-                <X size={20} />
+            <div className="flex space-x-6">
+              <a href="https://x.com/allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 hover:scale-110 transition-all p-2 rounded-full bg-white/5">
+                <X size={28} className="text-gold-400" />
               </a>
-              <a href="https://t.me/allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
-                <MessageSquare size={20} />
+              <a href="https://t.me/allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 hover:scale-110 transition-all p-2 rounded-full bg-white/5">
+                <MessageSquare size={28} className="text-gold-400" />
               </a>
-              <a href="https://www.instagram.com/allwillretire/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
-                <Instagram size={20} />
+              <a href="https://www.instagram.com/allwillretire/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 hover:scale-110 transition-all p-2 rounded-full bg-white/5">
+                <Instagram size={28} className="text-gold-400" />
               </a>
-              <a href="https://www.youtube.com/@allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
-                <Youtube size={20} />
+              <a href="https://www.youtube.com/@allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 hover:scale-110 transition-all p-2 rounded-full bg-white/5">
+                <Youtube size={28} className="text-gold-400" />
               </a>
             </div>
           </div>
@@ -69,4 +71,5 @@ const Footer = () => {
       </div>
     </footer>;
 };
+
 export default Footer;
