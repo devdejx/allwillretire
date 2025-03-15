@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Facebook, Twitter, Instagram, Linkedin, Github, ArrowUp } from 'lucide-react';
 
@@ -22,7 +21,7 @@ const Footer = () => {
           <div>
             <a href="#" className="inline-block text-2xl font-display font-bold mb-6 flex items-center">
               <img 
-                src="/lovable-uploads/478658b3-5853-4394-af3e-82b264c6d23d.png" 
+                src="/lovable-uploads/73e439bf-9fba-428b-86ad-84fea890807e.png" 
                 alt="AWR Lifestyle" 
                 className="mr-2 h-10 w-auto"
               />
