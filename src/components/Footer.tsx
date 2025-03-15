@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Facebook, X, Instagram, Linkedin, Github, ArrowUp, ExternalLink, MessageSquare } from 'lucide-react';
 const Footer = () => {
@@ -29,7 +30,7 @@ const Footer = () => {
               <a href="https://t.me/allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
                 <MessageSquare size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors">
+              <a href="https://www.instagram.com/allwillretire/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors">
                 <Instagram size={20} />
               </a>
               <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors">
