@@ -1,17 +1,13 @@
-
 import React from 'react';
 import { Facebook, Twitter, Instagram, Linkedin, Github, ArrowUp } from 'lucide-react';
-
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: 'smooth'
     });
   };
-
-  return (
-    <footer className="relative bg-black text-white overflow-hidden">
+  return <footer className="relative bg-black text-white overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
       <div className="absolute top-10 right-10 w-20 h-20 bg-gold-500/10 rounded-full blur-xl"></div>
@@ -21,11 +17,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           <div>
             <a href="#" className="inline-block text-2xl font-display font-bold mb-6 flex items-center">
-              <img 
-                src="/lovable-uploads/73e439bf-9fba-428b-86ad-84fea890807e.png" 
-                alt="AWR Lifestyle" 
-                className="mr-2 h-20 w-auto"
-              />
+              <img src="/lovable-uploads/73e439bf-9fba-428b-86ad-84fea890807e.png" alt="AWR Lifestyle" className="mr-2 h-20 w-auto" />
             </a>
             <p className="text-gray-400 mb-6">
               The future of wealth accumulation, designed to secure your luxurious retirement with innovative blockchain technology.
@@ -50,21 +42,12 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-6">Newsletter</h3>
-            <p className="text-gray-400 mb-4">
-              Subscribe to receive updates about AllWillRetire and exclusive offers.
-            </p>
+            <h3 className="text-lg font-semibold mb-6">Quick links</h3>
+            <p className="text-gray-400 mb-4">Find more about AWR on coingecko/coinmarketcap.</p>
             <form className="mb-6">
               <div className="flex">
-                <input 
-                  type="email" 
-                  placeholder="Your email address" 
-                  className="bg-white/10 border border-white/20 rounded-l-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-gold-500"
-                />
-                <button 
-                  type="submit" 
-                  className="bg-gold-500 text-black px-4 py-2 rounded-r-lg hover:bg-gold-600 transition-colors"
-                >
+                <input type="email" placeholder="Your email address" className="bg-white/10 border border-white/20 rounded-l-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-gold-500" />
+                <button type="submit" className="bg-gold-500 text-black px-4 py-2 rounded-r-lg hover:bg-gold-600 transition-colors">
                   Subscribe
                 </button>
               </div>
@@ -79,17 +62,11 @@ const Footer = () => {
           <div className="text-gray-500 text-sm mb-4 md:mb-0">
             © {new Date().getFullYear()} AllWillRetire. All rights reserved.
           </div>
-          <button 
-            onClick={scrollToTop} 
-            className="bg-white/10 hover:bg-white/20 transition-colors p-3 rounded-full"
-            aria-label="Scroll to top"
-          >
+          <button onClick={scrollToTop} className="bg-white/10 hover:bg-white/20 transition-colors p-3 rounded-full" aria-label="Scroll to top">
             <ArrowUp size={18} />
           </button>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
