@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowRight, Copy, Check } from 'lucide-react';
 import { Button } from './ui/button';
@@ -43,7 +44,7 @@ const Cta = () => {
         <div className="container mx-auto px-6 relative z-20 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-10 mt-[-40px]">
-              <img src="/lovable-uploads/478658b3-5853-4394-af3e-82b264c6d23d.png" alt="AWR Lifestyle" className="h-28 w-auto mx-auto" />
+              <img src="/lovable-uploads/dc72b22e-996f-4d01-8525-1c671661db53.png" alt="AWR Lifestyle" className="h-28 w-auto mx-auto" />
             </div>
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
@@ -77,7 +78,7 @@ const Cta = () => {
         <div className="container mx-auto px-6 relative z-20 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-10 mt-[-40px]">
-              <img src="/lovable-uploads/478658b3-5853-4394-af3e-82b264c6d23d.png" alt="AWR Lifestyle" className="h-28 w-auto mx-auto" />
+              <img src="/lovable-uploads/dc72b22e-996f-4d01-8525-1c671661db53.png" alt="AWR Lifestyle" className="h-28 w-auto mx-auto" />
             </div>
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
@@ -110,7 +111,7 @@ const Cta = () => {
         <div className="container mx-auto px-6 relative z-20 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-10 mt-[-40px]">
-              <img src="/lovable-uploads/478658b3-5853-4394-af3e-82b264c6d23d.png" alt="AWR Lifestyle" className="h-28 w-auto mx-auto" />
+              <img src="/lovable-uploads/dc72b22e-996f-4d01-8525-1c671661db53.png" alt="AWR Lifestyle" className="h-28 w-auto mx-auto" />
             </div>
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
