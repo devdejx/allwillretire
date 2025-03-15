@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, Github, ArrowUp } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, Github, ArrowUp, ExternalLink } from 'lucide-react';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -90,12 +90,14 @@ const Footer = () => {
                   placeholder="Your email address" 
                   className="bg-white/10 border border-white/20 rounded-l-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-gold-500"
                 />
-                <button 
-                  type="submit" 
-                  className="bg-gold-500 text-black px-4 py-2 rounded-r-lg hover:bg-gold-600 transition-colors"
+                <a 
+                  href="https://www.coingecko.com/en/coins/all-will-retire" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="bg-gold-500 text-black px-4 py-2 rounded-r-lg hover:bg-gold-600 transition-colors flex items-center"
                 >
-                  Subscribe
-                </button>
+                  CoinGecko <ExternalLink size={16} className="ml-1" />
+                </a>
               </div>
             </form>
             <div className="text-sm text-gray-500">
