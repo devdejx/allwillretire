@@ -49,7 +49,21 @@ const Footer = () => {
             </div>
           </div>
           
-          {/* Removed the Quick Links section as requested */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
+            <ul className="space-y-3">
+              {['About', 'Features', 'Community', 'Roadmap', 'Whitepaper', 'Team'].map((item) => (
+                <li key={item}>
+                  <a 
+                    href={`#${item.toLowerCase()}`}
+                    className="text-gray-400 hover:text-white transition-colors block"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
           
           <div>
             <h3 className="text-lg font-semibold mb-6">Resources</h3>
