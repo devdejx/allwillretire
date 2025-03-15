@@ -1,28 +1,27 @@
 import React, { useState } from 'react';
 import { ArrowRight, Copy, Check } from 'lucide-react';
 import { Button } from './ui/button';
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from '@/hooks/use-toast';
 
 const Cta = () => {
-  const [copied, setCopied] = useState(false);
   const { toast } = useToast();
-  
+  const [isCopied, setIsCopied] = useState(false);
+
   const handleCopy = () => {
     const textToCopy = "Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump";
     navigator.clipboard.writeText(textToCopy)
       .then(() => {
-        setCopied(true);
+        setIsCopied(true);
         toast({
           title: "Copied to clipboard",
-          description: "The text has been copied to your clipboard",
+          description: "Address has been copied to your clipboard",
         });
-        setTimeout(() => setCopied(false), 2000);
+        setTimeout(() => setIsCopied(false), 2000);
       })
       .catch(err => {
-        console.error('Failed to copy text: ', err);
         toast({
           title: "Failed to copy",
-          description: "There was an error copying the text",
+          description: "Please try again",
           variant: "destructive",
         });
       });
@@ -176,11 +175,11 @@ const Cta = () => {
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
               <button 
-                onClick={handleCopy} 
-                className="bg-white/10 backdrop-blur border border-white/20 text-white px-4 py-2 rounded-xl font-medium hover:bg-white/20 transition-colors text-xs flex items-center justify-center gap-2"
+                onClick={handleCopy}
+                className="bg-white/10 backdrop-blur border border-white/20 text-white px-4 py-2 text-xs rounded-xl font-medium hover:bg-white/20 transition-colors flex items-center justify-center gap-2"
               >
-                <span>Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump</span>
-                {copied ? <Check size={16} /> : <Copy size={16} />}
+                <span className="truncate max-w-[200px]">Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump</span>
+                {isCopied ? <Check size={14} /> : <Copy size={14} />}
               </button>
             </div>
           </div>
