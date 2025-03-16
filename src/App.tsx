@@ -21,6 +21,23 @@ const queryClient = new QueryClient({
   },
 });
 
+// Custom loading component for routes
+const PageLoading = () => (
+  <div className="flex h-screen w-screen items-center justify-center bg-background">
+    <div className="flex flex-col items-center">
+      <div className="w-16 h-16 relative">
+        <div className="absolute inset-0 bg-gold-500/20 rounded-full blur-lg animate-pulse"></div>
+        <img 
+          src="/lovable-uploads/9736f09c-0f57-4e9f-86de-eb5f875fad9b.png" 
+          alt="Loading" 
+          className="w-full h-full object-contain animate-pulse" 
+        />
+      </div>
+      <p className="mt-4 text-sm font-medium">Nalaganje...</p>
+    </div>
+  </div>
+);
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -29,7 +46,7 @@ const App = () => (
       <Preloader />
       <MuteButton />
       <BrowserRouter>
-        <Suspense fallback={<div className="flex h-screen w-screen items-center justify-center">Nalaganje...</div>}>
+        <Suspense fallback={<PageLoading />}>
           <Routes>
             <Route path="/" element={<Index />} />
             {/* DODAJTE VSE DODATNE POTI NAD "*" POTJO */}

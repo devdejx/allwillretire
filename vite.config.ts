@@ -29,11 +29,30 @@ export default defineConfig(({ mode }) => ({
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom'],
           ui: ['@/components/ui'],
+          charts: ['recharts'],
+          animations: [
+            'tailwindcss-animate',
+            '@/lib/utils',
+          ],
         },
       },
     },
     target: 'es2015',
     cssCodeSplit: true,
     chunkSizeWarningLimit: 1000,
-  }
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom', '@tanstack/react-query'],
+    exclude: [],
+  },
+  preview: {
+    port: 8080,
+    host: true,
+  },
 }));
