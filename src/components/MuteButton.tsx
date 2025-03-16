@@ -4,7 +4,8 @@ import { Volume2, VolumeX } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const MuteButton = () => {
-  const [isMuted, setIsMuted] = useState(true);
+  // Change the default state to false (unmuted)
+  const [isMuted, setIsMuted] = useState(false);
   const [iframes, setIframes] = useState<HTMLIFrameElement[]>([]);
 
   // Bolj učinkovit debounced YouTube command handler

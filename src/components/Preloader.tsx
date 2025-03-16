@@ -62,7 +62,7 @@ const Preloader = () => {
         />
       </div>
       
-      <style jsx>{`
+      <style>{`
         @keyframes pulse-gold {
           0%, 100% { box-shadow: 0 0 15px 5px rgba(255, 195, 0, 0.4); }
           50% { box-shadow: 0 0 25px 10px rgba(255, 195, 0, 0.2); }
