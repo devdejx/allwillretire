@@ -41,12 +41,14 @@ const Preloader = () => {
         </div>
       </div>
       
-      <style jsx>{`
-        @keyframes preloaderProgress {
-          0% { width: 0%; }
-          100% { width: 100%; }
-        }
-      `}</style>
+      <style>
+        {`
+          @keyframes preloaderProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+          }
+        `}
+      </style>
     </div>
   );
 };
