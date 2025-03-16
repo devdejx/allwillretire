@@ -4,24 +4,24 @@ import { Volume2, VolumeX } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const MuteButton = () => {
-  // Change the default state to false (unmuted)
+  // Default state is false (unmuted)
   const [isMuted, setIsMuted] = useState(false);
   const [iframes, setIframes] = useState<HTMLIFrameElement[]>([]);
 
-  // Bolj učinkovit debounced YouTube command handler
+  // Efficient debounced YouTube command handler
   const sendYouTubeCommand = useCallback((iframe: HTMLIFrameElement, command: string) => {
     if (iframe.contentWindow && iframe.src.includes('youtube.com')) {
       iframe.contentWindow.postMessage(`{"event":"command","func":"${command}","args":""}`, '*');
     }
   }, []);
 
-  // Samo enkrat pridobi vse iframe elemente
+  // Find all iframe elements once
   useEffect(() => {
     const findAndSetIframes = () => {
-      // Poišči vse iframe elemente, ki bi lahko vsebovali zvok
+      // Find all iframe elements that could contain sound
       const frames = Array.from(document.querySelectorAll('iframe')) as HTMLIFrameElement[];
       
-      // Preveri, če še manjkajo API parametri in jih dodaj
+      // Check if API parameters are missing and add them
       frames.forEach(frame => {
         if (frame.src.includes('youtube.com') && !frame.src.includes('enablejsapi=1')) {
           const separator = frame.src.includes('?') ? '&' : '?';
@@ -32,10 +32,10 @@ const MuteButton = () => {
       setIframes(frames);
     };
 
-    // Prvotno iskanje
+    // Initial search
     findAndSetIframes();
 
-    // Dodaj poslušalca za nove iframee, ki bi se lahko dinamično dodali kasneje
+    // Add listener for new iframes that might be dynamically added later
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.addedNodes.length) {
@@ -49,7 +49,7 @@ const MuteButton = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Efekt za upravljanje z zvočnim stanjem
+  // Effect for managing sound state
   useEffect(() => {
     iframes.forEach(frame => {
       if (isMuted) {
