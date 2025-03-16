@@ -24,5 +24,16 @@ export default defineConfig(({ mode }) => ({
     outDir: "dist",
     minify: 'terser',
     sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          ui: ['@/components/ui'],
+        },
+      },
+    },
+    target: 'es2015',
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 1000,
   }
 }));

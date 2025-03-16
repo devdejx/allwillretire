@@ -49,6 +49,18 @@ This will create a `dist` folder with all the static files you need. You can upl
 - Amazon S3
 - etc.
 
+## Performance Optimizations
+
+This project includes:
+
+- Image optimization with the OptimizedImage component
+- React Suspense and lazy loading for code splitting
+- Tailwind CSS for utility-first styling and small bundle size
+- Manual chunk splitting in the Vite configuration
+- Preloading of critical assets
+- Debounced event handlers
+- Query caching with Tanstack Query
+
 ## Project Technologies
 
 This project is built with:
@@ -60,6 +72,14 @@ This project is built with:
 - Tailwind CSS
 - Recharts for data visualization
 
+## SEO Optimizations
+
+The site includes:
+- Proper meta tags for SEO
+- Open Graph and Twitter Card meta tags for social sharing
+- Semantic HTML structure
+- Optimized loading times
+
 ## Customization
 
 - Edit content in the component files under `src/components/`
@@ -69,3 +89,4 @@ This project is built with:
 ## Contact
 
 For support or inquiries, please reach out to the team at contact@allwillretire.com
+
