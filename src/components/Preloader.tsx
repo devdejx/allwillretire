@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
-import OptimizedImage from './OptimizedImage';
 
 const Preloader = () => {
   const [loading, setLoading] = useState(true);
@@ -63,18 +62,12 @@ const Preloader = () => {
         />
       </div>
       
-      <div className="mt-4 text-sm font-medium text-gold-600">
-        Loading experience... {progress}%
-      </div>
-      
-      <style>
-        {`
-          @keyframes pulse-gold {
-            0%, 100% { box-shadow: 0 0 15px 5px rgba(255, 195, 0, 0.4); }
-            50% { box-shadow: 0 0 25px 10px rgba(255, 195, 0, 0.2); }
-          }
-        `}
-      </style>
+      <style jsx>{`
+        @keyframes pulse-gold {
+          0%, 100% { box-shadow: 0 0 15px 5px rgba(255, 195, 0, 0.4); }
+          50% { box-shadow: 0 0 25px 10px rgba(255, 195, 0, 0.2); }
+        }
+      `}</style>
     </div>
   );
 };

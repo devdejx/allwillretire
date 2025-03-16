@@ -9,8 +9,12 @@ import Cta from '../components/Cta';
 import Footer from '../components/Footer';
 
 const Index = () => {
-  const sectionsRef = useRef<HTMLElement[]>([]);
-
+  const heroRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const featuresRef = useRef<HTMLDivElement>(null);
+  const testimonialsRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  
   useEffect(() => {
     // More sophisticated reveal animations on scroll
     const observer = new IntersectionObserver(
@@ -51,7 +55,17 @@ const Index = () => {
       });
       
       // Track current section for navigation highlighting
-      sectionsRef.current.forEach((section) => {
+      const sections = [
+        heroRef.current,
+        aboutRef.current,
+        featuresRef.current,
+        testimonialsRef.current,
+        ctaRef.current
+      ];
+      
+      sections.forEach((section) => {
+        if (!section) return;
+        
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
         
@@ -80,21 +94,14 @@ const Index = () => {
     };
   }, []);
 
-  // Function to collect section refs
-  const addSectionRef = (el: HTMLElement | null) => {
-    if (el && !sectionsRef.current.includes(el)) {
-      sectionsRef.current.push(el);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      <Hero ref={addSectionRef} />
-      <About ref={addSectionRef} />
-      <Features ref={addSectionRef} />
-      <Testimonials ref={addSectionRef} />
-      <Cta ref={addSectionRef} />
+      <Hero />
+      <About />
+      <Features />
+      <Testimonials />
+      <Cta />
       <Footer />
     </div>
   );
