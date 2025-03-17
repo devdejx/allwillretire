@@ -64,9 +64,9 @@ const Cta = () => {
             <p className="text-gray-300 mb-8 max-w-xl mx-auto text-xs">Join thousands of forward-thinking people who believe in AllWillRetire.</p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-              <button className="relative bg-gradient-to-r from-transparent via-gold-500 to-transparent backdrop-blur border border-gold-300/50 text-black px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 group overflow-hidden">
-                <span className="relative z-10">View Whitepaper</span>
+              <button className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur border border-gold-300/50 text-black px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 group overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                <span className="relative z-10">View Whitepaper</span>
               </button>
             </div>
           </div>
@@ -152,11 +152,11 @@ const Cta = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-              <button onClick={handleCopy} className="relative bg-gradient-to-r from-transparent via-gold-500 to-transparent backdrop-blur-sm border border-gold-400/30 text-black px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 shadow-md shadow-gold-500/20 overflow-hidden group">
+              <button onClick={handleCopy} className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur-sm border border-gold-400/30 text-black px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 shadow-md shadow-gold-500/20 overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
                 <span className="relative z-10 truncate max-w-[200px] sm:max-w-[250px] md:max-w-[300px] bg-gradient-to-r from-black/70 via-black to-black/70 bg-clip-text text-transparent">
                   Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
                 {copied ? <Check className="h-4 w-4 flex-shrink-0 relative z-10 text-black" /> : <Copy className="h-4 w-4 flex-shrink-0 relative z-10 text-black" />}
               </button>
             </div>

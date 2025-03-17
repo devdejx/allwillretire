@@ -81,10 +81,10 @@ const Navbar = () => {
             href="https://jup.ag/swap/USDC-Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="relative bg-gradient-to-r from-transparent via-gold-500 to-transparent backdrop-blur border border-gold-300/50 text-black px-6 py-2 rounded-lg font-medium text-sm overflow-hidden group transition-transform duration-300 hover:scale-105"
+            className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur border border-gold-300/50 text-black px-6 py-2 rounded-lg font-medium text-sm overflow-hidden group transition-transform duration-300 hover:scale-105"
           >
-            <span className="relative z-10">Buy Now</span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+            <span className="relative z-10">Buy Now</span>
           </a>
         </nav>
 
@@ -126,10 +126,10 @@ const Navbar = () => {
             href="https://jup.ag/swap/USDC-Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="relative bg-gradient-to-r from-transparent via-gold-500 to-transparent backdrop-blur border border-gold-300/50 text-black px-6 py-3 rounded-lg font-medium text-sm mt-2 transition-transform duration-300 hover:scale-105 group"
+            className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur border border-gold-300/50 text-black px-6 py-3 rounded-lg font-medium text-sm mt-2 transition-transform duration-300 hover:scale-105 group"
           >
-            <span className="relative z-10">Buy Now</span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+            <span className="relative z-10">Buy Now</span>
           </a>
         </div>
       </div>
