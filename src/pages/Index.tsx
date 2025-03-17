@@ -7,6 +7,8 @@ import Features from '../components/Features';
 import Testimonials from '../components/Testimonials';
 import Cta from '../components/Cta';
 import Footer from '../components/Footer';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
+import OptimizedImage from '@/components/OptimizedImage';
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -99,6 +101,32 @@ const Index = () => {
       <Navbar />
       <Hero />
       <About />
+      
+      {/* Full-width community image section between About and Features */}
+      <section className="w-full relative">
+        <div className="w-full overflow-hidden">
+          {/* Mobile version with appropriate aspect ratio */}
+          <AspectRatio ratio={16/9} className="w-full md:hidden">
+            <OptimizedImage
+              src="/lovable-uploads/e51a7f52-b94b-41ef-b8a0-f8bb8d18157c.png"
+              alt="All Will Retire Community"
+              className="w-full h-full object-cover"
+              priority={true}
+            />
+          </AspectRatio>
+          
+          {/* Desktop version that fills the width */}
+          <div className="hidden md:block w-full">
+            <OptimizedImage
+              src="/lovable-uploads/e51a7f52-b94b-41ef-b8a0-f8bb8d18157c.png"
+              alt="All Will Retire Community" 
+              className="w-full h-auto object-contain"
+              priority={true}
+            />
+          </div>
+        </div>
+      </section>
+      
       <Features />
       <Testimonials />
       <Cta />
