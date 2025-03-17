@@ -134,7 +134,6 @@ export default {
         'gold-gradient': 'linear-gradient(90deg, #FFC300, #FFD700, #FFC300)',
         'glass': 'linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))',
         'luxury': 'linear-gradient(to right, #000000, #434343)',
-        'gradient-radial': 'radial-gradient(circle, var(--tw-gradient-stops))',
       }
     }
   },

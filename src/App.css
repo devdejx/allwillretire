@@ -46,12 +46,6 @@ body, html {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #000000;
+  background-color: black;
 }
 
-/* Update Tailwind config to include this gradient */
-@layer utilities {
-  .bg-gradient-radial {
-    background-image: radial-gradient(circle, var(--tw-gradient-stops));
-  }
-}
