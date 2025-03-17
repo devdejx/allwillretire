@@ -42,8 +42,15 @@ const Cta = () => {
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/50 to-transparent z-10"></div>
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/50 to-transparent z-10"></div>
         
-        <div className="absolute left-0 top-0 bottom-0 w-36 bg-gradient-to-r from-black/95 to-transparent z-10"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-36 bg-gradient-to-l from-black/95 to-transparent z-10"></div>
+        {/* Left golden light border with glow effect */}
+        <div className="absolute left-0 top-0 bottom-0 w-[50px] bg-gradient-to-r from-gold-500/30 to-transparent z-20 animate-pulse">
+          <div className="absolute inset-0 bg-gradient-to-r from-gold-400/40 to-transparent blur-md"></div>
+        </div>
+        
+        {/* Right golden light border with glow effect */}
+        <div className="absolute right-0 top-0 bottom-0 w-[50px] bg-gradient-to-l from-gold-500/30 to-transparent z-20 animate-pulse">
+          <div className="absolute inset-0 bg-gradient-to-l from-gold-400/40 to-transparent blur-md"></div>
+        </div>
         
         <div className="absolute top-10 right-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-10"></div>
         <div className="absolute bottom-10 left-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-10"></div>
@@ -86,8 +93,15 @@ const Cta = () => {
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/50 to-transparent z-10"></div>
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/50 to-transparent z-10"></div>
         
-        <div className="absolute left-0 top-0 bottom-0 w-36 bg-gradient-to-r from-black/95 to-transparent z-10"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-36 bg-gradient-to-l from-black/95 to-transparent z-10"></div>
+        {/* Left golden light border with glow effect */}
+        <div className="absolute left-0 top-0 bottom-0 w-[50px] bg-gradient-to-r from-gold-500/30 to-transparent z-20 animate-pulse">
+          <div className="absolute inset-0 bg-gradient-to-r from-gold-400/40 to-transparent blur-md"></div>
+        </div>
+        
+        {/* Right golden light border with glow effect */}
+        <div className="absolute right-0 top-0 bottom-0 w-[50px] bg-gradient-to-l from-gold-500/30 to-transparent z-20 animate-pulse">
+          <div className="absolute inset-0 bg-gradient-to-l from-gold-400/40 to-transparent blur-md"></div>
+        </div>
         
         <div className="absolute top-10 right-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-10"></div>
         <div className="absolute bottom-10 left-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-10"></div>
@@ -128,8 +142,15 @@ const Cta = () => {
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/50 to-transparent z-10"></div>
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/50 to-transparent z-10"></div>
         
-        <div className="absolute left-0 top-0 bottom-0 w-36 bg-gradient-to-r from-black/95 to-transparent z-10"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-36 bg-gradient-to-l from-black/95 to-transparent z-10"></div>
+        {/* Left golden light border with glow effect */}
+        <div className="absolute left-0 top-0 bottom-0 w-[50px] bg-gradient-to-r from-gold-500/30 to-transparent z-20 animate-pulse">
+          <div className="absolute inset-0 bg-gradient-to-r from-gold-400/40 to-transparent blur-md"></div>
+        </div>
+        
+        {/* Right golden light border with glow effect */}
+        <div className="absolute right-0 top-0 bottom-0 w-[50px] bg-gradient-to-l from-gold-500/30 to-transparent z-20 animate-pulse">
+          <div className="absolute inset-0 bg-gradient-to-l from-gold-400/40 to-transparent blur-md"></div>
+        </div>
         
         <div className="absolute top-10 right-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-10"></div>
         <div className="absolute bottom-10 left-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-10"></div>
