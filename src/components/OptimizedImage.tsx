@@ -73,7 +73,7 @@ const OptimizedImage = ({
       // Using intersection observer for lazy loading
       const imgElement = document.createElement('img');
       
-      const handleIntersection = (entries) => {
+      const handleIntersection = (entries: IntersectionObserverEntry[]) => {
         if (entries[0].isIntersecting) {
           const optimizedSrc = getOptimizedSrc(src);
           setImageSrc(optimizedSrc);

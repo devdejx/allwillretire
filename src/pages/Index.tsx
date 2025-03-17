@@ -3,15 +3,15 @@ import React, { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import Navbar from '../components/Navbar';
 import { useIsMobile } from '@/hooks/use-mobile';
 
-// Instead of loading all components immediately, lazy load them
-const Hero = lazy(() => import('../components/Hero'));
-const About = lazy(() => import('../components/About'));
-const Features = lazy(() => import('../components/Features'));
-const Testimonials = lazy(() => import('../components/Testimonials'));
-const Cta = lazy(() => import('../components/Cta'));
-const Footer = lazy(() => import('../components/Footer'));
+// Import components normally for better performance
+import Hero from '../components/Hero';
+import About from '../components/About';
+import Features from '../components/Features';
+import Testimonials from '../components/Testimonials';
+import Cta from '../components/Cta';
+import Footer from '../components/Footer';
 
-// Simple loading component for lazy-loaded sections
+// Simple loading component for sections
 const SectionLoader = () => (
   <div className="flex justify-center items-center py-12">
     <div className="w-8 h-8 border-t-2 border-gold-500 rounded-full animate-spin"></div>
@@ -126,9 +126,7 @@ const Index = () => {
     
     return () => {
       clearTimeout(timer);
-      document.querySelectorAll('.reveal').forEach((el) => {
-        observer.unobserve(el);
-      });
+      observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
     };
   }, [isMobile, isInitialLoad]);
@@ -136,24 +134,12 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      <Suspense fallback={<SectionLoader />}>
-        <Hero />
-      </Suspense>
-      <Suspense fallback={<SectionLoader />}>
-        <About />
-      </Suspense>
-      <Suspense fallback={<SectionLoader />}>
-        <Features />
-      </Suspense>
-      <Suspense fallback={<SectionLoader />}>
-        <Testimonials />
-      </Suspense>
-      <Suspense fallback={<SectionLoader />}>
-        <Cta />
-      </Suspense>
-      <Suspense fallback={<SectionLoader />}>
-        <Footer />
-      </Suspense>
+      <Hero />
+      <About />
+      <Features />
+      <Testimonials />
+      <Cta />
+      <Footer />
     </div>
   );
 };
