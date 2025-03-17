@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowRight, Copy, Check } from 'lucide-react';
 import { Button } from './ui/button';
@@ -153,7 +154,7 @@ const Cta = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-              <button onClick={handleCopy} className="bg-white/10 backdrop-blur border border-white/20 text-white px-6 py-3 rounded-xl font-medium hover:bg-white/20 transition-colors flex items-center justify-center gap-2">
+              <button onClick={handleCopy} className="bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 backdrop-blur border border-gold-400/30 text-black px-6 py-3 rounded-xl font-medium hover:bg-gradient-to-r hover:from-gold-500 hover:to-gold-400 transition-colors flex items-center justify-center gap-2 shadow-md shadow-gold-500/20">
                 <span className="truncate max-w-[200px] sm:max-w-[250px] md:max-w-[300px]">
                   Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump
                 </span>
