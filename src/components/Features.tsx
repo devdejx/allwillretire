@@ -15,12 +15,13 @@ const Features = () => {
         {/* Top gold border - updated to match thinner style from Cta component */}
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         
-        {/* Add gold border around the image */}
-        <div className="absolute inset-0 border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md overflow-hidden z-0">
+        {/* Modified to remove gaps between image and border */}
+        <div className="absolute inset-0 border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] overflow-hidden z-0">
           <img 
             src="/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png" 
             alt="All Will Retire Community" 
             className="w-full h-full object-contain md:object-cover"
+            style={{ display: 'block' }} /* Force block display to prevent inline gaps */
           />
         </div>
         
