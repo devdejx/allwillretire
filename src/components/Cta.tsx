@@ -35,15 +35,14 @@ const Cta = () => {
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/80 z-10"></div>
-          <div className="absolute inset-0 w-full h-full overflow-hidden">
-            {/* Left golden light glow */}
-            <div className="absolute left-0 top-0 bottom-0 w-[80px] bg-gradient-to-r from-gold-500/40 to-transparent z-20 animate-pulse">
-              <div className="absolute inset-0 bg-gradient-to-r from-gold-400/50 to-transparent blur-lg"></div>
+          <div className="absolute inset-0 w-full h-full overflow-hidden border-l-4 border-r-4 border-gold-500/50">
+            {/* Video frame golden borders */}
+            <div className="absolute left-0 top-0 bottom-0 w-4 bg-gold-500/40 z-20 animate-pulse">
+              <div className="absolute inset-0 bg-gradient-to-r from-gold-400/50 to-transparent blur-sm"></div>
             </div>
             
-            {/* Right golden light glow */}
-            <div className="absolute right-0 top-0 bottom-0 w-[80px] bg-gradient-to-l from-gold-500/40 to-transparent z-20 animate-pulse">
-              <div className="absolute inset-0 bg-gradient-to-l from-gold-400/50 to-transparent blur-lg"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-4 bg-gold-500/40 z-20 animate-pulse">
+              <div className="absolute inset-0 bg-gradient-to-l from-gold-400/50 to-transparent blur-sm"></div>
             </div>
             
             <iframe src="https://player.vimeo.com/video/1065939107?h=96cbb5c847&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%]" title="Background Video"></iframe>
@@ -86,15 +85,14 @@ const Cta = () => {
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/80 z-10"></div>
-          <div className="absolute inset-0 w-full h-full overflow-hidden">
-            {/* Left golden light glow */}
-            <div className="absolute left-0 top-0 bottom-0 w-[80px] bg-gradient-to-r from-gold-500/40 to-transparent z-20 animate-pulse">
-              <div className="absolute inset-0 bg-gradient-to-r from-gold-400/50 to-transparent blur-lg"></div>
+          <div className="absolute inset-0 w-full h-full overflow-hidden border-l-4 border-r-4 border-gold-500/50">
+            {/* Video frame golden borders */}
+            <div className="absolute left-0 top-0 bottom-0 w-4 bg-gold-500/40 z-20 animate-pulse">
+              <div className="absolute inset-0 bg-gradient-to-r from-gold-400/50 to-transparent blur-sm"></div>
             </div>
             
-            {/* Right golden light glow */}
-            <div className="absolute right-0 top-0 bottom-0 w-[80px] bg-gradient-to-l from-gold-500/40 to-transparent z-20 animate-pulse">
-              <div className="absolute inset-0 bg-gradient-to-l from-gold-400/50 to-transparent blur-lg"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-4 bg-gold-500/40 z-20 animate-pulse">
+              <div className="absolute inset-0 bg-gradient-to-l from-gold-400/50 to-transparent blur-sm"></div>
             </div>
             
             <iframe src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%]" title="Background Video"></iframe>
@@ -135,15 +133,14 @@ const Cta = () => {
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/80 z-10"></div>
-          <div className="absolute inset-0 w-full h-full overflow-hidden">
-            {/* Left golden light glow */}
-            <div className="absolute left-0 top-0 bottom-0 w-[80px] bg-gradient-to-r from-gold-500/40 to-transparent z-20 animate-pulse">
-              <div className="absolute inset-0 bg-gradient-to-r from-gold-400/50 to-transparent blur-lg"></div>
+          <div className="absolute inset-0 w-full h-full overflow-hidden border-l-4 border-r-4 border-gold-500/50">
+            {/* Video frame golden borders */}
+            <div className="absolute left-0 top-0 bottom-0 w-4 bg-gold-500/40 z-20 animate-pulse">
+              <div className="absolute inset-0 bg-gradient-to-r from-gold-400/50 to-transparent blur-sm"></div>
             </div>
             
-            {/* Right golden light glow */}
-            <div className="absolute right-0 top-0 bottom-0 w-[80px] bg-gradient-to-l from-gold-500/40 to-transparent z-20 animate-pulse">
-              <div className="absolute inset-0 bg-gradient-to-l from-gold-400/50 to-transparent blur-lg"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-4 bg-gold-500/40 z-20 animate-pulse">
+              <div className="absolute inset-0 bg-gradient-to-l from-gold-400/50 to-transparent blur-sm"></div>
             </div>
             
             <iframe src="https://player.vimeo.com/video/1065940999?h=4705f6f507&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%]" title="Background Video"></iframe>
