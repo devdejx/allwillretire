@@ -1,11 +1,9 @@
 
 import React, { useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { useIsMobile } from '../hooks/use-mobile';
 
 const Features = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const isMobile = useIsMobile();
 
   return (
     <>
@@ -38,19 +36,7 @@ const Features = () => {
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "fixed" // This makes the background stay in place during scroll
       }}>
-        {/* Replaced the background overlay with Vimeo video iframe */}
-        <div className="absolute inset-0 z-0">
-          <div style={{padding:"56.25% 0 0 0", position:"relative"}}>
-            <iframe 
-              src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&badge=0&autopause=0&player_id=0&app_id=58479" 
-              frameBorder="0" 
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              style={{position:"absolute", top:0, left:0, width:"100%", height:"100%"}} 
-              title="626ac5ce7c4123ab7969da90_bg-vid-transcode"
-            ></iframe>
-          </div>
-          <script src="https://player.vimeo.com/api/player.js"></script>
-        </div>
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto mb-8 text-center">
