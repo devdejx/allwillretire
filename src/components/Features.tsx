@@ -1,8 +1,12 @@
+
 import React, { useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
+import OptimizedImage from './OptimizedImage';
 
 const Features = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const isMobile = useIsMobile();
 
   return (
     <>
@@ -16,7 +20,7 @@ const Features = () => {
           <img 
             src="/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png" 
             alt="All Will Retire Community" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain md:object-cover"
           />
         </div>
         
