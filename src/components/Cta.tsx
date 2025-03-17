@@ -31,13 +31,12 @@ const Cta = () => {
   return <>
       <section className="py-24 relative overflow-hidden bg-black/70">
         <div className="absolute inset-0 z-0 overflow-hidden">
-          {/* Background video iframe - added behind existing content */}
+          {/* Background image iframe with darkening overlay */}
           <div className="absolute inset-0 w-full h-full overflow-hidden">
             <iframe src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%]" title="Background Video Base"></iframe>
+            {/* Darkening overlay specifically for the background image */}
+            <div className="absolute inset-0 bg-black/80 z-5"></div>
           </div>
-          
-          {/* Added darkening overlay on the background video */}
-          <div className="absolute inset-0 bg-black/70 z-10"></div>
           
           {/* Changed z-index to a higher value to appear above the background video */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-black/50 z-20"></div>
@@ -88,13 +87,12 @@ const Cta = () => {
 
       <section className="py-24 relative overflow-hidden bg-black/70">
         <div className="absolute inset-0 z-0 overflow-hidden">
-          {/* Background video iframe - added behind existing content */}
+          {/* Background image iframe with darkening overlay */}
           <div className="absolute inset-0 w-full h-full overflow-hidden">
             <iframe src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%]" title="Background Video Base"></iframe>
+            {/* Darkening overlay specifically for the background image */}
+            <div className="absolute inset-0 bg-black/80 z-5"></div>
           </div>
-          
-          {/* Added darkening overlay on the background video */}
-          <div className="absolute inset-0 bg-black/70 z-10"></div>
           
           {/* Changed z-index to a higher value to appear above the background video */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-black/50 z-20"></div>
@@ -143,13 +141,12 @@ const Cta = () => {
 
       <section className="py-24 relative overflow-hidden bg-black/70">
         <div className="absolute inset-0 z-0 overflow-hidden">
-          {/* Background video iframe - added behind existing content */}
+          {/* Background image iframe with darkening overlay */}
           <div className="absolute inset-0 w-full h-full overflow-hidden">
             <iframe src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%]" title="Background Video Base"></iframe>
+            {/* Darkening overlay specifically for the background image */}
+            <div className="absolute inset-0 bg-black/80 z-5"></div>
           </div>
-          
-          {/* Added darkening overlay on the background video */}
-          <div className="absolute inset-0 bg-black/70 z-10"></div>
           
           {/* Changed z-index to a higher value to appear above the background video */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-black/50 z-20"></div>
