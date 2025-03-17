@@ -7,6 +7,15 @@ const Features = () => {
 
   return (
     <>
+      {/* Full-width image section with the beach image - now placed BEFORE the features content */}
+      <section className="relative w-full h-screen">
+        <img 
+          src="/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png" 
+          alt="All Will Retire Community" 
+          className="w-full h-full object-cover"
+        />
+      </section>
+
       <section ref={sectionRef} id="features" className="py-24 text-white relative min-h-screen" style={{
         backgroundImage: "url('/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png')",
         backgroundSize: "cover",
@@ -46,15 +55,6 @@ const Features = () => {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* New full-width image section with the uploaded beach image */}
-      <section className="relative w-full h-screen">
-        <img 
-          src="/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png" 
-          alt="All Will Retire Community" 
-          className="w-full h-full object-cover"
-        />
       </section>
     </>
   );
