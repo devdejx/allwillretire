@@ -13,8 +13,8 @@ const Footer = lazy(() => import('../components/Footer'));
 
 // Simple loading component
 const SectionLoading = () => (
-  <div className="w-full py-24 flex justify-center items-center">
-    <div className="w-12 h-12 rounded-full border-4 border-gold-500/50 border-t-gold-500 animate-spin"></div>
+  <div className="w-full py-12 flex justify-center items-center">
+    <div className="w-8 h-8 rounded-full border-2 border-gold-500/50 border-t-gold-500 animate-spin"></div>
   </div>
 );
 
@@ -27,46 +27,54 @@ const Index = () => {
   const isMobile = useIsMobile();
   
   useEffect(() => {
-    // More optimized reveal animations for mobile
+    if (typeof window === 'undefined') return;
+    
+    // Simplified animation for performance improvement
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Reduce animation complexity on mobile
-            if (isMobile) {
-              entry.target.classList.add('animate-fade-in');
-              observer.unobserve(entry.target);
-              return;
+            entry.target.classList.add('animate-fade-in');
+            
+            // Skip child animations on mobile for performance
+            if (!isMobile) {
+              const children = Array.from(entry.target.children);
+              children.forEach((child, index) => {
+                setTimeout(() => {
+                  child.classList.add('animate-fade-up');
+                }, index * 100);
+              });
             }
             
-            // Full animations on desktop
-            const children = Array.from(entry.target.children);
-            children.forEach((child, index) => {
-              setTimeout(() => {
-                child.classList.add('animate-fade-up');
-              }, index * (isMobile ? 100 : 150)); // Faster stagger on mobile
-            });
-            
-            entry.target.classList.add('animate-fade-in');
             observer.unobserve(entry.target);
           }
         });
       },
       { 
         threshold: 0.1,
-        rootMargin: '0px 0px -10% 0px'
+        rootMargin: '0px 0px -5% 0px'
       }
     );
 
-    document.querySelectorAll('.reveal').forEach((el) => {
-      observer.observe(el);
-    });
+    // Apply observer with a small delay to ensure DOM is ready
+    setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach((el) => {
+        observer.observe(el);
+      });
+    }, 100);
 
-    // Optimize scroll handling for mobile
+    // Throttled scroll handler for better performance
+    let lastScrollTime = 0;
+    const scrollThreshold = isMobile ? 200 : 50; // Higher threshold on mobile
+    
     const handleScroll = () => {
+      const now = Date.now();
+      if (now - lastScrollTime < scrollThreshold) return;
+      lastScrollTime = now;
+      
       const scrollY = window.scrollY;
       
-      // Skip parallax effects on mobile to improve performance
+      // Skip parallax effects on mobile entirely
       if (!isMobile) {
         document.querySelectorAll('.parallax').forEach((el) => {
           const speed = parseFloat(el.getAttribute('data-speed') || '0.2');
@@ -74,16 +82,14 @@ const Index = () => {
         });
       }
       
-      // Optimize section tracking for navigation highlighting
-      if (scrollY % 5 !== 0 && isMobile) return; // Only check every 5px of scroll on mobile
-      
+      // Optimize section highlighting
       const sections = [
         heroRef.current,
         aboutRef.current,
         featuresRef.current,
         testimonialsRef.current,
         ctaRef.current
-      ];
+      ].filter(Boolean);
       
       sections.forEach((section) => {
         if (!section) return;
@@ -106,7 +112,7 @@ const Index = () => {
       });
     };
 
-    // Use passive event listener for better scroll performance
+    // Use passive event listener for better performance
     window.addEventListener('scroll', handleScroll, { passive: true });
     
     return () => {

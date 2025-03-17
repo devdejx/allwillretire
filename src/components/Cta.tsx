@@ -33,8 +33,8 @@ const Cta = () => {
   };
 
   // Optimized background video component that shows a static image on mobile
-  const BackgroundVideo = ({ videoId, imageUrl }: { videoId: string, imageUrl: string }) => {
-    if (isMobile) {
+  const BackgroundMedia = ({ videoId, imageUrl }: { videoId: string, imageUrl: string }) => {
+    if (isMobile === true) {
       // Use static image background on mobile to improve performance
       return (
         <div className="absolute inset-0 w-full h-full">
@@ -43,6 +43,7 @@ const Cta = () => {
             alt="Background" 
             className="w-full h-full object-cover"
             priority={true}
+            lazyLoad={false}
           />
         </div>
       );
@@ -78,7 +79,7 @@ const Cta = () => {
     <section className="py-24 relative overflow-hidden bg-black/70">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 w-full h-full overflow-hidden">
-          <BackgroundVideo 
+          <BackgroundMedia 
             videoId={videoId} 
             imageUrl="/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png" 
           />
@@ -88,7 +89,7 @@ const Cta = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/30 z-20"></div>
         
         <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15">
-          <BackgroundVideo 
+          <BackgroundMedia 
             videoId={overlayVideoId} 
             imageUrl="/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png" 
           />
@@ -113,6 +114,7 @@ const Cta = () => {
               alt="AWR Lifestyle" 
               className="h-56 w-auto mx-auto" 
               priority={true}
+              lazyLoad={false}
             />
           </div>
           
