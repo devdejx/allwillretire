@@ -79,10 +79,14 @@ const Index = () => {
   return <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
       <Hero />
+      
+      {/* Add more spacing before About section */}
+      <div className="h-24"></div>
+      
       <About />
       
-      {/* Community Image Section with Borders */}
-      <section className="w-full my-12">
+      {/* Community Image Section with Borders - added more vertical spacing */}
+      <section className="w-full my-24">
         {/* Container with top border */}
         <div className="relative w-full">
           {/* Top border */}
