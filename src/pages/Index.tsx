@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -80,23 +81,37 @@ const Index = () => {
       <Hero />
       <About />
       
-      <section className="w-full relative">
-        <div className="relative w-full h-full">
-          {/* Top border attached directly to the image container */}
-          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-30 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
+      {/* Community Image Section with Borders */}
+      <section className="w-full my-12">
+        {/* Container with top border */}
+        <div className="relative w-full">
+          {/* Top border */}
+          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
           
-          <div className="w-full overflow-hidden">
-            <AspectRatio ratio={16 / 9} className="w-full md:hidden">
-              <OptimizedImage src="/lovable-uploads/e51a7f52-b94b-41ef-b8a0-f8bb8d18157c.png" alt="All Will Retire Community" className="w-full h-full object-cover" priority={true} />
+          {/* Mobile image */}
+          <div className="md:hidden w-full">
+            <AspectRatio ratio={16 / 9} className="w-full">
+              <OptimizedImage 
+                src="/lovable-uploads/e51a7f52-b94b-41ef-b8a0-f8bb8d18157c.png" 
+                alt="All Will Retire Community" 
+                className="w-full h-full object-cover" 
+                priority={true} 
+              />
             </AspectRatio>
-            
-            <div className="hidden md:block w-full">
-              <OptimizedImage src="/lovable-uploads/e51a7f52-b94b-41ef-b8a0-f8bb8d18157c.png" alt="All Will Retire Community" className="w-full h-auto object-contain" priority={true} />
-            </div>
           </div>
           
-          {/* Bottom border attached directly to the image container */}
-          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-30 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
+          {/* Desktop image */}
+          <div className="hidden md:block w-full">
+            <OptimizedImage 
+              src="/lovable-uploads/e51a7f52-b94b-41ef-b8a0-f8bb8d18157c.png" 
+              alt="All Will Retire Community" 
+              className="w-full h-auto object-contain" 
+              priority={true} 
+            />
+          </div>
+          
+          {/* Bottom border */}
+          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         </div>
       </section>
       
