@@ -1,3 +1,4 @@
+
 import React, { useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -14,18 +15,12 @@ const Features = () => {
         {/* Top gold border - updated to match thinner style from Cta component */}
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         
-        {/* Completely removed any gaps between image and border */}
-        <div className="absolute inset-0 border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] z-0">
+        {/* Add gold border around the image */}
+        <div className="absolute inset-0 border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md overflow-hidden z-0">
           <img 
             src="/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png" 
             alt="All Will Retire Community" 
             className="w-full h-full object-contain md:object-cover"
-            style={{ 
-              display: 'block', 
-              margin: 0, 
-              padding: 0,
-              objectFit: isMobile ? 'contain' : 'cover' // Use contain on mobile, cover on larger screens
-            }}
           />
         </div>
         
@@ -37,8 +32,7 @@ const Features = () => {
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black/80 to-transparent z-10"></div>
       </section>
 
-      {/* Reduced the padding-top (py-24 -> py-8) to minimize the gap between image and features section */}
-      <section ref={sectionRef} id="features" className="py-8 text-white relative min-h-screen">
+      <section ref={sectionRef} id="features" className="py-24 text-white relative min-h-screen">
         {/* Keeping the dark overlay but removing the background image */}
         <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
         
