@@ -1,3 +1,4 @@
+
 import React, { useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -31,11 +32,11 @@ const Features = () => {
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black/80 to-transparent z-10"></div>
       </section>
 
-      <section ref={sectionRef} id="features" className="py-0 text-white relative min-h-screen -mt-16">
+      <section ref={sectionRef} id="features" className="py-24 text-white relative min-h-screen">
         {/* Keeping the dark overlay but removing the background image */}
         <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
         
-        <div className="container mx-auto px-6 relative z-10 pt-24">
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto mb-8 text-center">
             <div className="inline-block mb-4">
               <span className="uppercase tracking-wider text-sm font-medium text-gold-400">
