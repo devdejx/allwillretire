@@ -31,8 +31,8 @@ const Features = () => {
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black/80 to-transparent z-10"></div>
       </section>
 
-      {/* Further increased negative margin to -16 to completely eliminate any gap */}
-      <section ref={sectionRef} id="features" className="pt-0 pb-8 md:pb-16 text-white relative -mt-16">
+      {/* Further increased negative margin to -24 to completely eliminate any gap */}
+      <section ref={sectionRef} id="features" className="pt-0 pb-8 md:pb-16 text-white relative -mt-24">
         {/* Keeping the dark overlay but removing the background image */}
         <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
         
