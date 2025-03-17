@@ -118,7 +118,7 @@ const Footer = () => {
                 >
                   <Button 
                     variant="outline" 
-                    className="bg-black border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-black flex items-center"
+                    className="bg-black border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-black flex items-center transition-transform duration-300 hover:scale-105"
                   >
                     CoinGecko
                     <ExternalLink size={14} className="ml-2" />
@@ -131,7 +131,7 @@ const Footer = () => {
                 >
                   <Button 
                     variant="outline" 
-                    className="bg-black border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-black flex items-center"
+                    className="bg-black border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-black flex items-center transition-transform duration-300 hover:scale-105"
                   >
                     DexScreener
                     <ExternalLink size={14} className="ml-2" />
@@ -148,7 +148,7 @@ const Footer = () => {
           </div>
           <button 
             onClick={scrollToTop} 
-            className="bg-white/10 hover:bg-white/20 transition-colors p-3 rounded-full"
+            className="bg-white/10 hover:bg-white/20 transition-colors p-3 rounded-full hover:scale-110 transition-transform duration-300"
             aria-label="Scroll to top"
           >
             <ArrowUp size={18} />
