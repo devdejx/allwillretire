@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Coins, Shield, TrendingUp, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -46,31 +45,7 @@ const About = () => {
 
   return (
     <>
-      {/* Full-width image section with reduced margin/padding */}
-      <section className="relative w-full">
-        <div className="w-full overflow-hidden">
-          <AspectRatio ratio={21/9} className="w-full md:hidden">
-            <OptimizedImage
-              src="/lovable-uploads/1fb72952-6819-450d-a585-73da99595d6e.png"
-              alt="All Will Retire Community"
-              className="w-full h-full object-contain"
-              priority={true}
-            />
-          </AspectRatio>
-          
-          {/* Different aspect ratio for desktop to ensure no cropping */}
-          <div className="hidden md:block relative w-full">
-            <OptimizedImage
-              src="/lovable-uploads/1fb72952-6819-450d-a585-73da99595d6e.png"
-              alt="All Will Retire Community"
-              className="w-full object-contain mx-auto"
-              priority={true}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* About section with reduced top padding to bring it closer to the image */}
+      {/* About section */}
       <section id="about" className="pt-6 pb-24 relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute top-1/4 -right-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
