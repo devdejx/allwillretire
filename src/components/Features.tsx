@@ -1,7 +1,9 @@
+
 import React, { useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import OptimizedImage from './OptimizedImage';
+import { AspectRatio } from './ui/aspect-ratio';
 
 const Features = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -9,7 +11,31 @@ const Features = () => {
 
   return (
     <>
-      {/* Further increased negative margin to -24 to completely eliminate any gap */}
+      {/* Full-width image section */}
+      <section className="relative w-full">
+        <div className="w-full overflow-hidden">
+          {/* Use Aspect Ratio to maintain image proportions on mobile */}
+          <AspectRatio ratio={16/6} className="w-full md:hidden">
+            <OptimizedImage
+              src="/lovable-uploads/22ece7bd-7065-4d66-81fa-6320ac0b9ea5.png"
+              alt="All Will Retire Community"
+              className="w-full h-full object-contain"
+              priority={true}
+            />
+          </AspectRatio>
+          
+          {/* Full width display for desktop */}
+          <div className="hidden md:block relative w-full">
+            <OptimizedImage
+              src="/lovable-uploads/22ece7bd-7065-4d66-81fa-6320ac0b9ea5.png"
+              alt="All Will Retire Community"
+              className="w-full object-contain mx-auto"
+              priority={true}
+            />
+          </div>
+        </div>
+      </section>
+
       <section ref={sectionRef} id="features" className="pt-16 pb-8 md:pb-16 text-white relative">
         {/* Keeping the dark overlay but removing the background image */}
         <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
