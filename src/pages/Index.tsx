@@ -81,9 +81,9 @@ const Index = () => {
       <Hero />
       <About />
       
-      <section className={`w-full relative ${isMobile ? 'mt-32' : '-mt-96'}`}>
+      <section className={`w-full relative ${isMobile ? 'mt-32' : 'mt-0'}`}>
         <div className="relative w-full">
-          {/* Eliminate any extra space between the border and image container */}
+          {/* Top border attached directly to the image container */}
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-30 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
           
           <div className="w-full overflow-hidden">
@@ -96,6 +96,7 @@ const Index = () => {
             </div>
           </div>
           
+          {/* Bottom border attached directly to the image container */}
           <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-30 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         </div>
       </section>
