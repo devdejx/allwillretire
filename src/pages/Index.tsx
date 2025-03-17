@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -20,17 +19,15 @@ const Index = () => {
   const isMobile = useIsMobile();
   
   useEffect(() => {
-    // More sophisticated reveal animations on scroll
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Add staggered animation by calculating delay based on child index
             const children = Array.from(entry.target.children);
             children.forEach((child, index) => {
               setTimeout(() => {
                 child.classList.add('animate-fade-up');
-              }, index * 150); // 150ms stagger between children
+              }, index * 150);
             });
             
             entry.target.classList.add('animate-fade-in');
@@ -40,7 +37,7 @@ const Index = () => {
       },
       { 
         threshold: 0.1,
-        rootMargin: '0px 0px -10% 0px' // Start animation slightly before element comes into view
+        rootMargin: '0px 0px -10% 0px'
       }
     );
 
@@ -48,17 +45,14 @@ const Index = () => {
       observer.observe(el);
     });
 
-    // Smooth scroll handling with parallax effects
     const handleScroll = () => {
       const scrollY = window.scrollY;
       
-      // Apply subtle parallax to background elements
       document.querySelectorAll('.parallax').forEach((el) => {
         const speed = parseFloat(el.getAttribute('data-speed') || '0.2');
         (el as HTMLElement).style.transform = `translateY(${scrollY * speed}px)`;
       });
       
-      // Track current section for navigation highlighting
       const sections = [
         heroRef.current,
         aboutRef.current,
@@ -104,10 +98,8 @@ const Index = () => {
       <Hero />
       <About />
       
-      {/* Full-width community image section between About and Features - different positioning for mobile */}
-      <section className={`w-full relative ${isMobile ? 'mt-32' : '-mt-96'}`}>
+      <section className={`w-full relative ${isMobile ? 'mt-32' : '-mt-64'}`}>
         <div className="w-full overflow-hidden">
-          {/* Mobile version with appropriate aspect ratio */}
           <AspectRatio ratio={16/9} className="w-full md:hidden">
             <OptimizedImage
               src="/lovable-uploads/e51a7f52-b94b-41ef-b8a0-f8bb8d18157c.png"
@@ -117,7 +109,6 @@ const Index = () => {
             />
           </AspectRatio>
           
-          {/* Desktop version that fills the width */}
           <div className="hidden md:block w-full">
             <OptimizedImage
               src="/lovable-uploads/e51a7f52-b94b-41ef-b8a0-f8bb8d18157c.png"
