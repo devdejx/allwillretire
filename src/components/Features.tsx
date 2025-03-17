@@ -1,42 +1,23 @@
-
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 const Features = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    // Load Vimeo player script
-    const script = document.createElement('script');
-    script.src = 'https://player.vimeo.com/api/player.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
-  }, []);
-
   return (
     <>
-      {/* Replaced beach image with Vimeo video */}
+      {/* Full-width image section with the beach image - now placed BEFORE the features content */}
       <section className="relative w-full h-screen">
         {/* Top gold border - updated to match thinner style from Cta component */}
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         
-        {/* Add gold border around the video */}
+        {/* Add gold border around the image */}
         <div className="absolute inset-0 border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md overflow-hidden z-0">
-          <div style={{padding:'56.25% 0 0 0', position:'relative'}}>
-            <iframe 
-              src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&badge=0&autopause=0&player_id=0&app_id=58479" 
-              frameBorder="0" 
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}} 
-              title="626ac5ce7c4123ab7969da90_bg-vid-transcode">
-            </iframe>
-          </div>
+          <img 
+            src="/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png" 
+            alt="All Will Retire Community" 
+            className="w-full h-full object-cover"
+          />
         </div>
         
         {/* Bottom gold border - updated to match thinner style from Cta component */}
