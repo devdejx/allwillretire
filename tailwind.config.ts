@@ -113,6 +113,16 @@ export default {
         'spin-slow': {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' }
+        },
+        'border-pulse': {
+          '0%, 100%': { 
+            borderColor: 'rgba(255, 195, 0, 0.5)',
+            boxShadow: '0 0 5px 1px rgba(255, 195, 0, 0.3)'
+          },
+          '50%': { 
+            borderColor: 'rgba(255, 195, 0, 0.9)',
+            boxShadow: '0 0 15px 3px rgba(255, 195, 0, 0.7)'
+          }
         }
       },
       animation: {
@@ -122,7 +132,8 @@ export default {
         'fade-up': 'fade-up 0.7s ease-out',
         'slide-in-right': 'slide-in-right 0.5s ease-out',
         'shimmer': 'shimmer 2s infinite linear',
-        'spin-slow': 'spin-slow 20s linear infinite'
+        'spin-slow': 'spin-slow 20s linear infinite',
+        'border-pulse': 'border-pulse 4s infinite ease-in-out'
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
