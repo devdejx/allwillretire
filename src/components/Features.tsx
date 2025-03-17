@@ -6,7 +6,7 @@ const Features = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   return <section ref={sectionRef} id="features" className="py-24 text-white relative min-h-screen" style={{
-    backgroundImage: "url('/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png')",
+    backgroundImage: "url('/lovable-uploads/f18bfb37-a57d-4859-a036-c3399b185645.png')",
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
