@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -81,9 +80,10 @@ const Navbar = () => {
             href="https://jup.ag/swap/USDC-Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-black text-white px-6 py-2 rounded-lg font-medium text-sm hover:opacity-90 transition-opacity border border-gold-500/30 shadow-[0_0_8px_1px_rgba(255,195,0,0.2)]"
+            className="relative bg-gradient-to-r from-transparent via-gold-500 to-transparent backdrop-blur border border-gold-300/50 text-black px-6 py-2 rounded-lg font-medium text-sm overflow-hidden group"
           >
-            Buy Now
+            <span className="relative z-10">Buy Now</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
           </a>
         </nav>
 
@@ -96,7 +96,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       <div 
         className={cn(
           "md:hidden absolute top-full left-0 right-0 neo-glass",
@@ -126,9 +125,10 @@ const Navbar = () => {
             href="https://jup.ag/swap/USDC-Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-black text-white px-6 py-3 rounded-lg font-medium text-sm mt-2 hover:opacity-90 transition-opacity border border-gold-500/30 shadow-[0_0_8px_1px_rgba(255,195,0,0.2)]"
+            className="relative bg-gradient-to-r from-transparent via-gold-500 to-transparent backdrop-blur border border-gold-300/50 text-black px-6 py-3 rounded-lg font-medium text-sm mt-2 hover:opacity-90 transition-opacity group"
           >
-            Buy Now
+            <span className="relative z-10">Buy Now</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
           </a>
         </div>
       </div>
