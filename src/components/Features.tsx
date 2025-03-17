@@ -9,7 +9,7 @@ const Features = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section ref={sectionRef} id="features" className="pt-0 pb-8 md:pb-16 text-white relative">
+    <section ref={sectionRef} id="features" className="pt-0 pb-8 md:pb-16 text-white relative -mt-8">
       {/* Keeping the dark overlay but removing the background image */}
       <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
       

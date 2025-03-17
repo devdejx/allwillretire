@@ -85,8 +85,8 @@ const Index = () => {
       
       <About />
       
-      {/* Community Image Section with Borders - added more vertical spacing */}
-      <section className="w-full my-24">
+      {/* Community Image Section with Borders - removed bottom margin to bring Features closer */}
+      <section className="w-full mt-24 mb-0">
         {/* Container with top border */}
         <div className="relative w-full">
           {/* Top border */}
