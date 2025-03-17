@@ -108,23 +108,21 @@ const Index = () => {
       <section className={`w-full relative ${isMobile ? 'mt-32' : '-mt-96'}`}>
         <div className="w-full overflow-hidden">
           {/* Mobile version with appropriate aspect ratio */}
-          <div className="md:hidden p-2 border-4 border-gold-400 rounded-lg shadow-lg mx-2">
-            <AspectRatio ratio={16/9} className="w-full">
-              <OptimizedImage
-                src="/lovable-uploads/e51a7f52-b94b-41ef-b8a0-f8bb8d18157c.png"
-                alt="All Will Retire Community"
-                className="w-full h-full object-cover"
-                priority={true}
-              />
-            </AspectRatio>
-          </div>
+          <AspectRatio ratio={16/9} className="w-full md:hidden">
+            <OptimizedImage
+              src="/lovable-uploads/e51a7f52-b94b-41ef-b8a0-f8bb8d18157c.png"
+              alt="All Will Retire Community"
+              className="w-full h-full object-cover"
+              priority={true}
+            />
+          </AspectRatio>
           
           {/* Desktop version that fills the width */}
-          <div className="hidden md:block w-full p-2 border-4 border-gold-400 rounded-lg shadow-[0_0_15px_rgba(255,195,0,0.5)] mx-auto max-w-[95%]">
+          <div className="hidden md:block w-full">
             <OptimizedImage
               src="/lovable-uploads/e51a7f52-b94b-41ef-b8a0-f8bb8d18157c.png"
               alt="All Will Retire Community" 
-              className="w-full h-auto object-contain rounded-md"
+              className="w-full h-auto object-contain"
               priority={true}
             />
           </div>
