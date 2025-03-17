@@ -98,7 +98,7 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
       <Hero />
-      {/* Removed About component to have Hero directly connect to Features */}
+      <About />
       <Features />
       <Testimonials />
       <Cta />
