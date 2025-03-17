@@ -9,8 +9,8 @@ const Features = () => {
     <>
       {/* Full-width image section with the beach image - now placed BEFORE the features content */}
       <section className="relative w-full h-screen">
-        {/* Top gold border - updated to match glowing style from Cta component */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_8px_2px_rgba(255,195,0,0.6)]"></div>
+        {/* Top gold border - updated to match thinner style from Cta component */}
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         
         {/* Add gold border around the image */}
         <div className="absolute inset-0 border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md overflow-hidden z-0">
@@ -21,8 +21,8 @@ const Features = () => {
           />
         </div>
         
-        {/* Bottom gold border - updated to match glowing style from Cta component */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_8px_2px_rgba(255,195,0,0.6)]"></div>
+        {/* Bottom gold border - updated to match thinner style from Cta component */}
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         
         {/* Added side gradients to blend the edges like in Cta component */}
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-black/80 to-transparent z-10"></div>
