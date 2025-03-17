@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Coins, Shield, TrendingUp, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -168,14 +169,15 @@ const About = () => {
               </div>
             </div>
             
-            {/* Buy button below the coin */}
+            {/* Updated buy button with transparent edges */}
             <a 
               href="https://jup.ag/swap/USDC-Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-bold py-2 px-6 rounded-full border border-gold-300 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 inline-block z-20"
+              className="relative bg-gradient-to-r from-transparent via-gold-500 to-transparent backdrop-blur text-black font-bold py-2 px-6 rounded-full border border-gold-300/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 inline-block z-20 overflow-hidden group"
             >
-              BUY NOW
+              <span className="relative z-10">BUY NOW</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
             </a>
             
             {/* Decorative elements */}
