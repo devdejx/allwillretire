@@ -46,8 +46,8 @@ const About = () => {
 
   return (
     <>
-      {/* About section - completely removed bottom padding and added negative margin */}
-      <section id="about" className="pt-6 pb-0 -mb-16 relative overflow-hidden">
+      {/* About section - completely removed bottom padding and added extreme negative margin */}
+      <section id="about" className="pt-6 pb-0 -mb-48 relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute top-1/4 -right-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 -left-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
