@@ -25,7 +25,7 @@ const Features = () => {
               display: 'block', 
               margin: 0, 
               padding: 0,
-              objectFit: 'fill'
+              objectFit: isMobile ? 'contain' : 'cover' // Use contain on mobile, cover on larger screens
             }}
           />
         </div>
