@@ -51,7 +51,6 @@ const Cta = () => {
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
           className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%]" 
           title="Background Video"
-          loading="lazy"
         />
       );
     }

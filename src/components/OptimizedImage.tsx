@@ -37,7 +37,6 @@ const OptimizedImage = ({
   const getOptimizedSrc = (originalSrc: string) => {
     if (isMobile && originalSrc.includes('lovable-uploads/')) {
       // For mobile, use a smaller version if we're using project images
-      // This is a theoretical implementation - in a real app you'd have image resizing
       return originalSrc;
     }
     return originalSrc;

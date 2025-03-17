@@ -1,22 +1,15 @@
 
-import React, { useEffect, useRef, useState, lazy, Suspense } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import { useIsMobile } from '@/hooks/use-mobile';
 
-// Import components normally for better performance
+// Import components normally
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Features from '../components/Features';
 import Testimonials from '../components/Testimonials';
 import Cta from '../components/Cta';
 import Footer from '../components/Footer';
-
-// Simple loading component for sections
-const SectionLoader = () => (
-  <div className="flex justify-center items-center py-12">
-    <div className="w-8 h-8 border-t-2 border-gold-500 rounded-full animate-spin"></div>
-  </div>
-);
 
 const Index = () => {
   const isMobile = useIsMobile();
