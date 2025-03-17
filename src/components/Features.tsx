@@ -1,4 +1,3 @@
-
 import React, { useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -11,7 +10,7 @@ const Features = () => {
   return (
     <>
       {/* Full-width image section with the beach image - now placed BEFORE the features content */}
-      <section className="relative w-full h-screen">
+      <section className="relative w-full h-[90vh] md:h-screen">
         {/* Top gold border - updated to match thinner style from Cta component */}
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         
@@ -32,7 +31,7 @@ const Features = () => {
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black/80 to-transparent z-10"></div>
       </section>
 
-      <section ref={sectionRef} id="features" className="py-24 text-white relative min-h-screen">
+      <section ref={sectionRef} id="features" className="py-8 md:py-16 text-white relative">
         {/* Keeping the dark overlay but removing the background image */}
         <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
         
