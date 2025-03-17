@@ -9,17 +9,20 @@ const Features = () => {
     <>
       {/* Full-width image section with the beach image - now placed BEFORE the features content */}
       <section className="relative w-full h-screen">
-        {/* Top gold border - updated to match Cta component style */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/50 to-transparent z-10"></div>
+        {/* Top gold border - updated to match glowing style from Cta component */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_8px_2px_rgba(255,195,0,0.6)]"></div>
         
-        <img 
-          src="/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png" 
-          alt="All Will Retire Community" 
-          className="w-full h-full object-cover"
-        />
+        {/* Add gold border around the image */}
+        <div className="absolute inset-0 border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md overflow-hidden z-0">
+          <img 
+            src="/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png" 
+            alt="All Will Retire Community" 
+            className="w-full h-full object-cover"
+          />
+        </div>
         
-        {/* Bottom gold border - updated to match Cta component style */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/50 to-transparent z-10"></div>
+        {/* Bottom gold border - updated to match glowing style from Cta component */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_8px_2px_rgba(255,195,0,0.6)]"></div>
         
         {/* Added side gradients to blend the edges like in Cta component */}
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-black/80 to-transparent z-10"></div>
@@ -54,12 +57,12 @@ const Features = () => {
           
           {/* Luxurious scroll indicator - moved up to appear right after the text */}
           <div className="flex justify-center items-center my-10 z-20">
-            <div className="flex flex-col items-center gap-3 animate-bounce">
+            <div className="flex flex-col items-center gap-3">
               <div className="text-gold-400 text-sm tracking-widest uppercase font-artistic">Scroll for more</div>
               <div className="w-16 h-16 flex justify-center items-center relative">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-b from-gold-400/30 to-gold-600/10 backdrop-blur-sm animate-pulse"></div>
+                <div className="absolute inset-0 rounded-full bg-gradient-to-b from-gold-400/30 to-gold-600/10 backdrop-blur-sm"></div>
                 <div className="relative z-10">
-                  <ChevronDown className="w-8 h-8 text-gold-500 animate-pulse" strokeWidth={1.5} />
+                  <ChevronDown className="w-8 h-8 text-gold-500" strokeWidth={1.5} />
                 </div>
               </div>
             </div>

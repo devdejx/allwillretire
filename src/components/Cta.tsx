@@ -40,8 +40,8 @@ const Cta = () => {
           </div>
         </div>
         
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 animate-pulse shadow-[0_0_8px_2px_rgba(255,195,0,0.6)]"></div>
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 animate-pulse shadow-[0_0_8px_2px_rgba(255,195,0,0.6)]"></div>
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_8px_2px_rgba(255,195,0,0.6)]"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_8px_2px_rgba(255,195,0,0.6)]"></div>
         
         <div className="absolute left-0 top-0 bottom-0 w-36 bg-gradient-to-r from-black/95 to-transparent z-10"></div>
         <div className="absolute right-0 top-0 bottom-0 w-36 bg-gradient-to-l from-black/95 to-transparent z-10"></div>
@@ -84,8 +84,8 @@ const Cta = () => {
           </div>
         </div>
         
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 animate-pulse shadow-[0_0_8px_2px_rgba(255,195,0,0.6)]"></div>
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 animate-pulse shadow-[0_0_8px_2px_rgba(255,195,0,0.6)]"></div>
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_8px_2px_rgba(255,195,0,0.6)]"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_8px_2px_rgba(255,195,0,0.6)]"></div>
         
         <div className="absolute left-0 top-0 bottom-0 w-36 bg-gradient-to-r from-black/95 to-transparent z-10"></div>
         <div className="absolute right-0 top-0 bottom-0 w-36 bg-gradient-to-l from-black/95 to-transparent z-10"></div>
@@ -126,8 +126,8 @@ const Cta = () => {
           </div>
         </div>
         
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 animate-pulse shadow-[0_0_8px_2px_rgba(255,195,0,0.6)]"></div>
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 animate-pulse shadow-[0_0_8px_2px_rgba(255,195,0,0.6)]"></div>
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_8px_2px_rgba(255,195,0,0.6)]"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_8px_2px_rgba(255,195,0,0.6)]"></div>
         
         <div className="absolute left-0 top-0 bottom-0 w-36 bg-gradient-to-r from-black/95 to-transparent z-10"></div>
         <div className="absolute right-0 top-0 bottom-0 w-36 bg-gradient-to-l from-black/95 to-transparent z-10"></div>
