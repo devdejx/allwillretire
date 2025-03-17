@@ -4,7 +4,9 @@ import { Button } from './ui/button';
 import { useToast } from "@/hooks/use-toast";
 
 const Cta = () => {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [copied, setCopied] = React.useState(false);
 
   const handleCopy = () => {
@@ -64,9 +66,10 @@ const Cta = () => {
             <p className="text-gray-300 mb-8 max-w-xl mx-auto text-xs">Join thousands of forward-thinking people who believe in AllWillRetire.</p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-              <Button variant="gold" className="px-6 py-3 rounded-xl font-medium border border-gold-300/50">
+              <button className="relative bg-gradient-to-r from-transparent via-gold-500 to-transparent backdrop-blur border border-gold-300/50 text-black px-6 py-3 rounded-xl font-medium transition-all duration-300 group overflow-hidden">
                 <span className="relative z-10">View Whitepaper</span>
-              </Button>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+              </button>
             </div>
           </div>
         </div>
