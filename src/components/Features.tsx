@@ -1,37 +1,23 @@
-
 import React, { useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import OptimizedImage from './OptimizedImage';
 import { AspectRatio } from './ui/aspect-ratio';
-
 const Features = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const isMobile = useIsMobile();
-
-  return (
-    <>
+  return <>
       {/* Full-width image section */}
       <section className="relative w-full">
         <div className="w-full overflow-hidden">
           {/* Use Aspect Ratio to maintain image proportions on mobile */}
-          <AspectRatio ratio={16/6} className="w-full md:hidden">
-            <OptimizedImage
-              src="/lovable-uploads/22ece7bd-7065-4d66-81fa-6320ac0b9ea5.png"
-              alt="All Will Retire Community"
-              className="w-full h-full object-contain"
-              priority={true}
-            />
+          <AspectRatio ratio={16 / 6} className="w-full md:hidden">
+            <OptimizedImage src="/lovable-uploads/22ece7bd-7065-4d66-81fa-6320ac0b9ea5.png" alt="All Will Retire Community" priority={true} className="w-full h-full object-fill" />
           </AspectRatio>
           
           {/* Full width display for desktop */}
           <div className="hidden md:block relative w-full">
-            <OptimizedImage
-              src="/lovable-uploads/22ece7bd-7065-4d66-81fa-6320ac0b9ea5.png"
-              alt="All Will Retire Community"
-              className="w-full object-contain mx-auto"
-              priority={true}
-            />
+            <OptimizedImage src="/lovable-uploads/22ece7bd-7065-4d66-81fa-6320ac0b9ea5.png" alt="All Will Retire Community" className="w-full object-contain mx-auto" priority={true} />
           </div>
         </div>
       </section>
@@ -72,8 +58,6 @@ const Features = () => {
           </div>
         </div>
       </section>
-    </>
-  );
+    </>;
 };
-
 export default Features;
