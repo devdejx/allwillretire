@@ -84,9 +84,9 @@ const Features = () => {
         </div>
       </div>
 
-      <div style={{
-      height: '150vh'
-    }} className="opacity-0"></div>
+      {/* Removed the opacity-0 div which was preventing the full image from being seen */}
+      {/* Added a small empty space to ensure smooth transition to next section */}
+      <div className="h-24"></div>
     </section>;
 };
 
