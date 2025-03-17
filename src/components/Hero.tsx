@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
@@ -164,14 +163,13 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up" style={{
             animationDelay: '0.6s'
           }}>
-              <button 
-                className="relative bg-gradient-to-r from-transparent via-gold-500 to-transparent backdrop-blur text-black px-8 py-4 rounded-xl font-bold shadow-lg transition-all duration-300 hover:scale-105 overflow-hidden group"
+              <Button 
+                variant="gold"
                 onClick={handleLearnMoreClick}
+                className="px-8 py-4 rounded-xl font-bold shadow-lg transition-all duration-300 hover:scale-105"
               >
                 <span className="relative z-10">Tap for More</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
-                <span className="absolute -inset-0.5 bg-gold-400/30 blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></span>
-              </button>
+              </Button>
             </div>
             
             <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up" style={{
