@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Coins, Shield, TrendingUp, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -166,7 +167,8 @@ const About = () => {
                         <div className="font-elegant text-[9px] text-gold-900 italic" style={{
                         textShadow: "0 0.3px 0 rgba(255,255,255,0.3)"
                       }}>
-                        Financial Freedom Awaits
+                         Financial Freedom Awaits
+                        </div>
                       </div>
                       
                       {/* Gold growth chart with more dramatic profit curve */}
@@ -178,14 +180,15 @@ const About = () => {
                           left: 0,
                           bottom: 0
                         }}>
-                          <defs>
-                            <linearGradient id="colorGold" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="5%" stopColor="#FFC300" stopOpacity={0.8} />
-                              <stop offset="95%" stopColor="#FFC300" stopOpacity={0.2} />
-                            </linearGradient>
-                          </defs>
-                          <Area type="monotone" dataKey="value" stroke="#CC9C00" strokeWidth={1.5} fill="url(#colorGold)" />
-                        </AreaChart>
+                            <defs>
+                              <linearGradient id="colorGold" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="#FFC300" stopOpacity={0.8} />
+                                <stop offset="95%" stopColor="#FFC300" stopOpacity={0.2} />
+                              </linearGradient>
+                            </defs>
+                            <Area type="monotone" dataKey="value" stroke="#CC9C00" strokeWidth={1.5} fill="url(#colorGold)" />
+                          </AreaChart>
+                        </ResponsiveContainer>
                       </div>
                     </div>
                   </div>
