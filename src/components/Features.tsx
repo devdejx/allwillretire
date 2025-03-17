@@ -6,6 +6,7 @@ import { ScrollArea } from './ui/scroll-area';
 const Features = () => {
   const [opacity, setOpacity] = useState(1);
   const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
@@ -26,13 +27,23 @@ const Features = () => {
       const windowHeight = window.innerHeight;
       const scrollY = window.scrollY;
       const featuresSection = sectionRef.current;
-      if (!featuresSection) return;
+      const contentSection = contentRef.current;
+      
+      if (!featuresSection || !contentSection) return;
+      
       const sectionTop = featuresSection.offsetTop;
-      const sectionHeight = featuresSection.offsetHeight;
+      const contentHeight = contentSection.offsetHeight;
       const scrollPosition = scrollY - sectionTop + windowHeight;
-      const scrollPercentage = Math.min(Math.max(scrollPosition / (sectionHeight * 2.5), 0), 1);
-      setOpacity(1 - scrollPercentage);
+      
+      // Only fade content while within the content area
+      if (scrollY < sectionTop + contentHeight) {
+        const scrollPercentage = Math.min(Math.max(scrollPosition / (contentHeight * 1.2), 0), 1);
+        setOpacity(1 - scrollPercentage);
+      } else {
+        setOpacity(0); // Ensure content is hidden when scrolled past
+      }
     };
+    
     window.addEventListener('scroll', handleScroll);
     handleScroll();
     return () => {
@@ -40,20 +51,21 @@ const Features = () => {
     };
   }, [isInView]);
 
-  return <section ref={sectionRef} id="features" className="py-24 text-white relative min-h-screen" style={{
-    backgroundImage: "url('/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundAttachment: "fixed" // This makes the background stay in place during scroll
-  }}>
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-md transition-opacity duration-700" style={{
-      opacity
-    }}></div>
-      
-      <div className="container mx-auto px-6 relative z-10 transition-opacity duration-700" style={{
-      opacity
+  return (
+    <section ref={sectionRef} id="features" className="py-24 text-white relative" style={{
+      backgroundImage: "url('/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundAttachment: "fixed" // This makes the background stay in place during scroll
     }}>
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-md transition-opacity duration-700" style={{
+        opacity
+      }}></div>
+      
+      <div ref={contentRef} className="container mx-auto px-6 relative z-10 transition-opacity duration-700" style={{
+        opacity
+      }}>
         <div className="max-w-3xl mx-auto mb-8 text-center">
           <div className="inline-block mb-4">
             <span className="uppercase tracking-wider text-sm font-medium text-gold-400">
@@ -70,7 +82,7 @@ const Features = () => {
           <p className="text-lg text-gray-300 mb-4">*Is a family that provides emotional utility around being accepted for who you are regardless of our differences, the ability to self-express your feelings/views to the world, and have a global community to identify with based on the underlying message that everyone deserves financial security</p>
         </div>
         
-        {/* Luxurious scroll indicator - moved up to appear right after the text */}
+        {/* Luxurious scroll indicator */}
         <div className="flex justify-center items-center my-10 z-20 transition-all duration-700">
           <div className="flex flex-col items-center gap-3 animate-bounce">
             <div className="text-gold-400 text-sm tracking-widest uppercase font-artistic">Scroll for more</div>
@@ -83,11 +95,11 @@ const Features = () => {
           </div>
         </div>
       </div>
-
-      {/* Removed the opacity-0 div which was preventing the full image from being seen */}
-      {/* Added a small empty space to ensure smooth transition to next section */}
-      <div className="h-24"></div>
-    </section>;
+      
+      {/* A transparent div that marks the end of the background image section */}
+      <div className="h-[30vh] bg-transparent"></div>
+    </section>
+  );
 };
 
 export default Features;
