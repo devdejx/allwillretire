@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Coins, Shield, TrendingUp, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -84,7 +83,7 @@ const About = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative flex flex-col items-center" onMouseEnter={() => setShowCoinOrbit(true)} onMouseLeave={() => setShowCoinOrbit(false)}>
-            <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square coin-container mb-8">
+            <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square coin-container w-full mb-8">
               <div className="coin-face">
                 {/* Coin exterior */}
                 <div className="absolute inset-0 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full border-8 border-gold-300 shadow-inner"></div>
@@ -169,7 +168,7 @@ const About = () => {
               </div>
             </div>
             
-            {/* Moved Buy button below the coin */}
+            {/* Buy button below the coin */}
             <a 
               href="https://jup.ag/swap/USDC-Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump" 
               target="_blank" 
