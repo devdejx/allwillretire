@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Coins, Shield, TrendingUp, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -45,8 +46,8 @@ const About = () => {
 
   return (
     <>
-      {/* About section */}
-      <section id="about" className="pt-6 pb-24 relative overflow-hidden">
+      {/* About section - changed pb-24 to pb-8 to reduce spacing */}
+      <section id="about" className="pt-6 pb-8 relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute top-1/4 -right-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 -left-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
