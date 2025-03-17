@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Coins, Shield, TrendingUp, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -82,8 +83,8 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="relative" onMouseEnter={() => setShowCoinOrbit(true)} onMouseLeave={() => setShowCoinOrbit(false)}>
-            <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square coin-container">
+          <div className="relative flex flex-col items-center" onMouseEnter={() => setShowCoinOrbit(true)} onMouseLeave={() => setShowCoinOrbit(false)}>
+            <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square coin-container mb-8">
               <div className="coin-face">
                 {/* Coin exterior */}
                 <div className="absolute inset-0 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full border-8 border-gold-300 shadow-inner"></div>
@@ -161,24 +162,22 @@ const About = () => {
                       </div>
                     </div>
                   </div>
-                  
-                  {/* Buy button below the plaque */}
-                  <div className="mt-4">
-                    <a 
-                      href="https://jup.ag/swap/USDC-Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-bold py-2 px-6 rounded-full border border-gold-300 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 inline-block"
-                    >
-                      BUY NOW
-                    </a>
-                  </div>
                 </div>
                 
                 {/* Reflective shine */}
                 <div className="absolute top-0 left-[5%] right-[40%] h-[20%] bg-white/20 blur-sm rounded-full transform -rotate-12"></div>
               </div>
             </div>
+            
+            {/* Moved Buy button below the coin */}
+            <a 
+              href="https://jup.ag/swap/USDC-Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-bold py-2 px-6 rounded-full border border-gold-300 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 inline-block z-20"
+            >
+              BUY NOW
+            </a>
             
             {/* Decorative elements */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-gold-500/20 rounded-full" />
