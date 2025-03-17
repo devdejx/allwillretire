@@ -9,8 +9,8 @@ const Features = () => {
     <>
       {/* Full-width image section with the beach image - now placed BEFORE the features content */}
       <section className="relative w-full h-screen">
-        {/* Top gold border */}
-        <div className="absolute top-0 left-0 right-0 h-4 bg-gold-500 z-10"></div>
+        {/* Top gold border - updated to match Cta component style */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/50 to-transparent z-10"></div>
         
         <img 
           src="/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png" 
@@ -18,8 +18,12 @@ const Features = () => {
           className="w-full h-full object-cover"
         />
         
-        {/* Bottom gold border */}
-        <div className="absolute bottom-0 left-0 right-0 h-4 bg-gold-500 z-10"></div>
+        {/* Bottom gold border - updated to match Cta component style */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500/50 to-transparent z-10"></div>
+        
+        {/* Added side gradients to blend the edges like in Cta component */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-black/80 to-transparent z-10"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black/80 to-transparent z-10"></div>
       </section>
 
       <section ref={sectionRef} id="features" className="py-24 text-white relative min-h-screen" style={{
