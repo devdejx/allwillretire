@@ -9,28 +9,8 @@ const Features = () => {
 
   return (
     <>
-      {/* Full-width image section with the beach image - now placed BEFORE the features content */}
-      <section className="relative w-full h-[70vh] md:h-[80vh]">
-        {/* Remove the top gold border */}
-        
-        {/* Removed border around the image as requested */}
-        <div className="absolute inset-0 overflow-hidden z-0">
-          <img 
-            src="/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png" 
-            alt="All Will Retire Community" 
-            className="w-full h-full object-contain md:object-cover"
-          />
-        </div>
-        
-        {/* Remove the bottom gold border */}
-        
-        {/* Added side gradients to blend the edges like in Cta component */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-black/80 to-transparent z-10"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black/80 to-transparent z-10"></div>
-      </section>
-
       {/* Further increased negative margin to -24 to completely eliminate any gap */}
-      <section ref={sectionRef} id="features" className="pt-0 pb-8 md:pb-16 text-white relative -mt-24">
+      <section ref={sectionRef} id="features" className="pt-16 pb-8 md:pb-16 text-white relative">
         {/* Keeping the dark overlay but removing the background image */}
         <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
         
