@@ -1,4 +1,3 @@
-
 import React, { useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 
@@ -29,13 +28,8 @@ const Features = () => {
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black/80 to-transparent z-10"></div>
       </section>
 
-      <section ref={sectionRef} id="features" className="py-24 text-white relative min-h-screen" style={{
-        backgroundImage: "url('/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed" // This makes the background stay in place during scroll
-      }}>
+      <section ref={sectionRef} id="features" className="py-24 text-white relative min-h-screen">
+        {/* Keeping the dark overlay but removing the background image */}
         <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
         
         <div className="container mx-auto px-6 relative z-10">
