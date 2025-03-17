@@ -59,7 +59,7 @@ const Features = () => {
               <div className="text-gold-400 text-sm tracking-widest uppercase font-artistic">Scroll for more</div>
               <div className="w-16 h-16 flex justify-center items-center relative">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-b from-gold-400/30 to-gold-600/10 backdrop-blur-sm"></div>
-                <div className="relative z-10">
+                <div className="relative z-10 animate-bounce">
                   <ChevronDown className="w-8 h-8 text-gold-500" strokeWidth={1.5} />
                 </div>
               </div>
