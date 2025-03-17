@@ -1,46 +1,19 @@
-
 import * as React from "react"
 
 const MOBILE_BREAKPOINT = 768
 
 export function useIsMobile() {
-  const [isMobile, setIsMobile] = React.useState(false)
+  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
 
   React.useEffect(() => {
-    // Check for mobile devices based on both screen size and user agent
-    const checkMobile = () => {
-      const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      )
-      const isMobileScreen = window.innerWidth < MOBILE_BREAKPOINT
-      setIsMobile(isMobileDevice || isMobileScreen)
-    }
-
-    // Run initial check
-    checkMobile()
-    
-    // Add event listener for resize
-    window.addEventListener("resize", checkMobile, { passive: true })
-    
-    // Set up media query listener as backup
     const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
-    if (mql.addEventListener) {
-      mql.addEventListener("change", checkMobile)
-    } else {
-      // Fallback for older browsers
-      mql.addListener(checkMobile)
+    const onChange = () => {
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
     }
-    
-    return () => {
-      window.removeEventListener("resize", checkMobile)
-      if (mql.removeEventListener) {
-        mql.removeEventListener("change", checkMobile)
-      } else {
-        // Fallback for older browsers
-        mql.removeListener(checkMobile)
-      }
-    }
+    mql.addEventListener("change", onChange)
+    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
+    return () => mql.removeEventListener("change", onChange)
   }, [])
 
-  return isMobile
+  return !!isMobile
 }

@@ -1,22 +1,12 @@
 
-import React, { useEffect, useRef, lazy, Suspense } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
-import { useIsMobile } from '../hooks/use-mobile';
-
-// Lazy load components to improve initial load time
-const Hero = lazy(() => import('../components/Hero'));
-const About = lazy(() => import('../components/About'));
-const Features = lazy(() => import('../components/Features'));
-const Testimonials = lazy(() => import('../components/Testimonials'));
-const Cta = lazy(() => import('../components/Cta'));
-const Footer = lazy(() => import('../components/Footer'));
-
-// Simple loading component
-const SectionLoading = () => (
-  <div className="w-full py-12 flex justify-center items-center">
-    <div className="w-8 h-8 rounded-full border-2 border-gold-500/50 border-t-gold-500 animate-spin"></div>
-  </div>
-);
+import Hero from '../components/Hero';
+import About from '../components/About';
+import Features from '../components/Features';
+import Testimonials from '../components/Testimonials';
+import Cta from '../components/Cta';
+import Footer from '../components/Footer';
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -24,72 +14,54 @@ const Index = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
   const testimonialsRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
   
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    // Simplified animation for performance improvement
+    // More sophisticated reveal animations on scroll
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            // Add staggered animation by calculating delay based on child index
+            const children = Array.from(entry.target.children);
+            children.forEach((child, index) => {
+              setTimeout(() => {
+                child.classList.add('animate-fade-up');
+              }, index * 150); // 150ms stagger between children
+            });
+            
             entry.target.classList.add('animate-fade-in');
-            
-            // Skip child animations on mobile for performance
-            if (!isMobile) {
-              const children = Array.from(entry.target.children);
-              children.forEach((child, index) => {
-                setTimeout(() => {
-                  child.classList.add('animate-fade-up');
-                }, index * 100);
-              });
-            }
-            
             observer.unobserve(entry.target);
           }
         });
       },
       { 
         threshold: 0.1,
-        rootMargin: '0px 0px -5% 0px'
+        rootMargin: '0px 0px -10% 0px' // Start animation slightly before element comes into view
       }
     );
 
-    // Apply observer with a small delay to ensure DOM is ready
-    setTimeout(() => {
-      document.querySelectorAll('.reveal').forEach((el) => {
-        observer.observe(el);
-      });
-    }, 100);
+    document.querySelectorAll('.reveal').forEach((el) => {
+      observer.observe(el);
+    });
 
-    // Throttled scroll handler for better performance
-    let lastScrollTime = 0;
-    const scrollThreshold = isMobile ? 200 : 50; // Higher threshold on mobile
-    
+    // Smooth scroll handling with parallax effects
     const handleScroll = () => {
-      const now = Date.now();
-      if (now - lastScrollTime < scrollThreshold) return;
-      lastScrollTime = now;
-      
       const scrollY = window.scrollY;
       
-      // Skip parallax effects on mobile entirely
-      if (!isMobile) {
-        document.querySelectorAll('.parallax').forEach((el) => {
-          const speed = parseFloat(el.getAttribute('data-speed') || '0.2');
-          (el as HTMLElement).style.transform = `translateY(${scrollY * speed}px)`;
-        });
-      }
+      // Apply subtle parallax to background elements
+      document.querySelectorAll('.parallax').forEach((el) => {
+        const speed = parseFloat(el.getAttribute('data-speed') || '0.2');
+        (el as HTMLElement).style.transform = `translateY(${scrollY * speed}px)`;
+      });
       
-      // Optimize section highlighting
+      // Track current section for navigation highlighting
       const sections = [
         heroRef.current,
         aboutRef.current,
         featuresRef.current,
         testimonialsRef.current,
         ctaRef.current
-      ].filter(Boolean);
+      ];
       
       sections.forEach((section) => {
         if (!section) return;
@@ -112,8 +84,7 @@ const Index = () => {
       });
     };
 
-    // Use passive event listener for better performance
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll);
     
     return () => {
       document.querySelectorAll('.reveal').forEach((el) => {
@@ -121,29 +92,17 @@ const Index = () => {
       });
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [isMobile]);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      <Suspense fallback={<SectionLoading />}>
-        <Hero />
-      </Suspense>
-      <Suspense fallback={<SectionLoading />}>
-        <About />
-      </Suspense>
-      <Suspense fallback={<SectionLoading />}>
-        <Features />
-      </Suspense>
-      <Suspense fallback={<SectionLoading />}>
-        <Testimonials />
-      </Suspense>
-      <Suspense fallback={<SectionLoading />}>
-        <Cta />
-      </Suspense>
-      <Suspense fallback={<SectionLoading />}>
-        <Footer />
-      </Suspense>
+      <Hero />
+      <About />
+      <Features />
+      <Testimonials />
+      <Cta />
+      <Footer />
     </div>
   );
 };
