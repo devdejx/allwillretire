@@ -45,9 +45,10 @@ const Cta = () => {
         <div className="absolute left-0 top-0 bottom-0 w-36 bg-gradient-to-r from-black/95 to-transparent z-10"></div>
         <div className="absolute right-0 top-0 bottom-0 w-36 bg-gradient-to-l from-black/95 to-transparent z-10"></div>
         
-        <div className="absolute top-10 right-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-10"></div>
-        <div className="absolute bottom-10 left-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-10"></div>
-        <div className="absolute top-1/3 left-1/4 w-32 h-32 bg-gold-500/10 rounded-full blur-2xl z-10"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-gold-500/10 rounded-full blur-[100px] z-5 animate-pulse"></div>
+        <div className="absolute top-10 right-10 w-48 h-48 bg-gold-500/15 rounded-full blur-3xl z-10 animate-pulse"></div>
+        <div className="absolute bottom-10 left-10 w-48 h-48 bg-gold-500/15 rounded-full blur-3xl z-10 animate-pulse"></div>
+        <div className="absolute top-1/3 left-1/4 w-32 h-32 bg-gold-500/20 rounded-full blur-2xl z-10 animate-pulse"></div>
         
         <div className="container mx-auto px-6 relative z-20 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
@@ -89,9 +90,10 @@ const Cta = () => {
         <div className="absolute left-0 top-0 bottom-0 w-36 bg-gradient-to-r from-black/95 to-transparent z-10"></div>
         <div className="absolute right-0 top-0 bottom-0 w-36 bg-gradient-to-l from-black/95 to-transparent z-10"></div>
         
-        <div className="absolute top-10 right-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-10"></div>
-        <div className="absolute bottom-10 left-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-10"></div>
-        <div className="absolute top-1/3 left-1/4 w-32 h-32 bg-gold-500/10 rounded-full blur-2xl z-10"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-gold-500/10 rounded-full blur-[100px] z-5 animate-pulse"></div>
+        <div className="absolute top-10 right-10 w-48 h-48 bg-gold-500/15 rounded-full blur-3xl z-10 animate-pulse"></div>
+        <div className="absolute bottom-10 left-10 w-48 h-48 bg-gold-500/15 rounded-full blur-3xl z-10 animate-pulse"></div>
+        <div className="absolute top-1/3 left-1/4 w-32 h-32 bg-gold-500/20 rounded-full blur-2xl z-10 animate-pulse"></div>
         
         <div className="container mx-auto px-6 relative z-20 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
@@ -131,9 +133,10 @@ const Cta = () => {
         <div className="absolute left-0 top-0 bottom-0 w-36 bg-gradient-to-r from-black/95 to-transparent z-10"></div>
         <div className="absolute right-0 top-0 bottom-0 w-36 bg-gradient-to-l from-black/95 to-transparent z-10"></div>
         
-        <div className="absolute top-10 right-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-10"></div>
-        <div className="absolute bottom-10 left-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-10"></div>
-        <div className="absolute top-1/3 left-1/4 w-32 h-32 bg-gold-500/10 rounded-full blur-2xl z-10"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-gold-500/10 rounded-full blur-[100px] z-5 animate-pulse"></div>
+        <div className="absolute top-10 right-10 w-48 h-48 bg-gold-500/15 rounded-full blur-3xl z-10 animate-pulse"></div>
+        <div className="absolute bottom-10 left-10 w-48 h-48 bg-gold-500/15 rounded-full blur-3xl z-10 animate-pulse"></div>
+        <div className="absolute top-1/3 left-1/4 w-32 h-32 bg-gold-500/20 rounded-full blur-2xl z-10 animate-pulse"></div>
         
         <div className="container mx-auto px-6 relative z-20 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
