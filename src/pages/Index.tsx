@@ -102,8 +102,8 @@ const Index = () => {
       <Hero />
       <About />
       
-      {/* Full-width community image section between About and Features - increased negative margin */}
-      <section className="w-full relative -mt-24">
+      {/* Full-width community image section between About and Features - greatly increased negative margin */}
+      <section className="w-full relative -mt-48">
         <div className="w-full overflow-hidden">
           {/* Mobile version with appropriate aspect ratio */}
           <AspectRatio ratio={16/9} className="w-full md:hidden">
