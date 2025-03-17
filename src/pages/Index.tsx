@@ -9,7 +9,6 @@ import Cta from '../components/Cta';
 import Footer from '../components/Footer';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import OptimizedImage from '@/components/OptimizedImage';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -17,7 +16,6 @@ const Index = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
   const testimonialsRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
   
   useEffect(() => {
     // More sophisticated reveal animations on scroll
@@ -104,8 +102,8 @@ const Index = () => {
       <Hero />
       <About />
       
-      {/* Full-width community image section between About and Features - with mobile-specific positioning */}
-      <section className={`w-full relative ${isMobile ? 'mt-32' : '-mt-96'}`}>
+      {/* Full-width community image section between About and Features - extreme negative margin */}
+      <section className="w-full relative -mt-128">
         <div className="w-full overflow-hidden">
           {/* Mobile version with appropriate aspect ratio */}
           <AspectRatio ratio={16/9} className="w-full md:hidden">

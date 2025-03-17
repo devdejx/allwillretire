@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Coins, Shield, TrendingUp, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,11 +7,9 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import OptimizedImage from './OptimizedImage';
 import { AspectRatio } from './ui/aspect-ratio';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 const About = () => {
   const [showCoinOrbit, setShowCoinOrbit] = useState(false);
-  const isMobile = useIsMobile();
 
   // Chart data for gold growth simulation with more dramatic profit curve
   const goldGrowthData = [{
@@ -47,8 +46,8 @@ const About = () => {
 
   return (
     <>
-      {/* About section - with mobile-specific spacing */}
-      <section id="about" className={`pt-6 ${isMobile ? 'pb-96' : 'pb-0 -mb-16'} relative overflow-hidden`}>
+      {/* About section - completely removed bottom padding and added extreme negative margin */}
+      <section id="about" className="pt-6 pb-0 -mb-48 relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute top-1/4 -right-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 -left-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
