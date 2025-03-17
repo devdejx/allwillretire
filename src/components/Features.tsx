@@ -10,7 +10,7 @@ const Features = () => {
   return (
     <>
       {/* Full-width image section with the beach image - now placed BEFORE the features content */}
-      <section className="relative w-full h-[90vh] md:h-screen">
+      <section className="relative w-full h-[70vh] md:h-[80vh]">
         {/* Top gold border - updated to match thinner style from Cta component */}
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         
@@ -31,11 +31,12 @@ const Features = () => {
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black/80 to-transparent z-10"></div>
       </section>
 
-      <section ref={sectionRef} id="features" className="py-8 md:py-16 text-white relative">
+      {/* Removed all padding at the top and added negative margin to pull up the section */}
+      <section ref={sectionRef} id="features" className="pt-0 pb-8 md:pb-16 text-white relative -mt-1">
         {/* Keeping the dark overlay but removing the background image */}
         <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
         
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 relative z-10 pt-4">
           <div className="max-w-3xl mx-auto mb-8 text-center">
             <div className="inline-block mb-4">
               <span className="uppercase tracking-wider text-sm font-medium text-gold-400">
