@@ -1,4 +1,3 @@
-
 import React, { useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -12,8 +11,7 @@ const Features = () => {
     <>
       {/* Full-width image section with the beach image - now placed BEFORE the features content */}
       <section className="relative w-full h-[70vh] md:h-[80vh]">
-        {/* Top gold border - updated to match thinner style from Cta component */}
-        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
+        {/* Remove the top gold border */}
         
         {/* Removed border around the image as requested */}
         <div className="absolute inset-0 overflow-hidden z-0">
@@ -24,8 +22,7 @@ const Features = () => {
           />
         </div>
         
-        {/* Bottom gold border - updated to match thinner style from Cta component */}
-        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
+        {/* Remove the bottom gold border */}
         
         {/* Added side gradients to blend the edges like in Cta component */}
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-black/80 to-transparent z-10"></div>
