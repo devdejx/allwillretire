@@ -139,9 +139,9 @@ const Hero = () => {
       {/* Hidden YouTube audio player */}
       <iframe ref={audioRef} className="hidden" width="0" height="0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen title="Background Music"></iframe>
 
-      <section className="relative min-h-screen overflow-hidden z-10">
-        {/* Reduced top spacing to move image higher */}
-        <div className="h-8"></div>
+      <section className="relative min-h-screen pt-20 overflow-hidden z-10">
+        {/* Added top spacing to push content below navbar */}
+        <div className="h-16"></div>
         
         {/* Full-width image positioned below navbar */}
         <div className="relative w-full mb-8">
