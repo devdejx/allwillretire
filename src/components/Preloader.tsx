@@ -9,15 +9,18 @@ const Preloader = () => {
   const [videosLoaded, setVideosLoaded] = useState(0);
   const videoUrls = getVideoUrls();
   const totalVideos = videoUrls.length;
+  const [preloadedFrames, setPreloadedFrames] = useState<HTMLIFrameElement[]>([]);
 
   useEffect(() => {
     // Create elements to preload the videos
     const preloadVideos = () => {
+      const frames: HTMLIFrameElement[] = [];
       videoUrls.forEach((videoUrl) => {
         // Create a hidden iframe to preload the video
         const iframe = document.createElement('iframe');
         iframe.src = videoUrl;
         iframe.className = 'preloaded-video';
+        iframe.allow = "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media";
         iframe.style.display = 'none';
         
         // When the iframe loads, update our loading progress
@@ -32,43 +35,44 @@ const Preloader = () => {
         };
         
         document.body.appendChild(iframe);
+        frames.push(iframe);
       });
+      
+      // Store frames for cleanup
+      setPreloadedFrames(frames);
     };
+
+    // Ensure faster loading with fallbacks
+    const timer1 = setTimeout(() => {
+      setProgress(prev => Math.max(prev, 60));
+    }, 2000);
+    
+    const timer2 = setTimeout(() => {
+      setProgress(prev => Math.max(prev, 80));
+    }, 2500);
+    
+    const timer3 = setTimeout(() => {
+      setProgress(100);
+      setTimeout(() => {
+        setLoading(false);
+      }, 200);
+    }, 3000);
 
     // Start preloading videos
     preloadVideos();
     
-    // Create a more realistic loading simulation with incremental progress for the remaining 40%
-    const incrementProgress = () => {
-      setProgress(prev => {
-        if (prev >= 100) return 100;
-        // Only increment the remaining 40% of progress after videos have loaded
-        if (prev < 60) return prev;
-        // Slow down progress as it approaches 100%
-        const increment = Math.max(0.5, 5 * (1 - (prev - 60) / 40));
-        return Math.min(prev + increment, 99);
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+      // Clean up any preloaded iframes
+      preloadedFrames.forEach(frame => {
+        if (frame && frame.parentNode) {
+          frame.parentNode.removeChild(frame);
+        }
       });
     };
-
-    const progressInterval = setInterval(incrementProgress, 100);
-    
-    // Simulate complete page load
-    const timer = setTimeout(() => {
-      setProgress(100);
-      setTimeout(() => {
-        setLoading(false);
-        // Clean up preloaded video iframes
-        document.querySelectorAll('.preloaded-video').forEach(elem => {
-          elem.remove();
-        });
-      }, 200); // Small delay after reaching 100%
-    }, 3000); // Longer minimum loading time to ensure videos are loaded
-
-    return () => {
-      clearTimeout(timer);
-      clearInterval(progressInterval);
-    };
-  }, [totalVideos]);
+  }, [totalVideos, videoUrls]);
 
   return (
     <div

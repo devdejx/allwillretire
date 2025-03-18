@@ -1,3 +1,4 @@
+
 /**
  * Utility for handling video loading and performance
  */
@@ -18,16 +19,37 @@ const videoUrls = [
 export const markVideoAsLoaded = (iframe: HTMLIFrameElement) => {
   if (iframe && iframe.parentElement) {
     iframe.parentElement.classList.add('loaded');
+    
+    // Force a repaint to ensure the video is fully visible
+    setTimeout(() => {
+      if (iframe.parentElement) {
+        iframe.parentElement.classList.add('fully-loaded');
+      }
+    }, 500);
   }
 };
 
 export const setupVideoLoadListener = (iframe: HTMLIFrameElement) => {
   if (!iframe) return;
   
-  // When the iframe loads, mark its container as loaded
-  iframe.addEventListener('load', () => {
-    setTimeout(() => markVideoAsLoaded(iframe), 300);
-  });
+  // More robust event handling for iframe loading
+  const checkIframeLoaded = () => {
+    // Mark as loaded after a reasonable timeout even if the event doesn't fire
+    setTimeout(() => markVideoAsLoaded(iframe), 1000);
+  };
+  
+  if (iframe.complete) {
+    // If already complete, mark as loaded immediately
+    markVideoAsLoaded(iframe);
+  } else {
+    // When the iframe loads, mark its container as loaded
+    iframe.addEventListener('load', () => {
+      markVideoAsLoaded(iframe);
+    });
+    
+    // Fallback in case the load event doesn't fire
+    checkIframeLoaded();
+  }
 };
 
 export const areAllVideosPreloaded = (): boolean => {

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Copy, Check } from 'lucide-react';
 import { Button } from './ui/button';
 import { useToast } from "@/hooks/use-toast";
-import { setupVideoLoadListener } from '@/utils/videoLoader';
+import { setupVideoLoadListener, markVideoAsLoaded } from '@/utils/videoLoader';
 
 const Cta = () => {
   const { toast } = useToast();
@@ -14,10 +14,29 @@ const Cta = () => {
   const videoRef3 = useRef<HTMLIFrameElement>(null);
   
   useEffect(() => {
-    // Set up video load listeners
-    if (videoRef1.current) setupVideoLoadListener(videoRef1.current);
-    if (videoRef2.current) setupVideoLoadListener(videoRef2.current);
-    if (videoRef3.current) setupVideoLoadListener(videoRef3.current);
+    // Set up video load listeners with improved handling
+    const setupVideos = () => {
+      if (videoRef1.current) setupVideoLoadListener(videoRef1.current);
+      if (videoRef2.current) setupVideoLoadListener(videoRef2.current);
+      if (videoRef3.current) setupVideoLoadListener(videoRef3.current);
+      
+      // Fallback: force videos to show after 3 seconds even if loading fails
+      setTimeout(() => {
+        if (videoRef1.current) markVideoAsLoaded(videoRef1.current);
+        if (videoRef2.current) markVideoAsLoaded(videoRef2.current);
+        if (videoRef3.current) markVideoAsLoaded(videoRef3.current);
+      }, 3000);
+    };
+    
+    // Setup videos on mount
+    setupVideos();
+    
+    // Also set them up after a short delay to handle any race conditions
+    const fallbackTimer = setTimeout(setupVideos, 1000);
+    
+    return () => {
+      clearTimeout(fallbackTimer);
+    };
   }, []);
   
   const handleCopy = () => {
@@ -109,10 +128,11 @@ const Cta = () => {
           
           <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15">
             <iframe 
+              ref={videoRef1}
               src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
               frameBorder="0" 
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background loaded" 
+              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background" 
               title="Background Video">
             </iframe>
           </div>
