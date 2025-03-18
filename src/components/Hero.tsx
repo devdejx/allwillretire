@@ -139,12 +139,12 @@ const Hero = () => {
 
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden z-10">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="hero-container flex flex-col items-center text-center max-w-4xl mx-auto relative rounded-2xl p-8">
-            <div className="absolute inset-0 hero-overlay rounded-2xl z-0"></div>
+          <div className="hero-container rounded-2xl p-8 max-w-4xl mx-auto">
+            <div className="hero-overlay"></div>
             
-            <div className="h-14 mb-2 relative z-10 content"></div>
+            <div className="h-14 mb-2 hero-content"></div>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight text-white relative z-10 content" style={{
+            <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight text-white hero-content" style={{
             animationDelay: '0.2s',
             letterSpacing: '-0.015em'
           }}>
@@ -156,13 +156,13 @@ const Hero = () => {
               <span ref={futureRef} className="font-elegant italic font-semibold inline-block transition-transform duration-1000">Future</span>
             </h1>
             
-            <p className="text-xl text-white mb-10 max-w-2xl mx-auto animate-fade-up font-elegant relative z-10 content" style={{
+            <p className="text-xl text-white mb-10 max-w-2xl mx-auto animate-fade-up hero-content" style={{
             animationDelay: '0.4s'
           }}>
               AllWillRetire is more than a cryptocurrency — it's a promise of financial independence and a future filled with opulence and comfort.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up relative z-10 content" style={{
+            <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up hero-content" style={{
             animationDelay: '0.6s'
           }}>
               <button 
@@ -175,7 +175,7 @@ const Hero = () => {
               </button>
             </div>
             
-            <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up relative z-10 content" style={{
+            <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up hero-content" style={{
             animationDelay: '0.8s'
           }}>
               <div className="flex flex-col items-center text-white">
