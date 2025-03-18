@@ -1,4 +1,3 @@
-
 /**
  * Utility for handling video loading and performance
  */
@@ -38,18 +37,16 @@ export const setupVideoLoadListener = (iframe: HTMLIFrameElement) => {
     setTimeout(() => markVideoAsLoaded(iframe), 1000);
   };
   
-  if (iframe.complete) {
-    // If already complete, mark as loaded immediately
+  // For iframes, we can't check "complete" property like with images
+  // Instead, rely on the load event and fallback timeout
+  
+  // When the iframe loads, mark its container as loaded
+  iframe.addEventListener('load', () => {
     markVideoAsLoaded(iframe);
-  } else {
-    // When the iframe loads, mark its container as loaded
-    iframe.addEventListener('load', () => {
-      markVideoAsLoaded(iframe);
-    });
-    
-    // Fallback in case the load event doesn't fire
-    checkIframeLoaded();
-  }
+  });
+  
+  // Fallback in case the load event doesn't fire
+  checkIframeLoaded();
 };
 
 export const areAllVideosPreloaded = (): boolean => {
