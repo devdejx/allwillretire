@@ -25,4 +25,11 @@
 .hero-container .content {
   position: relative;
   z-index: 2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); /* Add text shadow to make text readable */
+}
+
+/* Reduce the opacity of the overlay to make the background image more visible */
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.3) !important; /* Reduced opacity */
+  backdrop-filter: blur(1px);
 }

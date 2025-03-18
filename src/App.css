@@ -47,3 +47,11 @@ body, html {
   margin: 0;
   padding: 0;
 }
+
+/* Force background images to display */
+[style*="background-image"] {
+  background-image: url('/lovable-uploads/a3b268b1-b0c8-47d9-99bf-4a91eaca4e49.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}

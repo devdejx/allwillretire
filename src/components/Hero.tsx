@@ -139,15 +139,8 @@ const Hero = () => {
 
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden z-10">
         <div className="container mx-auto px-6 relative z-10">
-          <div 
-            className="hero-container flex flex-col items-center text-center max-w-4xl mx-auto relative rounded-2xl p-8"
-            style={{
-              backgroundImage: `url('/lovable-uploads/a3b268b1-b0c8-47d9-99bf-4a91eaca4e49.png')`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          >
-            <div className="absolute inset-0 bg-black/5 backdrop-blur-[1px] rounded-2xl z-0"></div>
+          <div className="hero-container flex flex-col items-center text-center max-w-4xl mx-auto relative rounded-2xl p-8">
+            <div className="absolute inset-0 hero-overlay rounded-2xl z-0"></div>
             
             <div className="h-14 mb-2 relative z-10 content"></div>
             
