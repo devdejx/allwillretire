@@ -85,12 +85,23 @@ body, html {
 
 /* Video loading improvements */
 .video-background {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+  opacity: 0 !important;
+  transition: opacity 1s ease-in-out !important;
+  position: absolute !important;
+  width: 150% !important;
+  height: 150% !important;
+  min-width: 150% !important;
+  min-height: 150% !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  object-fit: cover !important;
+  z-index: 1 !important;
 }
 
-.video-background.loaded {
-  opacity: 1;
+.video-background.loaded, 
+.loaded .video-background {
+  opacity: 1 !important;
 }
 
 /* Hide preloaded videos used for caching */
@@ -101,4 +112,13 @@ body, html {
   opacity: 0;
   pointer-events: none;
   z-index: -999;
+}
+
+/* Dodatni CSS za zagotavljanje vidnosti videov */
+[data-vimeo-initialized="true"],
+[data-player],
+.vp-player-layout {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
 }
