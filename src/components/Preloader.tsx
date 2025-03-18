@@ -23,8 +23,12 @@ const Preloader = () => {
         iframe.allow = "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media";
         iframe.style.display = 'none';
         
+        // Add debug info
+        console.log('Preloading video:', videoUrl);
+        
         // When the iframe loads, update our loading progress
         iframe.onload = () => {
+          console.log('Preloaded video loaded:', videoUrl);
           setVideosLoaded(prev => {
             const newCount = prev + 1;
             // Update progress based on video loading (60% of total progress)
@@ -33,6 +37,19 @@ const Preloader = () => {
             return newCount;
           });
         };
+        
+        // Ensure iframe loads even if onload doesn't fire
+        setTimeout(() => {
+          setVideosLoaded(prev => {
+            if (prev < totalVideos) {
+              const newCount = prev + 1;
+              const videoProgress = (newCount / totalVideos) * 60;
+              setProgress(prev => Math.max(prev, videoProgress));
+              return newCount;
+            }
+            return prev;
+          });
+        }, 3000);
         
         document.body.appendChild(iframe);
         frames.push(iframe);

@@ -1,3 +1,4 @@
+
 /**
  * Utility for handling video loading and performance
  */
@@ -31,22 +32,35 @@ export const markVideoAsLoaded = (iframe: HTMLIFrameElement) => {
 export const setupVideoLoadListener = (iframe: HTMLIFrameElement) => {
   if (!iframe) return;
   
-  // More robust event handling for iframe loading
-  const checkIframeLoaded = () => {
-    // Mark as loaded after a reasonable timeout even if the event doesn't fire
-    setTimeout(() => markVideoAsLoaded(iframe), 1000);
+  // Create more aggressive loading strategy with multiple fallbacks
+  const forceVideoVisibility = () => {
+    if (iframe && iframe.parentElement) {
+      // Force iframe to be visible through style manipulation
+      iframe.style.opacity = '1';
+      iframe.style.visibility = 'visible';
+      iframe.style.display = 'block';
+      
+      // Mark as loaded even if events don't fire properly
+      markVideoAsLoaded(iframe);
+      
+      console.log('Force loaded video iframe:', iframe.src);
+    }
   };
   
-  // For iframes, we can't check "complete" property like with images
-  // Instead, rely on the load event and fallback timeout
+  // Set up multiple timeouts to ensure loading happens
+  setTimeout(forceVideoVisibility, 1000); // Quick fallback
+  setTimeout(forceVideoVisibility, 2500); // Medium fallback
+  setTimeout(forceVideoVisibility, 5000); // Final fallback
   
-  // When the iframe loads, mark its container as loaded
+  // Try to load through normal events as well
   iframe.addEventListener('load', () => {
+    console.log('Video iframe loaded normally:', iframe.src);
     markVideoAsLoaded(iframe);
   });
   
-  // Fallback in case the load event doesn't fire
-  checkIframeLoaded();
+  // Add additional loading state for debugging
+  iframe.addEventListener('loadstart', () => console.log('Video iframe load started:', iframe.src));
+  iframe.addEventListener('error', (e) => console.error('Video iframe error:', iframe.src, e));
 };
 
 export const areAllVideosPreloaded = (): boolean => {

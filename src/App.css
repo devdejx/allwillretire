@@ -91,11 +91,15 @@ body, html {
 }
 
 .video-background.loaded {
-  opacity: 0.7;
+  opacity: 0.7 !important;
+  visibility: visible !important;
+  display: block !important;
 }
 
 .video-background.fully-loaded {
-  opacity: 1;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
 }
 
 /* Force iframe visibility */
@@ -103,6 +107,8 @@ iframe.video-background {
   z-index: 5;
   transform-style: preserve-3d;
   backface-visibility: visible;
+  visibility: visible !important;
+  display: block !important;
 }
 
 /* Hide preloaded videos used for caching */

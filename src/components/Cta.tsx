@@ -16,26 +16,51 @@ const Cta = () => {
   useEffect(() => {
     // Set up video load listeners with improved handling
     const setupVideos = () => {
+      console.log('Setting up video refs:', videoRef1.current, videoRef2.current, videoRef3.current);
+      
       if (videoRef1.current) setupVideoLoadListener(videoRef1.current);
       if (videoRef2.current) setupVideoLoadListener(videoRef2.current);
       if (videoRef3.current) setupVideoLoadListener(videoRef3.current);
       
-      // Fallback: force videos to show after 3 seconds even if loading fails
-      setTimeout(() => {
-        if (videoRef1.current) markVideoAsLoaded(videoRef1.current);
-        if (videoRef2.current) markVideoAsLoaded(videoRef2.current);
-        if (videoRef3.current) markVideoAsLoaded(videoRef3.current);
-      }, 3000);
+      // More aggressive fallback: force videos to show after a cascade of timeouts
+      const forceLoadAll = (delay: number) => {
+        setTimeout(() => {
+          console.log('Force loading videos at delay:', delay);
+          if (videoRef1.current) markVideoAsLoaded(videoRef1.current);
+          if (videoRef2.current) markVideoAsLoaded(videoRef2.current);
+          if (videoRef3.current) markVideoAsLoaded(videoRef3.current);
+        }, delay);
+      };
+      
+      // Multiple fallbacks at different times
+      forceLoadAll(1000);  
+      forceLoadAll(2000);
+      forceLoadAll(3500);
+      forceLoadAll(5000);
     };
     
-    // Setup videos on mount
+    // Call immediately
     setupVideos();
     
     // Also set them up after a short delay to handle any race conditions
     const fallbackTimer = setTimeout(setupVideos, 1000);
+    const secondFallbackTimer = setTimeout(setupVideos, 2500);
+    
+    // Inject a special style to force iframes to be visible
+    const style = document.createElement('style');
+    style.textContent = `
+      iframe.video-background {
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+      }
+    `;
+    document.head.appendChild(style);
     
     return () => {
       clearTimeout(fallbackTimer);
+      clearTimeout(secondFallbackTimer);
+      document.head.removeChild(style);
     };
   }, []);
   
