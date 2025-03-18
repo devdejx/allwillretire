@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,7 +9,7 @@ import NotFound from "./pages/NotFound";
 import MuteButton from "./components/MuteButton";
 import Preloader from "./components/Preloader";
 import "./App.css";
-import "./components/Hero.css"; // Import Hero.css
+import "./components/Hero.css"; // Import Hero.css here to ensure it's loaded
 
 // Ustvarimo Query Client z vgrajenim predpomnjenjem
 const queryClient = new QueryClient({

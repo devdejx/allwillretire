@@ -1,21 +1,28 @@
 
 .hero-container {
-  background-image: url('/lovable-uploads/a3b268b1-b0c8-47d9-99bf-4a91eaca4e49.png');
+  background-image: url('/lovable-uploads/a3b268b1-b0c8-47d9-99bf-4a91eaca4e49.png') !important;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
   isolation: isolate;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 215, 0, 0.5);
 }
 
-/* Add a subtle glow effect to make the image more visible */
+/* Add a stronger glow effect to make the image more visible */
 .hero-container::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 1rem;
-  border: 1px solid rgba(255, 215, 0, 0.5);
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  border: 2px solid rgba(255, 215, 0, 0.7);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
   z-index: -1;
+}
+
+/* Make sure the content is visible */
+.hero-container .content {
+  position: relative;
+  z-index: 2;
 }
