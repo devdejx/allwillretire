@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Copy, Check } from 'lucide-react';
 import { Button } from './ui/button';
 import { useToast } from "@/hooks/use-toast";
@@ -7,49 +7,75 @@ import { setupVideoLoadListener, markVideoAsLoaded } from '@/utils/videoLoader';
 const Cta = () => {
   const { toast } = useToast();
   const [copied, setCopied] = React.useState(false);
+  const [videosReady, setVideosReady] = useState(false);
   
   // References to video iframes
   const videoRef1 = useRef<HTMLIFrameElement>(null);
   const videoRef2 = useRef<HTMLIFrameElement>(null);
   const videoRef3 = useRef<HTMLIFrameElement>(null);
   
+  const videoRefs = [videoRef1, videoRef2, videoRef3];
+  
   useEffect(() => {
     // Set up video load listeners with improved handling
     const setupVideos = () => {
       console.log('Setting up video refs:', videoRef1.current, videoRef2.current, videoRef3.current);
       
-      if (videoRef1.current) setupVideoLoadListener(videoRef1.current);
-      if (videoRef2.current) setupVideoLoadListener(videoRef2.current);
-      if (videoRef3.current) setupVideoLoadListener(videoRef3.current);
+      videoRefs.forEach(ref => {
+        if (ref.current) {
+          setupVideoLoadListener(ref.current);
+          
+          // Add direct inline styles to ensure visibility
+          ref.current.style.opacity = '1';
+          ref.current.style.visibility = 'visible';
+          ref.current.style.display = 'block';
+        }
+      });
       
-      // More aggressive fallback: force videos to show after a cascade of timeouts
-      const forceLoadAll = (delay: number) => {
-        setTimeout(() => {
-          console.log('Force loading videos at delay:', delay);
-          if (videoRef1.current) markVideoAsLoaded(videoRef1.current);
-          if (videoRef2.current) markVideoAsLoaded(videoRef2.current);
-          if (videoRef3.current) markVideoAsLoaded(videoRef3.current);
-        }, delay);
-      };
-      
-      // Multiple fallbacks at different times
-      forceLoadAll(1000);  
-      forceLoadAll(2000);
-      forceLoadAll(3500);
-      forceLoadAll(5000);
+      // Force all videos to be visible after a delay
+      setTimeout(() => {
+        setVideosReady(true);
+        console.log('Videos ready state set to true');
+        
+        videoRefs.forEach(ref => {
+          if (ref.current && ref.current.parentElement) {
+            ref.current.parentElement.classList.add('loaded', 'fully-loaded');
+            ref.current.style.opacity = '1';
+            ref.current.style.visibility = 'visible';
+            ref.current.style.display = 'block';
+          }
+        });
+      }, 1000);
     };
     
-    // Call immediately
+    // Call immediately and also after a delay
     setupVideos();
     
-    // Also set them up after a short delay to handle any race conditions
-    const fallbackTimer = setTimeout(setupVideos, 1000);
-    const secondFallbackTimer = setTimeout(setupVideos, 2500);
+    // Set up multiple attempts to make videos visible
+    const intervals = [500, 1500, 3000, 5000].map(delay => 
+      setTimeout(() => {
+        console.log(`Attempting to force video visibility at ${delay}ms`);
+        videoRefs.forEach(ref => {
+          if (ref.current && ref.current.parentElement) {
+            ref.current.parentElement.classList.add('loaded', 'fully-loaded');
+            ref.current.style.opacity = '1';
+            ref.current.style.visibility = 'visible';
+            ref.current.style.display = 'block';
+          }
+        });
+      }, delay)
+    );
     
-    // Inject a special style to force iframes to be visible
+    // Add global style to force iframe visibility
     const style = document.createElement('style');
     style.textContent = `
       iframe.video-background {
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+        z-index: 15 !important;
+      }
+      .absolute.video-background {
         opacity: 1 !important;
         visibility: visible !important;
         display: block !important;
@@ -58,9 +84,10 @@ const Cta = () => {
     document.head.appendChild(style);
     
     return () => {
-      clearTimeout(fallbackTimer);
-      clearTimeout(secondFallbackTimer);
-      document.head.removeChild(style);
+      intervals.forEach(clearTimeout);
+      if (style.parentNode) {
+        document.head.removeChild(style);
+      }
     };
   }, []);
   
@@ -101,8 +128,9 @@ const Cta = () => {
               frameBorder="0" 
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
               className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background" 
-              title="Background Video">
-            </iframe>
+              title="Background Video"
+              style={{opacity: 1, visibility: 'visible', display: 'block'}}
+            ></iframe>
           </div>
         </div>
         
@@ -158,8 +186,9 @@ const Cta = () => {
               frameBorder="0" 
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
               className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background" 
-              title="Background Video">
-            </iframe>
+              title="Background Video"
+              style={{opacity: 1, visibility: 'visible', display: 'block'}}
+            ></iframe>
           </div>
         </div>
         
@@ -213,8 +242,9 @@ const Cta = () => {
               frameBorder="0" 
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
               className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background" 
-              title="Background Video">
-            </iframe>
+              title="Background Video"
+              style={{opacity: 1, visibility: 'visible', display: 'block'}}
+            ></iframe>
           </div>
         </div>
         

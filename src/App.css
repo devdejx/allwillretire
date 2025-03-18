@@ -88,6 +88,8 @@ body, html {
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
   will-change: opacity;
+  visibility: visible !important;
+  display: block !important;
 }
 
 .video-background.loaded {
@@ -102,11 +104,20 @@ body, html {
   display: block !important;
 }
 
-/* Force iframe visibility */
+/* Force iframe visibility - enhanced */
 iframe.video-background {
   z-index: 5;
   transform-style: preserve-3d;
   backface-visibility: visible;
+  visibility: visible !important;
+  display: block !important;
+  opacity: 1 !important;
+}
+
+/* Important override for video visibility */
+.absolute.video-background {
+  z-index: 15 !important;
+  opacity: 1 !important;
   visibility: visible !important;
   display: block !important;
 }
