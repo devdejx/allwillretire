@@ -47,8 +47,3 @@ body, html {
   margin: 0;
   padding: 0;
 }
-
-/* Dynamic background image rule - properly scoped */
-.hero-container {
-  background-image: url('/lovable-uploads/a3b268b1-b0c8-47d9-99bf-4a91eaca4e49.png') !important;
-}

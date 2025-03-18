@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
+import OptimizedImage from './OptimizedImage';
 
 const Hero = () => {
   const orbitRef = useRef<HTMLDivElement>(null);
@@ -137,14 +138,28 @@ const Hero = () => {
       {/* Hidden YouTube audio player */}
       <iframe ref={audioRef} className="hidden" width="0" height="0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen title="Background Music"></iframe>
 
+      {/* Full-width image before hero content */}
+      <div className="relative w-full mb-8">
+        {/* Top border */}
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
+        
+        <OptimizedImage 
+          src="/lovable-uploads/8c23b3d6-c1f4-4e64-85d9-e0614d298c63.png" 
+          alt="Luxurious lifestyle by the ocean" 
+          className="w-full h-auto"
+          priority={true} 
+        />
+        
+        {/* Bottom border */}
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
+      </div>
+
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden z-10">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="hero-container rounded-2xl p-8 max-w-4xl mx-auto">
-            <div className="hero-overlay"></div>
+          <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+            <div className="h-14 mb-2"></div>
             
-            <div className="h-14 mb-2 hero-content"></div>
-            
-            <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight text-white hero-content" style={{
+            <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight" style={{
             animationDelay: '0.2s',
             letterSpacing: '-0.015em'
           }}>
@@ -156,13 +171,13 @@ const Hero = () => {
               <span ref={futureRef} className="font-elegant italic font-semibold inline-block transition-transform duration-1000">Future</span>
             </h1>
             
-            <p className="text-xl text-white mb-10 max-w-2xl mx-auto animate-fade-up hero-content" style={{
+            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto animate-fade-up font-elegant" style={{
             animationDelay: '0.4s'
           }}>
               AllWillRetire is more than a cryptocurrency — it's a promise of financial independence and a future filled with opulence and comfort.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up hero-content" style={{
+            <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up" style={{
             animationDelay: '0.6s'
           }}>
               <button 
@@ -175,21 +190,21 @@ const Hero = () => {
               </button>
             </div>
             
-            <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up hero-content" style={{
+            <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up" style={{
             animationDelay: '0.8s'
           }}>
-              <div className="flex flex-col items-center text-white">
+              <div className="flex flex-col items-center">
                 {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold">
                     {marketData.marketCap}
                   </span>}
-                <span className="text-sm text-white/80">Market Cap</span>
+                <span className="text-sm text-muted-foreground">Market Cap</span>
               </div>
-              <div className="w-px h-12 bg-white/30"></div>
-              <div className="flex flex-col items-center text-white">
+              <div className="w-px h-12 bg-black/10"></div>
+              <div className="flex flex-col items-center">
                 {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold">
                     {marketData.holders}
                   </span>}
-                <span className="text-sm text-white/80">Holders</span>
+                <span className="text-sm text-muted-foreground">Holders</span>
               </div>
             </div>
           </div>
