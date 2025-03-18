@@ -1,7 +1,7 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 const Hero = () => {
   const orbitRef = useRef<HTMLDivElement>(null);
@@ -17,7 +17,6 @@ const Hero = () => {
     holders: '4,400+'
   });
   const [isLoading, setIsLoading] = useState(true);
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const fetchMarketData = async () => {
@@ -58,6 +57,7 @@ const Hero = () => {
       }
     };
     fetchMarketData();
+    const refreshInterval = setInterval(fetchMarketData, 300000);
     const formatCurrency = (value: number): string => {
       if (value >= 1e9) {
         return `$${(value / 1e9).toFixed(1)}B+`;
@@ -139,22 +139,6 @@ const Hero = () => {
       <iframe ref={audioRef} className="hidden" width="0" height="0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen title="Background Music"></iframe>
 
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/5 to-black/20 z-0"></div>
-        
-        {!isMobile && (
-          <div className="absolute inset-0 z-0">
-            <iframe
-              src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1"
-              className="absolute w-full h-full"
-              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-              title="Background Video"
-            ></iframe>
-            <div className="absolute inset-0 bg-black/30 z-1"></div>
-          </div>
-        )}
-        
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
             <div className="h-14 mb-2"></div>
