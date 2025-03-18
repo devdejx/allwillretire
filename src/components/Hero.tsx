@@ -143,39 +143,27 @@ const Hero = () => {
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
             <div className="h-14 mb-2"></div>
             
-            {/* Heading with background image */}
-            <div className="relative py-8 px-6 mb-6 rounded-lg overflow-hidden">
-              {/* Background image behind the text only */}
-              <div className="absolute inset-0 bg-cover bg-center opacity-60" style={{ 
-                backgroundImage: "url('/lovable-uploads/4d586d6e-ded9-4f05-bc94-5b91b3140fe1.png')",
-                zIndex: -1 
-              }} />
-              
-              {/* Semi-transparent overlay for better text readability */}
-              <div className="absolute inset-0 bg-black/20 z-0"></div>
-              
-              <h1 className="relative z-10 text-4xl md:text-6xl lg:text-7xl leading-tight tracking-tight animate-fade-up" style={{
-                animationDelay: '0.2s',
-                letterSpacing: '-0.015em'
-              }}>
-                <span ref={secureRef} className="relative font-artistic font-semibold inline-block transition-transform duration-1000 text-white">
-                  Secure Your
-                </span>
-                {' '}
-                <span ref={financialRef} className="text-gold-500 font-artistic font-bold inline-block transition-transform duration-1000">Financial</span>{' '}
-                <span ref={futureRef} className="font-elegant italic font-semibold inline-block transition-transform duration-1000 text-white">Future</span>
-              </h1>
-            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight" style={{
+            animationDelay: '0.2s',
+            letterSpacing: '-0.015em'
+          }}>
+              <span ref={secureRef} className="relative font-artistic font-semibold inline-block transition-transform duration-1000">
+                Secure Your
+              </span>
+              {' '}
+              <span ref={financialRef} className="text-gold-500 font-artistic font-bold inline-block transition-transform duration-1000">Financial</span>{' '}
+              <span ref={futureRef} className="font-elegant italic font-semibold inline-block transition-transform duration-1000">Future</span>
+            </h1>
             
             <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto animate-fade-up font-elegant" style={{
-              animationDelay: '0.4s'
-            }}>
+            animationDelay: '0.4s'
+          }}>
               AllWillRetire is more than a cryptocurrency — it's a promise of financial independence and a future filled with opulence and comfort.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up" style={{
-              animationDelay: '0.6s'
-            }}>
+            animationDelay: '0.6s'
+          }}>
               <button 
                 className="relative bg-gradient-to-r from-transparent via-gold-500 to-transparent backdrop-blur text-black px-8 py-4 rounded-xl font-bold shadow-lg transition-all duration-300 hover:scale-105 overflow-hidden group"
                 onClick={handleLearnMoreClick}
@@ -187,8 +175,8 @@ const Hero = () => {
             </div>
             
             <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up" style={{
-              animationDelay: '0.8s'
-            }}>
+            animationDelay: '0.8s'
+          }}>
               <div className="flex flex-col items-center">
                 {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold">
                     {marketData.marketCap}
