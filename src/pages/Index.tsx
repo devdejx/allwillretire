@@ -85,7 +85,7 @@ const Index = () => {
       
       <About />
       
-      {/* Community Image Section with Borders - removed bottom margin to bring Features closer */}
+      {/* Community Image Section with Borders - replaced with new image */}
       <section className="w-full mt-24 mb-0">
         {/* Container with top border */}
         <div className="relative w-full">
@@ -96,7 +96,7 @@ const Index = () => {
           <div className="md:hidden w-full">
             <AspectRatio ratio={16 / 9} className="w-full">
               <OptimizedImage 
-                src="/lovable-uploads/e51a7f52-b94b-41ef-b8a0-f8bb8d18157c.png" 
+                src="/lovable-uploads/4f24766a-a232-41b2-8cb0-5504af1e57e4.png" 
                 alt="All Will Retire Community" 
                 className="w-full h-full object-cover" 
                 priority={true} 
@@ -107,7 +107,7 @@ const Index = () => {
           {/* Desktop image */}
           <div className="hidden md:block w-full">
             <OptimizedImage 
-              src="/lovable-uploads/e51a7f52-b94b-41ef-b8a0-f8bb8d18157c.png" 
+              src="/lovable-uploads/4f24766a-a232-41b2-8cb0-5504af1e57e4.png" 
               alt="All Will Retire Community" 
               className="w-full h-auto object-contain" 
               priority={true} 
