@@ -140,10 +140,24 @@ const Hero = () => {
 
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden z-10">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-            <div className="h-14 mb-2"></div>
+          <div 
+            className="flex flex-col items-center text-center max-w-4xl mx-auto relative"
+            style={{
+              backgroundImage: "url('/lovable-uploads/a3b268b1-b0c8-47d9-99bf-4a91eaca4e49.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              borderRadius: "1rem",
+              padding: "2rem",
+              position: "relative",
+            }}
+          >
+            {/* Semi-transparent overlay to improve text readability */}
+            <div className="absolute inset-0 bg-black/30 backdrop-blur-sm rounded-2xl z-0"></div>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight" style={{
+            <div className="h-14 mb-2 relative z-10"></div>
+            
+            <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight text-white relative z-10" style={{
             animationDelay: '0.2s',
             letterSpacing: '-0.015em'
           }}>
@@ -155,13 +169,13 @@ const Hero = () => {
               <span ref={futureRef} className="font-elegant italic font-semibold inline-block transition-transform duration-1000">Future</span>
             </h1>
             
-            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto animate-fade-up font-elegant" style={{
+            <p className="text-xl text-white mb-10 max-w-2xl mx-auto animate-fade-up font-elegant relative z-10" style={{
             animationDelay: '0.4s'
           }}>
               AllWillRetire is more than a cryptocurrency — it's a promise of financial independence and a future filled with opulence and comfort.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up" style={{
+            <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up relative z-10" style={{
             animationDelay: '0.6s'
           }}>
               <button 
@@ -174,21 +188,21 @@ const Hero = () => {
               </button>
             </div>
             
-            <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up" style={{
+            <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up relative z-10" style={{
             animationDelay: '0.8s'
           }}>
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center text-white">
                 {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold">
                     {marketData.marketCap}
                   </span>}
-                <span className="text-sm text-muted-foreground">Market Cap</span>
+                <span className="text-sm text-white/80">Market Cap</span>
               </div>
-              <div className="w-px h-12 bg-black/10"></div>
-              <div className="flex flex-col items-center">
+              <div className="w-px h-12 bg-white/30"></div>
+              <div className="flex flex-col items-center text-white">
                 {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold">
                     {marketData.holders}
                   </span>}
-                <span className="text-sm text-muted-foreground">Holders</span>
+                <span className="text-sm text-white/80">Holders</span>
               </div>
             </div>
           </div>
