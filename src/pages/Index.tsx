@@ -125,7 +125,8 @@ const Index = () => {
       <Footer />
       
       {/* Add CSS for gradient animation */}
-      <style jsx global>{`
+      <style>
+        {`
         @keyframes gradient-shift {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
@@ -136,7 +137,8 @@ const Index = () => {
           background-size: 200% 200%;
           animation: gradient-shift 15s ease infinite;
         }
-      `}</style>
+        `}
+      </style>
     </div>;
 };
 
