@@ -96,7 +96,7 @@ const Preloader = () => {
         />
       </div>
       
-      <div className="w-64 h-2 bg-gray-200 rounded-full overflow-hidden mb-2">
+      <div className="w-64 h-2 bg-gray-200 rounded-full overflow-hidden">
         <div 
           className="h-full bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 rounded-full"
           style={{
@@ -104,10 +104,6 @@ const Preloader = () => {
             transition: 'width 0.3s ease-out'
           }}
         />
-      </div>
-      
-      <div className="text-gold-500 text-sm font-medium">
-        {progress < 60 ? 'Loading videos...' : 'Preparing experience...'}
       </div>
       
       <style>{`
