@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
-import OptimizedImage from './OptimizedImage';
 
 const Hero = () => {
   const orbitRef = useRef<HTMLDivElement>(null);
@@ -143,24 +142,6 @@ const Hero = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
             <div className="h-14 mb-2"></div>
-            
-            {/* Full-width image before heading */}
-            <div className="w-full max-w-5xl mx-auto mb-8 relative">
-              <div className="relative w-full">
-                {/* Top border */}
-                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
-                
-                <OptimizedImage 
-                  src="/lovable-uploads/8c23b3d6-c1f4-4e64-85d9-e0614d298c63.png" 
-                  alt="Luxurious lifestyle by the ocean" 
-                  className="w-full h-auto rounded-md"
-                  priority={true} 
-                />
-                
-                {/* Bottom border */}
-                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
-              </div>
-            </div>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight" style={{
             animationDelay: '0.2s',
