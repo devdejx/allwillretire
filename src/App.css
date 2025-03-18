@@ -47,3 +47,14 @@ body, html {
   margin: 0;
   padding: 0;
 }
+
+/* Mobile background styles when videos are hidden */
+@media (max-width: 768px) {
+  section.py-24.relative.overflow-hidden.bg-black\/70 {
+    background-image: linear-gradient(to bottom, #000000, #141414, #1c1c1c, #252525, #2e2e2e);
+  }
+  
+  section.relative.min-h-screen.flex.items-center.pt-20.overflow-hidden.z-10 {
+    background-image: linear-gradient(to bottom, #000000, #0a0a0a, #121212, #191919, #1f1f1f);
+  }
+}
