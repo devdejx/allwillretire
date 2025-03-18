@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -79,27 +78,6 @@ const Index = () => {
   return <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
       <Hero />
-      
-      {/* Full-width Lifestyle Image Section */}
-      <section className="w-full">
-        <div className="relative w-full">
-          {/* Top border */}
-          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
-          
-          {/* Full-width image */}
-          <div className="w-full">
-            <OptimizedImage 
-              src="/lovable-uploads/8c23b3d6-c1f4-4e64-85d9-e0614d298c63.png" 
-              alt="Luxurious lifestyle by the ocean" 
-              className="w-full h-auto" 
-              priority={true} 
-            />
-          </div>
-          
-          {/* Bottom border */}
-          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
-        </div>
-      </section>
       
       {/* Add more spacing before About section */}
       <div className="h-24"></div>
