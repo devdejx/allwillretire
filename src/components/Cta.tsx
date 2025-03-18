@@ -1,12 +1,24 @@
-
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Copy, Check } from 'lucide-react';
 import { Button } from './ui/button';
 import { useToast } from "@/hooks/use-toast";
+import { setupVideoLoadListener } from '@/utils/videoLoader';
 
 const Cta = () => {
   const { toast } = useToast();
   const [copied, setCopied] = React.useState(false);
+  
+  // References to video iframes
+  const videoRef1 = useRef<HTMLIFrameElement>(null);
+  const videoRef2 = useRef<HTMLIFrameElement>(null);
+  const videoRef3 = useRef<HTMLIFrameElement>(null);
+  
+  useEffect(() => {
+    // Set up video load listeners
+    if (videoRef1.current) setupVideoLoadListener(videoRef1.current);
+    if (videoRef2.current) setupVideoLoadListener(videoRef2.current);
+    if (videoRef3.current) setupVideoLoadListener(videoRef3.current);
+  }, []);
   
   const handleCopy = () => {
     const textToCopy = "Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump";
@@ -32,13 +44,28 @@ const Cta = () => {
       <section className="py-24 relative overflow-hidden bg-black/70">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 w-full h-full overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/80 z-5"></div>
+            <iframe 
+              ref={videoRef1}
+              src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
+              frameBorder="0" 
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background" 
+              title="Background Video Base">
+            </iframe>
+            <div className="absolute inset-0 bg-black/30 z-5"></div>
           </div>
           
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/30 z-20"></div>
           
           <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15">
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60 z-10"></div>
+            <iframe 
+              ref={videoRef2}
+              src="https://player.vimeo.com/video/1065939107?h=96cbb5c847&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
+              frameBorder="0" 
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background" 
+              title="Background Video">
+            </iframe>
           </div>
         </div>
         
@@ -81,13 +108,26 @@ const Cta = () => {
       <section className="py-24 relative overflow-hidden bg-black/70">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 w-full h-full overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/80 z-5"></div>
+            <iframe 
+              src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
+              frameBorder="0" 
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background loaded" 
+              title="Background Video Base">
+            </iframe>
+            <div className="absolute inset-0 bg-black/30 z-5"></div>
           </div>
           
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/30 z-20"></div>
           
           <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15">
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60 z-10"></div>
+            <iframe 
+              src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
+              frameBorder="0" 
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background loaded" 
+              title="Background Video">
+            </iframe>
           </div>
         </div>
         
@@ -128,13 +168,27 @@ const Cta = () => {
       <section className="py-24 relative overflow-hidden bg-black/70">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 w-full h-full overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/80 z-5"></div>
+            <iframe 
+              src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
+              frameBorder="0" 
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background loaded" 
+              title="Background Video Base">
+            </iframe>
+            <div className="absolute inset-0 bg-black/30 z-5"></div>
           </div>
           
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/30 z-20"></div>
           
           <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15">
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60 z-10"></div>
+            <iframe 
+              ref={videoRef3}
+              src="https://player.vimeo.com/video/1065940999?h=4705f6f507&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
+              frameBorder="0" 
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background" 
+              title="Background Video">
+            </iframe>
           </div>
         </div>
         
