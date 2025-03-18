@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Copy, Check } from 'lucide-react';
 import { Button } from './ui/button';
@@ -7,6 +8,7 @@ import { setupVideoLoadListener, checkVideoVisibility, setupVideoVisibilityObser
 const Cta = () => {
   const { toast } = useToast();
   const [copied, setCopied] = React.useState(false);
+  const [videosLoaded, setVideosLoaded] = React.useState(false);
   
   // References to video iframes
   const videoRef1 = useRef<HTMLIFrameElement>(null);
@@ -15,33 +17,54 @@ const Cta = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    // Set up video load listeners
+    // Nastavi zastavico, da so videi naloženi po določenem času
+    const timer = setTimeout(() => {
+      setVideosLoaded(true);
+      console.log("Forcing videos to be considered as loaded");
+    }, 3000);
+
+    // Nastavitev sprejemnikov za nalaganje videov
     if (videoRef1.current) setupVideoLoadListener(videoRef1.current);
     if (videoRef2.current) setupVideoLoadListener(videoRef2.current);
     if (videoRef3.current) setupVideoLoadListener(videoRef3.current);
     
-    // Set up MutationObserver to watch for DOM changes
+    // Nastavi MutationObserver za spremljanje sprememb v DOM
     const observer = setupVideoVisibilityObserver();
     
-    // Periodically check visibility of videos
+    // Periodično preveri vidnost videov
     const checkInterval = setInterval(() => {
       checkVideoVisibility();
       
-      // Also manually check our specific video elements
-      if (videoRef1.current) videoRef1.current.style.opacity = '1';
-      if (videoRef2.current) videoRef2.current.style.opacity = '1';
-      if (videoRef3.current) videoRef3.current.style.opacity = '1';
+      // Tudi ročno preveri naše specifične video elemente
+      if (videoRef1.current) {
+        videoRef1.current.style.opacity = '1';
+        videoRef1.current.style.visibility = 'visible';
+        videoRef1.current.style.display = 'block';
+      }
+      if (videoRef2.current) {
+        videoRef2.current.style.opacity = '1';
+        videoRef2.current.style.visibility = 'visible';
+        videoRef2.current.style.display = 'block';
+      }
+      if (videoRef3.current) {
+        videoRef3.current.style.opacity = '1';
+        videoRef3.current.style.visibility = 'visible';
+        videoRef3.current.style.display = 'block';
+      }
       
-      // And their parent elements
+      // In njihove starševske elemente
       document.querySelectorAll('.video-background').forEach(el => {
         if (el.parentElement) {
           el.parentElement.classList.add('loaded');
           el.parentElement.style.opacity = '1';
+          el.parentElement.style.visibility = 'visible';
+          el.parentElement.style.display = 'block';
         }
       });
-    }, 2000);
+    }, 1000); // Pogostejše preverjanje
     
     return () => {
+      clearTimeout(timer);
       clearInterval(checkInterval);
       if (observer) observer.disconnect();
     };
@@ -67,28 +90,48 @@ const Cta = () => {
     });
   };
   
-  // Manually force video visibility when section becomes visible
+  // Ročno prisili vidnost videa, ko razdelek postane viden
   const handleSectionVisibility = (entries: IntersectionObserverEntry[]) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         checkVideoVisibility();
+        console.log("Section is now visible, forcing video visibility");
+        
+        // Dodatno preveri specifične video elemente
+        if (videoRef1.current) {
+          videoRef1.current.style.opacity = '1';
+          videoRef1.current.style.visibility = 'visible';
+          videoRef1.current.style.display = 'block';
+        }
+        if (videoRef2.current) {
+          videoRef2.current.style.opacity = '1';
+          videoRef2.current.style.visibility = 'visible';
+          videoRef2.current.style.display = 'block';
+        }
+        if (videoRef3.current) {
+          videoRef3.current.style.opacity = '1';
+          videoRef3.current.style.visibility = 'visible';
+          videoRef3.current.style.display = 'block';
+        }
       }
     });
   };
   
   useEffect(() => {
-    // Set up intersection observer to detect when sections are visible
+    // Nastavi intersection observer za zaznavanje, kdaj so razdelki vidni
     const observer = new IntersectionObserver(handleSectionVisibility, {
       threshold: 0.1,
+      rootMargin: "100px", // Povečaj rob za zgodnje zaznavanje
     });
     
-    // Observe each section containing videos
+    // Opazuj vsak razdelek, ki vsebuje videe
     const sections = document.querySelectorAll('section');
     sections.forEach(section => observer.observe(section));
     
     return () => observer.disconnect();
   }, []);
   
+  // Vrni komponento
   return <>
       <section ref={containerRef} className="py-24 relative overflow-hidden bg-black/70 video-background-container">
         <div className="absolute inset-0 z-0 overflow-hidden video-container">
@@ -102,10 +145,10 @@ const Cta = () => {
           <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15 video-container">
             <iframe 
               ref={videoRef1}
-              src="https://player.vimeo.com/video/1065939107?h=96cbb5c847&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1&controls=0&transparent=0&responsive=1&dnt=1&quality=1080p" 
+              src="https://player.vimeo.com/video/1065939107?h=96cbb5c847&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1&controls=0&transparent=0&responsive=1&dnt=1&quality=720p" 
               frameBorder="0" 
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background" 
+              className="absolute w-[250%] h-[250%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[250%] min-h-[250%] video-background" 
               title="Background Video"
               style={{opacity: 1, visibility: 'visible', display: 'block'}}
             />
@@ -161,10 +204,10 @@ const Cta = () => {
           <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15 video-container">
             <iframe 
               ref={videoRef2}
-              src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1&controls=0&transparent=0&responsive=1&dnt=1&quality=1080p" 
+              src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1&controls=0&transparent=0&responsive=1&dnt=1&quality=720p" 
               frameBorder="0" 
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background loaded" 
+              className="absolute w-[250%] h-[250%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[250%] min-h-[250%] video-background loaded" 
               title="Background Video"
               style={{opacity: 1, visibility: 'visible', display: 'block'}}
             />
@@ -218,10 +261,10 @@ const Cta = () => {
           <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15 video-container">
             <iframe 
               ref={videoRef3}
-              src="https://player.vimeo.com/video/1065940999?h=4705f6f507&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1&controls=0&transparent=0&responsive=1&dnt=1&quality=1080p" 
+              src="https://player.vimeo.com/video/1065940999?h=4705f6f507&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1&controls=0&transparent=0&responsive=1&dnt=1&quality=720p" 
               frameBorder="0" 
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background" 
+              className="absolute w-[250%] h-[250%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[250%] min-h-[250%] video-background" 
               title="Background Video"
               style={{opacity: 1, visibility: 'visible', display: 'block'}}
             />
