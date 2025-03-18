@@ -149,11 +149,12 @@ const Hero = () => {
               backgroundRepeat: "no-repeat",
               borderRadius: "1rem",
               padding: "2rem",
-              position: "relative",
+              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+              border: "1px solid rgba(255, 215, 0, 0.3)",
             }}
           >
-            {/* Semi-transparent overlay to improve text readability */}
-            <div className="absolute inset-0 bg-black/30 backdrop-blur-sm rounded-2xl z-0"></div>
+            {/* Semi-transparent overlay with reduced opacity */}
+            <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px] rounded-2xl z-0"></div>
             
             <div className="h-14 mb-2 relative z-10"></div>
             
