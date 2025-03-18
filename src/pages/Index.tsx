@@ -124,7 +124,7 @@ const Index = () => {
       <Cta />
       <Footer />
       
-      {/* Add CSS for gradient animation - fixed TypeScript error */}
+      {/* Add CSS for gradient animation */}
       <style>
         {`
         @keyframes gradient-shift {

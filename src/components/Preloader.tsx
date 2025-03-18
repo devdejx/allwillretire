@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { getVideoUrls } from '@/utils/videoLoader';
@@ -8,36 +9,19 @@ const Preloader = () => {
   const [videosLoaded, setVideosLoaded] = useState(0);
   const videoUrls = getVideoUrls();
   const totalVideos = videoUrls.length;
-  const [preloadedFrames, setPreloadedFrames] = useState<HTMLIFrameElement[]>([]);
 
   useEffect(() => {
     // Create elements to preload the videos
     const preloadVideos = () => {
-      const frames: HTMLIFrameElement[] = [];
       videoUrls.forEach((videoUrl) => {
         // Create a hidden iframe to preload the video
         const iframe = document.createElement('iframe');
         iframe.src = videoUrl;
         iframe.className = 'preloaded-video';
-        iframe.allow = "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media";
-        
-        // Set essential styles
-        iframe.style.display = 'block';
-        iframe.style.visibility = 'visible';
-        iframe.style.opacity = '1';
-        iframe.style.position = 'absolute';
-        iframe.style.top = '0';
-        iframe.style.left = '0';
-        iframe.style.width = '1px';
-        iframe.style.height = '1px';
-        iframe.style.pointerEvents = 'none';
-        
-        // Add debug info
-        console.log('Preloading video:', videoUrl);
+        iframe.style.display = 'none';
         
         // When the iframe loads, update our loading progress
         iframe.onload = () => {
-          console.log('Preloaded video loaded:', videoUrl);
           setVideosLoaded(prev => {
             const newCount = prev + 1;
             // Update progress based on video loading (60% of total progress)
@@ -47,77 +31,44 @@ const Preloader = () => {
           });
         };
         
-        // Ensure iframe loads even if onload doesn't fire
-        const forceLoad = setTimeout(() => {
-          console.log('Force marking video as loaded:', videoUrl);
-          setVideosLoaded(prev => {
-            if (prev < totalVideos) {
-              const newCount = prev + 1;
-              const videoProgress = (newCount / totalVideos) * 60;
-              setProgress(prev => Math.max(prev, videoProgress));
-              return newCount;
-            }
-            return prev;
-          });
-        }, 2000);
-        
         document.body.appendChild(iframe);
-        frames.push(iframe);
       });
-      
-      // Store frames for cleanup
-      setPreloadedFrames(frames);
     };
-
-    // Ensure faster loading with fallbacks
-    const timer1 = setTimeout(() => {
-      setProgress(prev => Math.max(prev, 60));
-    }, 1500);
-    
-    const timer2 = setTimeout(() => {
-      setProgress(prev => Math.max(prev, 80));
-    }, 2000);
-    
-    const timer3 = setTimeout(() => {
-      setProgress(100);
-      setTimeout(() => {
-        setLoading(false);
-      }, 200);
-    }, 2500);
 
     // Start preloading videos
     preloadVideos();
     
-    // Add global styles to force video visibility
-    const style = document.createElement('style');
-    style.textContent = `
-      iframe.video-background {
-        opacity: 1 !important;
-        visibility: visible !important;
-        display: block !important;
-        z-index: 15 !important;
-      }
-    `;
-    document.head.appendChild(style);
-    
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-      clearTimeout(timer3);
-      
-      // Remove the style element
-      if (style.parentNode) {
-        document.head.removeChild(style);
-      }
-      
-      // Clean up any preloaded iframes
-      preloadedFrames.forEach(frame => {
-        if (frame && frame.parentNode) {
-          frame.parentNode.removeChild(frame);
-        }
+    // Create a more realistic loading simulation with incremental progress for the remaining 40%
+    const incrementProgress = () => {
+      setProgress(prev => {
+        if (prev >= 100) return 100;
+        // Only increment the remaining 40% of progress after videos have loaded
+        if (prev < 60) return prev;
+        // Slow down progress as it approaches 100%
+        const increment = Math.max(0.5, 5 * (1 - (prev - 60) / 40));
+        return Math.min(prev + increment, 99);
       });
     };
-  }, [totalVideos, videoUrls]);
+
+    const progressInterval = setInterval(incrementProgress, 100);
+    
+    // Simulate complete page load
+    const timer = setTimeout(() => {
+      setProgress(100);
+      setTimeout(() => {
+        setLoading(false);
+        // Clean up preloaded video iframes
+        document.querySelectorAll('.preloaded-video').forEach(elem => {
+          elem.remove();
+        });
+      }, 200); // Small delay after reaching 100%
+    }, 3000); // Longer minimum loading time to ensure videos are loaded
+
+    return () => {
+      clearTimeout(timer);
+      clearInterval(progressInterval);
+    };
+  }, [totalVideos]);
 
   return (
     <div
@@ -157,14 +108,12 @@ const Preloader = () => {
         }
         
         .preloaded-video {
-          position: absolute !important;
-          width: 1px !important;
-          height: 1px !important;
-          opacity: 1 !important;
-          pointer-events: none !important;
-          z-index: -1 !important;
-          visibility: visible !important;
-          display: block !important;
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          opacity: 0;
+          pointer-events: none;
+          z-index: -1;
         }
       `}</style>
     </div>

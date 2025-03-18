@@ -83,57 +83,22 @@ body, html {
   animation: float 2s ease-in-out infinite;
 }
 
-/* Enhanced video loading and visibility */
+/* Video loading improvements */
 .video-background {
-  opacity: 1 !important;
+  opacity: 0;
   transition: opacity 0.5s ease-in-out;
-  will-change: opacity;
-  visibility: visible !important;
-  display: block !important;
-  z-index: 15 !important;
 }
 
-/* Double-reinforced video visibility */
-iframe.video-background {
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: block !important;
-  z-index: 15 !important;
-  position: absolute !important;
-  width: 150% !important;
-  height: 150% !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  min-width: 150% !important;
-  min-height: 150% !important;
-  object-fit: cover !important;
-}
-
-/* Force all video elements to be visible */
-[data-video-loaded="true"] iframe,
-[data-video-visible="true"],
-iframe[data-loaded="true"],
-iframe[data-has-listeners="true"] {
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: block !important;
-  z-index: 15 !important;
+.video-background.loaded {
+  opacity: 1;
 }
 
 /* Hide preloaded videos used for caching */
 .preloaded-video {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  z-index: -999 !important;
-}
-
-/* Additional video container styles */
-.video-container {
-  position: relative !important;
-  overflow: hidden !important;
-  z-index: 10 !important;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -999;
 }

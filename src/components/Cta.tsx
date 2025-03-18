@@ -1,8 +1,8 @@
-
-import React, { useEffect, useRef, useState } from 'react';
-import { Copy, Check } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { ArrowRight, Copy, Check } from 'lucide-react';
+import { Button } from './ui/button';
 import { useToast } from "@/hooks/use-toast";
-import { setupVideoLoadListener, addGlobalVideoVisibilityStyles } from '@/utils/videoLoader';
+import { setupVideoLoadListener } from '@/utils/videoLoader';
 
 const Cta = () => {
   const { toast } = useToast();
@@ -14,91 +14,10 @@ const Cta = () => {
   const videoRef3 = useRef<HTMLIFrameElement>(null);
   
   useEffect(() => {
-    // Initialize the video visibility system
-    addGlobalVideoVisibilityStyles();
-    
-    // Setup videos with aggressive visibility enforcement
-    const setupVideos = () => {
-      console.log('Setting up video refs');
-      
-      // Apply visibility to all existing video iframes
-      [videoRef1, videoRef2, videoRef3].forEach(ref => {
-        if (ref.current) {
-          // Apply initial styles
-          applyVideoStyles(ref.current);
-          
-          // Setup the video loading listener
-          setupVideoLoadListener(ref.current);
-        }
-      });
-    };
-    
-    // Apply critical styles to a video iframe
-    const applyVideoStyles = (iframe: HTMLIFrameElement) => {
-      // Critical inline styles to ensure visibility
-      iframe.style.display = 'block';
-      iframe.style.visibility = 'visible';
-      iframe.style.opacity = '1';
-      iframe.style.zIndex = '15';
-      
-      // Add data attributes for CSS targeting
-      iframe.setAttribute('data-video-visible', 'true');
-      
-      // Add necessary classes
-      iframe.classList.add('visible-video');
-      
-      // Ensure parent containers also have visibility markers
-      if (iframe.parentElement) {
-        iframe.parentElement.classList.add('loaded', 'fully-loaded');
-        iframe.parentElement.setAttribute('data-video-loaded', 'true');
-      }
-    };
-    
-    // Initial setup
-    setupVideos();
-    
-    // Setup periodic checks to ensure videos remain visible
-    const intervals = [100, 300, 500, 1000, 2000, 3000, 5000].map(delay => 
-      setTimeout(() => {
-        console.log(`Periodic video visibility check at ${delay}ms`);
-        [videoRef1, videoRef2, videoRef3].forEach(ref => {
-          if (ref.current) {
-            applyVideoStyles(ref.current);
-          }
-        });
-        
-        // Also find any iframes that might have been missed
-        document.querySelectorAll('iframe.video-background').forEach((iframe) => {
-          if (iframe instanceof HTMLIFrameElement) {
-            applyVideoStyles(iframe);
-          }
-        });
-      }, delay)
-    );
-    
-    // Create a MutationObserver to watch for DOM changes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'childList') {
-          // Check for newly added iframes
-          mutation.addedNodes.forEach((node) => {
-            if (node instanceof HTMLIFrameElement && node.classList.contains('video-background')) {
-              console.log('MutationObserver found new iframe:', node.src);
-              applyVideoStyles(node);
-              setupVideoLoadListener(node);
-            }
-          });
-        }
-      });
-    });
-    
-    // Start observing the document with the configured parameters
-    observer.observe(document.body, { childList: true, subtree: true });
-    
-    return () => {
-      intervals.forEach(clearTimeout);
-      observer.disconnect();
-    };
+    // Set up video load listeners
+    if (videoRef1.current) setupVideoLoadListener(videoRef1.current);
+    if (videoRef2.current) setupVideoLoadListener(videoRef2.current);
+    if (videoRef3.current) setupVideoLoadListener(videoRef3.current);
   }, []);
   
   const handleCopy = () => {
@@ -131,17 +50,15 @@ const Cta = () => {
           
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/30 z-20"></div>
           
-          <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15 video-container" data-video-container="true">
+          <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15">
             <iframe 
               ref={videoRef2}
               src="https://player.vimeo.com/video/1065939107?h=96cbb5c847&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
               frameBorder="0" 
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background visible-video" 
-              title="Background Video"
-              style={{opacity: 1, visibility: 'visible', display: 'block', zIndex: 15}}
-              data-video-visible="true"
-            ></iframe>
+              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background" 
+              title="Background Video">
+            </iframe>
           </div>
         </div>
         
@@ -190,17 +107,14 @@ const Cta = () => {
           
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/30 z-20"></div>
           
-          <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15 video-container" data-video-container="true">
+          <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15">
             <iframe 
-              ref={videoRef1}
               src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
               frameBorder="0" 
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background visible-video" 
-              title="Background Video"
-              style={{opacity: 1, visibility: 'visible', display: 'block', zIndex: 15}}
-              data-video-visible="true"
-            ></iframe>
+              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background loaded" 
+              title="Background Video">
+            </iframe>
           </div>
         </div>
         
@@ -247,17 +161,15 @@ const Cta = () => {
           
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/30 z-20"></div>
           
-          <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15 video-container" data-video-container="true">
+          <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15">
             <iframe 
               ref={videoRef3}
               src="https://player.vimeo.com/video/1065940999?h=4705f6f507&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
               frameBorder="0" 
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background visible-video" 
-              title="Background Video"
-              style={{opacity: 1, visibility: 'visible', display: 'block', zIndex: 15}}
-              data-video-visible="true"
-            ></iframe>
+              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background" 
+              title="Background Video">
+            </iframe>
           </div>
         </div>
         
