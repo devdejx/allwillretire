@@ -2,55 +2,17 @@
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 
-const VIDEOS_TO_PRELOAD = [
-  "https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1",
-  "https://player.vimeo.com/video/1065939107?h=96cbb5c847&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1",
-  "https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1",
-  "https://player.vimeo.com/video/1065940999?h=4705f6f507&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1"
-];
-
 const Preloader = () => {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  const [videosLoaded, setVideosLoaded] = useState(0);
-  const totalVideos = VIDEOS_TO_PRELOAD.length;
 
   useEffect(() => {
-    // Create elements to preload the videos
-    const preloadVideos = () => {
-      VIDEOS_TO_PRELOAD.forEach((videoUrl) => {
-        // Create a hidden iframe to preload the video
-        const iframe = document.createElement('iframe');
-        iframe.src = videoUrl;
-        iframe.className = 'preloaded-video';
-        iframe.style.display = 'none';
-        
-        // When the iframe loads, update our loading progress
-        iframe.onload = () => {
-          setVideosLoaded(prev => {
-            const newCount = prev + 1;
-            // Update progress based on video loading (60% of total progress)
-            const videoProgress = (newCount / totalVideos) * 60;
-            setProgress(prev => Math.max(prev, videoProgress));
-            return newCount;
-          });
-        };
-        
-        document.body.appendChild(iframe);
-      });
-    };
-
-    // Start preloading videos
-    preloadVideos();
-    
-    // Create a more realistic loading simulation with incremental progress for the remaining 40%
+    // Create a more realistic loading simulation with incremental progress
     const incrementProgress = () => {
       setProgress(prev => {
         if (prev >= 100) return 100;
-        // Only increment the remaining 40% of progress after videos have loaded
-        if (prev < 60) return prev;
         // Slow down progress as it approaches 100%
-        const increment = Math.max(0.5, 5 * (1 - (prev - 60) / 40));
+        const increment = Math.max(0.5, 5 * (1 - prev / 100));
         return Math.min(prev + increment, 99);
       });
     };
@@ -62,12 +24,8 @@ const Preloader = () => {
       setProgress(100);
       setTimeout(() => {
         setLoading(false);
-        // Clean up preloaded video iframes
-        document.querySelectorAll('.preloaded-video').forEach(elem => {
-          elem.remove();
-        });
       }, 200); // Small delay after reaching 100%
-    }, 3000); // Longer minimum loading time to ensure videos are loaded
+    }, 2000); // Minimum loading time
 
     return () => {
       clearTimeout(timer);
@@ -110,15 +68,6 @@ const Preloader = () => {
         @keyframes pulse-gold {
           0%, 100% { box-shadow: 0 0 15px 5px rgba(255, 195, 0, 0.4); }
           50% { box-shadow: 0 0 25px 10px rgba(255, 195, 0, 0.2); }
-        }
-        
-        .preloaded-video {
-          position: absolute;
-          width: 1px;
-          height: 1px;
-          opacity: 0;
-          pointer-events: none;
-          z-index: -1;
         }
       `}</style>
     </div>

@@ -10,13 +10,13 @@ import NotFound from "./pages/NotFound";
 import MuteButton from "./components/MuteButton";
 import Preloader from "./components/Preloader";
 
-// Ustvarimo Query Client z vgrajenim predpomnjenjem
+// Create Query Client with built-in caching
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnWindowFocus: false, // Izboljša učinkovitost, ne ponavlja poizvedb ob fokusiranju okna
-      staleTime: 1000 * 60 * 5, // 5 minut predpomnjenje
-      retry: 1, // Poskusi samo enkrat pred neuspehom
+      refetchOnWindowFocus: false, // Improves performance by not repeating queries on window focus
+      staleTime: 1000 * 60 * 5, // 5 minutes of caching
+      retry: 1, // Only try once before failing
     },
   },
 });
@@ -49,7 +49,7 @@ const App = () => (
         <Suspense fallback={<PageLoading />}>
           <Routes>
             <Route path="/" element={<Index />} />
-            {/* DODAJTE VSE DODATNE POTI NAD "*" POTJO */}
+            {/* ADD ALL ADDITIONAL ROUTES ABOVE THE "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
