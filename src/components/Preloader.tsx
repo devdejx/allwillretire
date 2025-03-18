@@ -1,24 +1,19 @@
 
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
-
-const VIDEOS_TO_PRELOAD = [
-  "https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1",
-  "https://player.vimeo.com/video/1065939107?h=96cbb5c847&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1",
-  "https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1",
-  "https://player.vimeo.com/video/1065940999?h=4705f6f507&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1"
-];
+import { getVideoUrls } from '@/utils/videoLoader';
 
 const Preloader = () => {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [videosLoaded, setVideosLoaded] = useState(0);
-  const totalVideos = VIDEOS_TO_PRELOAD.length;
+  const videoUrls = getVideoUrls();
+  const totalVideos = videoUrls.length;
 
   useEffect(() => {
     // Create elements to preload the videos
     const preloadVideos = () => {
-      VIDEOS_TO_PRELOAD.forEach((videoUrl) => {
+      videoUrls.forEach((videoUrl) => {
         // Create a hidden iframe to preload the video
         const iframe = document.createElement('iframe');
         iframe.src = videoUrl;
@@ -73,7 +68,7 @@ const Preloader = () => {
       clearTimeout(timer);
       clearInterval(progressInterval);
     };
-  }, []);
+  }, [totalVideos]);
 
   return (
     <div

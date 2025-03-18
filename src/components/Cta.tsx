@@ -44,14 +44,7 @@ const Cta = () => {
       <section className="py-24 relative overflow-hidden bg-black/70">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 w-full h-full overflow-hidden">
-            <iframe 
-              ref={videoRef1}
-              src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
-              frameBorder="0" 
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background" 
-              title="Background Video Base">
-            </iframe>
+            <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-gold-900/20 to-black/80 animate-gradient-slow"></div>
             <div className="absolute inset-0 bg-black/30 z-5"></div>
           </div>
           
@@ -108,13 +101,7 @@ const Cta = () => {
       <section className="py-24 relative overflow-hidden bg-black/70">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 w-full h-full overflow-hidden">
-            <iframe 
-              src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
-              frameBorder="0" 
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background loaded" 
-              title="Background Video Base">
-            </iframe>
+            <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-gold-900/20 to-black/80 animate-gradient-slow"></div>
             <div className="absolute inset-0 bg-black/30 z-5"></div>
           </div>
           
@@ -168,13 +155,7 @@ const Cta = () => {
       <section className="py-24 relative overflow-hidden bg-black/70">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 w-full h-full overflow-hidden">
-            <iframe 
-              src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
-              frameBorder="0" 
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background loaded" 
-              title="Background Video Base">
-            </iframe>
+            <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-gold-900/20 to-black/80 animate-gradient-slow"></div>
             <div className="absolute inset-0 bg-black/30 z-5"></div>
           </div>
           
