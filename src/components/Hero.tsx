@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
@@ -140,21 +139,8 @@ const Hero = () => {
 
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden z-10">
         <div className="container mx-auto px-6 relative z-10">
-          <div 
-            className="flex flex-col items-center text-center max-w-4xl mx-auto relative"
-            style={{
-              backgroundImage: "url('/lovable-uploads/a3b268b1-b0c8-47d9-99bf-4a91eaca4e49.png')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              borderRadius: "1rem",
-              padding: "2rem",
-              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-              border: "1px solid rgba(255, 215, 0, 0.3)",
-            }}
-          >
-            {/* Semi-transparent overlay with reduced opacity */}
-            <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px] rounded-2xl z-0"></div>
+          <div className="hero-container flex flex-col items-center text-center max-w-4xl mx-auto relative rounded-2xl p-8 shadow-xl border border-gold-400/30">
+            <div className="absolute inset-0 bg-black/10 backdrop-blur-[1px] rounded-2xl z-0"></div>
             
             <div className="h-14 mb-2 relative z-10"></div>
             

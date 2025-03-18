@@ -9,6 +9,8 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import MuteButton from "./components/MuteButton";
 import Preloader from "./components/Preloader";
+import "./App.css";
+import "./components/Hero.css"; // Import Hero.css
 
 // Ustvarimo Query Client z vgrajenim predpomnjenjem
 const queryClient = new QueryClient({
