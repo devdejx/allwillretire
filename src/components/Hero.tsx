@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
@@ -139,29 +138,26 @@ const Hero = () => {
       {/* Hidden YouTube audio player */}
       <iframe ref={audioRef} className="hidden" width="0" height="0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen title="Background Music"></iframe>
 
-      <section className="relative min-h-screen pt-20 overflow-hidden z-10">
-        {/* Added top spacing to push content below navbar */}
-        <div className="h-16"></div>
+      {/* Full-width image before hero content */}
+      <div className="relative w-full mb-8">
+        {/* Top border */}
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         
-        {/* Full-width image positioned below navbar */}
-        <div className="relative w-full mb-8">
-          {/* Top border */}
-          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
-          
-          <OptimizedImage 
-            src="/lovable-uploads/8c23b3d6-c1f4-4e64-85d9-e0614d298c63.png" 
-            alt="Luxurious lifestyle by the ocean" 
-            className="w-full h-auto"
-            priority={true} 
-          />
-          
-          {/* Bottom border */}
-          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
-        </div>
+        <OptimizedImage 
+          src="/lovable-uploads/8c23b3d6-c1f4-4e64-85d9-e0614d298c63.png" 
+          alt="Luxurious lifestyle by the ocean" 
+          className="w-full h-auto"
+          priority={true} 
+        />
+        
+        {/* Bottom border */}
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
+      </div>
 
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden z-10">
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-            <div className="mb-2"></div>
+            <div className="h-14 mb-2"></div>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight" style={{
             animationDelay: '0.2s',
