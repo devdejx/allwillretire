@@ -117,7 +117,14 @@ const Hero = () => {
   };
 
   return <>
-      <div className={`fixed inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-1000 ${showOrbit ? 'opacity-100' : 'opacity-0'}`}>
+      {/* Background images container with lowered opacity */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-1000 opacity-60">
+        {/* Background image */}
+        <div className="absolute inset-0 bg-cover bg-center" style={{ 
+          backgroundImage: "url('/lovable-uploads/4d586d6e-ded9-4f05-bc94-5b91b3140fe1.png')", 
+          zIndex: -1 
+        }} />
+
         <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-gold-200/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-gold-300/10 rounded-full blur-3xl" />
         
@@ -135,6 +142,9 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Semi-transparent overlay for better text readability */}
+      <div className="fixed inset-0 bg-black/30 z-0 pointer-events-none"></div>
+
       {/* Hidden YouTube audio player */}
       <iframe ref={audioRef} className="hidden" width="0" height="0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen title="Background Music"></iframe>
 
@@ -147,15 +157,15 @@ const Hero = () => {
             animationDelay: '0.2s',
             letterSpacing: '-0.015em'
           }}>
-              <span ref={secureRef} className="relative font-artistic font-semibold inline-block transition-transform duration-1000">
+              <span ref={secureRef} className="relative font-artistic font-semibold inline-block transition-transform duration-1000 text-white">
                 Secure Your
               </span>
               {' '}
               <span ref={financialRef} className="text-gold-500 font-artistic font-bold inline-block transition-transform duration-1000">Financial</span>{' '}
-              <span ref={futureRef} className="font-elegant italic font-semibold inline-block transition-transform duration-1000">Future</span>
+              <span ref={futureRef} className="font-elegant italic font-semibold inline-block transition-transform duration-1000 text-white">Future</span>
             </h1>
             
-            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto animate-fade-up font-elegant" style={{
+            <p className="text-xl text-white mb-10 max-w-2xl mx-auto animate-fade-up font-elegant" style={{
             animationDelay: '0.4s'
           }}>
               AllWillRetire is more than a cryptocurrency — it's a promise of financial independence and a future filled with opulence and comfort.
@@ -178,17 +188,17 @@ const Hero = () => {
             animationDelay: '0.8s'
           }}>
               <div className="flex flex-col items-center">
-                {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold">
+                {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-white">
                     {marketData.marketCap}
                   </span>}
-                <span className="text-sm text-muted-foreground">Market Cap</span>
+                <span className="text-sm text-white/80">Market Cap</span>
               </div>
-              <div className="w-px h-12 bg-black/10"></div>
+              <div className="w-px h-12 bg-white/20"></div>
               <div className="flex flex-col items-center">
-                {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold">
+                {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-white">
                     {marketData.holders}
                   </span>}
-                <span className="text-sm text-muted-foreground">Holders</span>
+                <span className="text-sm text-white/80">Holders</span>
               </div>
             </div>
           </div>
