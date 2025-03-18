@@ -64,7 +64,9 @@ export const setupVideoLoadListener = (iframe: HTMLIFrameElement) => {
     }
     
     // Add to global tracking
-    window.loadedVideos = window.loadedVideos || [];
+    if (!window.loadedVideos) {
+      window.loadedVideos = [];
+    }
     if (!window.loadedVideos.includes(iframe.src)) {
       window.loadedVideos.push(iframe.src);
     }
