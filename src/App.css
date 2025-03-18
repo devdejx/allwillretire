@@ -82,3 +82,23 @@ body, html {
 .scroll-arrow {
   animation: float 2s ease-in-out infinite;
 }
+
+/* Video loading improvements */
+.video-background {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.video-background.loaded {
+  opacity: 1;
+}
+
+/* Hide preloaded videos used for caching */
+.preloaded-video {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -999;
+}
