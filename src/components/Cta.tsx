@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Copy, Check } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
@@ -54,7 +53,7 @@ const Cta = () => {
         <div className="container mx-auto px-6 relative z-40 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-10 mt-[-40px]">
-              <img src="/lovable-uploads/d523f3bd-5ac2-4e42-9b2b-0e3c68db822c.png" alt="AWR Lifestyle" className="h-28 w-auto mx-auto object-contain" />
+              <img src="/lovable-uploads/d523f3bd-5ac2-4e42-9b2b-0e3c68db822c.png" alt="AWR Lifestyle" className="h-40 w-auto mx-auto object-contain" />
             </div>
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
@@ -103,7 +102,7 @@ const Cta = () => {
         <div className="container mx-auto px-6 relative z-40 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-10 mt-[-40px]">
-              <img src="/lovable-uploads/d523f3bd-5ac2-4e42-9b2b-0e3c68db822c.png" alt="AWR Lifestyle" className="h-28 w-auto mx-auto object-contain" />
+              <img src="/lovable-uploads/d523f3bd-5ac2-4e42-9b2b-0e3c68db822c.png" alt="AWR Lifestyle" className="h-40 w-auto mx-auto object-contain" />
             </div>
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
@@ -150,7 +149,7 @@ const Cta = () => {
         <div className="container mx-auto px-6 relative z-40 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-10 mt-[-40px]">
-              <img src="/lovable-uploads/d523f3bd-5ac2-4e42-9b2b-0e3c68db822c.png" alt="AWR Lifestyle" className="h-28 w-auto mx-auto object-contain" />
+              <img src="/lovable-uploads/d523f3bd-5ac2-4e42-9b2b-0e3c68db822c.png" alt="AWR Lifestyle" className="h-40 w-auto mx-auto object-contain" />
             </div>
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
