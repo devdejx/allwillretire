@@ -85,7 +85,7 @@ const Index = () => {
       
       <About />
       
-      {/* Community Image Section with Borders - replaced with new image */}
+      {/* Community Image Section with Borders */}
       <section className="w-full mt-24 mb-0">
         {/* Container with top border */}
         <div className="relative w-full">
