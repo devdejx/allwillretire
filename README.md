@@ -1,17 +1,26 @@
+# Welcome to your Lovable project
 
-# AllWillRetire - Cryptocurrency Landing Page
+## Project info
 
-## Project Info
+**URL**: https://lovable.dev/projects/0e5e5e69-3c67-4a09-8b1e-a72a4f409134
 
-A modern, responsive landing page for the AllWillRetire cryptocurrency.
+## How can I edit this code?
 
-## How to download and run this project locally
+There are several ways of editing your application.
 
-### Prerequisites
+**Use Lovable**
 
-Make sure you have Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Simply visit the [Lovable Project](https://lovable.dev/projects/0e5e5e69-3c67-4a09-8b1e-a72a4f409134) and start prompting.
 
-### Setup and Installation
+Changes made via Lovable will be committed automatically to this repo.
+
+**Use your preferred IDE**
+
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+Follow these steps:
 
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
@@ -25,68 +34,36 @@ npm i
 
 # Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
-
-# Step 5: To build the project for production
-npm run build
-
-# Step 6: To preview the production build locally
-npm run preview
 ```
 
-## Build for production
+**Edit a file directly in GitHub**
 
-To create a production-ready build that you can host anywhere:
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
 
-```sh
-npm run build
-```
+**Use GitHub Codespaces**
 
-This will create a `dist` folder with all the static files you need. You can upload these files to any static hosting service like:
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
 
-- Netlify
-- Vercel
-- GitHub Pages
-- Amazon S3
-- etc.
+## What technologies are used for this project?
 
-## Performance Optimizations
-
-This project includes:
-
-- Image optimization with the OptimizedImage component
-- React Suspense and lazy loading for code splitting
-- Tailwind CSS for utility-first styling and small bundle size
-- Manual chunk splitting in the Vite configuration
-- Preloading of critical assets
-- Debounced event handlers
-- Query caching with Tanstack Query
-
-## Project Technologies
-
-This project is built with:
+This project is built with .
 
 - Vite
 - TypeScript
 - React
 - shadcn-ui
 - Tailwind CSS
-- Recharts for data visualization
 
-## SEO Optimizations
+## How can I deploy this project?
 
-The site includes:
-- Proper meta tags for SEO
-- Open Graph and Twitter Card meta tags for social sharing
-- Semantic HTML structure
-- Optimized loading times
+Simply open [Lovable](https://lovable.dev/projects/0e5e5e69-3c67-4a09-8b1e-a72a4f409134) and click on Share -> Publish.
 
-## Customization
+## I want to use a custom domain - is that possible?
 
-- Edit content in the component files under `src/components/`
-- Modify styles in the CSS files or directly in Tailwind classes
-- Adjust theme settings in `tailwind.config.ts`
-
-## Contact
-
-For support or inquiries, please reach out to the team at contact@allwillretire.com
-
+We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
