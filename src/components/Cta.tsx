@@ -1,26 +1,12 @@
-
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { ArrowRight, Copy, Check } from 'lucide-react';
 import { Button } from './ui/button';
 import { useToast } from "@/hooks/use-toast";
-import { setupVideoLoadListener } from '@/utils/videoLoader';
-
 const Cta = () => {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [copied, setCopied] = React.useState(false);
-  
-  // References to video iframes
-  const videoRef1 = useRef<HTMLIFrameElement>(null);
-  const videoRef2 = useRef<HTMLIFrameElement>(null);
-  const videoRef3 = useRef<HTMLIFrameElement>(null);
-  
-  useEffect(() => {
-    // Set up video load listeners
-    if (videoRef1.current) setupVideoLoadListener(videoRef1.current);
-    if (videoRef2.current) setupVideoLoadListener(videoRef2.current);
-    if (videoRef3.current) setupVideoLoadListener(videoRef3.current);
-  }, []);
-  
   const handleCopy = () => {
     const textToCopy = "Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump";
     navigator.clipboard.writeText(textToCopy).then(() => {
@@ -40,26 +26,18 @@ const Cta = () => {
       });
     });
   };
-  
   return <>
       <section className="py-24 relative overflow-hidden bg-black/70">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 w-full h-full overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-gold-900/20 to-black/80 animate-gradient-slow"></div>
+            <iframe src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%]" title="Background Video Base"></iframe>
             <div className="absolute inset-0 bg-black/30 z-5"></div>
           </div>
           
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/30 z-20"></div>
           
           <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15">
-            <iframe 
-              ref={videoRef2}
-              src="https://player.vimeo.com/video/1065939107?h=96cbb5c847&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
-              frameBorder="0" 
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background" 
-              title="Background Video">
-            </iframe>
+            <iframe src="https://player.vimeo.com/video/1065939107?h=96cbb5c847&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%]" title="Background Video"></iframe>
           </div>
         </div>
         
@@ -76,7 +54,7 @@ const Cta = () => {
         <div className="container mx-auto px-6 relative z-40 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-10 mt-[-40px]">
-              <img src="/lovable-uploads/d523f3bd-5ac2-4e42-9b2b-0e3c68db822c.png" alt="AWR Lifestyle" className="h-40 w-auto mx-auto object-contain" />
+              <img src="/lovable-uploads/d523f3bd-5ac2-4e42-9b2b-0e3c68db822c.png" alt="AWR Lifestyle" className="h-56 w-auto mx-auto object-contain" />
             </div>
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
@@ -102,20 +80,14 @@ const Cta = () => {
       <section className="py-24 relative overflow-hidden bg-black/70">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 w-full h-full overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-gold-900/20 to-black/80 animate-gradient-slow"></div>
+            <iframe src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%]" title="Background Video Base"></iframe>
             <div className="absolute inset-0 bg-black/30 z-5"></div>
           </div>
           
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/30 z-20"></div>
           
           <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15">
-            <iframe 
-              src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
-              frameBorder="0" 
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background loaded" 
-              title="Background Video">
-            </iframe>
+            <iframe src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%]" title="Background Video"></iframe>
           </div>
         </div>
         
@@ -132,7 +104,7 @@ const Cta = () => {
         <div className="container mx-auto px-6 relative z-40 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-10 mt-[-40px]">
-              <img src="/lovable-uploads/d523f3bd-5ac2-4e42-9b2b-0e3c68db822c.png" alt="AWR Lifestyle" className="h-40 w-auto mx-auto object-contain" />
+              <img src="/lovable-uploads/d523f3bd-5ac2-4e42-9b2b-0e3c68db822c.png" alt="AWR Lifestyle" className="h-56 w-auto mx-auto object-contain" />
             </div>
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
@@ -156,21 +128,14 @@ const Cta = () => {
       <section className="py-24 relative overflow-hidden bg-black/70">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 w-full h-full overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-gold-900/20 to-black/80 animate-gradient-slow"></div>
+            <iframe src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%]" title="Background Video Base"></iframe>
             <div className="absolute inset-0 bg-black/30 z-5"></div>
           </div>
           
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/30 z-20"></div>
           
           <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15">
-            <iframe 
-              ref={videoRef3}
-              src="https://player.vimeo.com/video/1065940999?h=4705f6f507&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
-              frameBorder="0" 
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background" 
-              title="Background Video">
-            </iframe>
+            <iframe src="https://player.vimeo.com/video/1065940999?h=4705f6f507&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%]" title="Background Video"></iframe>
           </div>
         </div>
         
@@ -187,7 +152,7 @@ const Cta = () => {
         <div className="container mx-auto px-6 relative z-40 text-white pt-0">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-10 mt-[-40px]">
-              <img src="/lovable-uploads/d523f3bd-5ac2-4e42-9b2b-0e3c68db822c.png" alt="AWR Lifestyle" className="h-40 w-auto mx-auto object-contain" />
+              <img src="/lovable-uploads/d523f3bd-5ac2-4e42-9b2b-0e3c68db822c.png" alt="AWR Lifestyle" className="h-56 w-auto mx-auto object-contain" />
             </div>
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
@@ -216,5 +181,4 @@ const Cta = () => {
       </section>
     </>;
 };
-
 export default Cta;

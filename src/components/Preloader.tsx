@@ -1,74 +1,35 @@
 
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { getVideoUrls } from '@/utils/videoLoader';
 
 const Preloader = () => {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  const [videosLoaded, setVideosLoaded] = useState(0);
-  const videoUrls = getVideoUrls();
-  const totalVideos = videoUrls.length;
 
   useEffect(() => {
-    // Create elements to preload the videos
-    const preloadVideos = () => {
-      videoUrls.forEach((videoUrl) => {
-        // Create a hidden iframe to preload the video
-        const iframe = document.createElement('iframe');
-        iframe.src = videoUrl;
-        iframe.className = 'preloaded-video';
-        iframe.style.display = 'none';
-        
-        // When the iframe loads, update our loading progress
-        iframe.onload = () => {
-          setVideosLoaded(prev => {
-            const newCount = prev + 1;
-            // Update progress based on video loading (60% of total progress)
-            const videoProgress = (newCount / totalVideos) * 60;
-            setProgress(prev => Math.max(prev, videoProgress));
-            return newCount;
-          });
-        };
-        
-        document.body.appendChild(iframe);
-      });
-    };
-
-    // Start preloading videos
-    preloadVideos();
-    
-    // Create a more realistic loading simulation with incremental progress for the remaining 40%
+    // Create a more realistic loading simulation with incremental progress
     const incrementProgress = () => {
       setProgress(prev => {
         if (prev >= 100) return 100;
-        // Only increment the remaining 40% of progress after videos have loaded
-        if (prev < 60) return prev;
         // Slow down progress as it approaches 100%
-        const increment = Math.max(0.5, 5 * (1 - (prev - 60) / 40));
+        const increment = Math.max(1, 10 * (1 - prev / 100));
         return Math.min(prev + increment, 99);
       });
     };
 
     const progressInterval = setInterval(incrementProgress, 100);
     
-    // Simulate complete page load
+    // Simulate page load
     const timer = setTimeout(() => {
       setProgress(100);
-      setTimeout(() => {
-        setLoading(false);
-        // Clean up preloaded video iframes
-        document.querySelectorAll('.preloaded-video').forEach(elem => {
-          elem.remove();
-        });
-      }, 200); // Small delay after reaching 100%
-    }, 3000); // Longer minimum loading time to ensure videos are loaded
+      setTimeout(() => setLoading(false), 200); // Small delay after reaching 100%
+    }, 1500);
 
     return () => {
       clearTimeout(timer);
       clearInterval(progressInterval);
     };
-  }, [totalVideos]);
+  }, []);
 
   return (
     <div
@@ -105,15 +66,6 @@ const Preloader = () => {
         @keyframes pulse-gold {
           0%, 100% { box-shadow: 0 0 15px 5px rgba(255, 195, 0, 0.4); }
           50% { box-shadow: 0 0 25px 10px rgba(255, 195, 0, 0.2); }
-        }
-        
-        .preloaded-video {
-          position: absolute;
-          width: 1px;
-          height: 1px;
-          opacity: 0;
-          pointer-events: none;
-          z-index: -1;
         }
       `}</style>
     </div>

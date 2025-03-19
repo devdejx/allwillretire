@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
@@ -56,9 +57,7 @@ const Hero = () => {
       }
     };
     fetchMarketData();
-    
     const refreshInterval = setInterval(fetchMarketData, 300000);
-    
     const formatCurrency = (value: number): string => {
       if (value >= 1e9) {
         return `$${(value / 1e9).toFixed(1)}B+`;
