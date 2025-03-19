@@ -1,6 +1,8 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
+
 const Hero = () => {
   const orbitRef = useRef<HTMLDivElement>(null);
   const financialRef = useRef<HTMLSpanElement>(null);
@@ -15,6 +17,7 @@ const Hero = () => {
     holders: '4,400+'
   });
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const fetchMarketData = async () => {
       try {
@@ -88,6 +91,7 @@ const Hero = () => {
       document.body.style.overflow = '';
     };
   }, [scrollLocked]);
+
   const handleLearnMoreClick = () => {
     setScrollLocked(false);
     document.body.style.overflow = '';
@@ -111,6 +115,7 @@ const Hero = () => {
       setIsPlaying(true);
     }
   };
+
   return <>
       <div className={`fixed inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-1000 ${showOrbit ? 'opacity-100' : 'opacity-0'}`}>
         <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-gold-200/10 rounded-full blur-3xl" />
@@ -159,9 +164,12 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up" style={{
             animationDelay: '0.6s'
           }}>
-              <button className="bg-gold-500 backdrop-blur text-black px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-gold-400 transition-all duration-300 hover:scale-105 hover:shadow-gold-300/50 relative overflow-hidden group" onClick={handleLearnMoreClick}>
+              <button 
+                className="relative bg-gradient-to-r from-transparent via-gold-500 to-transparent backdrop-blur text-black px-8 py-4 rounded-xl font-bold shadow-lg transition-all duration-300 hover:scale-105 overflow-hidden group"
+                onClick={handleLearnMoreClick}
+              >
                 <span className="relative z-10">Tap for More</span>
-                <span className="absolute inset-0 bg-gold-300 transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
                 <span className="absolute -inset-0.5 bg-gold-400/30 blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></span>
               </button>
             </div>
@@ -188,4 +196,5 @@ const Hero = () => {
       </section>
     </>;
 };
+
 export default Hero;

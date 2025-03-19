@@ -1,49 +1,85 @@
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-interface MuteButtonProps {
-  className?: string;
-}
-
-const MuteButton = ({ className }: MuteButtonProps) => {
+const MuteButton = () => {
+  // Default state is false (unmuted)
   const [isMuted, setIsMuted] = useState(false);
+  const [iframes, setIframes] = useState<HTMLIFrameElement[]>([]);
 
-  const toggleMute = () => {
-    setIsMuted(prev => !prev);
-    
-    // Send message to all YouTube iframes to mute/unmute
-    const message = isMuted 
-      ? '{"event":"command","func":"unMute","args":""}' 
-      : '{"event":"command","func":"mute","args":""}';
-    
-    // Find all iframes and post message to them
-    document.querySelectorAll('iframe').forEach(iframe => {
-      if (iframe.src.includes('youtube.com')) {
-        try {
-          iframe.contentWindow?.postMessage(message, '*');
-        } catch (error) {
-          console.error('Error sending message to iframe:', error);
+  // Efficient debounced YouTube command handler
+  const sendYouTubeCommand = useCallback((iframe: HTMLIFrameElement, command: string) => {
+    if (iframe.contentWindow && iframe.src.includes('youtube.com')) {
+      iframe.contentWindow.postMessage(`{"event":"command","func":"${command}","args":""}`, '*');
+    }
+  }, []);
+
+  // Find all iframe elements once
+  useEffect(() => {
+    const findAndSetIframes = () => {
+      // Find all iframe elements that could contain sound
+      const frames = Array.from(document.querySelectorAll('iframe')) as HTMLIFrameElement[];
+      
+      // Check if API parameters are missing and add them
+      frames.forEach(frame => {
+        if (frame.src.includes('youtube.com') && !frame.src.includes('enablejsapi=1')) {
+          const separator = frame.src.includes('?') ? '&' : '?';
+          frame.src = `${frame.src}${separator}enablejsapi=1`;
         }
+      });
+      
+      setIframes(frames);
+    };
+
+    // Initial search
+    findAndSetIframes();
+
+    // Add listener for new iframes that might be dynamically added later
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length) {
+          findAndSetIframes();
+        }
+      });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Effect for managing sound state
+  useEffect(() => {
+    iframes.forEach(frame => {
+      if (isMuted) {
+        sendYouTubeCommand(frame, 'mute');
+      } else {
+        sendYouTubeCommand(frame, 'unMute');
       }
     });
-  };
+  }, [isMuted, iframes, sendYouTubeCommand]);
+
+  const toggleMute = useCallback(() => {
+    setIsMuted(prev => !prev);
+  }, []);
 
   return (
     <button
       onClick={toggleMute}
       className={cn(
-        "fixed z-50 bottom-6 right-6 p-3 rounded-full bg-black/80 backdrop-blur-sm text-white transition-all duration-300 hover:bg-black shadow-lg",
-        "hover:scale-110 active:scale-95",
-        className
+        "fixed bottom-4 right-4 z-50 p-3 rounded-full shadow-lg transition-all",
+        "bg-black/80 hover:bg-black text-white",
+        "focus:outline-none focus:ring-2 focus:ring-gold-500",
+        "transform hover:scale-105 active:scale-95"
       )}
       aria-label={isMuted ? "Unmute" : "Mute"}
+      title={isMuted ? "Unmute" : "Mute"}
     >
       {isMuted ? (
-        <VolumeX className="h-6 w-6" />
+        <VolumeX size={20} />
       ) : (
-        <Volume2 className="h-6 w-6" />
+        <Volume2 size={20} />
       )}
     </button>
   );

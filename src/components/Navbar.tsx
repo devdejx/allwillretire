@@ -54,7 +54,7 @@ const Navbar = () => {
           <span className="relative z-10">
             AllWillRetire
           </span>
-          <span className="absolute -bottom-1 left-9 right-0 h-[6px] bg-gold-500/20 rounded-full"></span>
+          <span className="absolute -bottom-1 left-9 right-0 h-[6px] bg-gold-500/20 rounded-full shadow-[0_0_5px_1px_rgba(255,195,0,0.3)]"></span>
         </a>
         
         <nav className="hidden md:flex space-x-12 items-center">
@@ -66,7 +66,7 @@ const Navbar = () => {
               className="text-sm font-medium relative group"
             >
               <span>{item}</span>
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gold-500 shadow-[0_0_3px_1px_rgba(255,195,0,0.4)] transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
           <a 
@@ -75,15 +75,16 @@ const Navbar = () => {
             className="text-sm font-medium relative group"
           >
             <span>Contact</span>
-            <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span>
+            <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gold-500 shadow-[0_0_3px_1px_rgba(255,195,0,0.4)] transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a 
             href="https://jup.ag/swap/USDC-Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-black text-white px-6 py-2 rounded-lg font-medium text-sm hover:opacity-90 transition-opacity"
+            className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur border border-gold-300/50 text-black px-6 py-2 rounded-lg font-medium text-sm overflow-hidden group transition-transform duration-300 hover:scale-105"
           >
-            Buy Now
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+            <span className="relative z-10">Buy Now</span>
           </a>
         </nav>
 
@@ -96,7 +97,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       <div 
         className={cn(
           "md:hidden absolute top-full left-0 right-0 neo-glass",
@@ -126,9 +126,10 @@ const Navbar = () => {
             href="https://jup.ag/swap/USDC-Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-black text-white px-6 py-3 rounded-lg font-medium text-sm mt-2 hover:opacity-90 transition-opacity"
+            className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur border border-gold-300/50 text-black px-6 py-3 rounded-lg font-medium text-sm mt-2 transition-transform duration-300 hover:scale-105 group"
           >
-            Buy Now
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+            <span className="relative z-10">Buy Now</span>
           </a>
         </div>
       </div>
