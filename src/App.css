@@ -85,33 +85,12 @@ body, html {
 
 /* Video loading improvements */
 .video-background {
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: block !important;
-  position: absolute !important;
-  width: 200% !important; /* Povečaj širino */
-  height: 200% !important; /* Povečaj višino */
-  min-width: 200% !important;
-  min-height: 200% !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  object-fit: cover !important;
-  z-index: 1 !important;
-  transition: opacity 0.5s ease-in-out !important;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
-.video-container {
-  opacity: 1 !important;
-  visibility: visible !important;
-  position: relative !important;
-  overflow: hidden !important;
-  min-height: 300px !important; /* Zagotovi minimalno višino */
-}
-
-.loaded {
-  opacity: 1 !important;
-  visibility: visible !important;
+.video-background.loaded {
+  opacity: 1;
 }
 
 /* Hide preloaded videos used for caching */
@@ -122,77 +101,4 @@ body, html {
   opacity: 0;
   pointer-events: none;
   z-index: -999;
-}
-
-/* Additional CSS to ensure video visibility */
-[data-vimeo-initialized="true"],
-[data-player],
-.vp-player-layout {
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: block !important;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-/* Force Vimeo player visibility */
-.vimeo-player-container {
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: block !important;
-  overflow: hidden !important;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-/* Fix for video container */
-.video-background-container {
-  opacity: 1 !important;
-  visibility: visible !important;
-  overflow: hidden !important;
-  position: relative !important;
-  display: block !important;
-  min-height: 300px !important; /* Zagotovi minimalno višino */
-}
-
-/* Video overlay to ensure we see video content */
-.video-element-fix {
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 10 !important;
-  background-color: transparent !important;
-  pointer-events: none !important;
-}
-
-/* Nova pravila za Vimeo iframe */
-iframe.video-background {
-  border: none !important;
-  overflow: hidden !important;
-  width: 250% !important; /* Dodatno povečaj velikost */
-  height: 250% !important;
-  min-width: 250% !important;
-  min-height: 250% !important;
-  transform-origin: center center !important;
-}
-
-/* Izboljšano pozicioniranje za video container */
-.video-container > div,
-.video-container > iframe {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-/* Za mobilne naprave povečaj vidno področje */
-@media (max-width: 768px) {
-  .video-background {
-    width: 300% !important;
-    height: 300% !important;
-    min-width: 300% !important;
-    min-height: 300% !important;
-  }
 }

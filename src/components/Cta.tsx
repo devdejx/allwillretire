@@ -1,73 +1,23 @@
-
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Copy, Check } from 'lucide-react';
 import { Button } from './ui/button';
 import { useToast } from "@/hooks/use-toast";
-import { setupVideoLoadListener, checkVideoVisibility, setupVideoVisibilityObserver } from '@/utils/videoLoader';
+import { setupVideoLoadListener } from '@/utils/videoLoader';
 
 const Cta = () => {
   const { toast } = useToast();
   const [copied, setCopied] = React.useState(false);
-  const [videosLoaded, setVideosLoaded] = React.useState(false);
   
   // References to video iframes
   const videoRef1 = useRef<HTMLIFrameElement>(null);
   const videoRef2 = useRef<HTMLIFrameElement>(null);
   const videoRef3 = useRef<HTMLIFrameElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    // Nastavi zastavico, da so videi naloženi po določenem času
-    const timer = setTimeout(() => {
-      setVideosLoaded(true);
-      console.log("Forcing videos to be considered as loaded");
-    }, 3000);
-
-    // Nastavitev sprejemnikov za nalaganje videov
+    // Set up video load listeners
     if (videoRef1.current) setupVideoLoadListener(videoRef1.current);
     if (videoRef2.current) setupVideoLoadListener(videoRef2.current);
     if (videoRef3.current) setupVideoLoadListener(videoRef3.current);
-    
-    // Nastavi MutationObserver za spremljanje sprememb v DOM
-    const observer = setupVideoVisibilityObserver();
-    
-    // Periodično preveri vidnost videov
-    const checkInterval = setInterval(() => {
-      checkVideoVisibility();
-      
-      // Tudi ročno preveri naše specifične video elemente
-      if (videoRef1.current) {
-        videoRef1.current.style.opacity = '1';
-        videoRef1.current.style.visibility = 'visible';
-        videoRef1.current.style.display = 'block';
-      }
-      if (videoRef2.current) {
-        videoRef2.current.style.opacity = '1';
-        videoRef2.current.style.visibility = 'visible';
-        videoRef2.current.style.display = 'block';
-      }
-      if (videoRef3.current) {
-        videoRef3.current.style.opacity = '1';
-        videoRef3.current.style.visibility = 'visible';
-        videoRef3.current.style.display = 'block';
-      }
-      
-      // In njihove starševske elemente
-      document.querySelectorAll('.video-background').forEach(el => {
-        if (el.parentElement) {
-          el.parentElement.classList.add('loaded');
-          el.parentElement.style.opacity = '1';
-          el.parentElement.style.visibility = 'visible';
-          el.parentElement.style.display = 'block';
-        }
-      });
-    }, 1000); // Pogostejše preverjanje
-    
-    return () => {
-      clearTimeout(timer);
-      clearInterval(checkInterval);
-      if (observer) observer.disconnect();
-    };
   }, []);
   
   const handleCopy = () => {
@@ -90,69 +40,25 @@ const Cta = () => {
     });
   };
   
-  // Ročno prisili vidnost videa, ko razdelek postane viden
-  const handleSectionVisibility = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        checkVideoVisibility();
-        console.log("Section is now visible, forcing video visibility");
-        
-        // Dodatno preveri specifične video elemente
-        if (videoRef1.current) {
-          videoRef1.current.style.opacity = '1';
-          videoRef1.current.style.visibility = 'visible';
-          videoRef1.current.style.display = 'block';
-        }
-        if (videoRef2.current) {
-          videoRef2.current.style.opacity = '1';
-          videoRef2.current.style.visibility = 'visible';
-          videoRef2.current.style.display = 'block';
-        }
-        if (videoRef3.current) {
-          videoRef3.current.style.opacity = '1';
-          videoRef3.current.style.visibility = 'visible';
-          videoRef3.current.style.display = 'block';
-        }
-      }
-    });
-  };
-  
-  useEffect(() => {
-    // Nastavi intersection observer za zaznavanje, kdaj so razdelki vidni
-    const observer = new IntersectionObserver(handleSectionVisibility, {
-      threshold: 0.1,
-      rootMargin: "100px", // Povečaj rob za zgodnje zaznavanje
-    });
-    
-    // Opazuj vsak razdelek, ki vsebuje videe
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => observer.observe(section));
-    
-    return () => observer.disconnect();
-  }, []);
-  
-  // Vrni komponento
   return <>
-      <section ref={containerRef} className="py-24 relative overflow-hidden bg-black/70 video-background-container">
-        <div className="absolute inset-0 z-0 overflow-hidden video-container">
-          <div className="absolute inset-0 w-full h-full overflow-hidden video-container">
+      <section className="py-24 relative overflow-hidden bg-black/70">
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute inset-0 w-full h-full overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-gold-900/20 to-black/80 animate-gradient-slow"></div>
             <div className="absolute inset-0 bg-black/30 z-5"></div>
           </div>
           
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/30 z-20"></div>
           
-          <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15 video-container">
+          <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15">
             <iframe 
-              ref={videoRef1}
-              src="https://player.vimeo.com/video/1065939107?h=96cbb5c847&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1&controls=0&transparent=0&responsive=1&dnt=1&quality=720p" 
+              ref={videoRef2}
+              src="https://player.vimeo.com/video/1065939107?h=96cbb5c847&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
               frameBorder="0" 
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              className="absolute w-[250%] h-[250%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[250%] min-h-[250%] video-background" 
-              title="Background Video"
-              style={{opacity: 1, visibility: 'visible', display: 'block'}}
-            />
-            <div className="video-element-fix"></div>
+              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background" 
+              title="Background Video">
+            </iframe>
           </div>
         </div>
         
@@ -192,26 +98,23 @@ const Cta = () => {
         </div>
       </section>
 
-      <section className="py-24 relative overflow-hidden bg-black/70 video-background-container">
-        <div className="absolute inset-0 z-0 overflow-hidden video-container">
-          <div className="absolute inset-0 w-full h-full overflow-hidden video-container">
+      <section className="py-24 relative overflow-hidden bg-black/70">
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute inset-0 w-full h-full overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-gold-900/20 to-black/80 animate-gradient-slow"></div>
             <div className="absolute inset-0 bg-black/30 z-5"></div>
           </div>
           
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/30 z-20"></div>
           
-          <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15 video-container">
+          <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15">
             <iframe 
-              ref={videoRef2}
-              src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1&controls=0&transparent=0&responsive=1&dnt=1&quality=720p" 
+              src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
               frameBorder="0" 
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              className="absolute w-[250%] h-[250%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[250%] min-h-[250%] video-background loaded" 
-              title="Background Video"
-              style={{opacity: 1, visibility: 'visible', display: 'block'}}
-            />
-            <div className="video-element-fix"></div>
+              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background loaded" 
+              title="Background Video">
+            </iframe>
           </div>
         </div>
         
@@ -249,26 +152,24 @@ const Cta = () => {
         </div>
       </section>
 
-      <section className="py-24 relative overflow-hidden bg-black/70 video-background-container">
-        <div className="absolute inset-0 z-0 overflow-hidden video-container">
-          <div className="absolute inset-0 w-full h-full overflow-hidden video-container">
+      <section className="py-24 relative overflow-hidden bg-black/70">
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute inset-0 w-full h-full overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-gold-900/20 to-black/80 animate-gradient-slow"></div>
             <div className="absolute inset-0 bg-black/30 z-5"></div>
           </div>
           
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/30 z-20"></div>
           
-          <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15 video-container">
+          <div className="absolute inset-0 w-full h-full overflow-hidden border-2 border-gold-500/80 shadow-[0_0_10px_3px_rgba(255,195,0,0.5)] rounded-md z-15">
             <iframe 
               ref={videoRef3}
-              src="https://player.vimeo.com/video/1065940999?h=4705f6f507&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1&controls=0&transparent=0&responsive=1&dnt=1&quality=720p" 
+              src="https://player.vimeo.com/video/1065940999?h=4705f6f507&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1" 
               frameBorder="0" 
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              className="absolute w-[250%] h-[250%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[250%] min-h-[250%] video-background" 
-              title="Background Video"
-              style={{opacity: 1, visibility: 'visible', display: 'block'}}
-            />
-            <div className="video-element-fix"></div>
+              className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover min-w-[150%] min-h-[150%] video-background" 
+              title="Background Video">
+            </iframe>
           </div>
         </div>
         
