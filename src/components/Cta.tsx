@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Copy, Check } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
@@ -77,7 +78,17 @@ const Cta = () => {
       </section>
 
       <section className="py-24 relative overflow-hidden bg-black/70">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/30 z-20"></div>
+        <div className="absolute inset-0 z-20">
+          <div style={{padding:'177.78% 0 0 0', position:'relative'}}>
+            <iframe 
+              src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1" 
+              frameBorder="0" 
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+              style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}} 
+              title="AWR Background Video 2"
+            ></iframe>
+          </div>
+        </div>
         
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-30 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-30 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
