@@ -1,10 +1,8 @@
-
 import React, { useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import OptimizedImage from './OptimizedImage';
 import { AspectRatio } from './ui/aspect-ratio';
-
 const Features = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
@@ -19,7 +17,7 @@ const Features = () => {
     const animateScrollIndicator = () => {
       const time = Date.now() / 1000;
       const yOffset = Math.sin(time * 1.5) * 8; // Smooth up and down movement
-      
+
       if (scrollIndicator) {
         scrollIndicator.style.transform = `translateY(${yOffset}px)`;
       }
@@ -36,9 +34,7 @@ const Features = () => {
       cancelAnimationFrame(animationId);
     };
   }, []);
-
-  return (
-    <section ref={sectionRef} id="features" className="pt-0 pb-0 text-white relative -mt-0">
+  return <section ref={sectionRef} id="features" className="pt-0 pb-0 text-white relative -mt-0">
       {/* Dark overlay background */}
       <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
       
@@ -65,7 +61,7 @@ const Features = () => {
           <div ref={scrollIndicatorRef} className="flex flex-col items-center gap-2 transition-transform">
             <div className="text-gold-400 text-sm tracking-widest uppercase font-artistic animate-pulse">Scroll for more</div>
             <div className="w-12 h-12 flex justify-center items-center relative">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-b from-gold-400/30 to-gold-600/10 backdrop-blur-sm"></div>
+              
               <div className="relative z-10 animate-bounce">
                 <ChevronDown className="w-6 h-6 text-gold-500" strokeWidth={1.5} />
               </div>
@@ -73,8 +69,6 @@ const Features = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Features;
