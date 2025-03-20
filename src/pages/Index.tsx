@@ -13,7 +13,6 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const Index = () => {
-  // Refs for scroll handling and animations
   const heroRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
@@ -21,14 +20,12 @@ const Index = () => {
   const ctaRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
   
-  // Animation refs
   const orbitRef = useRef<HTMLDivElement>(null);
   const financialRef = useRef<HTMLSpanElement>(null);
   const secureRef = useRef<HTMLSpanElement>(null);
   const futureRef = useRef<HTMLSpanElement>(null);
   const audioRef = useRef<HTMLIFrameElement>(null);
   
-  // State for controls
   const [scrollLocked, setScrollLocked] = useState(true);
   const [showOrbit, setShowOrbit] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -39,12 +36,10 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Lock scrolling initially
     if (scrollLocked) {
       document.body.style.overflow = 'hidden';
     }
     
-    // Scroll animations
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -66,7 +61,6 @@ const Index = () => {
       observer.observe(el);
     });
 
-    // Parallax scroll effect
     const handleScroll = () => {
       const scrollY = window.scrollY;
 
@@ -95,7 +89,6 @@ const Index = () => {
     };
     window.addEventListener('scroll', handleScroll);
     
-    // Fetch market data
     const fetchMarketData = async () => {
       try {
         setIsLoading(true);
@@ -137,7 +130,6 @@ const Index = () => {
     
     const refreshInterval = setInterval(fetchMarketData, 300000);
     
-    // Text animations
     const animateHeading = () => {
       if (financialRef.current && secureRef.current && futureRef.current) {
         const time = Date.now() / 1000;
@@ -160,7 +152,6 @@ const Index = () => {
     };
   }, [scrollLocked]);
 
-  // Format currency for display
   const formatCurrency = (value: number): string => {
     if (value >= 1e9) {
       return `$${(value / 1e9).toFixed(1)}B+`;
@@ -173,7 +164,6 @@ const Index = () => {
     }
   };
   
-  // Format number with commas
   const formatNumber = (value: number): string => {
     return Math.round(value).toLocaleString();
   };
@@ -186,13 +176,10 @@ const Index = () => {
       behavior: 'smooth'
     });
 
-    // Start playing music when button is clicked
     if (audioRef.current && !isPlaying) {
-      // Load and play YouTube audio with enablejsapi=1 for external control
       if (audioRef.current.src === '') {
         audioRef.current.src = 'https://www.youtube.com/embed/AKDLoUSaPV8?autoplay=1&enablejsapi=1';
       } else {
-        // If already loaded, just play it
         const contentWindow = audioRef.current.contentWindow;
         if (contentWindow) {
           contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
@@ -205,10 +192,8 @@ const Index = () => {
   return <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
       
-      {/* Hidden YouTube audio player */}
       <iframe ref={audioRef} className="hidden" width="0" height="0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen title="Background Music"></iframe>
       
-      {/* Background orbit animation */}
       <div className={`fixed inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-1000 ${showOrbit ? 'opacity-100' : 'opacity-0'}`}>
         <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-gold-200/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-gold-300/10 rounded-full blur-3xl" />
@@ -227,7 +212,6 @@ const Index = () => {
         </div>
       </div>
       
-      {/* Dodal še večji razmik zgoraj na mobilnih napravah */}
       <div className={`${isMobile ? 'pt-36' : 'pt-20'}`}></div>
       
       <section className="w-full mt-0 mb-0 relative" ref={heroRef}>
@@ -243,13 +227,11 @@ const Index = () => {
                 priority={true} 
               />
               
-              {/* Adding a dark overlay */}
               <div className="absolute inset-0 bg-black/60 z-[5]"></div>
               
               <div className="absolute inset-0 flex items-center justify-center z-10">
                 <div className="container mx-auto px-6 text-center">
                   <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-                    {/* Povečal vertikalni odmik besedila na mobilnih napravah */}
                     <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight text-white" style={{
                       animationDelay: '0.2s',
                       letterSpacing: '-0.015em',
@@ -356,8 +338,18 @@ const Index = () => {
                 priority={false} 
               />
               
-              {/* Adding a dark overlay to darken the image */}
               <div className="absolute inset-0 bg-black/65 z-[5]"></div>
+              
+              <div className="absolute inset-0 flex items-center justify-center z-10">
+                <div className="w-64 md:w-80 lg:w-96 h-auto animate-fade-in">
+                  <OptimizedImage 
+                    src="/lovable-uploads/b06265ed-2736-47a3-81ca-e7555cf0baa4.png" 
+                    alt="AWR Lifestyle" 
+                    className="w-full h-full object-contain" 
+                    priority={false} 
+                  />
+                </div>
+              </div>
             </AspectRatio>
           </div>
           
