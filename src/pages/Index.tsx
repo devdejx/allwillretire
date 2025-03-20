@@ -1,14 +1,15 @@
 
 import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
+import Hero from '../components/Hero';
 import About from '../components/About';
 import Features from '../components/Features';
 import Testimonials from '../components/Testimonials';
 import Cta from '../components/Cta';
 import Footer from '../components/Footer';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 import OptimizedImage from '@/components/OptimizedImage';
 import { useIsMobile } from '@/hooks/use-mobile';
-import HeroOverlay from '@/components/HeroOverlay';
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -76,64 +77,95 @@ const Index = () => {
   }, []);
 
   return <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      {/* Fixed navbar at the top */}
       <Navbar />
       
-      {/* Hero section - full height, right below navbar */}
-      <section className="relative h-screen w-full" ref={heroRef} id="hero">
-        <div className="absolute inset-0 w-full h-full">
-          <OptimizedImage 
-            src="/lovable-uploads/54d0b489-bd6c-4013-97f4-078c27c0cc96.png" 
-            alt="Person enjoying sunrise with arms raised" 
-            className="w-full h-full object-cover" 
-            priority={true} 
-          />
-          
-          <HeroOverlay />
-        </div>
-      </section>
+      {/* Adding padding to ensure the image starts below the navbar */}
+      <div className="pt-20"></div>
       
-      <About />
-      
-      <section className="w-full mt-24 mb-0">
-        <div className="relative max-w-4xl mx-auto">
+      {/* Top Community Image Section - Below navbar and above Hero */}
+      <section className="w-full mt-0 mb-0">
+        {/* Container with top and bottom borders */}
+        <div className="relative w-full">
+          {/* Top border */}
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
           
-          <div className="w-full relative">
-            <div className="w-full aspect-[16/9]">
+          {/* Fixed image display for both mobile and desktop */}
+          <div className="w-full">
+            <AspectRatio ratio={16 / 9} className="w-full">
               <OptimizedImage 
-                src="/lovable-uploads/54d0b489-bd6c-4013-97f4-078c27c0cc96.png" 
-                alt="Person enjoying sunrise with arms raised" 
+                src="/lovable-uploads/4f24766a-a232-41b2-8cb0-5504af1e57e4.png" 
+                alt="All Will Retire Community" 
                 className="w-full h-full object-cover" 
                 priority={true} 
               />
-            </div>
+            </AspectRatio>
           </div>
           
+          {/* Bottom border */}
           <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         </div>
       </section>
       
-      <Features isFirstFeature={true} noBottomPadding={true} />
+      <Hero />
       
-      <section className="w-full mt-0 mb-0">
-        <div className="relative max-w-4xl mx-auto">
+      {/* Add more spacing before About section */}
+      <div className="h-24"></div>
+      
+      <About />
+      
+      {/* Community Image Section with Borders - No bottom margin */}
+      <section className="w-full mt-24 mb-0">
+        {/* Container with top and bottom borders */}
+        <div className="relative w-full">
+          {/* Top border */}
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
           
-          <div className="w-full relative">
-            <div className="w-full aspect-[16/9]">
+          {/* Fixed image display for both mobile and desktop */}
+          <div className="w-full">
+            <AspectRatio ratio={16 / 9} className="w-full">
               <OptimizedImage 
-                src="/lovable-uploads/54d0b489-bd6c-4013-97f4-078c27c0cc96.png" 
-                alt="Person enjoying sunrise with arms raised" 
+                src="/lovable-uploads/4f24766a-a232-41b2-8cb0-5504af1e57e4.png" 
+                alt="All Will Retire Community" 
+                className="w-full h-full object-cover" 
+                priority={true} 
+              />
+            </AspectRatio>
+          </div>
+          
+          {/* Added bottom border */}
+          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
+        </div>
+      </section>
+      
+      {/* First Features Section - No space above or below */}
+      <Features isFirstFeature={true} noBottomPadding={true} />
+      
+      {/* Second Community Image - Directly adjacent to first Features */}
+      <section className="w-full mt-0 mb-0">
+        {/* Container with top and bottom borders */}
+        <div className="relative w-full">
+          {/* Top border */}
+          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
+          
+          {/* Fixed image display for both mobile and desktop */}
+          <div className="w-full">
+            <AspectRatio ratio={16 / 9} className="w-full">
+              <OptimizedImage 
+                src="/lovable-uploads/65553cc3-bc4a-4c17-a4be-a62faadb689e.png" 
+                alt="Luxury Beach Lifestyle" 
                 className="w-full h-full object-cover" 
                 priority={false} 
               />
-            </div>
+            </AspectRatio>
           </div>
           
+          {/* Added bottom border */}
           <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         </div>
       </section>
       
+      {/* Second Features Component - Directly adjacent to second image */}
       <Features isSecondFeature={true} />
       
       <Testimonials />
