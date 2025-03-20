@@ -355,6 +355,9 @@ const Index = () => {
                 className="w-full h-full object-cover" 
                 priority={false} 
               />
+              
+              {/* Adding a dark overlay to darken the image */}
+              <div className="absolute inset-0 bg-black/65 z-[5]"></div>
             </AspectRatio>
           </div>
           
