@@ -228,7 +228,7 @@ const Index = () => {
       </div>
       
       {/* Dodal še večji razmik zgoraj na mobilnih napravah */}
-      <div className={`${isMobile ? 'pt-24' : 'pt-20'}`}></div>
+      <div className={`${isMobile ? 'pt-36' : 'pt-20'}`}></div>
       
       <section className="w-full mt-0 mb-0 relative" ref={heroRef}>
         <div className="relative w-full">
@@ -251,7 +251,7 @@ const Index = () => {
                       animationDelay: '0.2s',
                       letterSpacing: '-0.015em',
                       textShadow: '0 2px 4px rgba(0,0,0,0.5)',
-                      marginTop: isMobile ? '100px' : '0'
+                      marginTop: isMobile ? '180px' : '0'
                     }}>
                       <span ref={secureRef} className="relative font-artistic font-semibold inline-block transition-transform duration-1000">
                         {isMobile ? 'Secure' : 'Secure Your'}
