@@ -70,13 +70,6 @@ const Features = () => {
                 <ChevronDown className="w-6 h-6 text-gold-500" strokeWidth={1.5} />
               </div>
             </div>
-            {/* Added second chevron for stronger scrolling indication */}
-            <div className="w-10 h-10 flex justify-center items-center relative -mt-5">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-b from-gold-400/20 to-gold-600/5 backdrop-blur-sm"></div>
-              <div className="relative z-10 animate-bounce" style={{ animationDelay: '0.2s' }}>
-                <ChevronDown className="w-5 h-5 text-gold-500" strokeWidth={1.5} />
-              </div>
-            </div>
           </div>
         </div>
       </div>
