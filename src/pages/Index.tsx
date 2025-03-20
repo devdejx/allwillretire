@@ -108,11 +108,11 @@ const Index = () => {
         </div>
       </section>
       
-      {/* First Features Section - No top margin to connect with image above */}
-      <Features isFirstFeature={true} />
+      {/* First Features Section - No top margin and no bottom padding to connect with images */}
+      <Features isFirstFeature={true} noBottomPadding={true} />
       
-      {/* DUPLICATED SECTION - Second Community Image with Borders - Adjusted margins to remove space */}
-      <section className="w-full mt-0 mb-0 -mt-16">
+      {/* DUPLICATED SECTION - Second Community Image with Borders - Remove the -mt-16 since we're placing it right after features */}
+      <section className="w-full mt-0 mb-0">
         {/* Container with top border */}
         <div className="relative w-full">
           {/* Top border */}
