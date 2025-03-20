@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
@@ -10,7 +9,7 @@ const Hero = () => {
   const secureRef = useRef<HTMLSpanElement>(null);
   const futureRef = useRef<HTMLSpanElement>(null);
   const audioRef = useRef<HTMLIFrameElement>(null);
-  const [scrollLocked, setScrollLocked] = useState(true);
+  const [scrollLocked, setScrollLocked] = useState(false);
   const [showOrbit, setShowOrbit] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [marketData, setMarketData] = useState({
@@ -100,25 +99,20 @@ const Hero = () => {
     setScrollLocked(false);
     document.body.style.overflow = '';
     
-    // Scroll to the financial freedom title
     const financialFreedomTitle = document.getElementById('financial-freedom-title');
     if (financialFreedomTitle) {
       financialFreedomTitle.scrollIntoView({ behavior: 'smooth' });
     } else {
-      // Fallback if element not found
       window.scrollTo({
         top: window.innerHeight,
         behavior: 'smooth'
       });
     }
 
-    // Start playing music when button is clicked
     if (audioRef.current && !isPlaying) {
-      // Load and play YouTube audio with enablejsapi=1 for external control
       if (audioRef.current.src === '') {
         audioRef.current.src = 'https://www.youtube.com/embed/AKDLoUSaPV8?autoplay=1&enablejsapi=1';
       } else {
-        // If already loaded, just play it
         const contentWindow = audioRef.current.contentWindow;
         if (contentWindow) {
           contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
@@ -148,13 +142,11 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Hidden YouTube audio player */}
       <iframe ref={audioRef} className="hidden" width="0" height="0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen title="Background Music"></iframe>
 
       <section className={`relative min-h-screen flex items-center ${isMobile ? 'pt-36' : 'pt-20'} overflow-hidden z-10`}>
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-            {/* Empty space at top */}
             <div className={`${isMobile ? 'h-48' : 'h-14'} mb-2`}></div>
             
             <h1 className={`${isMobile ? 'text-3xl leading-snug mt-48' : 'text-4xl md:text-6xl lg:text-7xl leading-tight'} mb-6 animate-fade-up tracking-tight`} style={{

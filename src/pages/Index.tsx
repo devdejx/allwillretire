@@ -27,7 +27,7 @@ const Index = () => {
   const futureRef = useRef<HTMLSpanElement>(null);
   const audioRef = useRef<HTMLIFrameElement>(null);
   
-  const [scrollLocked, setScrollLocked] = useState(true);
+  const [scrollLocked, setScrollLocked] = useState(false);
   const [showOrbit, setShowOrbit] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [marketData, setMarketData] = useState({
@@ -170,8 +170,6 @@ const Index = () => {
   };
 
   const handleLearnMoreClick = () => {
-    setScrollLocked(false);
-    document.body.style.overflow = '';
     window.scrollTo({
       top: window.innerHeight,
       behavior: 'smooth'
