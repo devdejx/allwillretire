@@ -1,19 +1,105 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Skeleton } from './ui/skeleton';
 
 const HeroOverlay = () => {
+  const orbitRef = useRef<HTMLDivElement>(null);
   const financialRef = useRef<HTMLSpanElement>(null);
   const secureRef = useRef<HTMLSpanElement>(null);
   const futureRef = useRef<HTMLSpanElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [scrollLocked, setScrollLocked] = useState(true);
+  const [showOrbit, setShowOrbit] = useState(true);
   const [marketData, setMarketData] = useState({
     marketCap: '$1.8B+',
     holders: '4,400+'
   });
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const audioRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    const fetchMarketData = async () => {
+      try {
+        setIsLoading(true);
+        const apiUrl = 'https://api.dexscreener.com/latest/dex/pairs/solana/fo7vnhaddvnmx4axjo7cc1wwb9ko2pk2dfdzl3dybxkp';
+        console.log('Fetching market data from:', apiUrl);
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        console.log('DEXScreener API response:', data);
+        let marketCapValue = 0;
+        let formattedMarketCap = '$1.8B+'; // Default fallback
+
+        if (data && data.pair && data.pair.fdv) {
+          marketCapValue = parseFloat(data.pair.fdv);
+          formattedMarketCap = formatCurrency(marketCapValue);
+        } else if (data && data.pairs && data.pairs.length > 0 && data.pairs[0].fdv) {
+          marketCapValue = parseFloat(data.pairs[0].fdv);
+          formattedMarketCap = formatCurrency(marketCapValue);
+        }
+        let holdersCount = '4,400+'; // Default fallback
+
+        if (data && data.pair && data.pair.info && data.pair.info.holders) {
+          holdersCount = formatNumber(data.pair.info.holders) + '+';
+        } else if (data && data.pairs && data.pairs.length > 0 && data.pairs[0].info && data.pairs[0].info.holders) {
+          holdersCount = formatNumber(data.pairs[0].info.holders) + '+';
+        }
+        console.log('Formatted market cap:', formattedMarketCap);
+        console.log('Holders count:', holdersCount);
+        setMarketData({
+          marketCap: formattedMarketCap,
+          holders: holdersCount
+        });
+      } catch (error) {
+        console.error('Failed to fetch market data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    fetchMarketData();
+    
+    const refreshInterval = setInterval(fetchMarketData, 300000);
+    
+    // Animation for heading elements
+    const animateHeading = () => {
+      if (financialRef.current && secureRef.current && futureRef.current) {
+        const time = Date.now() / 1000;
+        secureRef.current.style.transform = `translateY(${Math.sin(time * 0.8) * 5}px)`;
+        financialRef.current.style.transform = `translateY(${Math.sin(time * 0.8 + 1) * 5}px)`;
+        futureRef.current.style.transform = `translateY(${Math.sin(time * 0.8 + 2) * 5}px)`;
+      }
+      requestAnimationFrame(animateHeading);
+    };
+    
+    const animationId = requestAnimationFrame(animateHeading);
+    
+    // Lock scrolling
+    if (scrollLocked) {
+      document.body.style.overflow = 'hidden';
+    }
+    
+    return () => {
+      cancelAnimationFrame(animationId);
+      clearInterval(refreshInterval);
+      document.body.style.overflow = '';
+    };
+  }, [scrollLocked]);
+
+  const formatCurrency = (value: number): string => {
+    if (value >= 1e9) {
+      return `$${(value / 1e9).toFixed(1)}B+`;
+    } else if (value >= 1e6) {
+      return `$${(value / 1e6).toFixed(1)}M+`;
+    } else if (value >= 1e3) {
+      return `$${(value / 1e3).toFixed(1)}K+`;
+    } else {
+      return `$${Math.round(value).toLocaleString()}+`;
+    }
+  };
+  
+  const formatNumber = (value: number): string => {
+    return Math.round(value).toLocaleString();
+  };
 
   const handleLearnMoreClick = () => {
     setScrollLocked(false);
@@ -43,6 +129,25 @@ const HeroOverlay = () => {
     <>
       {/* Hidden YouTube audio player */}
       <iframe ref={audioRef} className="hidden" width="0" height="0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen title="Background Music"></iframe>
+      
+      {/* Orbit background animation */}
+      <div className={`fixed inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-1000 ${showOrbit ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-gold-200/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-gold-300/10 rounded-full blur-3xl" />
+        
+        <div ref={orbitRef} className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] transition-all duration-1000 ${showOrbit ? 'scale-100' : 'scale-0'}`}>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-gold-500/10 rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-gold-500/20 rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-gold-500/30 rounded-full" />
+          
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100px] h-[100px]">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[200px] w-10 h-10 bg-gold-500/80 rounded-full blur-sm animate-pulse" />
+            <div className="absolute top-1/2 left-0 -translate-x-[300px] -translate-y-1/2 w-8 h-8 bg-gold-500/80 rounded-full blur-sm animate-pulse" />
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[200px] w-12 h-12 bg-gold-500/80 rounded-full blur-sm animate-pulse" />
+            <div className="absolute top-1/2 right-0 translate-x-[300px] -translate-y-1/2 w-6 h-6 bg-gold-500/80 rounded-full blur-sm animate-pulse" />
+          </div>
+        </div>
+      </div>
       
       {/* Overlay content with background gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent z-10">
