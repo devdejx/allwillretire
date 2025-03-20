@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -130,9 +129,6 @@ const Index = () => {
               />
             </AspectRatio>
           </div>
-          
-          {/* Bottom border - moved slightly lower by adjusting bottom position */}
-          <div className="absolute bottom-[8%] left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         </div>
       </section>
       
