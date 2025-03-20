@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -243,6 +242,9 @@ const Index = () => {
                 className="w-full h-full object-cover" 
                 priority={true} 
               />
+              
+              {/* Adding a dark overlay */}
+              <div className="absolute inset-0 bg-black/60 z-[5]"></div>
               
               <div className="absolute inset-0 flex items-center justify-center z-10">
                 <div className="container mx-auto px-6 text-center">
