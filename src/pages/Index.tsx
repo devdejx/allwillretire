@@ -142,6 +142,19 @@ const Index = () => {
     };
     const animationId = requestAnimationFrame(animateHeading);
 
+    // Preload important images
+    const imagesToPreload = [
+      '/lovable-uploads/31c0fdc7-f525-4410-b81b-0faed111eeed.png',
+      '/lovable-uploads/4f24766a-a232-41b2-8cb0-5504af1e57e4.png',
+      '/lovable-uploads/c41d9d7a-72c7-4323-9246-02b391542c98.png',
+      '/lovable-uploads/b06265ed-2736-47a3-81ca-e7555cf0baa4.png'
+    ];
+    
+    imagesToPreload.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+
     return () => {
       document.querySelectorAll('.reveal').forEach(el => {
         observer.unobserve(el);
@@ -224,6 +237,7 @@ const Index = () => {
                 alt="Person celebrating sunset" 
                 className="w-full h-full object-cover" 
                 priority={true} 
+                blur={false}
               />
               
               <div className="absolute inset-0 bg-black/60 z-[5]"></div>
@@ -316,6 +330,7 @@ const Index = () => {
                 alt="All Will Retire Community" 
                 className="w-full h-full object-cover" 
                 priority={true} 
+                blur={false}
               />
             </AspectRatio>
           </div>
@@ -336,7 +351,8 @@ const Index = () => {
                 src="/lovable-uploads/c41d9d7a-72c7-4323-9246-02b391542c98.png" 
                 alt="Luxury Beach Lifestyle" 
                 className="w-full h-full object-cover" 
-                priority={false} 
+                priority={true} 
+                blur={false}
               />
               
               <div className="absolute inset-0 bg-black/65 z-[5]"></div>
@@ -347,7 +363,8 @@ const Index = () => {
                     src="/lovable-uploads/b06265ed-2736-47a3-81ca-e7555cf0baa4.png" 
                     alt="AWR Lifestyle" 
                     className="w-full h-full object-contain" 
-                    priority={false} 
+                    priority={true} 
+                    blur={false}
                   />
                 </div>
               </div>
