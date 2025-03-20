@@ -86,7 +86,7 @@ const Index = () => {
       {/* Top Community Image Section - Below navbar and above Hero */}
       <section className="w-full mt-0 mb-0">
         {/* Container with top and bottom borders */}
-        <div className="relative w-full">
+        <div className="relative max-w-4xl mx-auto">
           {/* Top border */}
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
           
@@ -117,7 +117,7 @@ const Index = () => {
       {/* Community Image Section with Borders - No bottom margin */}
       <section className="w-full mt-24 mb-0">
         {/* Container with top and bottom borders */}
-        <div className="relative w-full">
+        <div className="relative max-w-4xl mx-auto">
           {/* Top border */}
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
           
@@ -144,7 +144,7 @@ const Index = () => {
       {/* Second Community Image - Directly adjacent to first Features */}
       <section className="w-full mt-0 mb-0">
         {/* Container with top and bottom borders */}
-        <div className="relative w-full">
+        <div className="relative max-w-4xl mx-auto">
           {/* Top border */}
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
           
