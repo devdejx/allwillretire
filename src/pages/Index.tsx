@@ -77,9 +77,13 @@ const Index = () => {
   }, []);
 
   return <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      {/* Fixed navbar at the top */}
       <Navbar />
       
-      {/* Top Community Image Section - Added before Hero */}
+      {/* Adding padding to ensure the image starts below the navbar */}
+      <div className="pt-20"></div>
+      
+      {/* Top Community Image Section - Below navbar and above Hero */}
       <section className="w-full mt-0 mb-0">
         {/* Container with top and bottom borders */}
         <div className="relative w-full">
