@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -70,14 +69,13 @@ const Features = ({ isSecondFeature = false, isFirstFeature = false, noBottomPad
           <p className="text-lg text-gray-300 mb-3">*Is a family that provides emotional utility around being accepted for who you are regardless of our differences, the ability to self-express your feelings/views to the world, and have a global community to identify with based on the underlying message that everyone deserves financial security</p>
         </div>
         
-        {/* Enhanced scroll indicator with animation - moved up by reducing margin-top */}
-        <div className="flex justify-center items-center my-2 z-20">
-          <div ref={scrollIndicatorRef} className="flex flex-col items-center gap-1 transition-transform">
-            <div className="text-gold-400 text-xs tracking-widest uppercase font-artistic animate-pulse">Scroll for more</div>
-            <div className="w-8 h-8 flex justify-center items-center relative">
-              
+        {/* Enhanced scroll indicator with animation - even smaller size */}
+        <div className="flex justify-center items-center my-1 z-20">
+          <div ref={scrollIndicatorRef} className="flex flex-col items-center gap-0.5 transition-transform scale-75">
+            <div className="text-gold-400 text-[10px] tracking-widest uppercase font-artistic animate-pulse">Scroll</div>
+            <div className="w-6 h-6 flex justify-center items-center relative">
               <div className="relative z-10 animate-bounce">
-                <ChevronDown className="w-4 h-4 text-gold-500" strokeWidth={1.5} />
+                <ChevronDown className="w-3 h-3 text-gold-500" strokeWidth={1.5} />
               </div>
             </div>
           </div>
