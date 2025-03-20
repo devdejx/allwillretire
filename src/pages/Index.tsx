@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -84,8 +85,8 @@ const Index = () => {
       
       <About />
       
-      {/* Community Image Section with Borders - No bottom margin/padding */}
-      <section className="w-full mt-24 mb-0 pb-0">
+      {/* Community Image Section with Borders */}
+      <section className="w-full mt-24 mb-0">
         {/* Container with top border */}
         <div className="relative w-full">
           {/* Top border */}
@@ -103,18 +104,20 @@ const Index = () => {
             </AspectRatio>
           </div>
           
-          {/* Bottom border - Removing this to eliminate gap */}
+          {/* Bottom border */}
+          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         </div>
       </section>
       
-      {/* First Features Section - Negative margin to overlap slightly with image above */}
+      {/* First Features Section - No top margin to connect with image above */}
       <Features />
       
-      {/* DUPLICATED SECTION - Second Community Image with Borders - No top margin or padding */}
-      <section className="w-full mt-0 mb-0 pb-0">
-        {/* Container with no top border */}
+      {/* DUPLICATED SECTION - Second Community Image with Borders - No top margin to connect with section above */}
+      <section className="w-full mt-0 mb-0">
+        {/* Container with top border */}
         <div className="relative w-full">
-          {/* Removing top border to eliminate gap */}
+          {/* Top border */}
+          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
           
           {/* Fixed image display for both mobile and desktop */}
           <div className="w-full">
@@ -128,11 +131,12 @@ const Index = () => {
             </AspectRatio>
           </div>
           
-          {/* Removing bottom border to eliminate gap */}
+          {/* Bottom border */}
+          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         </div>
       </section>
       
-      {/* DUPLICATED SECTION - Second Features Component - Negative margin to connect with image above */}
+      {/* DUPLICATED SECTION - Second Features Component - No top margin to connect with image above */}
       <Features />
       
       <Testimonials />
