@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Coins, Shield, TrendingUp, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -46,8 +45,8 @@ const About = () => {
 
   return (
     <>
-      {/* About section - completely removed bottom padding and added negative margin */}
-      <section id="about" className="pt-6 pb-0 -mb-16 relative overflow-hidden">
+      {/* About section - added additional top margin for more space */}
+      <section id="about" className="pt-12 pb-0 -mb-16 mt-12 relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute top-1/4 -right-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 -left-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
@@ -72,7 +71,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 mt-8">
           <div className="max-w-3xl mx-auto mb-16 text-center">
             <div className="inline-block mb-4">
               <span className="uppercase tracking-wider text-sm font-medium text-muted-foreground">
@@ -234,3 +233,4 @@ const About = () => {
 };
 
 export default About;
+
