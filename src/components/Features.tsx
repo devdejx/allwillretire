@@ -38,7 +38,7 @@ const Features = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="features" className="pt-0 pb-8 md:pb-16 text-white relative -mt-8">
+    <section ref={sectionRef} id="features" className="pt-0 pb-0 text-white relative -mt-0">
       {/* Dark overlay background */}
       <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
       

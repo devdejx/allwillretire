@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -108,10 +109,11 @@ const Index = () => {
         </div>
       </section>
       
+      {/* First Features Section - No top margin to connect with image above */}
       <Features />
       
-      {/* DUPLICATED SECTION - Second Community Image with Borders */}
-      <section className="w-full mt-24 mb-0">
+      {/* DUPLICATED SECTION - Second Community Image with Borders - No top margin to connect with section above */}
+      <section className="w-full mt-0 mb-0">
         {/* Container with top border */}
         <div className="relative w-full">
           {/* Top border */}
@@ -134,7 +136,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* DUPLICATED SECTION - Second Features Component */}
+      {/* DUPLICATED SECTION - Second Features Component - No top margin to connect with image above */}
       <Features />
       
       <Testimonials />
