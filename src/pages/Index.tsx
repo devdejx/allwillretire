@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import About from '../components/About';
@@ -77,7 +78,8 @@ const Index = () => {
   return <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
       
-      <section className="w-full h-screen relative pt-16" ref={heroRef}>
+      {/* Hero section - full height, right below navbar */}
+      <section className="relative h-screen w-full" ref={heroRef} id="hero">
         <div className="absolute inset-0 w-full h-full">
           <OptimizedImage 
             src="/lovable-uploads/54d0b489-bd6c-4013-97f4-078c27c0cc96.png" 
@@ -89,8 +91,6 @@ const Index = () => {
           <HeroOverlay />
         </div>
       </section>
-      
-      <div className="h-24"></div>
       
       <About />
       
