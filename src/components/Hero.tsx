@@ -103,16 +103,7 @@ const Hero = () => {
     // Scroll to the financial freedom title
     const financialFreedomTitle = document.getElementById('financial-freedom-title');
     if (financialFreedomTitle) {
-      // Calculate position to center the element in the viewport
-      const elementRect = financialFreedomTitle.getBoundingClientRect();
-      const absoluteElementTop = elementRect.top + window.pageYOffset;
-      const middle = absoluteElementTop - (window.innerHeight / 2) + (elementRect.height / 2);
-      
-      // Scroll to the calculated position
-      window.scrollTo({
-        top: middle,
-        behavior: 'smooth'
-      });
+      financialFreedomTitle.scrollIntoView({ behavior: 'smooth' });
     } else {
       // Fallback if element not found
       window.scrollTo({
