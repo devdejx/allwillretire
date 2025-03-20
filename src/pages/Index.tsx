@@ -112,8 +112,8 @@ const Index = () => {
       {/* First Features Section - No top margin to connect with image above */}
       <Features />
       
-      {/* DUPLICATED SECTION - Second Community Image with Borders - No top margin and negative margin to move up */}
-      <section className="w-full mt-0 mb-0 -mt-16">
+      {/* DUPLICATED SECTION - Second Community Image with Borders - No top margin */}
+      <section className="w-full mt-0 mb-0">
         {/* Container with top border */}
         <div className="relative w-full">
           {/* Top border */}
@@ -131,15 +131,12 @@ const Index = () => {
             </AspectRatio>
           </div>
           
-          {/* Bottom border - moved slightly lower by adjusting bottom position */}
-          <div className="absolute bottom-[8%] left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
+          {/* Removed bottom border as requested */}
         </div>
       </section>
       
-      {/* DUPLICATED SECTION - Second Features Component - Moved up with negative margin */}
-      <div className="-mt-16">
-        <Features />
-      </div>
+      {/* DUPLICATED SECTION - Second Features Component - No negative margin now */}
+      <Features />
       
       <Testimonials />
       <Cta />

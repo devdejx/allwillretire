@@ -38,12 +38,12 @@ const Features = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="features" className="pt-0 pb-0 text-white relative -mt-0">
+    <section ref={sectionRef} id="features" className="pt-0 pb-0 text-white relative -mt-12">
       {/* Dark overlay background */}
       <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
       
       {/* Content */}
-      <div className="container mx-auto px-6 relative z-10 pt-0">
+      <div className="container mx-auto px-6 relative z-10 pt-12">
         <div className="max-w-3xl mx-auto mb-4 text-center">
           <div className="inline-block mb-2">
             <span className="uppercase tracking-wider text-sm font-medium text-gold-400">
