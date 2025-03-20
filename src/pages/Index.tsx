@@ -291,12 +291,12 @@ const Index = () => {
                       {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500">
                             {marketData.marketCap}
                           </span>}
-                        <span className="text-sm text-gold-400 font-medium">Market Cap</span>
+                        <span className="text-sm text-white font-medium">Market Cap</span>
                       <div className="w-px h-12 bg-white/10"></div>
                       {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500">
                             {marketData.holders}
                           </span>}
-                        <span className="text-sm text-gold-400 font-medium">Holders</span>
+                        <span className="text-sm text-white font-medium">Holders</span>
                     </div>
                   </div>
                 </div>
