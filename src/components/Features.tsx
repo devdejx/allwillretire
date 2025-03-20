@@ -72,12 +72,12 @@ const Features = ({ isSecondFeature = false, isFirstFeature = false, noBottomPad
         
         {/* Enhanced scroll indicator with animation - moved up by reducing margin-top */}
         <div className="flex justify-center items-center my-2 z-20">
-          <div ref={scrollIndicatorRef} className="flex flex-col items-center gap-2 transition-transform">
-            <div className="text-gold-400 text-sm tracking-widest uppercase font-artistic animate-pulse">Scroll for more</div>
-            <div className="w-12 h-12 flex justify-center items-center relative">
+          <div ref={scrollIndicatorRef} className="flex flex-col items-center gap-1 transition-transform">
+            <div className="text-gold-400 text-xs tracking-widest uppercase font-artistic animate-pulse">Scroll for more</div>
+            <div className="w-8 h-8 flex justify-center items-center relative">
               
               <div className="relative z-10 animate-bounce">
-                <ChevronDown className="w-6 h-6 text-gold-500" strokeWidth={1.5} />
+                <ChevronDown className="w-4 h-4 text-gold-500" strokeWidth={1.5} />
               </div>
             </div>
           </div>
