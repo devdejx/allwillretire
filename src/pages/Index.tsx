@@ -78,6 +78,31 @@ const Index = () => {
 
   return <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
+      
+      {/* Top Community Image Section - Added before Hero */}
+      <section className="w-full mt-0 mb-0">
+        {/* Container with top and bottom borders */}
+        <div className="relative w-full">
+          {/* Top border */}
+          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
+          
+          {/* Fixed image display for both mobile and desktop */}
+          <div className="w-full">
+            <AspectRatio ratio={16 / 9} className="w-full">
+              <OptimizedImage 
+                src="/lovable-uploads/4f24766a-a232-41b2-8cb0-5504af1e57e4.png" 
+                alt="All Will Retire Community" 
+                className="w-full h-full object-cover" 
+                priority={true} 
+              />
+            </AspectRatio>
+          </div>
+          
+          {/* Bottom border */}
+          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
+        </div>
+      </section>
+      
       <Hero />
       
       {/* Add more spacing before About section */}
