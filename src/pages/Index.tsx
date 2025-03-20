@@ -181,10 +181,21 @@ const Index = () => {
   const handleLearnMoreClick = () => {
     setScrollLocked(false);
     document.body.style.overflow = '';
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: 'smooth'
-    });
+    
+    // Find the section with "A New Era of Financial Freedom" title
+    const financialFreedomSection = document.querySelector('.financial-freedom-title')?.closest('section');
+    
+    if (financialFreedomSection) {
+      financialFreedomSection.scrollIntoView({
+        behavior: 'smooth'
+      });
+    } else {
+      // Fallback to the original behavior if the section is not found
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: 'smooth'
+      });
+    }
 
     // Start playing music when button is clicked
     if (audioRef.current && !isPlaying) {
