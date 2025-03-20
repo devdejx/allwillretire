@@ -266,7 +266,7 @@ const Index = () => {
                     }}>
                       {isMobile 
                         ? 'AllWillRetire: your promise of financial independence and a future of opulence.' 
-                        : 'AllWillRetire is more than a cryptocurrency — it's a promise of financial independence and a future filled with opulence and comfort.'}
+                        : 'AllWillRetire is more than a cryptocurrency — it\'s a promise of financial independence and a future filled with opulence and comfort.'}
                     </p>
                     
                     <div className={`flex flex-col sm:flex-row gap-4 ${isMobile ? 'mb-6' : 'mb-8'} animate-fade-up`} style={{
