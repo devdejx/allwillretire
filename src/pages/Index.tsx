@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -112,7 +111,7 @@ const Index = () => {
       {/* First Features Section - No top margin to connect with image above */}
       <Features />
       
-      {/* DUPLICATED SECTION - Second Community Image with Borders - Added negative margin to move higher */}
+      {/* DUPLICATED SECTION - Second Community Image with Borders - Adjusted margins to remove space */}
       <section className="w-full mt-0 mb-0 -mt-16">
         {/* Container with top border */}
         <div className="relative w-full">
@@ -130,13 +129,11 @@ const Index = () => {
               />
             </AspectRatio>
           </div>
-          
-          {/* Removed bottom border as requested */}
         </div>
       </section>
       
-      {/* DUPLICATED SECTION - Second Features Component */}
-      <Features />
+      {/* DUPLICATED SECTION - Second Features Component - Adjusted to remove space above */}
+      <Features isSecondFeature={true} />
       
       <Testimonials />
       <Cta />

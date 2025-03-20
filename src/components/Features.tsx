@@ -1,9 +1,15 @@
+
 import React, { useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import OptimizedImage from './OptimizedImage';
 import { AspectRatio } from './ui/aspect-ratio';
-const Features = () => {
+
+interface FeaturesProps {
+  isSecondFeature?: boolean;
+}
+
+const Features = ({ isSecondFeature = false }: FeaturesProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
@@ -34,7 +40,13 @@ const Features = () => {
       cancelAnimationFrame(animationId);
     };
   }, []);
-  return <section ref={sectionRef} id="features" className="pt-0 pb-0 text-white relative -mt-12">
+
+  return (
+    <section 
+      ref={sectionRef} 
+      id="features" 
+      className={`pt-0 pb-0 text-white relative ${!isSecondFeature ? "-mt-12" : "mt-0"}`}
+    >
       {/* Dark overlay background */}
       <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
       
@@ -69,6 +81,8 @@ const Features = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Features;
