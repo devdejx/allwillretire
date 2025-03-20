@@ -289,17 +289,17 @@ const Index = () => {
                       animationDelay: '0.8s'
                     }}>
                       <div className="flex flex-col items-center">
-                        {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-white">
+                        {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500">
                             {marketData.marketCap}
                           </span>}
-                        <span className="text-sm text-white/80">Market Cap</span>
+                        <span className="text-sm text-gold-400 font-medium">Market Cap</span>
                       </div>
                       <div className="w-px h-12 bg-white/10"></div>
                       <div className="flex flex-col items-center">
-                        {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-white">
+                        {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500">
                             {marketData.holders}
                           </span>}
-                        <span className="text-sm text-white/80">Holders</span>
+                        <span className="text-sm text-gold-400 font-medium">Holders</span>
                       </div>
                     </div>
                   </div>
