@@ -112,8 +112,8 @@ const Index = () => {
       {/* First Features Section - No top margin to connect with image above */}
       <Features />
       
-      {/* DUPLICATED SECTION - Second Community Image with Borders - No top margin */}
-      <section className="w-full mt-0 mb-0">
+      {/* DUPLICATED SECTION - Second Community Image with Borders - Added negative margin to move higher */}
+      <section className="w-full mt-0 mb-0 -mt-16">
         {/* Container with top border */}
         <div className="relative w-full">
           {/* Top border */}
@@ -135,7 +135,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* DUPLICATED SECTION - Second Features Component - No negative margin now */}
+      {/* DUPLICATED SECTION - Second Features Component */}
       <Features />
       
       <Testimonials />
