@@ -94,8 +94,8 @@ const Index = () => {
           <div className="w-full">
             <AspectRatio ratio={16 / 9} className="w-full">
               <OptimizedImage 
-                src="/lovable-uploads/4f24766a-a232-41b2-8cb0-5504af1e57e4.png" 
-                alt="All Will Retire Community" 
+                src="/lovable-uploads/31c0fdc7-f525-4410-b81b-0faed111eeed.png" 
+                alt="Person celebrating sunset" 
                 className="w-full h-full object-cover" 
                 priority={true} 
               />
