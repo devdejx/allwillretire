@@ -121,7 +121,7 @@ const Hero = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <div className={`fixed inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-1000 ${showOrbit ? 'opacity-100' : 'opacity-0'}`}>
         <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-gold-200/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-gold-300/10 rounded-full blur-3xl" />
@@ -166,7 +166,7 @@ const Hero = () => {
             }}>
               {isMobile 
                 ? 'AllWillRetire: your promise of financial independence and a future of opulence.' 
-                : 'AllWillRetire is more than a cryptocurrency — it's a promise of financial independence and a future filled with opulence and comfort.'}
+                : 'AllWillRetire is more than a cryptocurrency — it\'s a promise of financial independence and a future filled with opulence and comfort.'}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up" style={{
@@ -202,7 +202,7 @@ const Hero = () => {
           </div>
         </div>
       </section>
-    </>
+    </React.Fragment>
   );
 };
 
