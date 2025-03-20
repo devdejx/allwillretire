@@ -227,7 +227,8 @@ const Index = () => {
         </div>
       </div>
       
-      <div className={`${isMobile ? 'pt-8' : 'pt-20'}`}></div>
+      {/* Dodal večji razmik zgoraj na mobilnih napravah */}
+      <div className={`${isMobile ? 'pt-16' : 'pt-20'}`}></div>
       
       <section className="w-full mt-0 mb-0 relative" ref={heroRef}>
         <div className="relative w-full">
@@ -245,11 +246,12 @@ const Index = () => {
               <div className="absolute inset-0 flex items-center justify-center z-10">
                 <div className="container mx-auto px-6 text-center">
                   <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+                    {/* Povečal vertikalni odmik besedila na mobilnih napravah */}
                     <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight text-white" style={{
                       animationDelay: '0.2s',
                       letterSpacing: '-0.015em',
                       textShadow: '0 2px 4px rgba(0,0,0,0.5)',
-                      marginTop: isMobile ? '40px' : '0'
+                      marginTop: isMobile ? '70px' : '0'
                     }}>
                       <span ref={secureRef} className="relative font-artistic font-semibold inline-block transition-transform duration-1000">
                         {isMobile ? 'Secure' : 'Secure Your'}
