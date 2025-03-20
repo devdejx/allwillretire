@@ -350,7 +350,7 @@ const Index = () => {
           <div className="w-full">
             <AspectRatio ratio={16 / 9} className="w-full">
               <OptimizedImage 
-                src="/lovable-uploads/65553cc3-bc4a-4c17-a4be-a62faadb689e.png" 
+                src="/lovable-uploads/c41d9d7a-72c7-4323-9246-02b391542c98.png" 
                 alt="Luxury Beach Lifestyle" 
                 className="w-full h-full object-cover" 
                 priority={false} 
@@ -361,8 +361,6 @@ const Index = () => {
           <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         </div>
       </section>
-      
-      <Features isSecondFeature={true} />
       
       <Testimonials />
       <Cta />
