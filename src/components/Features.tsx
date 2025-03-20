@@ -7,9 +7,10 @@ import { AspectRatio } from './ui/aspect-ratio';
 
 interface FeaturesProps {
   isSecondFeature?: boolean;
+  isFirstFeature?: boolean;
 }
 
-const Features = ({ isSecondFeature = false }: FeaturesProps) => {
+const Features = ({ isSecondFeature = false, isFirstFeature = false }: FeaturesProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
@@ -45,7 +46,7 @@ const Features = ({ isSecondFeature = false }: FeaturesProps) => {
     <section 
       ref={sectionRef} 
       id="features" 
-      className={`pt-0 pb-0 text-white relative ${!isSecondFeature ? "-mt-12" : "mt-0"}`}
+      className={`pt-0 pb-0 text-white relative ${isFirstFeature ? "mt-0" : isSecondFeature ? "mt-0" : "-mt-12"}`}
     >
       {/* Dark overlay background */}
       <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
