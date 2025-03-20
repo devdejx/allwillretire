@@ -143,13 +143,13 @@ const Hero = () => {
       {/* Hidden YouTube audio player */}
       <iframe ref={audioRef} className="hidden" width="0" height="0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen title="Background Music"></iframe>
 
-      <section className={`relative min-h-screen flex items-center ${isMobile ? 'pt-20' : 'pt-20'} overflow-hidden z-10`}>
+      <section className={`relative min-h-screen flex items-center ${isMobile ? 'pt-24' : 'pt-20'} overflow-hidden z-10`}>
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
             {/* Povečal višino praznega prostora na začetku za mobilne naprave */}
-            <div className={`${isMobile ? 'h-24' : 'h-14'} mb-2`}></div>
+            <div className={`${isMobile ? 'h-36' : 'h-14'} mb-2`}></div>
             
-            <h1 className={`${isMobile ? 'text-3xl leading-snug mt-24' : 'text-4xl md:text-6xl lg:text-7xl leading-tight'} mb-6 animate-fade-up tracking-tight`} style={{
+            <h1 className={`${isMobile ? 'text-3xl leading-snug mt-32' : 'text-4xl md:text-6xl lg:text-7xl leading-tight'} mb-6 animate-fade-up tracking-tight`} style={{
               animationDelay: '0.2s',
               letterSpacing: '-0.015em'
             }}>
