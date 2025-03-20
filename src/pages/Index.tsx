@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -228,7 +227,7 @@ const Index = () => {
         </div>
       </div>
       
-      <div className="pt-20"></div>
+      <div className={`${isMobile ? 'pt-8' : 'pt-20'}`}></div>
       
       <section className="w-full mt-0 mb-0 relative" ref={heroRef}>
         <div className="relative w-full">
@@ -249,24 +248,28 @@ const Index = () => {
                     <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight text-white" style={{
                       animationDelay: '0.2s',
                       letterSpacing: '-0.015em',
-                      textShadow: '0 2px 4px rgba(0,0,0,0.5)'
+                      textShadow: '0 2px 4px rgba(0,0,0,0.5)',
+                      marginTop: isMobile ? '40px' : '0'
                     }}>
                       <span ref={secureRef} className="relative font-artistic font-semibold inline-block transition-transform duration-1000">
-                        Secure Your
+                        {isMobile ? 'Secure' : 'Secure Your'}
                       </span>
-                      {' '}
+                      {isMobile && <br />}
+                      {!isMobile && ' '}
                       <span ref={financialRef} className="text-gold-500 font-artistic font-bold inline-block transition-transform duration-1000">Financial</span>{' '}
                       <span ref={futureRef} className="font-elegant italic font-semibold inline-block transition-transform duration-1000">Future</span>
                     </h1>
                     
-                    <p className="text-xl text-white mb-10 max-w-2xl mx-auto animate-fade-up font-elegant" style={{
+                    <p className={`${isMobile ? 'text-base px-2' : 'text-xl'} text-white mb-10 max-w-2xl mx-auto animate-fade-up font-elegant`} style={{
                       animationDelay: '0.4s',
                       textShadow: '0 1px 3px rgba(0,0,0,0.7)'
                     }}>
-                      AllWillRetire is more than a cryptocurrency — it's a promise of financial independence and a future filled with opulence and comfort.
+                      {isMobile 
+                        ? 'AllWillRetire: your promise of financial independence and a future of opulence.' 
+                        : 'AllWillRetire is more than a cryptocurrency — it's a promise of financial independence and a future filled with opulence and comfort.'}
                     </p>
                     
-                    <div className="flex flex-col sm:flex-row gap-4 mb-8 animate-fade-up" style={{
+                    <div className={`flex flex-col sm:flex-row gap-4 ${isMobile ? 'mb-6' : 'mb-8'} animate-fade-up`} style={{
                       animationDelay: '0.6s'
                     }}>
                       <button 
