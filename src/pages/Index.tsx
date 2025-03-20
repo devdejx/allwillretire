@@ -1,7 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
 import About from '../components/About';
 import Features from '../components/Features';
 import Testimonials from '../components/Testimonials';
@@ -10,6 +9,7 @@ import Footer from '../components/Footer';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import OptimizedImage from '@/components/OptimizedImage';
 import { useIsMobile } from '@/hooks/use-mobile';
+import HeroOverlay from '@/components/HeroOverlay';
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -80,18 +80,15 @@ const Index = () => {
       {/* Fixed navbar at the top */}
       <Navbar />
       
-      {/* Adding padding to ensure the image starts below the navbar */}
-      <div className="pt-20"></div>
-      
-      {/* Top Community Image Section - Below navbar and above Hero */}
-      <section className="w-full mt-0 mb-0">
-        {/* Container with top and bottom borders */}
+      {/* Hero Section with Image Background and Overlay Text */}
+      <section className="w-full relative pt-16" ref={heroRef}>
+        {/* Hero Image Container with Overlay Text */}
         <div className="relative max-w-4xl mx-auto">
           {/* Top border */}
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
           
-          {/* Fixed image display for both mobile and desktop */}
-          <div className="w-full">
+          {/* Image with Overlay Text */}
+          <div className="w-full relative">
             <AspectRatio ratio={16 / 9} className="w-full">
               <OptimizedImage 
                 src="/lovable-uploads/54d0b489-bd6c-4013-97f4-078c27c0cc96.png" 
@@ -99,6 +96,9 @@ const Index = () => {
                 className="w-full h-full object-cover" 
                 priority={true} 
               />
+              
+              {/* Hero Content Overlay */}
+              <HeroOverlay />
             </AspectRatio>
           </div>
           
@@ -106,8 +106,6 @@ const Index = () => {
           <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
         </div>
       </section>
-      
-      <Hero />
       
       {/* Add more spacing before About section */}
       <div className="h-24"></div>
