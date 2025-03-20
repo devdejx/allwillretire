@@ -120,6 +120,44 @@ const Index = () => {
       </section>
       
       <Features />
+      
+      {/* DUPLICATED SECTION - Second Community Image with Borders */}
+      <section className="w-full mt-24 mb-0">
+        {/* Container with top border */}
+        <div className="relative w-full">
+          {/* Top border */}
+          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
+          
+          {/* Mobile image */}
+          <div className="md:hidden w-full">
+            <AspectRatio ratio={16 / 9} className="w-full">
+              <OptimizedImage 
+                src="/lovable-uploads/4f24766a-a232-41b2-8cb0-5504af1e57e4.png" 
+                alt="All Will Retire Community" 
+                className="w-full h-full object-cover" 
+                priority={false} 
+              />
+            </AspectRatio>
+          </div>
+          
+          {/* Desktop image */}
+          <div className="hidden md:block w-full">
+            <OptimizedImage 
+              src="/lovable-uploads/4f24766a-a232-41b2-8cb0-5504af1e57e4.png" 
+              alt="All Will Retire Community" 
+              className="w-full h-auto object-contain" 
+              priority={false} 
+            />
+          </div>
+          
+          {/* Bottom border */}
+          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/80 to-transparent z-10 shadow-[0_0_4px_0.5px_rgba(255,195,0,0.5)]"></div>
+        </div>
+      </section>
+      
+      {/* DUPLICATED SECTION - Second Features Component */}
+      <Features />
+      
       <Testimonials />
       <Cta />
       <Footer />
