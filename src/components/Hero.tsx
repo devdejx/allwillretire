@@ -99,10 +99,18 @@ const Hero = () => {
   const handleLearnMoreClick = () => {
     setScrollLocked(false);
     document.body.style.overflow = '';
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: 'smooth'
-    });
+    
+    // Scroll to the financial freedom title
+    const financialFreedomTitle = document.getElementById('financial-freedom-title');
+    if (financialFreedomTitle) {
+      financialFreedomTitle.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Fallback if element not found
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: 'smooth'
+      });
+    }
 
     // Start playing music when button is clicked
     if (audioRef.current && !isPlaying) {

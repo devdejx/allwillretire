@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Coins, Shield, TrendingUp, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -78,7 +79,7 @@ const About = () => {
                 About AllWillRetire
               </span>
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
+            <h2 id="financial-freedom-title" className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
               A New Era of <span className="text-gold-500">Financial Freedom</span>
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -233,4 +234,3 @@ const About = () => {
 };
 
 export default About;
-
