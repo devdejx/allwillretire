@@ -103,15 +103,13 @@ const Index = () => {
               />
             </AspectRatio>
           </div>
-          
-          {/* Bottom border removed to prevent space between image and features */}
         </div>
       </section>
       
-      {/* First Features Section - No top margin and no bottom padding to connect with images */}
+      {/* First Features Section - No space above or below */}
       <Features isFirstFeature={true} noBottomPadding={true} />
       
-      {/* DUPLICATED SECTION - Second Community Image with Borders - Remove the -mt-16 since we're placing it right after features */}
+      {/* Second Community Image - Directly adjacent to first Features */}
       <section className="w-full mt-0 mb-0">
         {/* Container with top border */}
         <div className="relative w-full">
@@ -132,7 +130,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* DUPLICATED SECTION - Second Features Component - Adjusted to remove space above */}
+      {/* Second Features Component - Directly adjacent to second image */}
       <Features isSecondFeature={true} />
       
       <Testimonials />

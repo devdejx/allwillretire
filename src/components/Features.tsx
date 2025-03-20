@@ -47,7 +47,7 @@ const Features = ({ isSecondFeature = false, isFirstFeature = false, noBottomPad
     <section 
       ref={sectionRef} 
       id="features" 
-      className={`pt-0 text-white relative ${isFirstFeature ? "mt-0" : isSecondFeature ? "mt-0" : "-mt-12"} ${noBottomPadding ? "pb-0" : "pb-4"}`}
+      className={`pt-0 text-white relative ${isFirstFeature ? "mt-0" : isSecondFeature ? "mt-0" : "-mt-12"} ${noBottomPadding ? "pb-0" : "pb-4"} -mb-2`}
     >
       {/* Dark overlay background */}
       <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
