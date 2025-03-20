@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -284,7 +285,7 @@ const Index = () => {
                       </button>
                     </div>
                     
-                    <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up" style={{
+                    <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up mb-12" style={{
                       animationDelay: '0.8s'
                     }}>
                       <div className="flex flex-col items-center">

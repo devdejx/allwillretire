@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
@@ -145,7 +146,7 @@ const Hero = () => {
       <section className={`relative min-h-screen flex items-center ${isMobile ? 'pt-36' : 'pt-20'} overflow-hidden z-10`}>
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-            {/* Povečal višino praznega prostora na začetku za mobilne naprave */}
+            {/* Empty space at top */}
             <div className={`${isMobile ? 'h-48' : 'h-14'} mb-2`}></div>
             
             <h1 className={`${isMobile ? 'text-3xl leading-snug mt-48' : 'text-4xl md:text-6xl lg:text-7xl leading-tight'} mb-6 animate-fade-up tracking-tight`} style={{
@@ -169,7 +170,7 @@ const Hero = () => {
                 : 'AllWillRetire is more than a cryptocurrency — it\'s a promise of financial independence and a future filled with opulence and comfort.'}
             </p>
             
-            <div className={`flex flex-col sm:flex-row gap-4 ${isMobile ? 'mb-10' : 'mb-16'} animate-fade-up`} style={{
+            <div className={`flex flex-col sm:flex-row gap-4 ${isMobile ? 'mb-6' : 'mb-16'} animate-fade-up`} style={{
               animationDelay: '0.6s'
             }}>
               <button 
@@ -182,7 +183,7 @@ const Hero = () => {
               </button>
             </div>
             
-            <div className={`flex justify-center items-center ${isMobile ? 'gap-4' : 'gap-6 md:gap-12'} animate-fade-up`} style={{
+            <div className={`flex justify-center items-center ${isMobile ? 'gap-4 mb-12' : 'gap-6 md:gap-12'} animate-fade-up`} style={{
               animationDelay: '0.8s'
             }}>
               <div className="flex flex-col items-center">
