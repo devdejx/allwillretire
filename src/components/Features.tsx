@@ -60,8 +60,8 @@ const Features = () => {
           <p className="text-lg text-gray-300 mb-3">*Is a family that provides emotional utility around being accepted for who you are regardless of our differences, the ability to self-express your feelings/views to the world, and have a global community to identify with based on the underlying message that everyone deserves financial security</p>
         </div>
         
-        {/* Enhanced scroll indicator with animation - made slightly smaller */}
-        <div className="flex justify-center items-center my-6 z-20">
+        {/* Enhanced scroll indicator with animation - moved up by reducing margin-top */}
+        <div className="flex justify-center items-center my-2 z-20">
           <div ref={scrollIndicatorRef} className="flex flex-col items-center gap-2 transition-transform">
             <div className="text-gold-400 text-sm tracking-widest uppercase font-artistic animate-pulse">Scroll for more</div>
             <div className="w-12 h-12 flex justify-center items-center relative">
