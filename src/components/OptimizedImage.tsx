@@ -29,28 +29,39 @@ const OptimizedImage = ({
 }: OptimizedImageProps) => {
   const [isLoading, setIsLoading] = useState(!priority);
   const [error, setError] = useState(false);
-  const [imageSrc, setImageSrc] = useState(priority ? src : (lazyLoad ? fallbackSrc : src));
+  const [imageSrc, setImageSrc] = useState(priority ? src : (lazyLoad ? "" : src));
+  const [imageLoaded, setImageLoaded] = useState(priority);
+  const uniqueId = `img-${src.replace(/[^a-zA-Z0-9]/g, '')}`;
   
-  // Set up intersection observer for lazy loading
+  // Preload images in memory before displaying
   useEffect(() => {
+    // Priority images are loaded immediately
     if (priority) {
       setImageSrc(src);
       setIsLoading(false);
+      setImageLoaded(true);
       return;
     }
     
+    // For lazy-loaded images, use IntersectionObserver
     if (lazyLoad) {
-      const imgElement = document.createElement('img');
+      const imgRef = document.getElementById(uniqueId);
       
-      // Set up intersection observer for viewport detection
       const observer = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
+          // Create an image in memory to preload
+          const imgElement = new Image();
           imgElement.src = src;
+          
+          // Once the image is loaded, update state
           imgElement.onload = () => {
             setImageSrc(src);
             setIsLoading(false);
+            setImageLoaded(true);
             observer.disconnect();
           };
+          
+          // Handle error case
           imgElement.onerror = () => {
             setError(true);
             setIsLoading(false);
@@ -60,18 +71,22 @@ const OptimizedImage = ({
             observer.disconnect();
           };
         }
-      }, { rootMargin: '200px 0px' }); // Start loading when within 200px of viewport
+      }, { rootMargin: '200px 0px' }); // Start loading 200px before entering viewport
       
-      const imgRef = document.getElementById(`img-${src.replace(/[^a-zA-Z0-9]/g, '')}`);
       if (imgRef) observer.observe(imgRef);
       
       return () => observer.disconnect();
     } else {
-      setImageSrc(src);
-      
+      // For non-lazy images, load right away but still preload
       const img = new Image();
       img.src = src;
-      img.onload = () => setIsLoading(false);
+      
+      img.onload = () => {
+        setImageSrc(src);
+        setIsLoading(false);
+        setImageLoaded(true);
+      };
+      
       img.onerror = () => {
         setError(true);
         setIsLoading(false);
@@ -80,13 +95,13 @@ const OptimizedImage = ({
         }
       };
     }
-  }, [src, lazyLoad, fallbackSrc, priority]);
+  }, [src, lazyLoad, fallbackSrc, priority, uniqueId]);
 
   return (
     <div 
       className={cn("relative overflow-hidden", className)} 
       style={{ width, height }}
-      id={`img-${src.replace(/[^a-zA-Z0-9]/g, '')}`}
+      id={uniqueId}
     >
       {isLoading && (
         <Skeleton 
@@ -95,29 +110,34 @@ const OptimizedImage = ({
         />
       )}
       
-      <img
-        src={error && src !== fallbackSrc ? fallbackSrc : imageSrc}
-        alt={alt}
-        width={width}
-        height={height}
-        className={cn(
-          "w-full h-full object-cover transition-all", 
-          isLoading ? "opacity-0 scale-110" : "opacity-100 scale-100",
-          blur && !isLoading ? "blur-none" : blur ? "blur-sm" : "",
-          className
-        )}
-        onLoad={() => setIsLoading(false)}
-        onError={() => {
-          setError(true);
-          setIsLoading(false);
-          if (src !== fallbackSrc) {
-            setImageSrc(fallbackSrc);
-          }
-        }}
-        loading={priority ? "eager" : (lazyLoad ? "lazy" : undefined)}
-        decoding={priority ? "sync" : "async"}
-        {...props}
-      />
+      {(imageLoaded || error || !lazyLoad) && (
+        <img
+          src={error && src !== fallbackSrc ? fallbackSrc : imageSrc}
+          alt={alt}
+          width={width}
+          height={height}
+          className={cn(
+            "w-full h-full object-cover transition-opacity duration-300", 
+            !imageLoaded && lazyLoad ? "opacity-0" : "opacity-100",
+            blur && !isLoading ? "blur-none" : blur ? "blur-sm" : "",
+            className
+          )}
+          onLoad={() => {
+            setIsLoading(false);
+            setImageLoaded(true);
+          }}
+          onError={() => {
+            setError(true);
+            setIsLoading(false);
+            if (src !== fallbackSrc) {
+              setImageSrc(fallbackSrc);
+            }
+          }}
+          loading={priority ? "eager" : (lazyLoad ? "lazy" : undefined)}
+          decoding={priority ? "sync" : "async"}
+          {...props}
+        />
+      )}
     </div>
   );
 };
