@@ -259,21 +259,31 @@ const Index = () => {
                     <div className={`flex flex-col sm:flex-row gap-4 ${isMobile ? 'mb-6' : 'mb-8'} animate-fade-up`} style={{
                       animationDelay: '0.6s'
                     }}>
-                      <Button 
-                        className="bg-gold-500 hover:bg-gold-600 text-black px-8 py-6 rounded-xl font-bold shadow-lg"
+                      <button 
+                        className="relative bg-gradient-to-r from-transparent via-gold-500 to-transparent backdrop-blur text-black px-8 py-4 rounded-xl font-bold shadow-lg transition-all duration-300 hover:scale-105 overflow-hidden group"
                         onClick={handleLearnMoreClick}
                       >
-                        Tap for More
-                      </Button>
+                        <span className="relative z-10">Tap for More</span>
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                        <span className="absolute -inset-0.5 bg-gold-400/30 blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></span>
+                      </button>
                     </div>
                     
                     <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up mb-12" style={{
                       animationDelay: '0.8s'
                     }}>
-                      {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500">
+                      <div className="flex flex-col items-center">
+                        {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500">
                             {marketData.marketCap}
                           </span>}
                         <span className="text-sm text-gold-400 font-medium">Market Cap</span>
+                      </div>
+                      <div className="w-px h-12 bg-white/10"></div>
+                      <div className="flex flex-col items-center">
+                        {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500">
+                            {marketData.holders}
+                          </span>}
+                        <span className="text-sm text-gold-400 font-medium">Holders</span>
                       </div>
                     </div>
                   </div>
