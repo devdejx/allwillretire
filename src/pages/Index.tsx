@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -243,11 +244,10 @@ const Index = () => {
                 priority={true} 
               />
               
-              <div className="absolute inset-0 bg-black/50 z-[5]"></div>
-              
               <div className="absolute inset-0 flex items-center justify-center z-10">
                 <div className="container mx-auto px-6 text-center">
                   <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+                    {/* Povečal vertikalni odmik besedila na mobilnih napravah */}
                     <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight text-white" style={{
                       animationDelay: '0.2s',
                       letterSpacing: '-0.015em',
@@ -288,15 +288,19 @@ const Index = () => {
                     <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up mb-12" style={{
                       animationDelay: '0.8s'
                     }}>
-                      {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500">
+                      <div className="flex flex-col items-center">
+                        {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500">
                             {marketData.marketCap}
                           </span>}
                         <span className="text-sm text-gold-400 font-medium">Market Cap</span>
+                      </div>
                       <div className="w-px h-12 bg-white/10"></div>
-                      {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500">
+                      <div className="flex flex-col items-center">
+                        {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500">
                             {marketData.holders}
                           </span>}
                         <span className="text-sm text-gold-400 font-medium">Holders</span>
+                      </div>
                     </div>
                   </div>
                 </div>
