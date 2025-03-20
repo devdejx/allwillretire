@@ -132,8 +132,8 @@ const Index = () => {
           <div className="md:hidden w-full">
             <AspectRatio ratio={16 / 9} className="w-full">
               <OptimizedImage 
-                src="/lovable-uploads/4f24766a-a232-41b2-8cb0-5504af1e57e4.png" 
-                alt="All Will Retire Community" 
+                src="/lovable-uploads/65553cc3-bc4a-4c17-a4be-a62faadb689e.png" 
+                alt="Luxury Beach Lifestyle" 
                 className="w-full h-full object-cover" 
                 priority={false} 
               />
@@ -143,8 +143,8 @@ const Index = () => {
           {/* Desktop image */}
           <div className="hidden md:block w-full">
             <OptimizedImage 
-              src="/lovable-uploads/4f24766a-a232-41b2-8cb0-5504af1e57e4.png" 
-              alt="All Will Retire Community" 
+              src="/lovable-uploads/65553cc3-bc4a-4c17-a4be-a62faadb689e.png" 
+              alt="Luxury Beach Lifestyle" 
               className="w-full h-auto object-contain" 
               priority={false} 
             />
