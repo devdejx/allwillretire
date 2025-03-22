@@ -276,7 +276,7 @@ const Index = () => {
                       marginTop: isMobile ? '180px' : '0'
                     }}>
                       <span ref={secureRef} className="relative font-artistic font-semibold inline-block transition-transform duration-1000">
-                        {isMobile ? 'Secure' : 'Secure Your'}
+                        {isMobile ? 'Building' : 'BUILDING YOUR'}
                       </span>
                       {isMobile && <br />}
                       {!isMobile && ' '}
@@ -420,3 +420,4 @@ const Index = () => {
 };
 
 export default Index;
+
