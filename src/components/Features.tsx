@@ -1,13 +1,16 @@
+
 import React, { useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import OptimizedImage from './OptimizedImage';
 import { AspectRatio } from './ui/aspect-ratio';
+
 interface FeaturesProps {
   isSecondFeature?: boolean;
   isFirstFeature?: boolean;
   noBottomPadding?: boolean;
 }
+
 const Features = ({
   isSecondFeature = false,
   isFirstFeature = false,
@@ -43,6 +46,7 @@ const Features = ({
       cancelAnimationFrame(animationId);
     };
   }, []);
+
   return <section ref={sectionRef} id="features" className={`pt-0 text-white relative ${isFirstFeature ? "mt-0" : isSecondFeature ? "mt-0" : "-mt-12"} ${noBottomPadding ? "pb-0" : "pb-4"} -mb-2`}>
       {/* Dark overlay background */}
       <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
@@ -56,13 +60,13 @@ const Features = ({
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4">
-            What Makes <span className="text-gold-500">AllWillRetire</span> Special
+            What Makes <span className="text-gold-500">All Will Retire</span> Special
           </h2>
           <p className="text-lg text-gray-300 mb-3">*Decentralizes responsibility of growth for AWR and financial security of the individual — everyone is the dev of AWR and their own financial security</p>
           
           <p className="text-lg text-gray-300 mb-3">*Makes its community members highly visible — we don't hide behind profile pictures or reduce ourselves to the sum of our social media timelines</p>
           
-          <p className="text-lg text-gray-300 mb-3">*Is a family that provides emotional utility around being accepted for who you are regardless of our differences, the ability to self-express your feelings/views to the world, and have a global community to identify with based on the underlying message that everyone deserves financial security</p>
+          <p className="text-lg text-gray-300 mb-3">All Will Retire is a global movement that seeks to empower individuals to build a financial future that rewards them as they best see fit with a family of individuals around the world that will support them on this journey. Whether you are interested in having the ability to pay off debt, pay for schooling, take the vacation of your dreams, live more opulently, or retire, All Will Retire is meant to fit you and offer you hope for your future.</p>
         </div>
         
         {/* Enhanced scroll indicator with animation - even smaller size */}
@@ -79,4 +83,5 @@ const Features = ({
       </div>
     </section>;
 };
+
 export default Features;
