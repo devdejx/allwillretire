@@ -3,14 +3,16 @@ import { ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import OptimizedImage from './OptimizedImage';
 import { AspectRatio } from './ui/aspect-ratio';
-
 interface FeaturesProps {
   isSecondFeature?: boolean;
   isFirstFeature?: boolean;
   noBottomPadding?: boolean;
 }
-
-const Features = ({ isSecondFeature = false, isFirstFeature = false, noBottomPadding = false }: FeaturesProps) => {
+const Features = ({
+  isSecondFeature = false,
+  isFirstFeature = false,
+  noBottomPadding = false
+}: FeaturesProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
@@ -41,13 +43,7 @@ const Features = ({ isSecondFeature = false, isFirstFeature = false, noBottomPad
       cancelAnimationFrame(animationId);
     };
   }, []);
-
-  return (
-    <section 
-      ref={sectionRef} 
-      id="features" 
-      className={`pt-0 text-white relative ${isFirstFeature ? "mt-0" : isSecondFeature ? "mt-0" : "-mt-12"} ${noBottomPadding ? "pb-0" : "pb-4"} -mb-2`}
-    >
+  return <section ref={sectionRef} id="features" className={`pt-0 text-white relative ${isFirstFeature ? "mt-0" : isSecondFeature ? "mt-0" : "-mt-12"} ${noBottomPadding ? "pb-0" : "pb-4"} -mb-2`}>
       {/* Dark overlay background */}
       <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
       
@@ -72,7 +68,7 @@ const Features = ({ isSecondFeature = false, isFirstFeature = false, noBottomPad
         {/* Enhanced scroll indicator with animation - even smaller size */}
         <div className="flex justify-center items-center my-1 z-20">
           <div ref={scrollIndicatorRef} className="flex flex-col items-center gap-0.5 transition-transform scale-75">
-            <div className="text-gold-400 text-[10px] tracking-widest uppercase font-artistic animate-pulse">Scroll</div>
+            <div className="text-gold-400 text-[10px] tracking-widest uppercase font-artistic animate-pulse">BECOME PART OF</div>
             <div className="w-6 h-6 flex justify-center items-center relative">
               <div className="relative z-10 animate-bounce">
                 <ChevronDown className="w-3 h-3 text-gold-500" strokeWidth={1.5} />
@@ -81,8 +77,6 @@ const Features = ({ isSecondFeature = false, isFirstFeature = false, noBottomPad
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Features;
