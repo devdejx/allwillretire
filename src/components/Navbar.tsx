@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -29,7 +30,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a href="#" className="relative text-2xl font-display font-bold flex items-center">
           <img src="/lovable-uploads/9736f09c-0f57-4e9f-86de-eb5f875fad9b.png" alt="AWR Lifestyle" className="mr-2 h-12 w-auto" />
-          <span className="relative z-10">All Will Retire</span>
+          <span className="relative z-10 -ml-3">All Will Retire</span>
           <span className="absolute -bottom-1 left-9 right-0 h-[6px] bg-gold-500/20 rounded-full shadow-[0_0_5px_1px_rgba(255,195,0,0.3)]"></span>
         </a>
         
