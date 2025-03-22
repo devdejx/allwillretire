@@ -289,8 +289,8 @@ const Index = () => {
                       textShadow: '0 1px 3px rgba(0,0,0,0.7)'
                     }}>
                       {isMobile 
-                        ? 'AllWillRetire: your believe of financial independence and a future of opulence.' 
-                        : 'AllWillRetire is more than a cryptocurrency — it\'s a believe of financial independence and a future filled with opulence and comfort.'}
+                        ? 'All Will Retire: your believe of financial independence and a future of opulence.' 
+                        : 'All Will Retire is more than a cryptocurrency — it\'s a believe of financial independence and a future filled with opulence and comfort.'}
                     </p>
                     
                     <div className={`flex flex-col sm:flex-row gap-4 ${isMobile ? 'mb-6' : 'mb-8'} animate-fade-up`} style={{
@@ -420,4 +420,3 @@ const Index = () => {
 };
 
 export default Index;
-
