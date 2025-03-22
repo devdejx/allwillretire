@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -13,6 +12,7 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Music, ShoppingBag } from 'lucide-react';
+import Glitter from '@/components/Glitter';
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -31,6 +31,7 @@ const Index = () => {
   const [scrollLocked, setScrollLocked] = useState(false);
   const [showOrbit, setShowOrbit] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [showGlitter, setShowGlitter] = useState(false);
   const [marketData, setMarketData] = useState({
     marketCap: '$1.8B+',
     holders: '4,400+'
@@ -194,6 +195,7 @@ const Index = () => {
         }
       }
       setIsPlaying(true);
+      setShowGlitter(true);
     }
   };
 
@@ -201,6 +203,8 @@ const Index = () => {
       <Navbar />
       
       <iframe ref={audioRef} className="hidden" width="0" height="0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen title="Background Music"></iframe>
+      
+      <Glitter isActive={showGlitter} onComplete={() => setShowGlitter(false)} />
       
       <div className={`fixed inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-1000 ${showOrbit ? 'opacity-100' : 'opacity-0'}`}>
         <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-gold-200/10 rounded-full blur-3xl" />
@@ -392,3 +396,4 @@ const Index = () => {
 };
 
 export default Index;
+
