@@ -1,16 +1,13 @@
-
 import React, { useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import OptimizedImage from './OptimizedImage';
 import { AspectRatio } from './ui/aspect-ratio';
-
 interface FeaturesProps {
   isSecondFeature?: boolean;
   isFirstFeature?: boolean;
   noBottomPadding?: boolean;
 }
-
 const Features = ({
   isSecondFeature = false,
   isFirstFeature = false,
@@ -46,7 +43,6 @@ const Features = ({
       cancelAnimationFrame(animationId);
     };
   }, []);
-
   return <section ref={sectionRef} id="features" className={`pt-0 text-white relative ${isFirstFeature ? "mt-0" : isSecondFeature ? "mt-0" : "-mt-12"} ${noBottomPadding ? "pb-0" : "pb-4"} -mb-2`}>
       {/* Dark overlay background */}
       <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
@@ -66,7 +62,7 @@ const Features = ({
           
           <p className="text-lg text-gray-300 mb-3">*Makes its community members highly visible — we don't hide behind profile pictures or reduce ourselves to the sum of our social media timelines</p>
           
-          <p className="text-lg text-gray-300 mb-3">All Will Retire is a global movement that seeks to empower individuals to build a financial future that rewards them as they best see fit with a family of individuals around the world that will support them on this journey. Whether you are interested in having the ability to pay off debt, pay for schooling, take the vacation of your dreams, live more opulently, or retire, All Will Retire is meant to fit you and offer you hope for your future.</p>
+          <p className="text-lg text-gray-300 mb-3">*All Will Retire is a global movement that seeks to empower individuals to build a financial future that rewards them as they best see fit with a family of individuals around the world that will support them on this journey. Whether you are interested in having the ability to pay off debt, pay for schooling, take the vacation of your dreams, live more opulently, or retire, All Will Retire is meant to fit you and offer you hope for your future.</p>
         </div>
         
         {/* Enhanced scroll indicator with animation - even smaller size */}
@@ -83,5 +79,4 @@ const Features = ({
       </div>
     </section>;
 };
-
 export default Features;
