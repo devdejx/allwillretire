@@ -13,8 +13,6 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Music, ShoppingBag } from 'lucide-react';
 import Glitter from '@/components/Glitter';
-import { Progress } from '@/components/ui/progress';
-import MuteButton from '@/components/MuteButton';
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -39,8 +37,6 @@ const Index = () => {
     holders: '4,400+'
   });
   const [isLoading, setIsLoading] = useState(true);
-  const [volume, setVolume] = useState(0);
-  const [showVolumeProgress, setShowVolumeProgress] = useState(false);
 
   useEffect(() => {
     if (scrollLocked) {
@@ -190,54 +186,25 @@ const Index = () => {
 
   const handleLearnMoreClick = () => {
     if (audioRef.current && !isPlaying) {
-      setVolume(0);
-      setShowVolumeProgress(true);
-      
       if (audioRef.current.src === '') {
         audioRef.current.src = 'https://www.youtube.com/embed/AKDLoUSaPV8?autoplay=1&enablejsapi=1';
       } else {
         const contentWindow = audioRef.current.contentWindow;
         if (contentWindow) {
           contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-          contentWindow.postMessage('{"event":"command","func":"setVolume","args":[0]}', '*');
         }
       }
       setIsPlaying(true);
       setShowGlitter(true);
-      
-      let currentVolume = 0;
-      const volumeInterval = setInterval(() => {
-        currentVolume += 5;
-        setVolume(currentVolume);
-        
-        if (audioRef.current && audioRef.current.contentWindow) {
-          audioRef.current.contentWindow.postMessage(`{"event":"command","func":"setVolume","args":[${currentVolume}]}`, '*');
-        }
-        
-        if (currentVolume >= 100) {
-          clearInterval(volumeInterval);
-          setTimeout(() => {
-            setShowVolumeProgress(false);
-          }, 1000);
-        }
-      }, 250);
     }
   };
 
   return <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      <MuteButton />
       
       <iframe ref={audioRef} className="hidden" width="0" height="0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen title="Background Music"></iframe>
       
       <Glitter isActive={showGlitter} onComplete={() => setShowGlitter(false)} />
-      
-      {showVolumeProgress && (
-        <div className="fixed bottom-20 left-1/2 transform -translate-x-1/2 w-64 bg-black/80 p-3 rounded-lg z-50 flex flex-col items-center gap-2 animate-fade-in">
-          <Progress value={volume} className="h-2 w-full bg-gray-700" />
-          <span className="text-xs text-gold-500">Volume: {volume}%</span>
-        </div>
-      )}
       
       <div className={`fixed inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-1000 ${showOrbit ? 'opacity-100' : 'opacity-0'}`}>
         <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-gold-200/10 rounded-full blur-3xl" />
@@ -310,7 +277,7 @@ const Index = () => {
                         onClick={handleLearnMoreClick}
                       >
                         <span className="relative z-10 flex items-center gap-2">
-                          Tap
+                          Tap for Music <Music size={16} className="text-black" />
                         </span>
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
                         <span className="absolute -inset-0.5 bg-gold-400/30 blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></span>
@@ -320,15 +287,19 @@ const Index = () => {
                     <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up mb-12" style={{
                       animationDelay: '0.8s'
                     }}>
-                      {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500">
+                      <div className="flex flex-col items-center">
+                        {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500">
                             {marketData.marketCap}
                           </span>}
                         <span className="text-sm text-gold-400 font-medium">Market Cap</span>
+                      </div>
                       <div className="w-px h-12 bg-white/10"></div>
-                      {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500">
+                      <div className="flex flex-col items-center">
+                        {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500">
                             {marketData.holders}
                           </span>}
                         <span className="text-sm text-gold-400 font-medium">Holders</span>
+                      </div>
                     </div>
                   </div>
                 </div>
