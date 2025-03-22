@@ -288,7 +288,9 @@ const Index = () => {
                       animationDelay: '0.4s',
                       textShadow: '0 1px 3px rgba(0,0,0,0.7)'
                     }}>
-                      All Will Retire is a global movement that seeks to empower individuals to build a financial future that rewards them as they best see fit with a family of individuals around the world that will support them on this journey. Whether you are interested in having the ability to pay off debt, pay for schooling, take the vacation of your dreams, live more opulently, or retire, All Will Retire is meant to fit you and offer you hope for your future.
+                      {isMobile 
+                        ? 'AllWillRetire: your believe of financial independence and a future of opulence.' 
+                        : 'AllWillRetire is more than a cryptocurrency — it\'s a believe of financial independence and a future filled with opulence and comfort.'}
                     </p>
                     
                     <div className={`flex flex-col sm:flex-row gap-4 ${isMobile ? 'mb-6' : 'mb-8'} animate-fade-up`} style={{
@@ -418,3 +420,4 @@ const Index = () => {
 };
 
 export default Index;
+
