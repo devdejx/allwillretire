@@ -183,11 +183,6 @@ const Index = () => {
   };
 
   const handleLearnMoreClick = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: 'smooth'
-    });
-
     if (audioRef.current && !isPlaying) {
       if (audioRef.current.src === '') {
         audioRef.current.src = 'https://www.youtube.com/embed/AKDLoUSaPV8?autoplay=1&enablejsapi=1';
