@@ -1,12 +1,11 @@
-
 import React from 'react';
 import { Copy, Check } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
-
 const Cta = () => {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [copied, setCopied] = React.useState(false);
-  
   const handleCopy = () => {
     const textToCopy = "Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump";
     navigator.clipboard.writeText(textToCopy).then(() => {
@@ -26,18 +25,20 @@ const Cta = () => {
       });
     });
   };
-  
   return <>
       <section className="py-24 relative overflow-hidden bg-black/70">
         <div className="absolute inset-0 z-20">
-          <div style={{padding:'177.78% 0 0 0', position:'relative'}}>
-            <iframe 
-              src="https://player.vimeo.com/video/1065939107?h=96cbb5c847&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1" 
-              frameBorder="0" 
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}} 
-              title="AWR Background Video"
-            ></iframe>
+          <div style={{
+          padding: '177.78% 0 0 0',
+          position: 'relative'
+        }}>
+            <iframe src="https://player.vimeo.com/video/1065939107?h=96cbb5c847&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%'
+          }} title="AWR Background Video"></iframe>
           </div>
         </div>
         
@@ -72,7 +73,7 @@ const Cta = () => {
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
               <button className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur border border-gold-300/50 text-black px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 group overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
-                <span className="relative z-10">View Whitepaper</span>
+                <span className="relative z-10">View Telegram Group</span>
               </button>
             </div>
           </div>
@@ -81,14 +82,17 @@ const Cta = () => {
 
       <section className="py-24 relative overflow-hidden bg-black/70">
         <div className="absolute inset-0 z-20">
-          <div style={{padding:'177.78% 0 0 0', position:'relative'}}>
-            <iframe 
-              src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1" 
-              frameBorder="0" 
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}} 
-              title="AWR Background Video 2"
-            ></iframe>
+          <div style={{
+          padding: '177.78% 0 0 0',
+          position: 'relative'
+        }}>
+            <iframe src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%'
+          }} title="AWR Background Video 2"></iframe>
           </div>
         </div>
         
@@ -130,14 +134,17 @@ const Cta = () => {
 
       <section className="py-24 relative overflow-hidden bg-black/70">
         <div className="absolute inset-0 z-20">
-          <div style={{padding:'177.78% 0 0 0', position:'relative'}}>
-            <iframe 
-              src="https://player.vimeo.com/video/1065940999?h=4705f6f507&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1" 
-              frameBorder="0" 
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-              style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}} 
-              title="AWR Background Video 3"
-            ></iframe>
+          <div style={{
+          padding: '177.78% 0 0 0',
+          position: 'relative'
+        }}>
+            <iframe src="https://player.vimeo.com/video/1065940999?h=4705f6f507&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%'
+          }} title="AWR Background Video 3"></iframe>
           </div>
         </div>
         
@@ -185,5 +192,4 @@ const Cta = () => {
       </section>
     </>;
 };
-
 export default Cta;
