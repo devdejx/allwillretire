@@ -68,7 +68,8 @@ const Glitter: React.FC<GlitterProps> = ({ isActive, onComplete }) => {
         />
       ))}
       
-      <style jsx>{`
+      <style>
+        {`
         @keyframes glitterFloat {
           0% { transform: translateY(0) rotate(0deg); }
           100% { transform: translateY(-100px) rotate(360deg); }
@@ -79,7 +80,8 @@ const Glitter: React.FC<GlitterProps> = ({ isActive, onComplete }) => {
           10% { opacity: 0.8; }
           100% { opacity: 0; }
         }
-      `}</style>
+        `}
+      </style>
     </div>
   );
 };
