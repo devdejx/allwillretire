@@ -73,7 +73,7 @@ const Cta = () => {
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
               <button className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur border border-gold-300/50 text-black px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 group overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
-                <span className="relative z-10">View Telegram Group</span>
+                <span className="relative z-10">JOIN Telegram Group</span>
               </button>
             </div>
           </div>
