@@ -384,6 +384,69 @@ const Index = () => {
         </div>
       </section>
       
+      <section className="container mx-auto px-4 py-16">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-artistic font-bold">
+            <span className="text-gold-500">Premium</span> Website Design
+          </h2>
+          <p className="mt-4 text-gold-400/80 font-elegant max-w-2xl mx-auto">
+            A glimpse of our premium website design - combining luxury aesthetics with seamless user experience.
+          </p>
+        </div>
+        
+        <div className="relative max-w-5xl mx-auto">
+          <div className="relative rounded-xl overflow-hidden shadow-2xl ring-1 ring-gold-500/30">
+            <div className="bg-gray-900 flex items-center px-4 py-2 border-b border-gold-500/20">
+              <div className="flex space-x-1.5">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <div className="mx-auto bg-gray-800 rounded-full px-4 py-1 text-xs text-gray-400 flex items-center w-64">
+                allwillretire.com
+              </div>
+            </div>
+            
+            <div className="bg-gray-800 aspect-[16/9] rounded-b-xl overflow-hidden">
+              <div className="p-4 relative h-full">
+                <div className="flex justify-between items-center p-2 bg-black/30 backdrop-blur-sm rounded-lg mb-4">
+                  <div className="font-artistic text-gold-500 text-lg font-bold">AWR</div>
+                  <div className="flex gap-4">
+                    <div className="h-2 w-10 bg-gold-500/50 rounded-full"></div>
+                    <div className="h-2 w-10 bg-gold-500/50 rounded-full"></div>
+                    <div className="h-2 w-10 bg-gold-500/50 rounded-full"></div>
+                  </div>
+                </div>
+                
+                <div className="rounded-lg bg-gradient-to-br from-black/50 to-gold-900/20 p-4 h-40 flex flex-col justify-center items-center mb-4">
+                  <div className="h-4 w-32 bg-gold-500/70 rounded-full mb-2"></div>
+                  <div className="h-3 w-48 bg-gold-500/40 rounded-full mb-2"></div>
+                  <div className="h-3 w-40 bg-gold-500/40 rounded-full mb-4"></div>
+                  <div className="h-8 w-24 bg-gold-500/80 rounded-lg"></div>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="rounded-lg bg-gradient-to-br from-black/50 to-gold-900/20 p-3 h-24">
+                    <div className="h-3 w-16 bg-gold-500/70 rounded-full mb-2"></div>
+                    <div className="h-2 w-full bg-gold-500/30 rounded-full mb-1"></div>
+                    <div className="h-2 w-5/6 bg-gold-500/30 rounded-full mb-1"></div>
+                    <div className="h-2 w-4/6 bg-gold-500/30 rounded-full"></div>
+                  </div>
+                  <div className="rounded-lg bg-gradient-to-br from-black/50 to-gold-900/20 p-3 h-24">
+                    <div className="h-3 w-16 bg-gold-500/70 rounded-full mb-2"></div>
+                    <div className="h-2 w-full bg-gold-500/30 rounded-full mb-1"></div>
+                    <div className="h-2 w-5/6 bg-gold-500/30 rounded-full mb-1"></div>
+                    <div className="h-2 w-4/6 bg-gold-500/30 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="absolute -inset-1 bg-gold-500/20 rounded-xl blur-lg -z-10 opacity-70"></div>
+        </div>
+      </section>
+      
       <Testimonials />
       <Cta />
       <Footer />
