@@ -188,10 +188,34 @@ const Index = () => {
     if (audioRef.current && !isPlaying) {
       if (audioRef.current.src === '') {
         audioRef.current.src = 'https://www.youtube.com/embed/AKDLoUSaPV8?autoplay=1&enablejsapi=1';
+        
+        let volume = 0;
+        const volumeInterval = setInterval(() => {
+          volume += 0.05;
+          if (volume >= 1) {
+            volume = 1;
+            clearInterval(volumeInterval);
+          }
+          const contentWindow = audioRef.current?.contentWindow;
+          if (contentWindow) {
+            contentWindow.postMessage(`{"event":"command","func":"setVolume","args":[${Math.round(volume * 100)}]}`, '*');
+          }
+        }, 250);
       } else {
         const contentWindow = audioRef.current.contentWindow;
         if (contentWindow) {
+          contentWindow.postMessage('{"event":"command","func":"setVolume","args":[0]}', '*');
           contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+          
+          let volume = 0;
+          const volumeInterval = setInterval(() => {
+            volume += 0.05;
+            if (volume >= 1) {
+              volume = 1;
+              clearInterval(volumeInterval);
+            }
+            contentWindow.postMessage(`{"event":"command","func":"setVolume","args":[${Math.round(volume * 100)}]}`, '*');
+          }, 250);
         }
       }
       setIsPlaying(true);
@@ -396,4 +420,3 @@ const Index = () => {
 };
 
 export default Index;
-
