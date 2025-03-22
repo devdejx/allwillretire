@@ -384,45 +384,6 @@ const Index = () => {
         </div>
       </section>
       
-      <section className="container mx-auto px-4 py-16">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-artistic font-bold">
-            <span className="text-gold-500">AWR</span> MERCH Shop
-          </h2>
-          <p className="mt-4 text-gold-400/80 font-elegant max-w-2xl mx-auto">
-            Explore our official merchandise collection at AllWillRetire Printful shop.
-          </p>
-        </div>
-        
-        <div className="relative max-w-5xl mx-auto">
-          <div className="relative rounded-xl overflow-hidden shadow-2xl ring-1 ring-gold-500/30">
-            <div className="bg-gray-900 flex items-center px-4 py-2 border-b border-gold-500/20">
-              <div className="flex space-x-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-              </div>
-              <div className="mx-auto bg-gray-800 rounded-full px-4 py-1 text-xs text-gray-400 flex items-center w-64">
-                allwillretire.printful.me
-              </div>
-            </div>
-            
-            <div className="w-full aspect-[16/9] rounded-b-xl overflow-hidden">
-              <iframe 
-                src="https://allwillretire.printful.me/" 
-                title="AWR Merch Shop" 
-                className="w-full h-full border-0"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-              ></iframe>
-            </div>
-          </div>
-          
-          <div className="absolute -inset-1 bg-gold-500/20 rounded-xl blur-lg -z-10 opacity-70"></div>
-        </div>
-      </section>
-      
       <Testimonials />
       <Cta />
       <Footer />
