@@ -1,5 +1,5 @@
 import React from 'react';
-import { Twitter, Instagram, Youtube, Telegram } from 'lucide-react';
+import { Twitter, Instagram, Youtube, MessageCircle } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import TokenInfo from './TokenInfo';
 
@@ -36,7 +36,7 @@ const Footer = () => {
                 <Youtube className="h-5 w-5" />
               </a>
               <a href="https://t.me/AllWillRetire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition">
-                <Telegram className="h-5 w-5" />
+                <MessageCircle className="h-5 w-5" />
               </a>
             </div>
           </div>
