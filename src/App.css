@@ -61,6 +61,8 @@ iframe[src*="vimeo.com"] {
   position: absolute;
   top: 0;
   left: 0;
+  object-fit: cover !important;
+  transform: scale(1.1); /* Slightly scale up to avoid any small gaps at edges */
 }
 
 /* Scrolling animations */
