@@ -175,14 +175,12 @@ const About = () => {
                 <span className="relative z-10">BUY NOW</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
               </a>
-              
-              {/* Removed decorative elements */}
             </div>
 
             <div className="space-y-8">
               <div className="space-y-6">
                 <h3 className="text-2xl font-display font-bold">The Vision</h3>
-                <p className="text-muted-foreground">AllWillRetire was created with a singular vision: to create the biggest retirement movement that ensure anyone, regardless of background, can achieve a luxurious retirement through strategic cryptocurrency investment and believe.</p>
+                <p className="text-muted-foreground">All Will Retire was created with a singular vision: to create the biggest financial movement - globally - to ensure that anyone, regardless of background, can build towards financial security and retire.</p>
               </div>
 
               <div className="space-y-4">
