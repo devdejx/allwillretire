@@ -71,10 +71,7 @@ const Cta = () => {
             <p className="text-gray-300 mb-8 max-w-xl mx-auto text-base">Commit to starting your journey towards prosperity with a declaration. Take a picture of yourself with our famous I Will Retire, We Will Retire, All Will Retire” sign and post it to social media and take our accounts so we can celebrate you!</p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-              <a href="https://t.me/allwillretire" target="_blank" rel="noopener noreferrer" className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur border border-gold-300/50 text-black px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 group overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
-                <span className="relative z-10">JOIN Telegram group</span>
-              </a>
+              
             </div>
           </div>
         </div>
