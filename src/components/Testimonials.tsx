@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Quote, ExternalLink } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -36,7 +37,7 @@ const mediumArticles = [{
   title: "Sustainable Funding Engines",
   publishDate: "September 15, 2023",
   readTime: "7 min read",
-  image: "/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png",
+  image: "https://miro.medium.com/v2/resize:fit:1100/format:webp/0*boTCnDpXyBgSNHQM",
   excerpt: "In this article, we explore the concept of sustainable funding engines and how they can revolutionize blockchain project development. We delve into the mechanics of creating self-sustaining economic models that benefit all participants, discuss the importance of balanced tokenomics, and show how AWR is implementing these principles to ensure long-term viability and success for our community members...",
   url: "https://medium.com/@allwillretire/sustainable-funding-engines-7c8829cf78dc"
 }];
