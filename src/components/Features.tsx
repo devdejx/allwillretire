@@ -19,6 +19,7 @@ const Features = ({
   const sectionRef = useRef<HTMLElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
+  const playerRef = useRef<HTMLIFrameElement>(null);
 
   // Animation effect for scroll indicator
   useEffect(() => {
@@ -48,8 +49,22 @@ const Features = ({
   }, []);
 
   return <section ref={sectionRef} id="features" className={`pt-0 text-white relative ${isFirstFeature ? "mt-0" : isSecondFeature ? "mt-0" : "-mt-12"} ${noBottomPadding ? "pb-0" : "pb-4"} -mb-2`}>
-      {/* Dark overlay background */}
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
+      {/* Video background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+          <iframe 
+            ref={playerRef}
+            src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1" 
+            frameBorder="0" 
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} 
+            title="AWR Background Video"
+          ></iframe>
+        </div>
+      </div>
+      
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
       
       {/* Content */}
       <div className="container mx-auto px-6 relative z-10 pt-12">
