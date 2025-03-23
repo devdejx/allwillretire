@@ -393,7 +393,7 @@ const Index = () => {
 
                   <div className="flex justify-center mt-8">
                     <a 
-                      href="https://allwillretire.printful.me/" 
+                      href="https://store.allwillretire.com/password" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur text-black overflow-hidden group transition-transform duration-300 hover:scale-105 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium h-11 rounded-md px-8"
