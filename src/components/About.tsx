@@ -6,7 +6,6 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import OptimizedImage from './OptimizedImage';
 import { AspectRatio } from './ui/aspect-ratio';
-
 const About = () => {
   const [showCoinOrbit, setShowCoinOrbit] = useState(false);
 
@@ -42,7 +41,6 @@ const About = () => {
     month: 'Oct',
     value: 350
   }];
-
   return <>
       {/* About section - added additional top margin for more space */}
       <section id="about" className="pt-12 pb-0 -mb-16 mt-12 relative overflow-hidden">
@@ -189,7 +187,7 @@ const About = () => {
                     <Shield size={24} className="text-gold-500" />
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-1">Cryptocurrency Based</h4>
+                    <h4 className="font-semibold mb-1">Individual Empowerment</h4>
                     <p className="text-sm text-muted-foreground">Build on a solana network. Right now the biggest, most used and most developed blockchain.</p>
                   </div>
                 </div>
@@ -220,5 +218,4 @@ const About = () => {
       </section>
     </>;
 };
-
 export default About;
