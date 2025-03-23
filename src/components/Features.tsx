@@ -50,13 +50,14 @@ const Features = ({
 
   return <section ref={sectionRef} id="features" className={`pt-0 text-white relative ${isFirstFeature ? "mt-0" : isSecondFeature ? "mt-0" : "-mt-12"} ${noBottomPadding ? "pb-0" : "pb-4"} -mb-2`}>
       {/* Video background */}
-      <div className="absolute inset-0 overflow-hidden video-background">
-        <div className="w-full h-full" style={{ position: 'relative' }}>
+      <div className="absolute inset-0 overflow-hidden">
+        <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
           <iframe 
             ref={playerRef}
-            src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1&amp;quality=1080p" 
+            src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1" 
             frameBorder="0" 
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} 
             title="AWR Background Video"
           ></iframe>
         </div>
@@ -84,6 +85,9 @@ const Features = ({
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4">
             What Makes <span className="text-gold-500">All Will Retire</span> Special
           </h2>
+          
+          
+          
           
           <p className="text-lg text-gray-300 mb-3">*All Will Retire is a global movement that seeks to empower individuals to build a financial future that rewards them as they best see fit with a family of individuals around the world that will support them on this journey. Whether you are interested in having the ability to pay off debt, pay for schooling, take the vacation of your dreams, live more opulently, or retire, All Will Retire is meant to fit you and offer you hope for your future.</p>
         </div>
