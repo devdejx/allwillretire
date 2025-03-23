@@ -79,7 +79,7 @@ const About = () => {
               A New Era of <span className="text-gold-500">Financial Empowerment</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              With the backing of a global family of individuals that share similar financial aspirations, All Will Retire seeks to empower you to secure your financial future.
+              All Will Retire was created with a singular vision: to create the biggest financial movement - globally - to ensure that anyone, regardless of background, can build towards financial security and retire.
             </p>
           </div>
 
