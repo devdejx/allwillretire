@@ -54,13 +54,34 @@ section {
   padding: 0;
 }
 
-/* Ensure video backgrounds fill their containers */
-iframe[src*="vimeo.com"] {
-  width: 100% !important;
-  height: 100% !important;
+/* Video background styling - Improved to ensure full coverage */
+.video-background {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden;
+}
+
+/* Make iframe videos fill their containers and scale appropriately */
+iframe[src*="vimeo.com"] {
+  width: 100vw !important;
+  height: 100vh !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.5); /* Scale up to ensure full coverage */
+  object-fit: cover !important;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* Ensure iframe maintains aspect ratio while covering the area */
+@media (max-width: 768px) {
+  iframe[src*="vimeo.com"] {
+    transform: translate(-50%, -50%) scale(2.0); /* Even larger scale on mobile */
+  }
 }
 
 /* Scrolling animations */
