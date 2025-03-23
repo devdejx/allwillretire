@@ -58,9 +58,9 @@ const Features = ({
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4">
             What Makes <span className="text-gold-500">All Will Retire</span> Special
           </h2>
-          <p className="text-lg text-gray-300 mb-3">*Decentralizes responsibility of growth for AWR and financial security of the individual — everyone is the dev of AWR and their own financial security</p>
           
-          <p className="text-lg text-gray-300 mb-3">*Makes its community members highly visible — we don't hide behind profile pictures or reduce ourselves to the sum of our social media timelines</p>
+          
+          
           
           <p className="text-lg text-gray-300 mb-3">*All Will Retire is a global movement that seeks to empower individuals to build a financial future that rewards them as they best see fit with a family of individuals around the world that will support them on this journey. Whether you are interested in having the ability to pay off debt, pay for schooling, take the vacation of your dreams, live more opulently, or retire, All Will Retire is meant to fit you and offer you hope for your future.</p>
         </div>
