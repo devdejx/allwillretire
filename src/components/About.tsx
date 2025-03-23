@@ -197,7 +197,7 @@ const About = () => {
                     <TrendingUp size={24} className="text-gold-500" />
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-1">Strategic Growth</h4>
+                    <h4 className="font-semibold mb-1">Organic Global Growth</h4>
                     <p className="text-sm text-muted-foreground">Our token is designed to promote sustainable long-term growth and value appreciation.</p>
                   </div>
                 </div>
