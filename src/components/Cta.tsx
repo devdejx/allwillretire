@@ -51,7 +51,7 @@ const Cta = () => {
         <div className="absolute right-0 top-0 bottom-0 w-36 bg-gradient-to-l from-black/95 to-transparent z-30"></div>
         
         <div className="absolute top-10 right-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-20"></div>
-        <div className="absolute bottom-10 left-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-20"></div>
+        <div className="absolute bottom-10 left-10 w-48 h-48 bg-gold-500/25 rounded-full blur-3xl z-20"></div>
         <div className="absolute top-1/3 left-1/4 w-32 h-32 bg-gold-500/10 rounded-full blur-2xl z-20"></div>
         
         <div className="container mx-auto px-6 relative z-40 text-white pt-0">
@@ -102,7 +102,7 @@ const Cta = () => {
         <div className="absolute right-0 top-0 bottom-0 w-36 bg-gradient-to-l from-black/95 to-transparent z-30"></div>
         
         <div className="absolute top-10 right-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-20"></div>
-        <div className="absolute bottom-10 left-10 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl z-20"></div>
+        <div className="absolute bottom-10 left-10 w-48 h-48 bg-gold-500/25 rounded-full blur-3xl z-20"></div>
         <div className="absolute top-1/3 left-1/4 w-32 h-32 bg-gold-500/10 rounded-full blur-2xl z-20"></div>
         
         <div className="container mx-auto px-6 relative z-40 text-white pt-0">
