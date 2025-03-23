@@ -6,10 +6,10 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import OptimizedImage from './OptimizedImage';
 import { AspectRatio } from './ui/aspect-ratio';
+
 const About = () => {
   const [showCoinOrbit, setShowCoinOrbit] = useState(false);
 
-  // Chart data for gold growth simulation with more dramatic profit curve
   const goldGrowthData = [{
     month: 'Jan',
     value: 100
@@ -41,19 +41,16 @@ const About = () => {
     month: 'Oct',
     value: 350
   }];
+
   return <>
-      {/* About section - added additional top margin for more space */}
       <section id="about" className="pt-12 pb-0 -mb-16 mt-12 relative overflow-hidden">
-        {/* Background elements */}
         <div className="absolute top-1/4 -right-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 -left-40 w-80 h-80 bg-gold-200/30 rounded-full blur-3xl" />
 
-        {/* Orbital animation that appears on coin hover */}
         <div className={`fixed inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-1000 ${showCoinOrbit ? 'opacity-100' : 'opacity-0'}`}>
           <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-gold-200/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-gold-300/10 rounded-full blur-3xl" />
           
-          {/* Animated orbit */}
           <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] transition-all duration-1000 ${showCoinOrbit ? 'scale-100' : 'scale-0'}`}>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-gold-500/10 rounded-full" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-gold-500/20 rounded-full" />
@@ -85,13 +82,8 @@ const About = () => {
             <div className="relative flex flex-col items-center" onMouseEnter={() => setShowCoinOrbit(true)} onMouseLeave={() => setShowCoinOrbit(false)}>
               <div className="relative z-10 rounded-full overflow-hidden shadow-2xl aspect-square coin-container w-full mb-8">
                 <div className="coin-face">
-                  {/* Coin exterior */}
                   <div className="absolute inset-0 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full border-8 border-gold-300 shadow-inner"></div>
-                  
-                  {/* Coin shine effect */}
                   <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent rounded-full"></div>
-                  
-                  {/* Coin ridges/serrations */}
                   <div className="absolute inset-0 rounded-full">
                     {Array.from({
                     length: 32
@@ -102,29 +94,19 @@ const About = () => {
                     transformOrigin: 'right center'
                   }}></div>)}
                   </div>
-                  
-                  {/* Coin front with the new AWR LIFESTYLE image */}
                   <div className="absolute inset-[12%] bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center border-4 border-gold-400 shadow-inner coin-front">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <img src="/lovable-uploads/82199989-9426-49c0-b494-3fe93ddaac2a.png" alt="AWR LIFESTYLE" className="w-[65%] h-[65%] object-contain" />
                     </div>
                   </div>
-                  
-                  {/* Coin back side (only visible during flip) with stylized inscription plaque */}
                   <div className="absolute inset-[12%] bg-gradient-to-br from-gold-600 to-gold-800 rounded-full flex flex-col items-center justify-center border-4 border-gold-400 shadow-inner coin-back">
-                    {/* Decorative plaque/sign with inscription - EVEN SMALLER SIZE */}
                     <div className="w-[55%] h-[45%] bg-gradient-to-b from-gold-300 to-gold-400 rounded-lg relative overflow-hidden flex flex-col items-center justify-center px-2 py-1.5">
-                      {/* Plaque shine effect */}
                       <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none"></div>
-                      
-                      {/* Plaque border with decorative rivets/nails */}
                       <div className="absolute inset-0 border-2 border-gold-600/60 rounded-lg pointer-events-none"></div>
                       <div className="absolute top-0.5 left-0.5 w-1 h-1 bg-gold-700 rounded-full shadow-inner"></div>
                       <div className="absolute top-0.5 right-0.5 w-1 h-1 bg-gold-700 rounded-full shadow-inner"></div>
                       <div className="absolute bottom-0.5 left-0.5 w-1 h-1 bg-gold-700 rounded-full shadow-inner"></div>
                       <div className="absolute bottom-0.5 right-0.5 w-1 h-1 bg-gold-700 rounded-full shadow-inner"></div>
-                      
-                      {/* Engraved text with shadow effect - SMALLER TEXT with each phrase on its own line */}
                       <div className="text-center z-10">
                         <div className="font-artistic text-sm mb-0.5 text-gold-800 font-bold tracking-wider flex flex-col" style={{
                         textShadow: "0 0.5px 0 rgba(255,255,255,0.4)"
@@ -140,8 +122,6 @@ const About = () => {
                          Financial Freedom Awaits
                         </div>
                       </div>
-                      
-                      {/* Gold growth chart with more dramatic profit curve */}
                       <div className="mt-1 h-[20px] w-full">
                         <ResponsiveContainer width="100%" height="100%">
                           <AreaChart data={goldGrowthData} margin={{
@@ -162,13 +142,9 @@ const About = () => {
                       </div>
                     </div>
                   </div>
-                  
-                  {/* Reflective shine */}
                   <div className="absolute top-0 left-[5%] right-[40%] h-[20%] bg-white/20 blur-sm rounded-full transform -rotate-12"></div>
                 </div>
               </div>
-              
-              {/* Updated buy button with transparent edges */}
               <a href="https://jup.ag/swap/USDC-Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump" target="_blank" rel="noopener noreferrer" className="relative bg-gradient-to-r from-transparent via-gold-500 to-transparent backdrop-blur text-black font-bold py-2 px-6 rounded-full border border-gold-300/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 inline-block z-20 overflow-hidden group">
                 <span className="relative z-10">BUY NOW</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
@@ -208,7 +184,7 @@ const About = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Community Driven</h4>
-                    <p className="text-sm text-muted-foreground">Project is fully community driven. There is no team behind. It was built from scratch by people who believe in AWR movement.</p>
+                    <p className="text-sm text-muted-foreground">There is no central team behind AWR. Everyone is responsible for the growth of AWR as they best see fit. Never ask for permission. Always be biased towards action. AWR was built from the ground up by passionate family members because it mattered to them - because it was worth it to them.</p>
                   </div>
                 </div>
               </div>
@@ -218,4 +194,5 @@ const About = () => {
       </section>
     </>;
 };
+
 export default About;
