@@ -281,7 +281,7 @@ const Index = () => {
                       {isMobile && <br />}
                       {!isMobile && ' '}
                       <span ref={financialRef} className="text-gold-500 font-artistic font-bold inline-block transition-transform duration-1000" style={{
-                        textShadow: '1px 1px 0 black, -1px -1px 0 black, -1px 1px 0 black, 1px -1px 0 black'
+                        textShadow: '1px 1px 0 #333333, -1px -1px 0 #333333, -1px 1px 0 #333333, 1px -1px 0 #333333'
                       }}>Financial</span>{' '}
                       <span ref={futureRef} className="font-elegant italic font-semibold inline-block transition-transform duration-1000">Future</span>
                     </h1>
@@ -315,7 +315,7 @@ const Index = () => {
                     }}>
                       <div className="flex flex-col items-center">
                         {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500" style={{
-                            textShadow: '1px 1px 0 black, -1px -1px 0 black, -1px 1px 0 black, 1px -1px 0 black'
+                            textShadow: '1px 1px 0 #403E43, -1px -1px 0 #403E43, -1px 1px 0 #403E43, 1px -1px 0 #403E43'
                           }}>
                             {marketData.marketCap}
                           </span>}
@@ -324,7 +324,7 @@ const Index = () => {
                       <div className="w-px h-12 bg-white/10"></div>
                       <div className="flex flex-col items-center">
                         {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500" style={{
-                            textShadow: '1px 1px 0 black, -1px -1px 0 black, -1px 1px 0 black, 1px -1px 0 black'
+                            textShadow: '1px 1px 0 #403E43, -1px -1px 0 #403E43, -1px 1px 0 #403E43, 1px -1px 0 #403E43'
                           }}>
                             {marketData.holders}
                           </span>}
@@ -426,3 +426,4 @@ const Index = () => {
 };
 
 export default Index;
+
