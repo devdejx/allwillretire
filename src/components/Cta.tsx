@@ -68,7 +68,7 @@ const Cta = () => {
               </span>
             </h2>
             
-            <p className="text-gray-300 mb-8 max-w-xl mx-auto text-base">Commit to starting your journey towards prosperity with a declaration. Take a picture of yourself with our famous I Will Retire, We Will Retire, All Will Retire” sign and post it to social media and take our accounts so we can celebrate you!</p>
+            <p className="text-gray-300 mb-8 max-w-xl mx-auto text-sm">Commit to starting your journey towards prosperity with a declaration. Take a picture of yourself with our famous I Will Retire, We Will Retire, All Will Retire” sign and post it to social media and take our accounts so we can celebrate you!</p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
               
