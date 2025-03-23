@@ -198,7 +198,7 @@ const About = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Organic Global Growth</h4>
-                    <p className="text-sm text-muted-foreground">Our token is designed to promote sustainable long-term growth and value appreciation.</p>
+                    <p className="text-sm text-muted-foreground">Growth occurs as a result of our community members humanizing themselves and allowing the world to see their hope and aspirations. They are the best individuals, and already equipped, to spread the message of AWR in their local communities through al</p>
                   </div>
                 </div>
 
