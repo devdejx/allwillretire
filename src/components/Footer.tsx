@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { X, Instagram, ArrowUp, ExternalLink, Youtube, Send, Music } from 'lucide-react';
 import { Button } from './ui/button';
@@ -64,7 +65,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-6">AWR token information</h3>
+            <h3 className="text-base font-medium mb-6 bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 bg-clip-text text-transparent">AWR token information</h3>
             <ul className="space-y-3">
               <li>
                 <a href="https://www.coingecko.com/en/coins/all-will-retire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors block flex items-center">
