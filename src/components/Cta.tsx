@@ -68,7 +68,7 @@ const Cta = () => {
               </span>
             </h2>
             
-            <p className="text-gray-300 mb-8 max-w-xl mx-auto font-normal text-xs">Commit to starting your journey towards prosperity with a declaration. Take a picture of yourself with our famous I Will Retire, We Will Retire, All Will Retire” sign and post it to social media and take our accounts so we can celebrate you!</p>
+            <p className="text-gray-300 mb-8 max-w-xl mx-auto font-normal text-xs">Commit to starting your journey towards prosperity with a declaration. Take a picture of yourself with our famous I Will Retire, We Will Retire, All Will Retire" sign and post it to social media and take our accounts so we can celebrate you!</p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
               
@@ -112,7 +112,7 @@ const Cta = () => {
             </div>
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
-              Secure your
+              In life we need
               <span className="relative ml-2">
                 <span className="relative z-10">Purpose</span>
                 <span className="absolute -bottom-1 left-0 right-0 h-2 bg-gold-500/30 rounded-full"></span>
