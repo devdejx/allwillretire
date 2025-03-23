@@ -32,7 +32,15 @@ const mediumArticles = [{
   image: "/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png",
   excerpt: "Success for AllWillRetire isn't just measured in market cap or token price. In this article, we outline our holistic vision of success that encompasses community growth, technological innovation, real-world impact, and long-term sustainability. We discuss key metrics and milestones that will guide our development and how every member of our community plays a crucial role in achieving these goals...",
   url: "https://medium.com/@allwillretire/what-does-success-look-like-for-awr-a2ed36071a54"
+}, {
+  title: "Sustainable Funding Engines",
+  publishDate: "September 15, 2023",
+  readTime: "7 min read",
+  image: "/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png",
+  excerpt: "In this article, we explore the concept of sustainable funding engines and how they can revolutionize blockchain project development. We delve into the mechanics of creating self-sustaining economic models that benefit all participants, discuss the importance of balanced tokenomics, and show how AWR is implementing these principles to ensure long-term viability and success for our community members...",
+  url: "https://medium.com/@allwillretire/sustainable-funding-engines-7c8829cf78dc"
 }];
+
 const testimonials = [{
   quote: "AllWillRetire has completely transformed my investment portfolio. In just six months, I've seen returns I never thought possible.",
   author: "Alexander Morgan",
@@ -49,6 +57,7 @@ const testimonials = [{
   title: "Tech Entrepreneur",
   avatar: "https://images.unsplash.com/photo-1566753323558-f4e0952af115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2021&q=80"
 }];
+
 const Testimonials = () => {
   const [current, setCurrent] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
