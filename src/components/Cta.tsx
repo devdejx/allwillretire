@@ -112,14 +112,14 @@ const Cta = () => {
             </div>
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
-              Secure your 
+              In life we need 
               <span className="relative ml-2">
                 <span className="relative z-10">Future</span>
                 <span className="absolute -bottom-1 left-0 right-0 h-2 bg-gold-500/30 rounded-full"></span>
               </span>
             </h2>
             
-            <p className="mb-8 max-w-xl mx-auto text-xs text-gray-50">Financial freedom isn’t about having money, it’s about living life by your own design. Start planning now how you will live with purpose.</p>
+            <p className="mb-8 max-w-xl mx-auto text-xs text-gray-50">Financial freedom isn't about having money, it's about living life by your own design. Start planning now how you will live with purpose.</p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10 min-h-[48px]">
             </div>
