@@ -162,7 +162,7 @@ const Cta = () => {
             </div>
             
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-4 mt-12">
-              In life we need 
+              Secure your
               <span className="relative ml-2">
                 <span className="relative z-10">Future</span>
                 <span className="absolute -bottom-1 left-0 right-0 h-2 bg-gold-500/30 rounded-full"></span>
