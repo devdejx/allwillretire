@@ -188,7 +188,7 @@ const About = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Individual Empowerment</h4>
-                    <p className="text-sm text-muted-foreground">Build on a solana network. Right now the biggest, most used and most developed blockchain.</p>
+                    <p className="text-sm text-muted-foreground">Be seen for who you are and advocate for what financial security means for you. AWR is meant to fit your life as you best see fit.</p>
                   </div>
                 </div>
 
