@@ -119,9 +119,7 @@ const Cta = () => {
               </span>
             </h2>
             
-            <p className="text-gray-300 mb-8 max-w-xl mx-auto text-xs">
-              Financial freedom is not about having money, its about having choices.
-            </p>
+            <p className="mb-8 max-w-xl mx-auto text-xs text-gray-50">Financial freedom isn’t about having money, it’s about living life by your own design. Start planning now how you will live with purpose.</p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10 min-h-[48px]">
             </div>
