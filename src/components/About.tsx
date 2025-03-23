@@ -6,6 +6,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import OptimizedImage from './OptimizedImage';
 import { AspectRatio } from './ui/aspect-ratio';
+
 const About = () => {
   const [showCoinOrbit, setShowCoinOrbit] = useState(false);
 
@@ -41,6 +42,7 @@ const About = () => {
     month: 'Oct',
     value: 350
   }];
+
   return <>
       {/* About section - added additional top margin for more space */}
       <section id="about" className="pt-12 pb-0 -mb-16 mt-12 relative overflow-hidden">
@@ -77,7 +79,7 @@ const About = () => {
               A New Era of <span className="text-gold-500">Financial Empowerment</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              Designed with precision and backed by innovative blockchain technology, AllWillRetire provides a reliable pathway to accumulate wealth for your future.
+              With the backing of a global family of individuals that share similar financial aspirations, All Will Retire seeks to empower you to secure your financial future.
             </p>
           </div>
 
@@ -220,4 +222,5 @@ const About = () => {
       </section>
     </>;
 };
+
 export default About;
