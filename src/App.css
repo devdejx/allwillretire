@@ -54,6 +54,15 @@ section {
   padding: 0;
 }
 
+/* Ensure video backgrounds fill their containers */
+iframe[src*="vimeo.com"] {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 /* Scrolling animations */
 @keyframes float {
   0% {
