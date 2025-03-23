@@ -51,7 +51,9 @@ const Features = ({
       <div className="container mx-auto px-6 relative z-10 pt-12">
         <div className="max-w-3xl mx-auto mb-4 text-center">
           <div className="inline-block mb-2">
-            
+            <span className="uppercase tracking-wider text-sm font-medium text-gold-400">
+              Key Features
+            </span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4">
             What Makes <span className="text-gold-500">All Will Retire</span> Special
