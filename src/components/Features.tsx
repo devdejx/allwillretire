@@ -1,13 +1,16 @@
+
 import React, { useRef, useEffect } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Star } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import OptimizedImage from './OptimizedImage';
 import { AspectRatio } from './ui/aspect-ratio';
+
 interface FeaturesProps {
   isSecondFeature?: boolean;
   isFirstFeature?: boolean;
   noBottomPadding?: boolean;
 }
+
 const Features = ({
   isSecondFeature = false,
   isFirstFeature = false,
@@ -43,6 +46,7 @@ const Features = ({
       cancelAnimationFrame(animationId);
     };
   }, []);
+
   return <section ref={sectionRef} id="features" className={`pt-0 text-white relative ${isFirstFeature ? "mt-0" : isSecondFeature ? "mt-0" : "-mt-12"} ${noBottomPadding ? "pb-0" : "pb-4"} -mb-2`}>
       {/* Dark overlay background */}
       <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
@@ -51,8 +55,16 @@ const Features = ({
       <div className="container mx-auto px-6 relative z-10 pt-12">
         <div className="max-w-3xl mx-auto mb-4 text-center">
           <div className="inline-block mb-2">
-            <span className="uppercase tracking-wider text-sm font-medium text-gold-400">
-              Key Features
+            <span className="flex gap-1 justify-center">
+              {[...Array(5)].map((_, i) => (
+                <Star 
+                  key={i} 
+                  className="text-gold-500" 
+                  size={18} 
+                  fill="currentColor" 
+                  strokeWidth={1}
+                />
+              ))}
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4">
@@ -79,4 +91,5 @@ const Features = ({
       </div>
     </section>;
 };
+
 export default Features;
