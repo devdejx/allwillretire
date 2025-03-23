@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Coins, Shield, TrendingUp, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -7,7 +6,6 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import OptimizedImage from './OptimizedImage';
 import { AspectRatio } from './ui/aspect-ratio';
-
 const About = () => {
   const [showCoinOrbit, setShowCoinOrbit] = useState(false);
 
@@ -43,9 +41,7 @@ const About = () => {
     month: 'Oct',
     value: 350
   }];
-
-  return (
-    <>
+  return <>
       {/* About section - added additional top margin for more space */}
       <section id="about" className="pt-12 pb-0 -mb-16 mt-12 relative overflow-hidden">
         {/* Background elements */}
@@ -75,12 +71,10 @@ const About = () => {
         <div className="container mx-auto px-6 mt-8">
           <div className="max-w-3xl mx-auto mb-16 text-center">
             <div className="inline-block mb-4">
-              <span className="uppercase tracking-wider text-sm font-medium text-muted-foreground">
-                About AllWillRetire
-              </span>
+              <span className="uppercase tracking-wider text-sm font-medium text-muted-foreground">ABOUT ALL WILL RETIRE</span>
             </div>
             <h2 id="financial-freedom-title" className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
-              A New Era of <span className="text-gold-500">Financial Freedom</span>
+              A New Era of <span className="text-gold-500">Financial Empowerment</span>
             </h2>
             <p className="text-lg text-muted-foreground">
               Designed with precision and backed by innovative blockchain technology, AllWillRetire provides a reliable pathway to accumulate wealth for your future.
@@ -175,12 +169,7 @@ const About = () => {
               </div>
               
               {/* Updated buy button with transparent edges */}
-              <a 
-                href="https://jup.ag/swap/USDC-Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="relative bg-gradient-to-r from-transparent via-gold-500 to-transparent backdrop-blur text-black font-bold py-2 px-6 rounded-full border border-gold-300/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 inline-block z-20 overflow-hidden group"
-              >
+              <a href="https://jup.ag/swap/USDC-Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump" target="_blank" rel="noopener noreferrer" className="relative bg-gradient-to-r from-transparent via-gold-500 to-transparent backdrop-blur text-black font-bold py-2 px-6 rounded-full border border-gold-300/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 inline-block z-20 overflow-hidden group">
                 <span className="relative z-10">BUY NOW</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
               </a>
@@ -229,8 +218,6 @@ const About = () => {
           </div>
         </div>
       </section>
-    </>
-  );
+    </>;
 };
-
 export default About;
