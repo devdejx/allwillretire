@@ -50,14 +50,24 @@ const Features = ({
 
   return <section ref={sectionRef} id="features" className={`pt-0 text-white relative ${isFirstFeature ? "mt-0" : isSecondFeature ? "mt-0" : "-mt-12"} ${noBottomPadding ? "pb-0" : "pb-4"} -mb-2`}>
       {/* Video background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+      <div className="absolute inset-0 overflow-hidden w-full h-full">
+        <div className="absolute inset-0 w-full h-full" style={{ overflow: 'hidden' }}>
           <iframe 
             ref={playerRef}
-            src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1" 
+            src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1&amp;quality=1080p" 
             frameBorder="0" 
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} 
+            style={{ 
+              position: 'absolute', 
+              top: '50%', 
+              left: '50%', 
+              width: isMobile ? '250vw' : '150vw', 
+              height: isMobile ? '250vh' : '150vh',
+              transform: 'translate(-50%, -50%)',
+              objectFit: 'cover',
+              minWidth: '100%',
+              minHeight: '100%'
+            }} 
             title="AWR Background Video"
           ></iframe>
         </div>
