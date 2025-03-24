@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { X, Instagram, ArrowUp, ExternalLink, Youtube, Send, Music } from 'lucide-react';
+import { X, Instagram, ArrowUp, ExternalLink, Youtube, Send, Music, ShoppingBag } from 'lucide-react';
 import { Button } from './ui/button';
 const Footer = () => {
   const scrollToTop = () => {
@@ -66,6 +66,18 @@ const Footer = () => {
           
           <div>
             <h3 className="text-base font-medium mb-6 bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 bg-clip-text text-transparent">AWR token information</h3>
+            
+            <a 
+              href="https://jup.ag/swap/USDC-Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur-sm border border-gold-400/30 text-black px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105 inline-flex items-center justify-center gap-1 shadow-md shadow-gold-500/20 overflow-hidden group mb-6"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+              <span className="relative z-10 font-bold">BUY NOW</span>
+              <ShoppingBag className="h-3 w-3 flex-shrink-0 relative z-10 text-black" />
+            </a>
+            
             <ul className="space-y-3">
               <li>
                 <a href="https://www.coingecko.com/en/coins/all-will-retire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors block flex items-center">
