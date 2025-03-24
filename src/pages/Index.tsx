@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -291,8 +292,8 @@ const Index = () => {
                       textShadow: '0 1px 3px rgba(0,0,0,0.7)'
                     }}>
                       {isMobile 
-                        ? 'All Will Retire: your believe of financial independence and a future of opulence.' 
-                        : 'All Will Retire is more than a cryptocurrency — it\'s a believe of financial independence and a future filled with opulence and comfort.'}
+                        ? 'All Will Retire: supporting your vision of financial independence and a future of opulence.' 
+                        : 'All Will Retire: supporting your vision of financial independence and a future of opulence.'}
                     </p>
                     
                     <div className={`flex flex-col sm:flex-row gap-4 ${isMobile ? 'mb-6' : 'mb-8'} animate-fade-up`} style={{
