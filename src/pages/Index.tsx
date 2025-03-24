@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -316,7 +315,7 @@ const Index = () => {
                     }}>
                       <div className="flex flex-col items-center">
                         {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500" style={{
-                            textShadow: '1px 1px 0 #403E43, -1px -1px 0 #403E43, -1px 1px 0 #403E43, 1px -1px 0 #403E43'
+                            textShadow: '1px 1px 0 #997500, -1px -1px 0 #997500, -1px 1px 0 #997500, 1px -1px 0 #997500'
                           }}>
                             {marketData.marketCap}
                           </span>}
@@ -325,7 +324,7 @@ const Index = () => {
                       <div className="w-px h-12 bg-white/10"></div>
                       <div className="flex flex-col items-center">
                         {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500" style={{
-                            textShadow: '1px 1px 0 #403E43, -1px -1px 0 #403E43, -1px 1px 0 #403E43, 1px -1px 0 #403E43'
+                            textShadow: '1px 1px 0 #997500, -1px -1px 0 #997500, -1px 1px 0 #997500, 1px -1px 0 #997500'
                           }}>
                             {marketData.holders}
                           </span>}
@@ -427,4 +426,3 @@ const Index = () => {
 };
 
 export default Index;
-
