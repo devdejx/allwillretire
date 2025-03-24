@@ -91,7 +91,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-base font-medium mb-6 bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 bg-clip-text text-transparent">AWR token information</h3>
+            <h3 className="text-base font-medium mb-6 text-gray-400">AWR token information</h3>
             
             {/* Added small copy address button */}
             <button 
