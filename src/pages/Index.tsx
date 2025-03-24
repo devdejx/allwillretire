@@ -299,11 +299,11 @@ const Index = () => {
                       animationDelay: '0.6s'
                     }}>
                       <button 
-                        className="relative bg-gradient-to-r from-transparent via-gold-500 to-transparent backdrop-blur text-black px-8 py-4 rounded-xl font-bold shadow-lg transition-all duration-300 hover:scale-105 overflow-hidden group"
+                        className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur text-black px-8 py-4 rounded-xl font-bold shadow-lg transition-all duration-300 hover:scale-105 overflow-hidden group"
                         onClick={handleLearnMoreClick}
                       >
                         <span className="relative z-10 flex items-center gap-2">
-                          Tap HERE <Music size={16} className="text-black" />
+                          <span className="font-artistic">Tap HERE</span> <Music size={16} className="text-black" />
                         </span>
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
                         <span className="absolute -inset-0.5 bg-gold-400/30 blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></span>
