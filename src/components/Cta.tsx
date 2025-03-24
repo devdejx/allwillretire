@@ -1,4 +1,6 @@
+
 import React from 'react';
+import { Copy, Check, ShoppingBag } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 const Cta = () => {
   const {
@@ -171,6 +173,16 @@ const Cta = () => {
             <p className="mb-8 max-w-xl mx-auto text-xs text-gray-50">Use AWR - along with any other financial vehicles of your choosing - to build your future.</p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
+              <a 
+                href="https://jup.ag/swap/USDC-Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur-sm border border-gold-400/30 text-black px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 shadow-md shadow-gold-500/20 overflow-hidden group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                <span className="relative z-10 font-bold">BUY NOW</span>
+                <ShoppingBag className="h-4 w-4 flex-shrink-0 relative z-10 text-black" />
+              </a>
             </div>
           </div>
         </div>
