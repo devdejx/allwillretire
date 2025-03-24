@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Copy, Check, ShoppingBag } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
@@ -172,7 +171,7 @@ const Cta = () => {
               </span>
             </h2>
             
-            <p className="mb-8 max-w-xl mx-auto text-xs text-gray-50">All Will Retire: supporting your vision of financial independence and a future of opulence.</p>
+            <p className="mb-8 max-w-xl mx-auto text-xs text-gray-50">Use AWR - along with any other financial vehicles of your choosing - to build your future.</p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
               <a 
