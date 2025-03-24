@@ -1,14 +1,40 @@
 
 import React from 'react';
-import { X, Instagram, ArrowUp, ExternalLink, Youtube, Send, Music } from 'lucide-react';
+import { X, Instagram, ArrowUp, ExternalLink, Youtube, Send, Music, Copy, Check } from 'lucide-react';
 import { Button } from './ui/button';
+import { useToast } from "@/hooks/use-toast";
+
 const Footer = () => {
+  const { toast } = useToast();
+  const [copied, setCopied] = React.useState(false);
+  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   };
+  
+  const handleCopy = () => {
+    const textToCopy = "Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump";
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      setCopied(true);
+      toast({
+        title: "Copied to clipboard",
+        description: "Address has been copied to your clipboard"
+      });
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    }).catch(err => {
+      toast({
+        title: "Failed to copy",
+        description: "Please try again",
+        variant: "destructive"
+      });
+    });
+  };
+  
   return <footer className="relative bg-black text-white overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
@@ -66,6 +92,25 @@ const Footer = () => {
           
           <div>
             <h3 className="text-base font-medium mb-6 bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 bg-clip-text text-transparent">AWR token information</h3>
+            
+            {/* Added small copy address button */}
+            <button 
+              onClick={handleCopy}
+              className="mb-4 bg-black border border-gold-500/30 hover:border-gold-500 text-gold-500 px-3 py-1 rounded-md text-xs flex items-center gap-1 transition-all hover:shadow-[0_0_10px_rgba(255,195,0,0.3)] group"
+            >
+              {copied ? (
+                <>
+                  <Check size={14} className="text-green-500" />
+                  <span>Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy size={14} />
+                  <span>Copy token address</span>
+                </>
+              )}
+            </button>
+            
             <ul className="space-y-3">
               <li>
                 <a href="https://www.coingecko.com/en/coins/all-will-retire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors block flex items-center">
