@@ -1,6 +1,8 @@
 import React from 'react';
 import { Copy, Check, ShoppingBag } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import { Button } from "@/components/ui/button";
+
 const Cta = () => {
   const {
     toast
@@ -68,7 +70,7 @@ const Cta = () => {
               </span>
             </h2>
             
-            <p className="text-gray-300 mb-8 max-w-xl mx-auto font-normal text-xs">All Will Retire: supporting your vision of financial independence and a future of opulence.</p>
+            <p className="text-gray-300 mb-8 max-w-xl mx-auto font-normal text-xs"></p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
               
