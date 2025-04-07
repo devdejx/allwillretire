@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Copy, Check, ShoppingBag } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
@@ -35,7 +34,7 @@ const Cta = () => {
           padding: '177.78% 0 0 0',
           position: 'relative'
         }}>
-            <iframe src="https://player.vimeo.com/video/895517889?h=96cbb5c847&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style={{
+            <iframe src="https://player.vimeo.com/video/1065939107?h=96cbb5c847&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style={{
             position: 'absolute',
             top: 0,
             left: 0,
@@ -86,7 +85,7 @@ const Cta = () => {
           padding: '177.78% 0 0 0',
           position: 'relative'
         }}>
-            <iframe src="https://player.vimeo.com/video/895522223?h=1877cd73cd&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style={{
+            <iframe src="https://player.vimeo.com/video/1065934410?h=1877cd73cd&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style={{
             position: 'absolute',
             top: 0,
             left: 0,
@@ -136,7 +135,7 @@ const Cta = () => {
           padding: '177.78% 0 0 0',
           position: 'relative'
         }}>
-            <iframe src="https://player.vimeo.com/video/895517930?h=4705f6f507&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style={{
+            <iframe src="https://player.vimeo.com/video/1065940999?h=4705f6f507&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style={{
             position: 'absolute',
             top: 0,
             left: 0,

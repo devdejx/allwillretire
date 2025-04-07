@@ -54,7 +54,7 @@ const Features = ({
         <div className="absolute inset-0 w-full h-full" style={{ overflow: 'hidden' }}>
           <iframe 
             ref={playerRef}
-            src="https://player.vimeo.com/video/895523046?h=ff2bc9aa48&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1&amp;quality=1080p" 
+            src="https://player.vimeo.com/video/1065963596?h=ff2bc9aa48&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1&amp;quality=1080p" 
             frameBorder="0" 
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
             style={{ 
