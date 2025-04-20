@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -67,7 +68,7 @@ const Navbar = () => {
         </button>
       </div>
 
-      <div className={cn("md:hidden absolute top-full left-0 right-0 neo-glass", "transition-all duration-300 ease-in-out overflow-hidden", isOpen ? "max-h-[400px] py-6" : "max-h-0")}>
+      <div className={cn("md:hidden absolute top-full left-0 right-0 neo-glass", "transition-all duration-300 ease-in-out overflow-hidden", isOpen ? "max-h-[500px] py-6" : "max-h-0")}>
         <div className="container mx-auto px-6 flex flex-col space-y-4">
           {['About', 'Community'].map(item => <a key={item} href={`#${item.toLowerCase()}`} onClick={closeMenu} className="text-base py-2 font-medium">
               {item}
@@ -78,6 +79,20 @@ const Navbar = () => {
           <a href="https://jup.ag/swap/USDC-Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump" target="_blank" rel="noopener noreferrer" className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur border border-gold-300/50 text-black px-4 py-3 rounded-lg font-medium text-sm mt-2 transition-transform duration-300 hover:scale-105 group">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
             <span className="relative z-10">Buy Now</span>
+          </a>
+          
+          {/* Add Merch Store button to mobile menu */}
+          <a href="https://store.allwillretire.com/password" target="_blank" rel="noopener noreferrer" className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur border border-gold-300/50 text-black px-4 py-3 rounded-lg font-medium text-sm mt-2 transition-transform duration-300 hover:scale-105 group">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+            <span className="relative z-10 flex items-center gap-2">
+              Merch Store <ShoppingBag size={14} className="text-black" />
+            </span>
+          </a>
+          
+          {/* Add AWR App button to mobile menu */}
+          <a href="https://awrpostgenerator.lovable.app/" target="_blank" rel="noopener noreferrer" className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur border border-gold-300/50 text-black px-4 py-3 rounded-lg font-medium text-sm mt-2 transition-transform duration-300 hover:scale-105 group">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+            <span className="relative z-10">AWR App</span>
           </a>
         </div>
       </div>
