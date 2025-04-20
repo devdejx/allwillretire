@@ -1,9 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -18,7 +16,6 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
   const scrollToBottom = (e: React.MouseEvent) => {
@@ -29,7 +26,6 @@ const Navbar = () => {
     });
     closeMenu();
   };
-
   return <header className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out", scrolled ? "py-3 neo-glass" : "py-5 bg-transparent")}>
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a href="#" className="relative text-2xl font-display font-bold flex items-center">
@@ -40,7 +36,7 @@ const Navbar = () => {
         
         <nav className="hidden md:flex space-x-12 items-center">
           {['About', 'Community'].map(item => <a key={item} href={`#${item.toLowerCase()}`} onClick={closeMenu} className="text-sm font-medium relative group">
-              <span>{item}</span>
+              
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gold-500 shadow-[0_0_3px_1px_rgba(255,195,0,0.4)] transition-all duration-300 group-hover:w-full"></span>
             </a>)}
           <a href="#contact" onClick={scrollToBottom} className="text-sm font-medium relative group">
@@ -52,12 +48,7 @@ const Navbar = () => {
             <span className="relative z-10">Buy Now</span>
           </a>
 
-          <a 
-            href="https://store.allwillretire.com/password" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur border border-gold-300/50 text-black px-4 py-1 rounded-lg font-medium text-xs overflow-hidden group transition-transform duration-300 hover:scale-105"
-          >
+          <a href="https://store.allwillretire.com/password" target="_blank" rel="noopener noreferrer" className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur border border-gold-300/50 text-black px-4 py-1 rounded-lg font-medium text-xs overflow-hidden group transition-transform duration-300 hover:scale-105">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
             <span className="relative z-10 flex items-center gap-2">
               Merch Store <ShoppingBag size={14} className="text-black" />
@@ -65,12 +56,7 @@ const Navbar = () => {
           </a>
 
           {/* New AWR App button */}
-          <a 
-            href="https://awrpostgenerator.lovable.app/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur border border-gold-300/50 text-black px-4 py-1 rounded-lg font-medium text-xs overflow-hidden group transition-transform duration-300 hover:scale-105"
-          >
+          <a href="https://awrpostgenerator.lovable.app/" target="_blank" rel="noopener noreferrer" className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur border border-gold-300/50 text-black px-4 py-1 rounded-lg font-medium text-xs overflow-hidden group transition-transform duration-300 hover:scale-105">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
             <span className="relative z-10">AWR App</span>
           </a>
@@ -97,5 +83,4 @@ const Navbar = () => {
       </div>
     </header>;
 };
-
 export default Navbar;
