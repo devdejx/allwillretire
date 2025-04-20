@@ -13,7 +13,6 @@ export interface MediumArticle {
 const MEDIUM_RSS_URL = 'https://medium.com/feed/@allwillretire';
 
 // Enhanced mapping for articles with known image issues
-// Adding more specific mappings for problematic articles
 const ARTICLE_IMAGE_MAPPING: Record<string, string> = {
   "Staying Safe in the AWR Community": "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png",
   "Celebrating the Aspirations of AWR": "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
@@ -41,57 +40,82 @@ function extractFirstImageFromContent(content: string, title: string): string {
     console.log(`Using mapped image for "${title}": ${ARTICLE_IMAGE_MAPPING[title]}`);
     return ARTICLE_IMAGE_MAPPING[title];
   }
-  
-  // Try to extract image using regex for img tags
-  const imgRegex = /<img[^>]+src="([^">]+)"/g;
-  const matches = [...content.matchAll(imgRegex)];
-  
-  // Filter out tracking pixels and find valid images
-  for (const match of matches) {
-    const imgSrc = match[1];
-    if (imgSrc && 
-        !imgSrc.includes('stat?event=') && 
-        !imgSrc.includes('_/stat') && 
-        !imgSrc.includes('pixel') &&
-        !imgSrc.includes('tracking')) {
-      console.log(`Found valid image in "${title}": ${imgSrc}`);
-      return imgSrc;
-    }
-  }
-  
-  // Check if there's a figure with an image
-  const figureRegex = /<figure[^>]*>.*?<img[^>]+src="([^">]+)".*?<\/figure>/sg;
-  const figureMatches = [...content.matchAll(figureRegex)];
-  
-  for (const match of figureMatches) {
-    const imgSrc = match[1];
-    if (imgSrc && 
-        !imgSrc.includes('stat?event=') && 
-        !imgSrc.includes('_/stat') && 
-        !imgSrc.includes('pixel') && 
-        !imgSrc.includes('tracking')) {
-      console.log(`Found valid figure image in "${title}": ${imgSrc}`);
-      return imgSrc;
-    }
-  }
 
-  // Check for background-image style in any element
-  const bgImgRegex = /background-image:\s*url\(['"]?([^'")]+)['"]?\)/g;
-  const bgMatches = [...content.matchAll(bgImgRegex)];
-  
-  for (const match of bgMatches) {
-    const imgSrc = match[1];
-    if (imgSrc && 
-        !imgSrc.includes('stat?event=') && 
-        !imgSrc.includes('_/stat') && 
-        !imgSrc.includes('pixel') && 
-        !imgSrc.includes('tracking')) {
-      console.log(`Found valid background image in "${title}": ${imgSrc}`);
-      return imgSrc;
+  try {
+    // Try to extract the first CDN image URL
+    const cdnImageRegex = /https:\/\/cdn-images-1\.medium\.com\/[a-zA-Z0-9\/_.-]+/g;
+    const cdnMatches = content.match(cdnImageRegex);
+    
+    if (cdnMatches && cdnMatches.length > 0) {
+      // Filter out tracking pixels and small images
+      const validImages = cdnMatches.filter(url => 
+        !url.includes('stat?') && 
+        !url.includes('tracking') && 
+        !url.includes('pixel') &&
+        url.includes('max')  // Usually main content images have 'max' in URL
+      );
+      
+      if (validImages.length > 0) {
+        console.log(`Found CDN image for "${title}": ${validImages[0]}`);
+        return validImages[0];
+      }
     }
+
+    // Try extracting from figure tags
+    const figureRegex = /<figure[^>]*>.*?<img[^>]+src="([^">]+)".*?<\/figure>/sg;
+    const figureMatches = [...content.matchAll(figureRegex)];
+    
+    for (const match of figureMatches) {
+      const imgSrc = match[1];
+      if (imgSrc && !imgSrc.includes('stat?') && !imgSrc.includes('tracking')) {
+        console.log(`Found figure image in "${title}": ${imgSrc}`);
+        return imgSrc;
+      }
+    }
+
+    // Try regular img tags
+    const imgRegex = /<img[^>]+src="([^">]+)"/g;
+    const imgMatches = [...content.matchAll(imgRegex)];
+    
+    for (const match of imgMatches) {
+      const imgSrc = match[1];
+      if (imgSrc && 
+          !imgSrc.includes('stat?') && 
+          !imgSrc.includes('tracking') && 
+          !imgSrc.includes('pixel')) {
+        console.log(`Found img tag image in "${title}": ${imgSrc}`);
+        return imgSrc;
+      }
+    }
+
+    // Try background images
+    const bgImgRegex = /background-image:\s*url\(['"]?([^'")]+)['"]?\)/g;
+    const bgMatches = [...content.matchAll(bgImgRegex)];
+    
+    for (const match of bgMatches) {
+      const imgSrc = match[1];
+      if (imgSrc && 
+          !imgSrc.includes('stat?') && 
+          !imgSrc.includes('tracking')) {
+        console.log(`Found background image in "${title}": ${imgSrc}`);
+        return imgSrc;
+      }
+    }
+
+    // Try to find any CDN URL that might be embedded in the content
+    const mediumCdnRegex = /https:\/\/miro\.medium\.com\/[a-zA-Z0-9\/_.-]+/g;
+    const mediumMatches = content.match(mediumCdnRegex);
+    
+    if (mediumMatches && mediumMatches.length > 0) {
+      console.log(`Found Miro CDN image in "${title}": ${mediumMatches[0]}`);
+      return mediumMatches[0];
+    }
+
+  } catch (error) {
+    console.error(`Error extracting image for "${title}":`, error);
   }
   
-  // Use default fallback as last resort
+  // Use default fallback if no image found
   console.log(`No valid image found for "${title}", using default fallback`);
   return "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png";
 }
@@ -121,6 +145,7 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
       // Log to help debug image extraction
       console.log(`Processing article: ${item.title}`);
       console.log(`Article URL: ${item.link}`);
+      console.log(`Article content length: ${item.content?.length || 0} characters`);
       
       // Extract image
       const extractedImage = extractFirstImageFromContent(item.content, item.title);
@@ -131,7 +156,7 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
       const readTimeMinutes = Math.max(1, Math.ceil(wordCount / 200));
       
       // Clean up excerpt from HTML tags and trim to reasonable length
-      let excerpt = item.description.replace(/<[^>]*>/g, '');
+      let excerpt = item.description?.replace(/<[^>]*>/g, '') || '';
       if (excerpt.length > 300) {
         excerpt = excerpt.substring(0, 300) + '...';
       }
