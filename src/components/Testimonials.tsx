@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Quote, ExternalLink } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -22,6 +21,34 @@ const fallbackArticles = [{
   image: "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png",
   excerpt: "As our community grows, ensuring a safe environment for all members becomes increasingly important...",
   url: "https://medium.com/@allwillretire/"
+}, {
+  title: "Celebrating the Aspirations of AWR",
+  publishDate: "March 25, 2025",
+  readTime: "4 min read",
+  image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
+  excerpt: "The AWR community's journey of shared dreams and collective vision for financial independence...",
+  url: "https://medium.com/@allwillretire/celebrating-the-aspirations-of-awr-72872aaebb8f"
+}, {
+  title: "Why the Trump Coin Validates All Will Retire",
+  publishDate: "March 28, 2025",
+  readTime: "5 min read",
+  image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
+  excerpt: "Understanding the significance of cryptocurrency trends and their impact on financial independence...",
+  url: "https://medium.com/@allwillretire/why-the-trump-coin-validates-all-will-retire-c575653994a7"
+}, {
+  title: "AWR Day 43: Small Incremental Progress to Believe In",
+  publishDate: "March 30, 2025",
+  readTime: "3 min read",
+  image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
+  excerpt: "Tracking our daily progress and celebrating small wins on the path to financial freedom...",
+  url: "https://medium.com/@allwillretire/awr-day-43-small-incremental-progress-to-believe-in-5f788a1b69d7"
+}, {
+  title: "Why We Need Stress-Scaling Communities: Being Process Oriented",
+  publishDate: "April 2, 2025",
+  readTime: "4 min read",
+  image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
+  excerpt: "Exploring the importance of community resilience and sustainable growth strategies...",
+  url: "https://medium.com/@allwillretire/why-we-need-stress-scaling-communities-being-process-oriented-1cd5ebe372a8"
 }];
 
 const Testimonials = () => {
