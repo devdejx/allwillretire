@@ -12,44 +12,6 @@ export interface MediumArticle {
 
 const MEDIUM_RSS_URL = 'https://medium.com/feed/@allwillretire';
 
-// Fixed fallback articles for consistent display
-const FALLBACK_ARTICLES: MediumArticle[] = [
-  {
-    title: "Why Now Is The Perfect Time To Tell Our Story",
-    publishDate: "March 15, 2025",
-    readTime: "5 min read",
-    image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
-    excerpt: "The current macroeconomic environment has changed the way we think about personal finance, security, and wealth...",
-    url: "https://medium.com/@allwillretire/why-now-is-the-perfect-time-to-tell-our-story-c8a2ab6b8943"
-  },
-  {
-    title: "Staying Safe in the AWR Community",
-    publishDate: "March 22, 2025",
-    readTime: "4 min read",
-    image: "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png",
-    excerpt: "As our community grows, ensuring a safe environment for all members becomes increasingly important...",
-    url: "https://medium.com/@allwillretire/"
-  },
-  {
-    title: "Statement On Magnetix",
-    publishDate: "April 3, 2025",
-    readTime: "6 min read",
-    image: "https://cdn-images-1.medium.com/max/1022/0*QiOr76yVUxtqYv4M",
-    excerpt: "All Will Retire is in no way involved with Magnetix and has no desire to be. Recently events around a coin/community named Magnetix — led by Andrej Bohinc — have unfolded...",
-    url: "https://medium.com/@allwillretire/statement-on-magnetix-d61e24e4355f"
-  }
-];
-
-// Always include Trump article as first
-const TRUMP_ARTICLE: MediumArticle = {
-  title: "Statement On Magnetix",
-  publishDate: "April 3, 2025",
-  readTime: "6 min read",
-  image: "https://cdn-images-1.medium.com/max/1022/0*QiOr76yVUxtqYv4M",
-  excerpt: "All Will Retire is in no way involved with Magnetix and has no desire to be. Recently events around a coin/community named Magnetix — led by Andrej Bohinc — have unfolded...",
-  url: "https://medium.com/@allwillretire/statement-on-magnetix-d61e24e4355f"
-};
-
 function extractFirstImageFromContent(content: string, title: string): string {
   // Try to extract image using regex for img tags
   const imgRegex = /<img[^>]+src="([^">]+)"/;
@@ -74,87 +36,47 @@ function extractFirstImageFromContent(content: string, title: string): string {
     return bgMatch[1];
   }
   
-  // Special fixed image for specific articles by title
+  // If the title contains "Staying Safe", use a specific fallback image
   if (title.includes("Staying Safe")) {
     return "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png";
   }
   
-  if (title.includes("Statement On")) {
-    return "https://cdn-images-1.medium.com/max/1022/0*QiOr76yVUxtqYv4M";
-  }
-  
-  // Default fallback
+  // Use default fallback as last resort
   return "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png";
 }
 
 async function fetchMediumArticles(): Promise<MediumArticle[]> {
   try {
-    console.log('Fetching Medium articles from:', MEDIUM_RSS_URL);
+    const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(MEDIUM_RSS_URL)}`);
+    const data = await response.json();
     
-    // CRITICAL CHANGE: Always start with Trump article first
-    let articles: MediumArticle[] = [TRUMP_ARTICLE];
-    
-    try {
-      // Use the RSS2JSON API without requiring API key
-      const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(MEDIUM_RSS_URL)}`);
-      
-      if (!response.ok) {
-        console.error('RSS2JSON API response was not OK:', response.status);
-        // Add the rest of fallback articles without duplicating Trump
-        articles = articles.concat(FALLBACK_ARTICLES.filter(a => a.title !== "Statement On Magnetix"));
-        return articles; 
-      }
-      
-      const data = await response.json();
-      console.log('Medium API response:', data);
-      
-      // If the API call succeeds, map the response to our MediumArticle interface
-      if (data.items && data.status !== 'error' && data.items.length > 0) {
-        const fetchedArticles = data.items.map((item: any) => {
-          console.log(`Processing article: ${item.title}`);
-          const extractedImage = extractFirstImageFromContent(item.content, item.title);
-          console.log(`Image found for "${item.title}": ${extractedImage}`);
-          
-          return {
-            title: item.title,
-            publishDate: new Date(item.pubDate).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            }),
-            readTime: `${Math.ceil(item.content.split(' ').length / 200)} min read`,
-            image: extractedImage,
-            excerpt: item.description.replace(/<[^>]*>/g, '').substring(0, 300) + '...',
-            url: item.link
-          };
-        });
-        
-        // Filter out duplicates of Trump/Magnetix article since we've already added it
-        const otherArticles = fetchedArticles.filter(article => 
-          !article.title.includes("Statement On Magnetix") && 
-          !article.title.includes("Magnetix")
-        );
-        
-        // Add the other articles after Trump
-        articles = articles.concat(otherArticles);
-      } else {
-        // Add remaining fallback articles
-        articles = articles.concat(FALLBACK_ARTICLES.filter(a => a.title !== "Statement On Magnetix"));
-      }
-    } catch (error) {
-      console.error('Error fetching from RSS2JSON API:', error);
-      // Add remaining fallback articles
-      articles = articles.concat(FALLBACK_ARTICLES.filter(a => a.title !== "Statement On Magnetix"));
+    if (!data.items) {
+      console.error('No items found in Medium RSS feed');
+      throw new Error('No articles found');
     }
-    
-    console.log('Final articles to display:', articles);
-    console.log('Trump article check:', articles[0].title);
-    
-    return articles;
+
+    return data.items.map((item: any) => {
+      // Log to help debug image extraction
+      console.log(`Extracting image for: ${item.title}`);
+      const extractedImage = extractFirstImageFromContent(item.content, item.title);
+      console.log(`Image found: ${extractedImage}`);
+      
+      return {
+        title: item.title,
+        publishDate: new Date(item.pubDate).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }),
+        readTime: `${Math.ceil(item.content.split(' ').length / 200)} min read`,
+        image: extractedImage,
+        excerpt: item.description.replace(/<[^>]*>/g, '').substring(0, 300) + '...',
+        url: item.link
+      };
+    });
   } catch (error) {
-    console.error('Error in fetchMediumArticles:', error);
-    // In case of any error, return Trump article and fallbacks
-    return [TRUMP_ARTICLE].concat(FALLBACK_ARTICLES.filter(a => a.title !== "Statement On Magnetix"));
+    console.error('Error fetching Medium articles:', error);
+    throw error;
   }
 }
 
