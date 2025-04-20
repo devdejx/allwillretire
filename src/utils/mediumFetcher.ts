@@ -1,4 +1,3 @@
-
 import { useQuery } from '@tanstack/react-query';
 
 export interface MediumArticle {
@@ -47,7 +46,7 @@ function extractFirstImageFromContent(content: string, title: string): string {
 
 async function fetchMediumArticles(): Promise<MediumArticle[]> {
   try {
-    const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(MEDIUM_RSS_URL)}`);
+    const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(MEDIUM_RSS_URL)}&api_key=kld0lsjqaqzuubp6nzkq0gfr8expc2pleslxos6n`);
     const data = await response.json();
     
     if (!data.items) {
@@ -57,9 +56,8 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
 
     return data.items.map((item: any) => {
       // Log to help debug image extraction
-      console.log(`Extracting image for: ${item.title}`);
-      const extractedImage = extractFirstImageFromContent(item.content, item.title);
-      console.log(`Image found: ${extractedImage}`);
+      console.log(`Processing article: ${item.title}`);
+      console.log(`Content length: ${item.content?.length || 0}`);
       
       return {
         title: item.title,
@@ -69,7 +67,7 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
           day: 'numeric'
         }),
         readTime: `${Math.ceil(item.content.split(' ').length / 200)} min read`,
-        image: extractedImage,
+        image: item.thumbnail || extractFirstImageFromContent(item.content, item.title),
         excerpt: item.description.replace(/<[^>]*>/g, '').substring(0, 300) + '...',
         url: item.link
       };
