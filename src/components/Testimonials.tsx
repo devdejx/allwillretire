@@ -6,8 +6,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { useMediumArticles } from '@/utils/mediumFetcher';
 import { Skeleton } from '@/components/ui/skeleton';
 import OptimizedImage from '@/components/OptimizedImage';
+import { toast } from '@/hooks/use-toast';
 
-// Fallback data in case the API fails
+// Expanded fallback data with all articles
 const fallbackArticles = [{
   title: "Statement On Magnetix",
   publishDate: "April 3, 2025",
@@ -28,7 +29,7 @@ const fallbackArticles = [{
   readTime: "4 min read",
   image: "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png",
   excerpt: "As our community grows, ensuring a safe environment for all members becomes increasingly important...",
-  url: "https://medium.com/@allwillretire/"
+  url: "https://medium.com/@allwillretire/staying-safe-in-the-awr-community-41b1a73fb943"
 }, {
   title: "Celebrating the Aspirations of AWR",
   publishDate: "March 25, 2025",
@@ -65,17 +66,51 @@ const Testimonials = () => {
   const isMobile = useIsMobile();
   const { data: mediumArticles, isLoading, error } = useMediumArticles();
   
+  // Enhanced article selection logic
   // If we got articles from the API, use them. Otherwise, use fallbacks.
-  // Log the articles to help debug
-  const articles = mediumArticles || fallbackArticles;
-  useEffect(() => {
-    if (mediumArticles) {
-      console.log("Medium articles loaded:", mediumArticles.length);
-      mediumArticles.forEach((article, i) => {
-        console.log(`Article ${i + 1}: ${article.title} - Image: ${article.image}`);
+  const articles = React.useMemo(() => {
+    // Always use fallbacks if API failed
+    if (error || !mediumArticles || mediumArticles.length === 0) {
+      console.log("Using fallback articles due to error or empty response");
+      return fallbackArticles;
+    }
+    
+    // Log the articles we received to help debug
+    console.log(`Received ${mediumArticles.length} articles from API`);
+    mediumArticles.forEach((article, i) => {
+      console.log(`API Article ${i + 1}: ${article.title} - URL: ${article.url} - Image: ${article.image}`);
+    });
+    
+    // Look for missing URLs in the API response
+    const apiUrls = new Set(mediumArticles.map(a => a.url));
+    const missingArticles = fallbackArticles.filter(article => {
+      const normalizedUrl = article.url.split('?')[0]; // Remove query params
+      return !apiUrls.has(normalizedUrl);
+    });
+    
+    if (missingArticles.length > 0) {
+      console.log(`Found ${missingArticles.length} articles missing from API, adding them`);
+      missingArticles.forEach(article => {
+        console.log(`Adding missing article: ${article.title} - ${article.url}`);
       });
-    } else if (error) {
-      console.error("Error loading Medium articles, using fallbacks:", error);
+      
+      // Combine API articles with missing fallback articles
+      return [...mediumArticles, ...missingArticles];
+    }
+    
+    return mediumArticles;
+  }, [mediumArticles, error]);
+
+  useEffect(() => {
+    if (error) {
+      console.error("Error loading Medium articles:", error);
+      toast({
+        title: "Couldn't load latest articles",
+        description: "Using cached articles instead.",
+        variant: "destructive"
+      });
+    } else if (mediumArticles) {
+      console.log("Medium articles loaded successfully:", mediumArticles.length);
     }
   }, [mediumArticles, error]);
 
@@ -121,7 +156,13 @@ const Testimonials = () => {
 
         <div className="relative max-w-4xl mx-auto">
           <div className="overflow-hidden" onMouseEnter={() => setAutoplay(false)} onMouseLeave={() => setAutoplay(true)}>
-            {articles.map((article, index) => <div key={index} className={`w-full neo-glass rounded-2xl p-8 md:p-12 hover:shadow-lg transition-shadow duration-300 absolute inset-0 ${index === current ? 'opacity-100 z-10 transform translate-x-0 transition-all duration-500' : 'opacity-0 -z-10 transform translate-x-full transition-all duration-500'}`}>
+            {articles.map((article, index) => (
+              <div 
+                key={`${article.url}-${index}`} 
+                className={`w-full neo-glass rounded-2xl p-8 md:p-12 hover:shadow-lg transition-shadow duration-300 absolute inset-0 ${
+                  index === current ? 'opacity-100 z-10 transform translate-x-0 transition-all duration-500' : 'opacity-0 -z-10 transform translate-x-full transition-all duration-500'
+                }`}
+              >
                 <div className="flex flex-col h-full">
                   <div className="flex items-center mb-6">
                     <img src="/lovable-uploads/1a3e2030-93ba-48a8-bad1-11bf6f691350.png" alt="Medium" className="w-8 h-8 mr-3" />
@@ -150,12 +191,21 @@ const Testimonials = () => {
                     </p>
                   </div>
                   
-                  <a href={article.url} target="_blank" rel="noopener noreferrer" className="mt-auto inline-flex items-center text-gold-600 hover:text-gold-700 font-medium">
+                  <a 
+                    href={article.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="mt-auto inline-flex items-center text-gold-600 hover:text-gold-700 font-medium"
+                    onClick={() => {
+                      console.log(`Clicked on article: ${article.title} - ${article.url}`);
+                    }}
+                  >
                     Read the full article on Medium
                     <ExternalLink className="ml-2 h-4 w-4" />
                   </a>
                 </div>
-              </div>)}
+              </div>
+            ))}
             
             <div className="w-full neo-glass rounded-2xl p-8 md:p-12 invisible">
               <div className="flex flex-col h-full">
@@ -188,14 +238,31 @@ const Testimonials = () => {
           </div>
 
           <div className="flex justify-center mt-8 gap-4">
-            {articles.map((_, index) => <button key={index} onClick={() => setCurrent(index)} className={`w-3 h-3 rounded-full transition-colors ${index === current ? 'bg-gold-500' : 'bg-gray-300'}`} aria-label={`Go to article ${index + 1}`} />)}
+            {articles.map((_, index) => (
+              <button 
+                key={index} 
+                onClick={() => setCurrent(index)} 
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  index === current ? 'bg-gold-500' : 'bg-gray-300'
+                }`} 
+                aria-label={`Go to article ${index + 1}`} 
+              />
+            ))}
           </div>
 
-          <button className="absolute top-1/2 -left-4 md:-left-12 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-20" onClick={prev} aria-label="Previous article">
+          <button 
+            className="absolute top-1/2 -left-4 md:-left-12 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-20" 
+            onClick={prev} 
+            aria-label="Previous article"
+          >
             <ChevronLeft size={20} />
           </button>
           
-          <button className="absolute top-1/2 -right-4 md:-right-12 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-20" onClick={next} aria-label="Next article">
+          <button 
+            className="absolute top-1/2 -right-4 md:-right-12 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-20" 
+            onClick={next} 
+            aria-label="Next article"
+          >
             <ChevronRight size={20} />
           </button>
         </div>

@@ -31,7 +31,7 @@ const OptimizedImage = ({
   const [error, setError] = useState(false);
   const [imageSrc, setImageSrc] = useState(priority ? src : (lazyLoad ? "" : src));
   const [imageLoaded, setImageLoaded] = useState(priority);
-  const uniqueId = `img-${src.replace(/[^a-zA-Z0-9]/g, '')}`;
+  const uniqueId = `img-${src?.replace(/[^a-zA-Z0-9]/g, '') || 'fallback'}`;
   
   // For debugging
   useEffect(() => {
@@ -40,8 +40,23 @@ const OptimizedImage = ({
     }
   }, [error, src, fallbackSrc]);
   
+  // Detect missing or invalid src
+  useEffect(() => {
+    if (!src || src === "") {
+      console.log("Missing image source, using fallback immediately");
+      setImageSrc(fallbackSrc);
+      setError(true);
+      setIsLoading(false);
+    }
+  }, [src, fallbackSrc]);
+  
   // Preload images in memory before displaying
   useEffect(() => {
+    // If src is invalid, just use fallback
+    if (!src || src === "") {
+      return;
+    }
+    
     // Reset state if src changes
     if (src !== imageSrc && imageSrc !== "" && !error) {
       setImageSrc("");
@@ -68,8 +83,18 @@ const OptimizedImage = ({
           const imgElement = new Image();
           imgElement.src = src;
           
+          // Set a timeout to avoid hanging forever on bad images
+          const timeout = setTimeout(() => {
+            console.log(`Image load timeout for: ${src}, using fallback`);
+            setError(true);
+            setIsLoading(false);
+            setImageSrc(fallbackSrc);
+            observer.disconnect();
+          }, 10000); // 10 second timeout
+          
           // Once the image is loaded, update state
           imgElement.onload = () => {
+            clearTimeout(timeout);
             console.log(`Image loaded successfully: ${src}`);
             setImageSrc(src);
             setIsLoading(false);
@@ -79,6 +104,7 @@ const OptimizedImage = ({
           
           // Handle error case
           imgElement.onerror = () => {
+            clearTimeout(timeout);
             console.log(`Image failed to load: ${src}, using fallback: ${fallbackSrc}`);
             setError(true);
             setIsLoading(false);
@@ -92,25 +118,41 @@ const OptimizedImage = ({
       
       if (imgRef) observer.observe(imgRef);
       
-      return () => observer.disconnect();
+      return () => {
+        observer.disconnect();
+      };
     } else {
       // For non-lazy images, load right away but still preload
       const img = new Image();
       img.src = src;
       
+      // Set a timeout to avoid hanging forever on bad images
+      const timeout = setTimeout(() => {
+        console.log(`Image load timeout for: ${src}, using fallback`);
+        setError(true);
+        setIsLoading(false);
+        setImageSrc(fallbackSrc);
+      }, 10000); // 10 second timeout
+      
       img.onload = () => {
+        clearTimeout(timeout);
         setImageSrc(src);
         setIsLoading(false);
         setImageLoaded(true);
       };
       
       img.onerror = () => {
+        clearTimeout(timeout);
         console.log(`Image failed to load: ${src}, using fallback: ${fallbackSrc}`);
         setError(true);
         setIsLoading(false);
         if (src !== fallbackSrc) {
           setImageSrc(fallbackSrc);
         }
+      };
+      
+      return () => {
+        clearTimeout(timeout);
       };
     }
   }, [src, lazyLoad, fallbackSrc, priority, uniqueId, imageSrc, error]);
@@ -128,7 +170,7 @@ const OptimizedImage = ({
         />
       )}
       
-      {(imageLoaded || error || !lazyLoad) && (
+      {(imageLoaded || error || imageSrc) && (
         <img
           src={error && src !== fallbackSrc ? fallbackSrc : imageSrc}
           alt={alt}
@@ -143,6 +185,7 @@ const OptimizedImage = ({
           onLoad={() => {
             setIsLoading(false);
             setImageLoaded(true);
+            console.log(`Image rendered successfully: ${imageSrc}`);
           }}
           onError={() => {
             console.log(`Inline image error for ${imageSrc}, using fallback: ${fallbackSrc}`);
