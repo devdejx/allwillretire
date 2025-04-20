@@ -40,6 +40,16 @@ const FALLBACK_ARTICLES: MediumArticle[] = [
   }
 ];
 
+// The critical Trump/Magnetix article that must always be included
+const TRUMP_ARTICLE: MediumArticle = {
+  title: "Statement On Magnetix",
+  publishDate: "April 3, 2025",
+  readTime: "6 min read",
+  image: "https://cdn-images-1.medium.com/max/1022/0*QiOr76yVUxtqYv4M",
+  excerpt: "All Will Retire is in no way involved with Magnetix and has no desire to be. Recently events around a coin/community named Magnetix — led by Andrej Bohinc — have unfolded...",
+  url: "https://medium.com/@allwillretire/statement-on-magnetix-d61e24e4355f"
+};
+
 function extractFirstImageFromContent(content: string, title: string): string {
   // Try to extract image using regex for img tags
   const imgRegex = /<img[^>]+src="([^">]+)"/;
@@ -81,8 +91,8 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
   try {
     console.log('Fetching Medium articles from:', MEDIUM_RSS_URL);
     
-    // Always include the fallback articles as a starting point
-    let articles = [...FALLBACK_ARTICLES];
+    // Start with an empty articles array
+    let articles: MediumArticle[] = [];
     
     try {
       // Use the RSS2JSON API without requiring API key
@@ -90,15 +100,14 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
       
       if (!response.ok) {
         console.error('RSS2JSON API response was not OK:', response.status);
-        return articles; // Return our fallback articles
+        return [...FALLBACK_ARTICLES, TRUMP_ARTICLE]; // Return our fallback articles with Trump
       }
       
       const data = await response.json();
       console.log('Medium API response:', data);
       
-      // If the API call succeeds, replace our fallbacks with the real articles
+      // If the API call succeeds, map the response to our MediumArticle interface
       if (data.items && data.status !== 'error' && data.items.length > 0) {
-        // Map the API response to our MediumArticle interface
         articles = data.items.map((item: any) => {
           console.log(`Processing article: ${item.title}`);
           const extractedImage = extractFirstImageFromContent(item.content, item.title);
@@ -117,28 +126,51 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
             url: item.link
           };
         });
+      } else {
+        console.error('Invalid or empty data from RSS2JSON API:', data);
+        articles = [...FALLBACK_ARTICLES];
       }
     } catch (error) {
       console.error('Error fetching from RSS2JSON API:', error);
-      // On error, we'll just use our fallback articles
+      articles = [...FALLBACK_ARTICLES];
     }
     
-    // Ensure we always have the Trump article
+    // Check if Trump article already exists in the fetched articles
     const hasTrumpArticle = articles.some(article => 
-      article.title.includes("Statement On") || 
+      article.title.includes("Statement On Magnetix") || 
       article.title.includes("Magnetix")
     );
     
+    // Always include Trump article if not already present
     if (!hasTrumpArticle) {
       console.log('Adding missing Trump/Magnetix article to the list');
-      articles.push(FALLBACK_ARTICLES[2]);
+      articles.push(TRUMP_ARTICLE);
+    }
+    
+    // Make sure we have at least the fallback articles
+    if (articles.length === 0) {
+      articles = [...FALLBACK_ARTICLES];
+    }
+    
+    // Double-check Trump article is included before returning
+    const finalHasTrump = articles.some(article => 
+      article.title.includes("Statement On Magnetix") || 
+      article.title.includes("Magnetix")
+    );
+    
+    if (!finalHasTrump) {
+      console.error('Trump article missing after all checks. Forcing inclusion.');
+      articles.push(TRUMP_ARTICLE);
     }
     
     console.log('Final articles to display:', articles);
+    console.log('Trump article check:', articles.some(a => a.title.includes("Statement On")));
+    
     return articles;
   } catch (error) {
     console.error('Error in fetchMediumArticles:', error);
-    return FALLBACK_ARTICLES;
+    // In case of any error, return fallbacks plus Trump article
+    return [...FALLBACK_ARTICLES, TRUMP_ARTICLE];
   }
 }
 

@@ -32,21 +32,63 @@ const fallbackArticles = [{
   url: "https://medium.com/@allwillretire/statement-on-magnetix-d61e24e4355f"
 }];
 
+// Critical Trump article that must always be displayed
+const trumpArticle = {
+  title: "Statement On Magnetix",
+  publishDate: "April 3, 2025",
+  readTime: "6 min read",
+  image: "https://cdn-images-1.medium.com/max/1022/0*QiOr76yVUxtqYv4M",
+  excerpt: "All Will Retire is in no way involved with Magnetix and has no desire to be. Recently events around a coin/community named Magnetix — led by Andrej Bohinc — have unfolded...",
+  url: "https://medium.com/@allwillretire/statement-on-magnetix-d61e24e4355f"
+};
+
 const Testimonials = () => {
   const [current, setCurrent] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
   const isMobile = useIsMobile();
-  const { data: mediumArticles, isLoading, error } = useMediumArticles();
+  const { data: fetchedArticles, isLoading, error } = useMediumArticles();
   
-  // Force use of fallback articles if API had errors
-  const articles = mediumArticles || fallbackArticles;
-
-  // Log what articles we're displaying
+  // Process articles to ensure the Trump article is included
+  const [articles, setArticles] = useState(fallbackArticles);
+  
+  // Process articles when data is fetched
   useEffect(() => {
-    console.log("Articles to display:", articles);
-    console.log("Trump article included:", articles.some(a => a.title.includes("Statement On") || a.title.includes("Magnetix")));
+    if (fetchedArticles) {
+      let processedArticles = [...fetchedArticles];
+      
+      // Check if Trump article exists
+      const hasTrumpArticle = processedArticles.some(
+        article => article.title.includes("Statement On") || article.title.includes("Magnetix")
+      );
+      
+      // Add Trump article if missing
+      if (!hasTrumpArticle) {
+        console.log('Trump article missing in component, adding it');
+        processedArticles.push(trumpArticle);
+      }
+      
+      // Ensure we have at least the fallback articles
+      if (processedArticles.length === 0) {
+        processedArticles = [...fallbackArticles];
+      }
+      
+      console.log('Final processed articles:', processedArticles);
+      console.log('Trump article present:', processedArticles.some(a => a.title.includes("Statement On")));
+      
+      setArticles(processedArticles);
+    } else if (error) {
+      // If there's an error, ensure we use fallbacks with Trump article
+      const backupArticles = [...fallbackArticles];
+      
+      // Always include Trump article in error case
+      if (!backupArticles.some(a => a.title.includes("Statement On"))) {
+        backupArticles.push(trumpArticle);
+      }
+      
+      setArticles(backupArticles);
+    }
     
-    // This ensures we always start at the first slide after articles load
+    // Reset to first slide when articles change
     setCurrent(0);
     
     // Show toast if there was an error
@@ -57,7 +99,7 @@ const Testimonials = () => {
         variant: "destructive"
       });
     }
-  }, [articles, error]);
+  }, [fetchedArticles, error]);
 
   const next = () => {
     setCurrent(prev => prev === articles.length - 1 ? 0 : prev + 1);
@@ -73,7 +115,11 @@ const Testimonials = () => {
       next();
     }, 7000);
     return () => clearInterval(interval);
-  }, [autoplay, current]);
+  }, [autoplay, current, articles.length]);
+
+  // Find index of Trump article for debugging
+  const trumpIndex = articles.findIndex(a => a.title.includes("Statement On"));
+  console.log('Trump article index:', trumpIndex);
 
   if (isLoading) {
     return <div className="flex justify-center items-center min-h-[400px]">
@@ -101,6 +147,14 @@ const Testimonials = () => {
         </div>
 
         <div className="relative max-w-4xl mx-auto">
+          {/* Debug info for Trump article - can be removed in production */}
+          <div className="hidden">
+            <p>Articles count: {articles.length}</p>
+            <p>Trump index: {trumpIndex}</p>
+            <p>Current index: {current}</p>
+            <p>Article titles: {articles.map(a => a.title).join(', ')}</p>
+          </div>
+
           <div className="overflow-hidden" onMouseEnter={() => setAutoplay(false)} onMouseLeave={() => setAutoplay(true)}>
             {articles.map((article, index) => (
               <div key={index} className={`w-full neo-glass rounded-2xl p-8 md:p-12 hover:shadow-lg transition-shadow duration-300 absolute inset-0 ${index === current ? 'opacity-100 z-10 transform translate-x-0 transition-all duration-500' : 'opacity-0 -z-10 transform translate-x-full transition-all duration-500'}`}>
