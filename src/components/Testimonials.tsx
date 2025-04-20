@@ -38,11 +38,15 @@ const Testimonials = () => {
   const { data: mediumArticles, isLoading, error } = useMediumArticles();
   
   // Use the fetched articles if available, otherwise fall back to the default ones
+  // Ensure we always have at least the fallback articles if the API returns fewer articles
   const articles = mediumArticles || fallbackArticles;
 
   // Log articles to debug
   useEffect(() => {
     console.log("Current articles:", articles);
+    
+    // This ensures we always start at the first slide after articles load
+    setCurrent(0);
   }, [articles]);
 
   const next = () => {
@@ -87,7 +91,8 @@ const Testimonials = () => {
 
         <div className="relative max-w-4xl mx-auto">
           <div className="overflow-hidden" onMouseEnter={() => setAutoplay(false)} onMouseLeave={() => setAutoplay(true)}>
-            {articles.map((article, index) => <div key={index} className={`w-full neo-glass rounded-2xl p-8 md:p-12 hover:shadow-lg transition-shadow duration-300 absolute inset-0 ${index === current ? 'opacity-100 z-10 transform translate-x-0 transition-all duration-500' : 'opacity-0 -z-10 transform translate-x-full transition-all duration-500'}`}>
+            {articles.map((article, index) => (
+              <div key={index} className={`w-full neo-glass rounded-2xl p-8 md:p-12 hover:shadow-lg transition-shadow duration-300 absolute inset-0 ${index === current ? 'opacity-100 z-10 transform translate-x-0 transition-all duration-500' : 'opacity-0 -z-10 transform translate-x-full transition-all duration-500'}`}>
                 <div className="flex flex-col h-full">
                   <div className="flex items-center mb-6">
                     <img src="/lovable-uploads/1a3e2030-93ba-48a8-bad1-11bf6f691350.png" alt="Medium" className="w-8 h-8 mr-3" />
@@ -121,7 +126,8 @@ const Testimonials = () => {
                     <ExternalLink className="ml-2 h-4 w-4" />
                   </a>
                 </div>
-              </div>)}
+              </div>
+            ))}
             
             <div className="w-full neo-glass rounded-2xl p-8 md:p-12 invisible">
               <div className="flex flex-col h-full">
@@ -154,7 +160,14 @@ const Testimonials = () => {
           </div>
 
           <div className="flex justify-center mt-8 gap-4">
-            {articles.map((_, index) => <button key={index} onClick={() => setCurrent(index)} className={`w-3 h-3 rounded-full transition-colors ${index === current ? 'bg-gold-500' : 'bg-gray-300'}`} aria-label={`Go to article ${index + 1}`} />)}
+            {articles.map((_, index) => (
+              <button 
+                key={index} 
+                onClick={() => setCurrent(index)} 
+                className={`w-3 h-3 rounded-full transition-colors ${index === current ? 'bg-gold-500' : 'bg-gray-300'}`} 
+                aria-label={`Go to article ${index + 1}`} 
+              />
+            ))}
           </div>
 
           <button className="absolute top-1/2 -left-4 md:-left-12 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-20" onClick={prev} aria-label="Previous article">

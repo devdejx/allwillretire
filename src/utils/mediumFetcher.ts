@@ -12,6 +12,34 @@ export interface MediumArticle {
 
 const MEDIUM_RSS_URL = 'https://medium.com/feed/@allwillretire';
 
+// Fixed fallback articles for consistent display
+const FALLBACK_ARTICLES: MediumArticle[] = [
+  {
+    title: "Why Now Is The Perfect Time To Tell Our Story",
+    publishDate: "March 15, 2025",
+    readTime: "5 min read",
+    image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
+    excerpt: "The current macroeconomic environment has changed the way we think about personal finance, security, and wealth...",
+    url: "https://medium.com/@allwillretire/why-now-is-the-perfect-time-to-tell-our-story-c8a2ab6b8943"
+  },
+  {
+    title: "Staying Safe in the AWR Community",
+    publishDate: "March 22, 2025",
+    readTime: "4 min read",
+    image: "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png",
+    excerpt: "As our community grows, ensuring a safe environment for all members becomes increasingly important...",
+    url: "https://medium.com/@allwillretire/"
+  },
+  {
+    title: "Statement On Magnetix",
+    publishDate: "April 3, 2025",
+    readTime: "6 min read",
+    image: "https://cdn-images-1.medium.com/max/1022/0*QiOr76yVUxtqYv4M",
+    excerpt: "All Will Retire is in no way involved with Magnetix and has no desire to be. Recently events around a coin/community named Magnetix — led by Andrej Bohinc — have unfolded...",
+    url: "https://medium.com/@allwillretire/statement-on-magnetix-d61e24e4355f"
+  }
+];
+
 function extractFirstImageFromContent(content: string, title: string): string {
   // Try to extract image using regex for img tags
   const imgRegex = /<img[^>]+src="([^">]+)"/;
@@ -52,47 +80,29 @@ function extractFirstImageFromContent(content: string, title: string): string {
 
 async function fetchMediumArticles(): Promise<MediumArticle[]> {
   try {
+    console.log('Fetching Medium articles from:', MEDIUM_RSS_URL);
+    
     // Use the RSS2JSON API without requiring API key - it should work for basic fetching
     const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(MEDIUM_RSS_URL)}`);
+    
+    if (!response.ok) {
+      console.error('RSS2JSON API response was not OK:', response.status);
+      return FALLBACK_ARTICLES;
+    }
+    
     const data = await response.json();
     
     // Log the raw data to see what we're getting
     console.log('Medium API response:', data);
     
     // If the API call fails or returns no items, use fallback data
-    if (!data.items || data.status === 'error') {
+    if (!data.items || data.status === 'error' || data.items.length === 0) {
       console.log('Using fallback Medium articles due to API error:', data.message || 'No items found');
-      
-      // Return hardcoded fallback articles
-      return [
-        {
-          title: "Why Now Is The Perfect Time To Tell Our Story",
-          publishDate: "March 15, 2025",
-          readTime: "5 min read",
-          image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
-          excerpt: "The current macroeconomic environment has changed the way we think about personal finance, security, and wealth...",
-          url: "https://medium.com/@allwillretire/why-now-is-the-perfect-time-to-tell-our-story-c8a2ab6b8943"
-        },
-        {
-          title: "Staying Safe in the AWR Community",
-          publishDate: "March 22, 2025",
-          readTime: "4 min read",
-          image: "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png",
-          excerpt: "As our community grows, ensuring a safe environment for all members becomes increasingly important...",
-          url: "https://medium.com/@allwillretire/"
-        },
-        {
-          title: "Statement On Magnetix",
-          publishDate: "April 3, 2025",
-          readTime: "6 min read",
-          image: "https://cdn-images-1.medium.com/max/1022/0*QiOr76yVUxtqYv4M",
-          excerpt: "All Will Retire is in no way involved with Magnetix and has no desire to be. Recently events around a coin/community named Magnetix — led by Andrej Bohinc — have unfolded...",
-          url: "https://medium.com/@allwillretire/statement-on-magnetix-d61e24e4355f"
-        }
-      ];
+      return FALLBACK_ARTICLES;
     }
 
-    return data.items.map((item: any) => {
+    // Map the API response to our MediumArticle interface
+    const articles = data.items.map((item: any) => {
       // Log to help debug image extraction
       console.log(`Extracting image for: ${item.title}`);
       const extractedImage = extractFirstImageFromContent(item.content, item.title);
@@ -111,36 +121,20 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
         url: item.link
       };
     });
+    
+    // Ensure we have at least the Trump article if it's not in the API response
+    const hasTrumpArticle = articles.some(article => article.title.includes("Statement On"));
+    
+    if (!hasTrumpArticle) {
+      console.log('Adding missing Trump article to the list');
+      articles.push(FALLBACK_ARTICLES[2]);
+    }
+    
+    console.log('Processed articles:', articles);
+    return articles;
   } catch (error) {
     console.error('Error fetching Medium articles:', error);
-    
-    // Return fallback articles in case of any error
-    return [
-      {
-        title: "Why Now Is The Perfect Time To Tell Our Story",
-        publishDate: "March 15, 2025",
-        readTime: "5 min read",
-        image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
-        excerpt: "The current macroeconomic environment has changed the way we think about personal finance, security, and wealth...",
-        url: "https://medium.com/@allwillretire/why-now-is-the-perfect-time-to-tell-our-story-c8a2ab6b8943"
-      },
-      {
-        title: "Staying Safe in the AWR Community",
-        publishDate: "March 22, 2025",
-        readTime: "4 min read",
-        image: "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png",
-        excerpt: "As our community grows, ensuring a safe environment for all members becomes increasingly important...",
-        url: "https://medium.com/@allwillretire/"
-      },
-      {
-        title: "Statement On Magnetix",
-        publishDate: "April 3, 2025",
-        readTime: "6 min read",
-        image: "https://cdn-images-1.medium.com/max/1022/0*QiOr76yVUxtqYv4M",
-        excerpt: "All Will Retire is in no way involved with Magnetix and has no desire to be. Recently events around a coin/community named Magnetix — led by Andrej Bohinc — have unfolded...",
-        url: "https://medium.com/@allwillretire/statement-on-magnetix-d61e24e4355f"
-      }
-    ];
+    return FALLBACK_ARTICLES;
   }
 }
 
