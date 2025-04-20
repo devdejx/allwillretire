@@ -1,9 +1,11 @@
+
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Quote, ExternalLink } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Card, CardContent } from '@/components/ui/card';
 import { useMediumArticles } from '@/utils/mediumFetcher';
 import { Skeleton } from '@/components/ui/skeleton';
+import OptimizedImage from '@/components/OptimizedImage';
 
 // Fallback data in case the API fails
 const fallbackArticles = [{
@@ -13,6 +15,13 @@ const fallbackArticles = [{
   image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
   excerpt: "The current macroeconomic environment has changed the way we think about personal finance, security, and wealth...",
   url: "https://medium.com/@allwillretire/why-now-is-the-perfect-time-to-tell-our-story-c8a2ab6b8943"
+}, {
+  title: "Staying Safe in the AWR Community",
+  publishDate: "March 22, 2025",
+  readTime: "4 min read",
+  image: "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png",
+  excerpt: "As our community grows, ensuring a safe environment for all members becomes increasingly important...",
+  url: "https://medium.com/@allwillretire/"
 }];
 
 const Testimonials = () => {
@@ -80,7 +89,12 @@ const Testimonials = () => {
                   <div className="mb-6 relative overflow-hidden rounded-lg" style={{
                 maxHeight: isMobile ? '150px' : '250px'
               }}>
-                    <img src={article.image} alt="AWR Community" className="w-full h-full object-cover" />
+                    <OptimizedImage 
+                      src={article.image} 
+                      alt={article.title} 
+                      className="w-full h-full object-cover" 
+                      fallbackSrc="/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png"
+                    />
                   </div>
                   
                   <div className="prose prose-sm max-w-none mb-6">
