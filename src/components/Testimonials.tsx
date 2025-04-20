@@ -22,6 +22,13 @@ const fallbackArticles = [{
   image: "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png",
   excerpt: "As our community grows, ensuring a safe environment for all members becomes increasingly important...",
   url: "https://medium.com/@allwillretire/"
+}, {
+  title: "Statement On Magnetix",
+  publishDate: "April 3, 2025",
+  readTime: "6 min read",
+  image: "https://cdn-images-1.medium.com/max/1022/0*QiOr76yVUxtqYv4M",
+  excerpt: "All Will Retire is in no way involved with Magnetix and has no desire to be. Recently events around a coin/community named Magnetix — led by Andrej Bohinc — have unfolded...",
+  url: "https://medium.com/@allwillretire/statement-on-magnetix-d61e24e4355f"
 }];
 
 const Testimonials = () => {
@@ -32,6 +39,11 @@ const Testimonials = () => {
   
   // Use the fetched articles if available, otherwise fall back to the default ones
   const articles = mediumArticles || fallbackArticles;
+
+  // Log articles to debug
+  useEffect(() => {
+    console.log("Current articles:", articles);
+  }, [articles]);
 
   const next = () => {
     setCurrent(prev => prev === articles.length - 1 ? 0 : prev + 1);

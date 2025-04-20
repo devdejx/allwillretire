@@ -41,6 +41,11 @@ function extractFirstImageFromContent(content: string, title: string): string {
     return "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png";
   }
   
+  // Special case for Trump article
+  if (title.includes("Statement On")) {
+    return "https://cdn-images-1.medium.com/max/1022/0*QiOr76yVUxtqYv4M";
+  }
+  
   // Use default fallback as last resort
   return "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png";
 }
@@ -50,6 +55,9 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
     // Use the RSS2JSON API without requiring API key - it should work for basic fetching
     const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(MEDIUM_RSS_URL)}`);
     const data = await response.json();
+    
+    // Log the raw data to see what we're getting
+    console.log('Medium API response:', data);
     
     // If the API call fails or returns no items, use fallback data
     if (!data.items || data.status === 'error') {
@@ -72,6 +80,14 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
           image: "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png",
           excerpt: "As our community grows, ensuring a safe environment for all members becomes increasingly important...",
           url: "https://medium.com/@allwillretire/"
+        },
+        {
+          title: "Statement On Magnetix",
+          publishDate: "April 3, 2025",
+          readTime: "6 min read",
+          image: "https://cdn-images-1.medium.com/max/1022/0*QiOr76yVUxtqYv4M",
+          excerpt: "All Will Retire is in no way involved with Magnetix and has no desire to be. Recently events around a coin/community named Magnetix — led by Andrej Bohinc — have unfolded...",
+          url: "https://medium.com/@allwillretire/statement-on-magnetix-d61e24e4355f"
         }
       ];
     }
@@ -115,6 +131,14 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
         image: "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png",
         excerpt: "As our community grows, ensuring a safe environment for all members becomes increasingly important...",
         url: "https://medium.com/@allwillretire/"
+      },
+      {
+        title: "Statement On Magnetix",
+        publishDate: "April 3, 2025",
+        readTime: "6 min read",
+        image: "https://cdn-images-1.medium.com/max/1022/0*QiOr76yVUxtqYv4M",
+        excerpt: "All Will Retire is in no way involved with Magnetix and has no desire to be. Recently events around a coin/community named Magnetix — led by Andrej Bohinc — have unfolded...",
+        url: "https://medium.com/@allwillretire/statement-on-magnetix-d61e24e4355f"
       }
     ];
   }
@@ -128,4 +152,3 @@ export function useMediumArticles() {
     staleTime: 1000 * 60 * 5, // 5 minutes
   });
 }
-
