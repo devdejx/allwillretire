@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { X, Instagram, ArrowUp, ExternalLink, Youtube, Send, Music, Copy, Check, Facebook, Discord } from 'lucide-react';
+import { X, Instagram, ArrowUp, ExternalLink, Youtube, Send, Music, Copy, Check, Facebook } from 'lucide-react';
 import { Button } from './ui/button';
 import { useToast } from "@/hooks/use-toast";
 
@@ -91,7 +92,13 @@ const Footer = () => {
               </a>
               <a href="https://discord.gg/v7GdKzfcKd" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors transform hover:scale-110 group">
                 <div className="p-3 rounded-full bg-black border border-gold-500/30 group-hover:border-gold-500 shadow-[0_0_10px_rgba(255,195,0,0.2)] group-hover:shadow-[0_0_15px_rgba(255,195,0,0.4)]">
-                  <Discord size={24} className="group-hover:animate-pulse" />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide group-hover:animate-pulse">
+                    <circle cx="9" cy="12" r="1"/>
+                    <circle cx="15" cy="12" r="1"/>
+                    <path d="M7.5 7.5c3.5-1 5.5-1 9 0"/>
+                    <path d="M7.5 16.5c3.5 1 5.5 1 9 0"/>
+                    <path d="M15.5 17c0 1 1.5 3 2 3 1.5 0 2.833-1.667 3.5-3 .667-1.667.5-5.833 0-7.5-.5-1.667-1.5-4.5-7-7-5.5 2.5-6.5 5.333-7 7-.5 1.667-.667 5.833 0 7.5.667 1.333 2 3 3.5 3 .5 0 2-2 2-3"/>
+                  </svg>
                 </div>
               </a>
             </div>
