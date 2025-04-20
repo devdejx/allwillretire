@@ -402,12 +402,13 @@ const Index = () => {
                       href="https://store.allwillretire.com/password" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur text-black overflow-hidden group transition-transform duration-300 hover:scale-105 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium h-11 rounded-md px-8"
+                      className="relative bg-gradient-to-r from-transparent via-gold-500/40 to-transparent backdrop-blur-sm border-2 border-gold-400/70 text-black overflow-hidden group transition-all duration-300 hover:scale-105 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium h-11 px-8 shadow-[0_0_15px_rgba(255,195,0,0.5)] hover:shadow-[0_0_25px_rgba(255,195,0,0.8)]"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
                       <span className="relative z-10 flex items-center gap-2 font-bold">
                         Go to MERCH Shop <ShoppingBag size={16} className="text-black" />
                       </span>
+                      <span className="absolute -inset-0.5 bg-gold-400/30 blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></span>
                     </a>
                   </div>
                 </div>
