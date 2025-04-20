@@ -47,7 +47,7 @@ function extractFirstImageFromContent(content: string, title: string): string {
 
 async function fetchMediumArticles(): Promise<MediumArticle[]> {
   try {
-    const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(MEDIUM_RSS_URL)}`);
+    const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(MEDIUM_RSS_URL)}&api_key=kld0lsjqaqzuubp6nzkq0gfr8expc2pleslxos6n`);
     const data = await response.json();
     
     if (!data.items) {
