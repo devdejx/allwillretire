@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Quote, ExternalLink } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Card, CardContent } from '@/components/ui/card';
-import { useMediumArticles } from '@/utils/mediumFetcher';
+import { useMediumArticles, MediumArticle } from '@/utils/mediumFetcher';
 import { Skeleton } from '@/components/ui/skeleton';
 import OptimizedImage from '@/components/OptimizedImage';
+import { toast } from "@/components/ui/use-toast";
 
 // Fallback data in case the API fails
 const fallbackArticles = [{
@@ -37,21 +38,31 @@ const Testimonials = () => {
   const isMobile = useIsMobile();
   const { data: mediumArticles, isLoading, error } = useMediumArticles();
   
-  // Use the fetched articles if available, otherwise fall back to the default ones
-  // Ensure we always have at least the fallback articles if the API returns fewer articles
+  // Force use of fallback articles if API had errors
   const articles = mediumArticles || fallbackArticles;
 
-  // Log articles to debug
+  // Log what articles we're displaying
   useEffect(() => {
-    console.log("Current articles:", articles);
+    console.log("Articles to display:", articles);
+    console.log("Trump article included:", articles.some(a => a.title.includes("Statement On") || a.title.includes("Magnetix")));
     
     // This ensures we always start at the first slide after articles load
     setCurrent(0);
-  }, [articles]);
+    
+    // Show toast if there was an error
+    if (error) {
+      toast({
+        title: "Couldn't load Medium articles",
+        description: "Using fallback articles instead",
+        variant: "destructive"
+      });
+    }
+  }, [articles, error]);
 
   const next = () => {
     setCurrent(prev => prev === articles.length - 1 ? 0 : prev + 1);
   };
+  
   const prev = () => {
     setCurrent(prev => prev === 0 ? articles.length - 1 : prev - 1);
   };

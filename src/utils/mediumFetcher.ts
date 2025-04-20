@@ -64,17 +64,16 @@ function extractFirstImageFromContent(content: string, title: string): string {
     return bgMatch[1];
   }
   
-  // If the title contains "Staying Safe", use a specific fallback image
+  // Special fixed image for specific articles by title
   if (title.includes("Staying Safe")) {
     return "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png";
   }
   
-  // Special case for Trump article
   if (title.includes("Statement On")) {
     return "https://cdn-images-1.medium.com/max/1022/0*QiOr76yVUxtqYv4M";
   }
   
-  // Use default fallback as last resort
+  // Default fallback
   return "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png";
 }
 
@@ -82,58 +81,63 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
   try {
     console.log('Fetching Medium articles from:', MEDIUM_RSS_URL);
     
-    // Use the RSS2JSON API without requiring API key - it should work for basic fetching
-    const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(MEDIUM_RSS_URL)}`);
+    // Always include the fallback articles as a starting point
+    let articles = [...FALLBACK_ARTICLES];
     
-    if (!response.ok) {
-      console.error('RSS2JSON API response was not OK:', response.status);
-      return FALLBACK_ARTICLES;
-    }
-    
-    const data = await response.json();
-    
-    // Log the raw data to see what we're getting
-    console.log('Medium API response:', data);
-    
-    // If the API call fails or returns no items, use fallback data
-    if (!data.items || data.status === 'error' || data.items.length === 0) {
-      console.log('Using fallback Medium articles due to API error:', data.message || 'No items found');
-      return FALLBACK_ARTICLES;
-    }
-
-    // Map the API response to our MediumArticle interface
-    const articles = data.items.map((item: any) => {
-      // Log to help debug image extraction
-      console.log(`Extracting image for: ${item.title}`);
-      const extractedImage = extractFirstImageFromContent(item.content, item.title);
-      console.log(`Image found: ${extractedImage}`);
+    try {
+      // Use the RSS2JSON API without requiring API key
+      const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(MEDIUM_RSS_URL)}`);
       
-      return {
-        title: item.title,
-        publishDate: new Date(item.pubDate).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        }),
-        readTime: `${Math.ceil(item.content.split(' ').length / 200)} min read`,
-        image: extractedImage,
-        excerpt: item.description.replace(/<[^>]*>/g, '').substring(0, 300) + '...',
-        url: item.link
-      };
-    });
+      if (!response.ok) {
+        console.error('RSS2JSON API response was not OK:', response.status);
+        return articles; // Return our fallback articles
+      }
+      
+      const data = await response.json();
+      console.log('Medium API response:', data);
+      
+      // If the API call succeeds, replace our fallbacks with the real articles
+      if (data.items && data.status !== 'error' && data.items.length > 0) {
+        // Map the API response to our MediumArticle interface
+        articles = data.items.map((item: any) => {
+          console.log(`Processing article: ${item.title}`);
+          const extractedImage = extractFirstImageFromContent(item.content, item.title);
+          console.log(`Image found for "${item.title}": ${extractedImage}`);
+          
+          return {
+            title: item.title,
+            publishDate: new Date(item.pubDate).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            }),
+            readTime: `${Math.ceil(item.content.split(' ').length / 200)} min read`,
+            image: extractedImage,
+            excerpt: item.description.replace(/<[^>]*>/g, '').substring(0, 300) + '...',
+            url: item.link
+          };
+        });
+      }
+    } catch (error) {
+      console.error('Error fetching from RSS2JSON API:', error);
+      // On error, we'll just use our fallback articles
+    }
     
-    // Ensure we have at least the Trump article if it's not in the API response
-    const hasTrumpArticle = articles.some(article => article.title.includes("Statement On"));
+    // Ensure we always have the Trump article
+    const hasTrumpArticle = articles.some(article => 
+      article.title.includes("Statement On") || 
+      article.title.includes("Magnetix")
+    );
     
     if (!hasTrumpArticle) {
-      console.log('Adding missing Trump article to the list');
+      console.log('Adding missing Trump/Magnetix article to the list');
       articles.push(FALLBACK_ARTICLES[2]);
     }
     
-    console.log('Processed articles:', articles);
+    console.log('Final articles to display:', articles);
     return articles;
   } catch (error) {
-    console.error('Error fetching Medium articles:', error);
+    console.error('Error in fetchMediumArticles:', error);
     return FALLBACK_ARTICLES;
   }
 }
