@@ -30,6 +30,7 @@ const Testimonials = () => {
   const isMobile = useIsMobile();
   const { data: mediumArticles, isLoading, error } = useMediumArticles();
   
+  // Use the fetched articles if available, otherwise fall back to the default ones
   const articles = mediumArticles || fallbackArticles;
 
   const next = () => {

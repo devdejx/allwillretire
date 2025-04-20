@@ -47,12 +47,33 @@ function extractFirstImageFromContent(content: string, title: string): string {
 
 async function fetchMediumArticles(): Promise<MediumArticle[]> {
   try {
+    // Use the RSS2JSON API without requiring API key - it should work for basic fetching
     const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(MEDIUM_RSS_URL)}`);
     const data = await response.json();
     
-    if (!data.items) {
-      console.error('No items found in Medium RSS feed');
-      throw new Error('No articles found');
+    // If the API call fails or returns no items, use fallback data
+    if (!data.items || data.status === 'error') {
+      console.log('Using fallback Medium articles due to API error:', data.message || 'No items found');
+      
+      // Return hardcoded fallback articles
+      return [
+        {
+          title: "Why Now Is The Perfect Time To Tell Our Story",
+          publishDate: "March 15, 2025",
+          readTime: "5 min read",
+          image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
+          excerpt: "The current macroeconomic environment has changed the way we think about personal finance, security, and wealth...",
+          url: "https://medium.com/@allwillretire/why-now-is-the-perfect-time-to-tell-our-story-c8a2ab6b8943"
+        },
+        {
+          title: "Staying Safe in the AWR Community",
+          publishDate: "March 22, 2025",
+          readTime: "4 min read",
+          image: "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png",
+          excerpt: "As our community grows, ensuring a safe environment for all members becomes increasingly important...",
+          url: "https://medium.com/@allwillretire/"
+        }
+      ];
     }
 
     return data.items.map((item: any) => {
@@ -76,7 +97,26 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
     });
   } catch (error) {
     console.error('Error fetching Medium articles:', error);
-    throw error;
+    
+    // Return fallback articles in case of any error
+    return [
+      {
+        title: "Why Now Is The Perfect Time To Tell Our Story",
+        publishDate: "March 15, 2025",
+        readTime: "5 min read",
+        image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
+        excerpt: "The current macroeconomic environment has changed the way we think about personal finance, security, and wealth...",
+        url: "https://medium.com/@allwillretire/why-now-is-the-perfect-time-to-tell-our-story-c8a2ab6b8943"
+      },
+      {
+        title: "Staying Safe in the AWR Community",
+        publishDate: "March 22, 2025",
+        readTime: "4 min read",
+        image: "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png",
+        excerpt: "As our community grows, ensuring a safe environment for all members becomes increasingly important...",
+        url: "https://medium.com/@allwillretire/"
+      }
+    ];
   }
 }
 
@@ -88,3 +128,4 @@ export function useMediumArticles() {
     staleTime: 1000 * 60 * 5, // 5 minutes
   });
 }
+
