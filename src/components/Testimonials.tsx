@@ -4,38 +4,38 @@ import { ChevronLeft, ChevronRight, Quote, ExternalLink } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Card, CardContent } from '@/components/ui/card';
 
-// Medium articles data
+// Medium articles data with updated dates for 2025
 const mediumArticles = [{
   title: "Why Now Is The Perfect Time To Tell Our Story",
-  publishDate: "May 15, 2023",
+  publishDate: "March 15, 2025",
   readTime: "5 min read",
   image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
   excerpt: "The current macroeconomic environment has changed the way we think about personal finance, security, and wealth. With traditional systems showing their vulnerabilities, people are looking for alternatives that provide both stability and growth potential. That's exactly what AllWillRetire offers - a community-driven approach to financial security that empowers individuals...",
   url: "https://medium.com/@allwillretire/why-now-is-the-perfect-time-to-tell-our-story-c8a2ab6b8943"
 }, {
   title: "Introducing AWR: Life By Design",
-  publishDate: "June 5, 2023",
+  publishDate: "April 2, 2025",
   readTime: "4 min read",
   image: "/lovable-uploads/43532d3a-9463-44e9-af76-3cb49befadd9.png",
   excerpt: "AWR is more than just a token - it's a movement towards financial independence and empowerment. In this article, we introduce our vision for a life by design, where community members take control of their financial future through innovative blockchain solutions. We discuss the core principles that guide our project and how we're building something truly unique...",
   url: "https://medium.com/@allwillretire/introducing-awr-life-by-design-6ebeb3bfced3"
 }, {
   title: "All Will Retire: Vision Statement",
-  publishDate: "July 10, 2023",
+  publishDate: "April 10, 2025",
   readTime: "6 min read",
   image: "/lovable-uploads/1637f444-4baf-4c41-9a91-7c131440c4f9.png",
   excerpt: "Our vision at AllWillRetire is to create a world where financial freedom is accessible to everyone. Through community collaboration, innovative technology, and a shared commitment to mutual success, we're building a platform that enables people from all walks of life to achieve their retirement goals. This vision statement outlines our core values, long-term objectives, and the roadmap that will guide our journey...",
   url: "https://medium.com/@allwillretire/all-will-retire-vision-statement-ea7ee2e09943"
 }, {
   title: "What Does Success Look Like for AWR?",
-  publishDate: "August 20, 2023",
+  publishDate: "April 18, 2025",
   readTime: "5 min read",
   image: "/lovable-uploads/bc81e8cb-c76b-4275-9298-3b08f6034bb4.png",
   excerpt: "Success for AllWillRetire isn't just measured in market cap or token price. In this article, we outline our holistic vision of success that encompasses community growth, technological innovation, real-world impact, and long-term sustainability. We discuss key metrics and milestones that will guide our development and how every member of our community plays a crucial role in achieving these goals...",
   url: "https://medium.com/@allwillretire/what-does-success-look-like-for-awr-a2ed36071a54"
 }, {
   title: "Sustainable Funding Engines",
-  publishDate: "September 15, 2023",
+  publishDate: "April 20, 2025",
   readTime: "7 min read",
   image: "https://miro.medium.com/v2/resize:fit:1100/format:webp/0*boTCnDpXyBgSNHQM",
   excerpt: "In this article, we explore the concept of sustainable funding engines and how they can revolutionize blockchain project development. We delve into the mechanics of creating self-sustaining economic models that benefit all participants, discuss the importance of balanced tokenomics, and show how AWR is implementing these principles to ensure long-term viability and success for our community members...",
