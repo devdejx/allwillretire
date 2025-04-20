@@ -48,65 +48,51 @@ const Testimonials = () => {
   const isMobile = useIsMobile();
   const { data: fetchedArticles, isLoading, error } = useMediumArticles();
   
-  // Process articles to ensure the Trump article is included
-  const [articles, setArticles] = useState(fallbackArticles);
+  // Always start with fallback articles to ensure we have content
+  const [articles, setArticles] = useState<MediumArticle[]>(fallbackArticles);
   
   // Process articles when data is fetched
   useEffect(() => {
-    if (fetchedArticles) {
+    console.log("Setting articles in Testimonials, fetched:", fetchedArticles);
+    
+    if (fetchedArticles && fetchedArticles.length > 0) {
+      // Use fetched articles but ensure Trump article is included
       let processedArticles = [...fetchedArticles];
       
-      // Check if Trump article exists
       const hasTrumpArticle = processedArticles.some(
         article => article.title.includes("Statement On") || article.title.includes("Magnetix")
       );
       
-      // Add Trump article if missing
       if (!hasTrumpArticle) {
-        console.log('Trump article missing in component, adding it');
         processedArticles.push(trumpArticle);
       }
       
-      // Ensure we have at least the fallback articles
-      if (processedArticles.length === 0) {
-        processedArticles = [...fallbackArticles];
-      }
-      
-      console.log('Final processed articles:', processedArticles);
-      console.log('Trump article present:', processedArticles.some(a => a.title.includes("Statement On")));
-      
       setArticles(processedArticles);
     } else if (error) {
-      // If there's an error, ensure we use fallbacks with Trump article
-      const backupArticles = [...fallbackArticles];
+      // Ensure fallback articles with Trump article included
+      const hasDefaultTrump = fallbackArticles.some(
+        article => article.title.includes("Statement On") || article.title.includes("Magnetix")
+      );
       
-      // Always include Trump article in error case
-      if (!backupArticles.some(a => a.title.includes("Statement On"))) {
-        backupArticles.push(trumpArticle);
-      }
+      setArticles(hasDefaultTrump ? fallbackArticles : [...fallbackArticles, trumpArticle]);
       
-      setArticles(backupArticles);
-    }
-    
-    // Reset to first slide when articles change
-    setCurrent(0);
-    
-    // Show toast if there was an error
-    if (error) {
       toast({
         title: "Couldn't load Medium articles",
         description: "Using fallback articles instead",
         variant: "destructive"
       });
     }
+    
+    // Reset to first slide when articles change
+    setCurrent(0);
   }, [fetchedArticles, error]);
 
   const next = () => {
-    setCurrent(prev => prev === articles.length - 1 ? 0 : prev + 1);
+    setCurrent(prev => (prev === articles.length - 1 ? 0 : prev + 1));
   };
   
   const prev = () => {
-    setCurrent(prev => prev === 0 ? articles.length - 1 : prev - 1);
+    setCurrent(prev => (prev === 0 ? articles.length - 1 : prev - 1));
   };
 
   useEffect(() => {
@@ -117,9 +103,9 @@ const Testimonials = () => {
     return () => clearInterval(interval);
   }, [autoplay, current, articles.length]);
 
-  // Find index of Trump article for debugging
+  // Debug - find index of Trump article
   const trumpIndex = articles.findIndex(a => a.title.includes("Statement On"));
-  console.log('Trump article index:', trumpIndex);
+  console.log('Trump article index:', trumpIndex, 'Current articles:', articles);
 
   if (isLoading) {
     return <div className="flex justify-center items-center min-h-[400px]">
@@ -147,12 +133,9 @@ const Testimonials = () => {
         </div>
 
         <div className="relative max-w-4xl mx-auto">
-          {/* Debug info for Trump article - can be removed in production */}
-          <div className="hidden">
-            <p>Articles count: {articles.length}</p>
-            <p>Trump index: {trumpIndex}</p>
-            <p>Current index: {current}</p>
-            <p>Article titles: {articles.map(a => a.title).join(', ')}</p>
+          {/* Force display of articles count for debugging */}
+          <div className="text-xs text-muted-foreground mb-2">
+            Articles: {articles.length} | Current: {current + 1}/{articles.length}
           </div>
 
           <div className="overflow-hidden" onMouseEnter={() => setAutoplay(false)} onMouseLeave={() => setAutoplay(true)}>
@@ -170,8 +153,8 @@ const Testimonials = () => {
                   <h2 className="text-2xl font-bold mb-4">{article.title}</h2>
                   
                   <div className="mb-6 relative overflow-hidden rounded-lg" style={{
-                maxHeight: isMobile ? '150px' : '250px'
-              }}>
+                    maxHeight: isMobile ? '150px' : '250px'
+                  }}>
                     <OptimizedImage 
                       src={article.image} 
                       alt={article.title} 

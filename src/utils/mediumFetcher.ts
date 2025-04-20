@@ -1,4 +1,3 @@
-
 import { useQuery } from '@tanstack/react-query';
 
 export interface MediumArticle {
@@ -91,8 +90,8 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
   try {
     console.log('Fetching Medium articles from:', MEDIUM_RSS_URL);
     
-    // Start with an empty articles array
-    let articles: MediumArticle[] = [];
+    // Always start with fallback articles to ensure we have at least these
+    let articles: MediumArticle[] = [...FALLBACK_ARTICLES];
     
     try {
       // Use the RSS2JSON API without requiring API key
@@ -100,7 +99,7 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
       
       if (!response.ok) {
         console.error('RSS2JSON API response was not OK:', response.status);
-        return [...FALLBACK_ARTICLES, TRUMP_ARTICLE]; // Return our fallback articles with Trump
+        return articles; // Return our fallback articles
       }
       
       const data = await response.json();
@@ -126,40 +125,20 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
             url: item.link
           };
         });
-      } else {
-        console.error('Invalid or empty data from RSS2JSON API:', data);
-        articles = [...FALLBACK_ARTICLES];
       }
     } catch (error) {
       console.error('Error fetching from RSS2JSON API:', error);
-      articles = [...FALLBACK_ARTICLES];
+      // Already using fallback articles, so no need to set them again
     }
     
-    // Check if Trump article already exists in the fetched articles
+    // Check if Trump article is missing and add it if needed
     const hasTrumpArticle = articles.some(article => 
       article.title.includes("Statement On Magnetix") || 
       article.title.includes("Magnetix")
     );
     
-    // Always include Trump article if not already present
     if (!hasTrumpArticle) {
       console.log('Adding missing Trump/Magnetix article to the list');
-      articles.push(TRUMP_ARTICLE);
-    }
-    
-    // Make sure we have at least the fallback articles
-    if (articles.length === 0) {
-      articles = [...FALLBACK_ARTICLES];
-    }
-    
-    // Double-check Trump article is included before returning
-    const finalHasTrump = articles.some(article => 
-      article.title.includes("Statement On Magnetix") || 
-      article.title.includes("Magnetix")
-    );
-    
-    if (!finalHasTrump) {
-      console.error('Trump article missing after all checks. Forcing inclusion.');
       articles.push(TRUMP_ARTICLE);
     }
     
@@ -170,7 +149,7 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
   } catch (error) {
     console.error('Error in fetchMediumArticles:', error);
     // In case of any error, return fallbacks plus Trump article
-    return [...FALLBACK_ARTICLES, TRUMP_ARTICLE];
+    return [...FALLBACK_ARTICLES];
   }
 }
 
