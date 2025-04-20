@@ -1,3 +1,4 @@
+
 import { useQuery } from '@tanstack/react-query';
 
 export interface MediumArticle {
@@ -39,7 +40,7 @@ const FALLBACK_ARTICLES: MediumArticle[] = [
   }
 ];
 
-// The critical Trump/Magnetix article that must always be included
+// Always include Trump article as first
 const TRUMP_ARTICLE: MediumArticle = {
   title: "Statement On Magnetix",
   publishDate: "April 3, 2025",
@@ -90,8 +91,8 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
   try {
     console.log('Fetching Medium articles from:', MEDIUM_RSS_URL);
     
-    // Always start with fallback articles to ensure we have at least these
-    let articles: MediumArticle[] = [...FALLBACK_ARTICLES];
+    // CRITICAL CHANGE: Always start with Trump article first
+    let articles: MediumArticle[] = [TRUMP_ARTICLE];
     
     try {
       // Use the RSS2JSON API without requiring API key
@@ -99,7 +100,9 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
       
       if (!response.ok) {
         console.error('RSS2JSON API response was not OK:', response.status);
-        return articles; // Return our fallback articles
+        // Add the rest of fallback articles without duplicating Trump
+        articles = articles.concat(FALLBACK_ARTICLES.filter(a => a.title !== "Statement On Magnetix"));
+        return articles; 
       }
       
       const data = await response.json();
@@ -107,7 +110,7 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
       
       // If the API call succeeds, map the response to our MediumArticle interface
       if (data.items && data.status !== 'error' && data.items.length > 0) {
-        articles = data.items.map((item: any) => {
+        const fetchedArticles = data.items.map((item: any) => {
           console.log(`Processing article: ${item.title}`);
           const extractedImage = extractFirstImageFromContent(item.content, item.title);
           console.log(`Image found for "${item.title}": ${extractedImage}`);
@@ -125,31 +128,33 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
             url: item.link
           };
         });
+        
+        // Filter out duplicates of Trump/Magnetix article since we've already added it
+        const otherArticles = fetchedArticles.filter(article => 
+          !article.title.includes("Statement On Magnetix") && 
+          !article.title.includes("Magnetix")
+        );
+        
+        // Add the other articles after Trump
+        articles = articles.concat(otherArticles);
+      } else {
+        // Add remaining fallback articles
+        articles = articles.concat(FALLBACK_ARTICLES.filter(a => a.title !== "Statement On Magnetix"));
       }
     } catch (error) {
       console.error('Error fetching from RSS2JSON API:', error);
-      // Already using fallback articles, so no need to set them again
-    }
-    
-    // Check if Trump article is missing and add it if needed
-    const hasTrumpArticle = articles.some(article => 
-      article.title.includes("Statement On Magnetix") || 
-      article.title.includes("Magnetix")
-    );
-    
-    if (!hasTrumpArticle) {
-      console.log('Adding missing Trump/Magnetix article to the list');
-      articles.push(TRUMP_ARTICLE);
+      // Add remaining fallback articles
+      articles = articles.concat(FALLBACK_ARTICLES.filter(a => a.title !== "Statement On Magnetix"));
     }
     
     console.log('Final articles to display:', articles);
-    console.log('Trump article check:', articles.some(a => a.title.includes("Statement On")));
+    console.log('Trump article check:', articles[0].title);
     
     return articles;
   } catch (error) {
     console.error('Error in fetchMediumArticles:', error);
-    // In case of any error, return fallbacks plus Trump article
-    return [...FALLBACK_ARTICLES];
+    // In case of any error, return Trump article and fallbacks
+    return [TRUMP_ARTICLE].concat(FALLBACK_ARTICLES.filter(a => a.title !== "Statement On Magnetix"));
   }
 }
 
