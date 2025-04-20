@@ -12,136 +12,55 @@ export interface MediumArticle {
 
 const MEDIUM_RSS_URL = 'https://medium.com/feed/@allwillretire';
 
-// Improved function to normalize URLs
-function normalizeUrl(url: string): string {
-  // Handle medium.com URLs that might have tracking parameters
-  if (url.includes('medium.com')) {
-    // Remove query parameters
-    const baseUrl = url.split('?')[0];
-    return baseUrl;
-  }
-  return url;
-}
-
 function extractFirstImageFromContent(content: string, title: string): string {
-  try {
-    // Try to extract the first CDN image URL
-    const cdnImageRegex = /https:\/\/cdn-images-1\.medium\.com\/[a-zA-Z0-9\/_.-]+/g;
-    const cdnMatches = content.match(cdnImageRegex);
-    
-    if (cdnMatches && cdnMatches.length > 0) {
-      // Filter out tracking pixels and small images
-      const validImages = cdnMatches.filter(url => 
-        !url.includes('stat?') && 
-        !url.includes('tracking') && 
-        !url.includes('pixel') &&
-        url.includes('max')  // Usually main content images have 'max' in URL
-      );
-      
-      if (validImages.length > 0) {
-        console.log(`Found CDN image for "${title}": ${validImages[0]}`);
-        return validImages[0];
-      }
-    }
-
-    // Try extracting from figure tags
-    const figureRegex = /<figure[^>]*>.*?<img[^>]+src="([^">]+)".*?<\/figure>/sg;
-    const figureMatches = [...content.matchAll(figureRegex)];
-    
-    for (const match of figureMatches) {
-      const imgSrc = match[1];
-      if (imgSrc && !imgSrc.includes('stat?') && !imgSrc.includes('tracking')) {
-        console.log(`Found figure image in "${title}": ${imgSrc}`);
-        return imgSrc;
-      }
-    }
-
-    // Try regular img tags
-    const imgRegex = /<img[^>]+src="([^">]+)"/g;
-    const imgMatches = [...content.matchAll(imgRegex)];
-    
-    for (const match of imgMatches) {
-      const imgSrc = match[1];
-      if (imgSrc && 
-          !imgSrc.includes('stat?') && 
-          !imgSrc.includes('tracking') && 
-          !imgSrc.includes('pixel')) {
-        console.log(`Found img tag image in "${title}": ${imgSrc}`);
-        return imgSrc;
-      }
-    }
-
-    // Try background images
-    const bgImgRegex = /background-image:\s*url\(['"]?([^'")]+)['"]?\)/g;
-    const bgMatches = [...content.matchAll(bgImgRegex)];
-    
-    for (const match of bgMatches) {
-      const imgSrc = match[1];
-      if (imgSrc && 
-          !imgSrc.includes('stat?') && 
-          !imgSrc.includes('tracking')) {
-        console.log(`Found background image in "${title}": ${imgSrc}`);
-        return imgSrc;
-      }
-    }
-
-    // Try to find any CDN URL that might be embedded in the content
-    const mediumCdnRegex = /https:\/\/miro\.medium\.com\/[a-zA-Z0-9\/_.-]+/g;
-    const mediumMatches = content.match(mediumCdnRegex);
-    
-    if (mediumMatches && mediumMatches.length > 0) {
-      console.log(`Found Miro CDN image in "${title}": ${mediumMatches[0]}`);
-      return mediumMatches[0];
-    }
-
-  } catch (error) {
-    console.error(`Error extracting image for "${title}":`, error);
+  // Try to extract image using regex for img tags
+  const imgRegex = /<img[^>]+src="([^">]+)"/;
+  const match = content.match(imgRegex);
+  
+  // If we found an image, return it
+  if (match?.[1]) {
+    return match[1];
   }
   
-  // Use default fallback if no image found - this is a Medium placeholder image URL
-  console.log(`No valid image found for "${title}", using Medium's default image`);
-  return "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*m-R_BkNf1Qjr1YbyOIJY2w.png";
+  // Check if there's a figure with an image
+  const figureRegex = /<figure[^>]*>.*?<img[^>]+src="([^">]+)".*?<\/figure>/s;
+  const figureMatch = content.match(figureRegex);
+  if (figureMatch?.[1]) {
+    return figureMatch[1];
+  }
+
+  // Check for background-image style in any element
+  const bgImgRegex = /background-image:\s*url\(['"]?([^'")]+)['"]?\)/;
+  const bgMatch = content.match(bgImgRegex);
+  if (bgMatch?.[1]) {
+    return bgMatch[1];
+  }
+  
+  // If the title contains "Staying Safe", use a specific fallback image
+  if (title.includes("Staying Safe")) {
+    return "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png";
+  }
+  
+  // Use default fallback as last resort
+  return "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png";
 }
 
 async function fetchMediumArticles(): Promise<MediumArticle[]> {
   try {
-    console.log('Fetching Medium articles from RSS feed:', MEDIUM_RSS_URL);
     const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(MEDIUM_RSS_URL)}`);
-    
-    if (!response.ok) {
-      console.error('RSS feed response not OK:', response.status, response.statusText);
-      throw new Error(`RSS feed response not OK: ${response.status}`);
-    }
-    
     const data = await response.json();
-    console.log('RSS feed response received');
     
-    if (!data.items || !Array.isArray(data.items) || data.items.length === 0) {
-      console.error('No items found in Medium RSS feed or invalid format');
+    if (!data.items) {
+      console.error('No items found in Medium RSS feed');
       throw new Error('No articles found');
     }
 
-    // Create a map to deduplicate articles by url
-    const articlesMap = new Map<string, MediumArticle>();
-
-    const parsedArticles = data.items.map((item: any) => {
+    return data.items.map((item: any) => {
       // Log to help debug image extraction
-      console.log(`Processing article: ${item.title}`);
-      
-      // Extract image
+      console.log(`Extracting image for: ${item.title}`);
       const extractedImage = extractFirstImageFromContent(item.content, item.title);
-      console.log(`Image found for ${item.title}: ${extractedImage}`);
+      console.log(`Image found: ${extractedImage}`);
       
-      // Calculate read time (approx 200 words per minute)
-      const wordCount = item.content.split(/\s+/).length;
-      const readTimeMinutes = Math.max(1, Math.ceil(wordCount / 200));
-      
-      // Clean up excerpt from HTML tags and trim to reasonable length
-      let excerpt = item.description?.replace(/<[^>]*>/g, '') || '';
-      if (excerpt.length > 300) {
-        excerpt = excerpt.substring(0, 300) + '...';
-      }
-
       return {
         title: item.title,
         publishDate: new Date(item.pubDate).toLocaleDateString('en-US', {
@@ -149,20 +68,12 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
           month: 'long',
           day: 'numeric'
         }),
-        readTime: `${readTimeMinutes} min read`,
+        readTime: `${Math.ceil(item.content.split(' ').length / 200)} min read`,
         image: extractedImage,
-        excerpt: excerpt,
-        url: normalizeUrl(item.link)
+        excerpt: item.description.replace(/<[^>]*>/g, '').substring(0, 300) + '...',
+        url: item.link
       };
     });
-
-    // Add all articles to the map to deduplicate 
-    parsedArticles.forEach(article => {
-      articlesMap.set(article.url, article);
-    });
-
-    // Convert map back to array
-    return Array.from(articlesMap.values());
   } catch (error) {
     console.error('Error fetching Medium articles:', error);
     throw error;
