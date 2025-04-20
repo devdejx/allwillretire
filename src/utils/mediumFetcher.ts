@@ -12,17 +12,6 @@ export interface MediumArticle {
 
 const MEDIUM_RSS_URL = 'https://medium.com/feed/@allwillretire';
 
-// Enhanced mapping for articles with known image issues
-const ARTICLE_IMAGE_MAPPING: Record<string, string> = {
-  "Staying Safe in the AWR Community": "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png",
-  "Celebrating the Aspirations of AWR": "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
-  "Why the Trump Coin Validates All Will Retire": "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
-  "AWR Day 43: Small Incremental Progress to Believe In": "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
-  "Why We Need Stress-Scaling Communities: Being Process Oriented": "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
-  "Statement On Magnetix": "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
-  "Why Now Is The Perfect Time To Tell Our Story": "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png"
-};
-
 // Improved function to normalize URLs
 function normalizeUrl(url: string): string {
   // Handle medium.com URLs that might have tracking parameters
@@ -35,12 +24,6 @@ function normalizeUrl(url: string): string {
 }
 
 function extractFirstImageFromContent(content: string, title: string): string {
-  // First check if we have a specific mapping for this article
-  if (ARTICLE_IMAGE_MAPPING[title]) {
-    console.log(`Using mapped image for "${title}": ${ARTICLE_IMAGE_MAPPING[title]}`);
-    return ARTICLE_IMAGE_MAPPING[title];
-  }
-
   try {
     // Try to extract the first CDN image URL
     const cdnImageRegex = /https:\/\/cdn-images-1\.medium\.com\/[a-zA-Z0-9\/_.-]+/g;
@@ -115,9 +98,9 @@ function extractFirstImageFromContent(content: string, title: string): string {
     console.error(`Error extracting image for "${title}":`, error);
   }
   
-  // Use default fallback if no image found
-  console.log(`No valid image found for "${title}", using default fallback`);
-  return "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png";
+  // Use default fallback if no image found - this is a Medium placeholder image URL
+  console.log(`No valid image found for "${title}", using Medium's default image`);
+  return "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*m-R_BkNf1Qjr1YbyOIJY2w.png";
 }
 
 async function fetchMediumArticles(): Promise<MediumArticle[]> {
@@ -131,7 +114,7 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
     }
     
     const data = await response.json();
-    console.log('RSS feed response:', JSON.stringify(data, null, 2));
+    console.log('RSS feed response received');
     
     if (!data.items || !Array.isArray(data.items) || data.items.length === 0) {
       console.error('No items found in Medium RSS feed or invalid format');
@@ -144,8 +127,6 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
     const parsedArticles = data.items.map((item: any) => {
       // Log to help debug image extraction
       console.log(`Processing article: ${item.title}`);
-      console.log(`Article URL: ${item.link}`);
-      console.log(`Article content length: ${item.content?.length || 0} characters`);
       
       // Extract image
       const extractedImage = extractFirstImageFromContent(item.content, item.title);

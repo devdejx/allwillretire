@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Quote, ExternalLink } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Card, CardContent } from '@/components/ui/card';
 import { useMediumArticles } from '@/utils/mediumFetcher';
@@ -8,54 +7,53 @@ import { Skeleton } from '@/components/ui/skeleton';
 import OptimizedImage from '@/components/OptimizedImage';
 import { toast } from '@/hooks/use-toast';
 
-// Expanded fallback data with all articles
 const fallbackArticles = [{
   title: "Statement On Magnetix",
   publishDate: "April 3, 2025",
   readTime: "6 min read",
-  image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
+  image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*m-R_BkNf1Qjr1YbyOIJY2w.png",
   excerpt: "All Will Retire is in no way involved with Magnetix and has no desire to be. Recently events around a coin/community named Magnetix —led by Andrej Bohinc—have unfolded that have caused others to scrutinize them and unfortunately All Will Retire...",
   url: "https://medium.com/@allwillretire/statement-on-magnetix-d61e24e4355f"
 }, {
   title: "Why Now Is The Perfect Time To Tell Our Story",
   publishDate: "March 15, 2025",
   readTime: "5 min read",
-  image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
+  image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*m-R_BkNf1Qjr1YbyOIJY2w.png",
   excerpt: "The current macroeconomic environment has changed the way we think about personal finance, security, and wealth...",
   url: "https://medium.com/@allwillretire/why-now-is-the-perfect-time-to-tell-our-story-c8a2ab6b8943"
 }, {
   title: "Staying Safe in the AWR Community",
   publishDate: "March 22, 2025",
   readTime: "4 min read",
-  image: "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png",
+  image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*m-R_BkNf1Qjr1YbyOIJY2w.png",
   excerpt: "As our community grows, ensuring a safe environment for all members becomes increasingly important...",
   url: "https://medium.com/@allwillretire/staying-safe-in-the-awr-community-41b1a73fb943"
 }, {
   title: "Celebrating the Aspirations of AWR",
   publishDate: "March 25, 2025",
   readTime: "4 min read",
-  image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
+  image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*m-R_BkNf1Qjr1YbyOIJY2w.png",
   excerpt: "The AWR community's journey of shared dreams and collective vision for financial independence...",
   url: "https://medium.com/@allwillretire/celebrating-the-aspirations-of-awr-72872aaebb8f"
 }, {
   title: "Why the Trump Coin Validates All Will Retire",
   publishDate: "March 28, 2025",
   readTime: "5 min read",
-  image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
+  image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*m-R_BkNf1Qjr1YbyOIJY2w.png",
   excerpt: "Understanding the significance of cryptocurrency trends and their impact on financial independence...",
   url: "https://medium.com/@allwillretire/why-the-trump-coin-validates-all-will-retire-c575653994a7"
 }, {
   title: "AWR Day 43: Small Incremental Progress to Believe In",
   publishDate: "March 30, 2025",
   readTime: "3 min read",
-  image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
+  image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*m-R_BkNf1Qjr1YbyOIJY2w.png",
   excerpt: "Tracking our daily progress and celebrating small wins on the path to financial freedom...",
   url: "https://medium.com/@allwillretire/awr-day-43-small-incremental-progress-to-believe-in-5f788a1b69d7"
 }, {
   title: "Why We Need Stress-Scaling Communities: Being Process Oriented",
   publishDate: "April 2, 2025",
   readTime: "4 min read",
-  image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
+  image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*m-R_BkNf1Qjr1YbyOIJY2w.png",
   excerpt: "Exploring the importance of community resilience and sustainable growth strategies...",
   url: "https://medium.com/@allwillretire/why-we-need-stress-scaling-communities-being-process-oriented-1cd5ebe372a8"
 }];
@@ -66,25 +64,20 @@ const Testimonials = () => {
   const isMobile = useIsMobile();
   const { data: mediumArticles, isLoading, error } = useMediumArticles();
   
-  // Enhanced article selection logic
-  // If we got articles from the API, use them. Otherwise, use fallbacks.
   const articles = React.useMemo(() => {
-    // Always use fallbacks if API failed
     if (error || !mediumArticles || mediumArticles.length === 0) {
       console.log("Using fallback articles due to error or empty response");
       return fallbackArticles;
     }
     
-    // Log the articles we received to help debug
     console.log(`Received ${mediumArticles.length} articles from API`);
     mediumArticles.forEach((article, i) => {
       console.log(`API Article ${i + 1}: ${article.title} - URL: ${article.url} - Image: ${article.image}`);
     });
     
-    // Look for missing URLs in the API response
     const apiUrls = new Set(mediumArticles.map(a => a.url));
     const missingArticles = fallbackArticles.filter(article => {
-      const normalizedUrl = article.url.split('?')[0]; // Remove query params
+      const normalizedUrl = article.url.split('?')[0];
       return !apiUrls.has(normalizedUrl);
     });
     
@@ -94,7 +87,6 @@ const Testimonials = () => {
         console.log(`Adding missing article: ${article.title} - ${article.url}`);
       });
       
-      // Combine API articles with missing fallback articles
       return [...mediumArticles, ...missingArticles];
     }
     
@@ -175,13 +167,16 @@ const Testimonials = () => {
                   <h2 className="text-2xl font-bold mb-4">{article.title}</h2>
                   
                   <div className="mb-6 relative overflow-hidden rounded-lg" style={{
-                maxHeight: isMobile ? '150px' : '250px'
-              }}>
-                    <OptimizedImage 
+                    maxHeight: isMobile ? '150px' : '250px'
+                  }}>
+                    <img 
                       src={article.image} 
                       alt={article.title} 
                       className="w-full h-full object-cover" 
-                      fallbackSrc="/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png"
+                      onError={(e) => {
+                        console.error(`Error loading image for ${article.title}: ${article.image}`);
+                        e.currentTarget.src = "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*m-R_BkNf1Qjr1YbyOIJY2w.png";
+                      }}
                     />
                   </div>
                   
