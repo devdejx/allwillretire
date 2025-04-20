@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { X, Instagram, ArrowUp, ExternalLink, Youtube, Send, Music, Copy, Check } from 'lucide-react';
+import { X, Instagram, ArrowUp, ExternalLink, Youtube, Send, Music, Copy, Check, Facebook } from 'lucide-react';
 import { Button } from './ui/button';
 import { useToast } from "@/hooks/use-toast";
 
@@ -36,7 +35,6 @@ const Footer = () => {
   };
   
   return <footer className="relative bg-black text-white overflow-hidden">
-      {/* Decorative elements */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
       <div className="absolute top-10 right-10 w-20 h-20 bg-gold-500/10 rounded-full blur-xl"></div>
       <div className="absolute bottom-10 left-10 w-20 h-20 bg-gold-500/10 rounded-full blur-xl"></div>
@@ -51,7 +49,6 @@ const Footer = () => {
               The future of wealth accumulation, designed to secure your luxurious retirement with innovative blockchain technology.
             </p>
             
-            {/* New section for social media with luxurious styling */}
             <div className="mb-8">
               <h3 className="text-lg font-artistic tracking-wider mb-4 relative inline-block">
                 <span className="bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 bg-clip-text text-transparent font-bold">
@@ -87,13 +84,17 @@ const Footer = () => {
                   <Music size={24} className="group-hover:animate-pulse" />
                 </div>
               </a>
+              <a href="https://www.facebook.com/allwillretire" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors transform hover:scale-110 group">
+                <div className="p-3 rounded-full bg-black border border-gold-500/30 group-hover:border-gold-500 shadow-[0_0_10px_rgba(255,195,0,0.2)] group-hover:shadow-[0_0_15px_rgba(255,195,0,0.4)]">
+                  <Facebook size={24} className="group-hover:animate-pulse" />
+                </div>
+              </a>
             </div>
           </div>
           
           <div>
             <h3 className="text-base font-medium mb-6 text-gray-400">AWR token information</h3>
             
-            {/* Added small copy address button */}
             <button 
               onClick={handleCopy}
               className="mb-4 bg-black border border-gold-500/30 hover:border-gold-500 text-gold-500 px-3 py-1 rounded-md text-xs flex items-center gap-1 transition-all hover:shadow-[0_0_10px_rgba(255,195,0,0.3)] group"
