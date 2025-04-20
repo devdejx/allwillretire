@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Quote, ExternalLink } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -8,6 +9,13 @@ import OptimizedImage from '@/components/OptimizedImage';
 
 // Fallback data in case the API fails
 const fallbackArticles = [{
+  title: "Statement On Magnetix",
+  publishDate: "April 3, 2025",
+  readTime: "6 min read",
+  image: "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
+  excerpt: "All Will Retire is in no way involved with Magnetix and has no desire to be. Recently events around a coin/community named Magnetix —led by Andrej Bohinc—have unfolded that have caused others to scrutinize them and unfortunately All Will Retire...",
+  url: "https://medium.com/@allwillretire/statement-on-magnetix-d61e24e4355f"
+}, {
   title: "Why Now Is The Perfect Time To Tell Our Story",
   publishDate: "March 15, 2025",
   readTime: "5 min read",
@@ -57,7 +65,19 @@ const Testimonials = () => {
   const isMobile = useIsMobile();
   const { data: mediumArticles, isLoading, error } = useMediumArticles();
   
+  // If we got articles from the API, use them. Otherwise, use fallbacks.
+  // Log the articles to help debug
   const articles = mediumArticles || fallbackArticles;
+  useEffect(() => {
+    if (mediumArticles) {
+      console.log("Medium articles loaded:", mediumArticles.length);
+      mediumArticles.forEach((article, i) => {
+        console.log(`Article ${i + 1}: ${article.title} - Image: ${article.image}`);
+      });
+    } else if (error) {
+      console.error("Error loading Medium articles, using fallbacks:", error);
+    }
+  }, [mediumArticles, error]);
 
   const next = () => {
     setCurrent(prev => prev === articles.length - 1 ? 0 : prev + 1);

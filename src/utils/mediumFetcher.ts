@@ -18,7 +18,8 @@ const ARTICLE_IMAGE_MAPPING: Record<string, string> = {
   "Celebrating the Aspirations of AWR": "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
   "Why the Trump Coin Validates All Will Retire": "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
   "AWR Day 43: Small Incremental Progress to Believe In": "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
-  "Why We Need Stress-Scaling Communities: Being Process Oriented": "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png"
+  "Why We Need Stress-Scaling Communities: Being Process Oriented": "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
+  "Statement On Magnetix": "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png"
 };
 
 function extractFirstImageFromContent(content: string, title: string): string {
@@ -29,34 +30,49 @@ function extractFirstImageFromContent(content: string, title: string): string {
   }
   
   // Try to extract image using regex for img tags
-  const imgRegex = /<img[^>]+src="([^">]+)"/;
-  const match = content.match(imgRegex);
+  const imgRegex = /<img[^>]+src="([^">]+)"/g;
+  const matches = [...content.matchAll(imgRegex)];
   
-  // If we found an image, validate it's not a tracking pixel or stat URL
-  if (match?.[1] && !match[1].includes('stat?event=') && !match[1].includes('_/stat')) {
-    return match[1];
+  // Filter out tracking pixels and find valid images
+  for (const match of matches) {
+    const imgSrc = match[1];
+    if (imgSrc && !imgSrc.includes('stat?event=') && !imgSrc.includes('_/stat') && !imgSrc.includes('pixel')) {
+      console.log(`Found valid image in "${title}": ${imgSrc}`);
+      return imgSrc;
+    }
   }
   
   // Check if there's a figure with an image
-  const figureRegex = /<figure[^>]*>.*?<img[^>]+src="([^">]+)".*?<\/figure>/s;
-  const figureMatch = content.match(figureRegex);
-  if (figureMatch?.[1] && !figureMatch[1].includes('stat?event=') && !figureMatch[1].includes('_/stat')) {
-    return figureMatch[1];
+  const figureRegex = /<figure[^>]*>.*?<img[^>]+src="([^">]+)".*?<\/figure>/sg;
+  const figureMatches = [...content.matchAll(figureRegex)];
+  
+  for (const match of figureMatches) {
+    const imgSrc = match[1];
+    if (imgSrc && !imgSrc.includes('stat?event=') && !imgSrc.includes('_/stat') && !imgSrc.includes('pixel')) {
+      console.log(`Found valid figure image in "${title}": ${imgSrc}`);
+      return imgSrc;
+    }
   }
 
   // Check for background-image style in any element
-  const bgImgRegex = /background-image:\s*url\(['"]?([^'")]+)['"]?\)/;
-  const bgMatch = content.match(bgImgRegex);
-  if (bgMatch?.[1] && !bgMatch[1].includes('stat?event=') && !bgMatch[1].includes('_/stat')) {
-    return bgMatch[1];
+  const bgImgRegex = /background-image:\s*url\(['"]?([^'")]+)['"]?\)/g;
+  const bgMatches = [...content.matchAll(bgImgRegex)];
+  
+  for (const match of bgMatches) {
+    const imgSrc = match[1];
+    if (imgSrc && !imgSrc.includes('stat?event=') && !imgSrc.includes('_/stat') && !imgSrc.includes('pixel')) {
+      console.log(`Found valid background image in "${title}": ${imgSrc}`);
+      return imgSrc;
+    }
   }
   
-  // If no valid image found, use a specific fallback based on the title
-  if (title.includes("Staying Safe")) {
-    return "/lovable-uploads/6908fc9a-fe98-4b50-a20b-294fe6c8b560.png";
+  // If we have a source image in the thumbnail, use that
+  if (title.includes("Statement On Magnetix")) {
+    return "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png";
   }
   
   // Use default fallback as last resort
+  console.log(`No valid image found for "${title}", using default fallback`);
   return "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png";
 }
 
@@ -72,9 +88,9 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
 
     return data.items.map((item: any) => {
       // Log to help debug image extraction
-      console.log(`Extracting image for: ${item.title}`);
+      console.log(`Processing article: ${item.title}`);
       const extractedImage = extractFirstImageFromContent(item.content, item.title);
-      console.log(`Image found: ${extractedImage}`);
+      console.log(`Image found for ${item.title}: ${extractedImage}`);
       
       return {
         title: item.title,

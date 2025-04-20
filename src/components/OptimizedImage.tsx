@@ -33,8 +33,23 @@ const OptimizedImage = ({
   const [imageLoaded, setImageLoaded] = useState(priority);
   const uniqueId = `img-${src.replace(/[^a-zA-Z0-9]/g, '')}`;
   
+  // For debugging
+  useEffect(() => {
+    if (error) {
+      console.log(`Image error for ${src}, using fallback: ${fallbackSrc}`);
+    }
+  }, [error, src, fallbackSrc]);
+  
   // Preload images in memory before displaying
   useEffect(() => {
+    // Reset state if src changes
+    if (src !== imageSrc && imageSrc !== "" && !error) {
+      setImageSrc("");
+      setIsLoading(true);
+      setImageLoaded(false);
+      setError(false);
+    }
+    
     // Priority images are loaded immediately
     if (priority) {
       setImageSrc(src);
@@ -55,6 +70,7 @@ const OptimizedImage = ({
           
           // Once the image is loaded, update state
           imgElement.onload = () => {
+            console.log(`Image loaded successfully: ${src}`);
             setImageSrc(src);
             setIsLoading(false);
             setImageLoaded(true);
@@ -63,6 +79,7 @@ const OptimizedImage = ({
           
           // Handle error case
           imgElement.onerror = () => {
+            console.log(`Image failed to load: ${src}, using fallback: ${fallbackSrc}`);
             setError(true);
             setIsLoading(false);
             if (src !== fallbackSrc) {
@@ -88,6 +105,7 @@ const OptimizedImage = ({
       };
       
       img.onerror = () => {
+        console.log(`Image failed to load: ${src}, using fallback: ${fallbackSrc}`);
         setError(true);
         setIsLoading(false);
         if (src !== fallbackSrc) {
@@ -95,7 +113,7 @@ const OptimizedImage = ({
         }
       };
     }
-  }, [src, lazyLoad, fallbackSrc, priority, uniqueId]);
+  }, [src, lazyLoad, fallbackSrc, priority, uniqueId, imageSrc, error]);
 
   return (
     <div 
@@ -127,6 +145,7 @@ const OptimizedImage = ({
             setImageLoaded(true);
           }}
           onError={() => {
+            console.log(`Inline image error for ${imageSrc}, using fallback: ${fallbackSrc}`);
             setError(true);
             setIsLoading(false);
             if (src !== fallbackSrc) {
