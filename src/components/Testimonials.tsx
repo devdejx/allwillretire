@@ -65,37 +65,37 @@ const Testimonials = () => {
 
         <div className="relative max-w-4xl mx-auto">
           <div className="overflow-hidden" onMouseEnter={() => setAutoplay(false)} onMouseLeave={() => setAutoplay(true)}>
-            {articles.map((article, index) => <div key={index} className={`w-full bg-gradient-to-br from-white/90 to-white/70 backdrop-blur-lg shadow-[0_8px_32px_rgba(0,0,0,0.06)] border border-white/40 rounded-2xl p-8 md:p-12 hover:shadow-2xl transition-all duration-500 absolute inset-0 ${index === current ? 'opacity-100 z-10 transform translate-x-0 transition-all duration-500' : 'opacity-0 -z-10 transform translate-x-full transition-all duration-500'}`}>
-              <div className="flex flex-col h-full">
-                <div className="flex items-center mb-6 backdrop-blur-sm bg-white/50 p-3 rounded-xl w-fit">
-                  <img src="/lovable-uploads/1a3e2030-93ba-48a8-bad1-11bf6f691350.png" alt="Medium" className="w-8 h-8 mr-3" />
-                  <div>
-                    <h3 className="font-medium text-gray-800">AllWillRetire</h3>
-                    <p className="text-sm text-gray-600">{article.publishDate} · {article.readTime}</p>
+            {articles.map((article, index) => <div key={index} className={`w-full neo-glass rounded-2xl p-8 md:p-12 hover:shadow-lg transition-shadow duration-300 absolute inset-0 ${index === current ? 'opacity-100 z-10 transform translate-x-0 transition-all duration-500' : 'opacity-0 -z-10 transform translate-x-full transition-all duration-500'}`}>
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center mb-6">
+                    <img src="/lovable-uploads/1a3e2030-93ba-48a8-bad1-11bf6f691350.png" alt="Medium" className="w-8 h-8 mr-3" />
+                    <div>
+                      <h3 className="font-medium">AllWillRetire</h3>
+                      <p className="text-sm text-muted-foreground">{article.publishDate} · {article.readTime}</p>
+                    </div>
                   </div>
-                </div>
-                
-                <h2 className="text-2xl font-bold mb-4 text-gray-800">{article.title}</h2>
-                
-                <div className="mb-6 relative overflow-hidden rounded-xl shadow-lg" style={{
+                  
+                  <h2 className="text-2xl font-bold mb-4">{article.title}</h2>
+                  
+                  <div className="mb-6 relative overflow-hidden rounded-lg" style={{
                 maxHeight: isMobile ? '150px' : '250px'
               }}>
-                  <img src={article.image} alt="AWR Community" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                    <img src={article.image} alt="AWR Community" className="w-full h-full object-cover" />
+                  </div>
+                  
+                  <div className="prose prose-sm max-w-none mb-6">
+                    <p className="line-clamp-3 md:line-clamp-4">
+                      {article.excerpt}
+                    </p>
+                  </div>
+                  
+                  <a href={article.url} target="_blank" rel="noopener noreferrer" className="mt-auto inline-flex items-center text-gold-600 hover:text-gold-700 font-medium">
+                    Read the full article on Medium
+                    <ExternalLink className="ml-2 h-4 w-4" />
+                  </a>
                 </div>
-                
-                <div className="prose prose-sm max-w-none mb-6">
-                  <p className="line-clamp-3 md:line-clamp-4 text-gray-600">
-                    {article.excerpt}
-                  </p>
-                </div>
-                
-                <a href={article.url} target="_blank" rel="noopener noreferrer" className="mt-auto inline-flex items-center text-gold-600 hover:text-gold-700 font-medium bg-gold-50/50 px-4 py-2 rounded-lg hover:bg-gold-50 transition-colors">
-                  Read the full article on Medium
-                  <ExternalLink className="ml-2 h-4 w-4" />
-                </a>
-              </div>
-            </div>)}
-          
+              </div>)}
+            
             <div className="w-full neo-glass rounded-2xl p-8 md:p-12 invisible">
               <div className="flex flex-col h-full">
                 <div className="flex items-center mb-6">
@@ -127,15 +127,15 @@ const Testimonials = () => {
           </div>
 
           <div className="flex justify-center mt-8 gap-4">
-            {articles.map((_, index) => <button key={index} onClick={() => setCurrent(index)} className={`w-3 h-3 rounded-full transition-all duration-300 ${index === current ? 'bg-gold-500 scale-125' : 'bg-gray-300 hover:bg-gold-300'}`} aria-label={`Go to article ${index + 1}`} />)}
+            {articles.map((_, index) => <button key={index} onClick={() => setCurrent(index)} className={`w-3 h-3 rounded-full transition-colors ${index === current ? 'bg-gold-500' : 'bg-gray-300'}`} aria-label={`Go to article ${index + 1}`} />)}
           </div>
 
-          <button className="absolute top-1/2 -left-4 md:-left-12 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white transition-colors z-20 border border-white/40" onClick={prev} aria-label="Previous article">
-            <ChevronLeft size={20} className="text-gray-700" />
+          <button className="absolute top-1/2 -left-4 md:-left-12 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-20" onClick={prev} aria-label="Previous article">
+            <ChevronLeft size={20} />
           </button>
           
-          <button className="absolute top-1/2 -right-4 md:-right-12 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white transition-colors z-20 border border-white/40" onClick={next} aria-label="Next article">
-            <ChevronRight size={20} className="text-gray-700" />
+          <button className="absolute top-1/2 -right-4 md:-right-12 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-20" onClick={next} aria-label="Next article">
+            <ChevronRight size={20} />
           </button>
         </div>
       </div>
