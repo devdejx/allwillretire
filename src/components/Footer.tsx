@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Instagram, ArrowUp, ExternalLink, Youtube, Send, Music, Copy, Check, Facebook } from 'lucide-react';
+import { X, Instagram, ArrowUp, ExternalLink, Youtube, Send, Music, Copy, Check, Facebook, Discord } from 'lucide-react';
 import { Button } from './ui/button';
 import { useToast } from "@/hooks/use-toast";
 
@@ -87,6 +87,11 @@ const Footer = () => {
               <a href="https://www.facebook.com/profile.php?id=61574454903414" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors transform hover:scale-110 group">
                 <div className="p-3 rounded-full bg-black border border-gold-500/30 group-hover:border-gold-500 shadow-[0_0_10px_rgba(255,195,0,0.2)] group-hover:shadow-[0_0_15px_rgba(255,195,0,0.4)]">
                   <Facebook size={24} className="group-hover:animate-pulse" />
+                </div>
+              </a>
+              <a href="https://discord.gg/v7GdKzfcKd" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors transform hover:scale-110 group">
+                <div className="p-3 rounded-full bg-black border border-gold-500/30 group-hover:border-gold-500 shadow-[0_0_10px_rgba(255,195,0,0.2)] group-hover:shadow-[0_0_15px_rgba(255,195,0,0.4)]">
+                  <Discord size={24} className="group-hover:animate-pulse" />
                 </div>
               </a>
             </div>
