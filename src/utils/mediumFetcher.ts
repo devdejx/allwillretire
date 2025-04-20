@@ -12,6 +12,12 @@ export interface MediumArticle {
 
 const MEDIUM_RSS_URL = 'https://medium.com/feed/@allwillretire';
 
+function extractFirstImageFromContent(content: string): string {
+  const imgRegex = /<img[^>]+src="([^">]+)"/;
+  const match = content.match(imgRegex);
+  return match?.[1] || "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png";
+}
+
 async function fetchMediumArticles(): Promise<MediumArticle[]> {
   try {
     const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(MEDIUM_RSS_URL)}`);
@@ -30,7 +36,7 @@ async function fetchMediumArticles(): Promise<MediumArticle[]> {
         day: 'numeric'
       }),
       readTime: `${Math.ceil(item.content.split(' ').length / 200)} min read`,
-      image: item.thumbnail || item.enclosure?.link || "/lovable-uploads/3475309c-c47f-4e12-8794-7fe32d10d580.png",
+      image: extractFirstImageFromContent(item.content),
       excerpt: item.description.replace(/<[^>]*>/g, '').substring(0, 300) + '...',
       url: item.link
     }));
