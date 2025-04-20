@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -61,6 +62,17 @@ const Navbar = () => {
             <span className="relative z-10 flex items-center gap-2">
               Merch Store <ShoppingBag size={14} className="text-black" />
             </span>
+          </a>
+
+          {/* New AWR App button */}
+          <a 
+            href="https://awrpostgenerator.lovable.app/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur border border-gold-300/50 text-black px-4 py-1 rounded-lg font-medium text-xs overflow-hidden group transition-transform duration-300 hover:scale-105"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+            <span className="relative z-10">AWR App</span>
           </a>
         </nav>
 
