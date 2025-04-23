@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
@@ -14,7 +15,7 @@ const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [marketData, setMarketData] = useState({
     marketCap: '$1.8B+',
-    holders: '4,400+'
+    holders: '0'
   });
   const [isLoading, setIsLoading] = useState(true);
   const isMobile = useIsMobile();
@@ -28,28 +29,39 @@ const Hero = () => {
         const response = await fetch(apiUrl);
         const data = await response.json();
         console.log('DEXScreener API response:', data);
+        
         let marketCapValue = 0;
         let formattedMarketCap = '$1.8B+'; // Default fallback
+        let holdersCount = '0'; // Default empty value
 
-        if (data && data.pair && data.pair.fdv) {
-          marketCapValue = parseFloat(data.pair.fdv);
-          formattedMarketCap = formatCurrency(marketCapValue);
-        } else if (data && data.pairs && data.pairs.length > 0 && data.pairs[0].fdv) {
-          marketCapValue = parseFloat(data.pairs[0].fdv);
-          formattedMarketCap = formatCurrency(marketCapValue);
+        // Check if we have pair data directly or in the pairs array
+        const pairData = data.pair || (data.pairs && data.pairs.length > 0 ? data.pairs[0] : null);
+        
+        if (pairData) {
+          // Get market cap from fdv (fully diluted value)
+          if (pairData.fdv) {
+            marketCapValue = parseFloat(pairData.fdv);
+            formattedMarketCap = formatCurrency(marketCapValue);
+          }
+          
+          // Get holders directly from the API response
+          if (pairData.holders) {
+            holdersCount = formatNumber(pairData.holders);
+          } else if (pairData.info && pairData.info.holders) {
+            holdersCount = formatNumber(pairData.info.holders);
+          } else {
+            // Fallback for when holders isn't available or in a different location
+            console.log('Holders count not found in API response, using current value');
+            holdersCount = marketData.holders;
+          }
         }
-        let holdersCount = '4,400+'; // Default fallback
-
-        if (data && data.pair && data.pair.info && data.pair.info.holders) {
-          holdersCount = formatNumber(data.pair.info.holders) + '+';
-        } else if (data && data.pairs && data.pairs.length > 0 && data.pairs[0].info && data.pairs[0].info.holders) {
-          holdersCount = formatNumber(data.pairs[0].info.holders) + '+';
-        }
+        
         console.log('Formatted market cap:', formattedMarketCap);
         console.log('Holders count:', holdersCount);
+        
         setMarketData({
           marketCap: formattedMarketCap,
-          holders: holdersCount
+          holders: holdersCount + '+'
         });
       } catch (error) {
         console.error('Failed to fetch market data:', error);
@@ -59,7 +71,7 @@ const Hero = () => {
     };
     fetchMarketData();
     
-    const refreshInterval = setInterval(fetchMarketData, 300000);
+    const refreshInterval = setInterval(fetchMarketData, 300000); // Refresh every 5 minutes
     
     const formatCurrency = (value: number): string => {
       if (value >= 1e9) {
@@ -75,6 +87,7 @@ const Hero = () => {
     const formatNumber = (value: number): string => {
       return Math.round(value).toLocaleString();
     };
+    
     const animateHeading = () => {
       if (financialRef.current && secureRef.current && futureRef.current) {
         const time = Date.now() / 1000;

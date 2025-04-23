@@ -34,7 +34,7 @@ const Index = () => {
   const [showGlitter, setShowGlitter] = useState(false);
   const [marketData, setMarketData] = useState({
     marketCap: '$1.8B+',
-    holders: '4,400+'
+    holders: '0'
   });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -100,28 +100,35 @@ const Index = () => {
         const response = await fetch(apiUrl);
         const data = await response.json();
         console.log('DEXScreener API response:', data);
+        
         let marketCapValue = 0;
         let formattedMarketCap = '$1.8B+'; // Default fallback
+        let holdersCount = '0'; // Default empty value
 
-        if (data && data.pair && data.pair.fdv) {
-          marketCapValue = parseFloat(data.pair.fdv);
-          formattedMarketCap = formatCurrency(marketCapValue);
-        } else if (data && data.pairs && data.pairs.length > 0 && data.pairs[0].fdv) {
-          marketCapValue = parseFloat(data.pairs[0].fdv);
-          formattedMarketCap = formatCurrency(marketCapValue);
+        const pairData = data.pair || (data.pairs && data.pairs.length > 0 ? data.pairs[0] : null);
+        
+        if (pairData) {
+          if (pairData.fdv) {
+            marketCapValue = parseFloat(pairData.fdv);
+            formattedMarketCap = formatCurrency(marketCapValue);
+          }
+          
+          if (pairData.holders) {
+            holdersCount = formatNumber(pairData.holders);
+          } else if (pairData.info && pairData.info.holders) {
+            holdersCount = formatNumber(pairData.info.holders);
+          } else {
+            console.log('Holders count not found in API response, using current value');
+            holdersCount = marketData.holders;
+          }
         }
-        let holdersCount = '4,400+'; // Default fallback
-
-        if (data && data.pair && data.pair.info && data.pair.info.holders) {
-          holdersCount = formatNumber(data.pair.info.holders) + '+';
-        } else if (data && data.pairs && data.pairs.length > 0 && data.pairs[0].info && data.pairs[0].info.holders) {
-          holdersCount = formatNumber(data.pairs[0].info.holders) + '+';
-        }
+        
         console.log('Formatted market cap:', formattedMarketCap);
         console.log('Holders count:', holdersCount);
+        
         setMarketData({
           marketCap: formattedMarketCap,
-          holders: holdersCount
+          holders: holdersCount + '+'
         });
       } catch (error) {
         console.error('Failed to fetch market data:', error);
@@ -144,7 +151,6 @@ const Index = () => {
     };
     const animationId = requestAnimationFrame(animateHeading);
 
-    // Preload important images
     const imagesToPreload = [
       '/lovable-uploads/31c0fdc7-f525-4410-b81b-0faed111eeed.png',
       '/lovable-uploads/4f24766a-a232-41b2-8cb0-5504af1e57e4.png',
