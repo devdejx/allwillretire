@@ -35,7 +35,7 @@ const Index = () => {
   const [showGlitter, setShowGlitter] = useState(false);
   const [marketData, setMarketData] = useState({
     marketCap: '$1.8B+',
-    holders: '0'
+    holders: '1,800+'
   });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -119,7 +119,7 @@ const Index = () => {
         
         setMarketData({
           marketCap: formattedMarketCap,
-          holders: holdersCount + '+'
+          holders: holdersCount
         });
       } catch (error) {
         console.error('Failed to fetch market data:', error);

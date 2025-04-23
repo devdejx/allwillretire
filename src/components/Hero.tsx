@@ -15,7 +15,7 @@ const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [marketData, setMarketData] = useState({
     marketCap: '$1.8B+',
-    holders: '0'
+    holders: '1,800+'
   });
   const [isLoading, setIsLoading] = useState(true);
   const isMobile = useIsMobile();
@@ -44,13 +44,13 @@ const Hero = () => {
           }
         }
         
-        // Extract holders using our new utility function
+        // Extract holders using our updated utility function
         const holdersCount = extractHolders(data);
         console.log('Extracted holders count:', holdersCount);
         
         setMarketData({
           marketCap: formattedMarketCap,
-          holders: holdersCount + '+'
+          holders: holdersCount
         });
       } catch (error) {
         console.error('Failed to fetch market data:', error);
@@ -58,6 +58,7 @@ const Hero = () => {
         setIsLoading(false);
       }
     };
+    
     fetchMarketData();
     
     const refreshInterval = setInterval(fetchMarketData, 300000); // Refresh every 5 minutes
