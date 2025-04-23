@@ -1,3 +1,4 @@
+
 /**
  * Utility functions for formatting and retrieving market data
  */
@@ -60,3 +61,4 @@ export const getMarketCap = async (): Promise<string> => {
     return '$1.8B+'; // Fallback value
   }
 };
+
