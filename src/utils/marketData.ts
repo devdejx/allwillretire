@@ -22,17 +22,43 @@ export const formatNumber = (value: number | string): string => {
   return isNaN(value) ? '0' : Math.round(value).toLocaleString();
 };
 
-export const extractHolders = async (data: any): Promise<string> => {
+export const extractHolders = async (): Promise<string> => {
   try {
-    // For now, return the correct fixed value of 4,721 holders
-    // This is a temporary solution until we can properly integrate with the holderscan API
-    const holdersCount = 4721;
-    console.log('Using fixed holders count:', holdersCount);
+    // Fetch holders data from holderscan.com
+    const response = await fetch('https://holderscan.com/token/Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump');
+    const text = await response.text();
+    
+    // Extract holders count from the HTML response using regex
+    const holdersMatch = text.match(/(?:"holders":|Holders:)\s*"?(\d[\d,]*)"?/i);
+    const holdersCount = holdersMatch ? parseInt(holdersMatch[1].replace(/,/g, '')) : 4721;
+    
+    console.log('Holders count from holderscan:', holdersCount);
     
     return formatNumber(holdersCount) + '+';
   } catch (error) {
-    console.error('Error handling holders data:', error);
-    // Return the correct value as fallback
+    console.error('Error fetching holders from holderscan:', error);
+    // Return the default value as fallback
     return '4,721+';
   }
 };
+
+export const getMarketCap = async (): Promise<string> => {
+  try {
+    const apiUrl = 'https://api.dexscreener.com/latest/dex/pairs/solana/fo7vnhaddvnmx4axjo7cc1wwb9ko2pk2dfdzl3dybxkp';
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    
+    const pairData = data.pair || (data.pairs && data.pairs.length > 0 ? data.pairs[0] : null);
+    
+    if (pairData?.fdv) {
+      const marketCapValue = parseFloat(pairData.fdv);
+      return formatCurrency(marketCapValue);
+    }
+    
+    return '$1.8B+'; // Fallback value
+  } catch (error) {
+    console.error('Error fetching market cap from DEXScreener:', error);
+    return '$1.8B+'; // Fallback value
+  }
+};
+
