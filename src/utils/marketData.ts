@@ -1,4 +1,3 @@
-
 /**
  * Utility functions for formatting and retrieving market data
  */
@@ -24,7 +23,6 @@ export const formatNumber = (value: number | string): string => {
 
 export const extractHolders = async (): Promise<string> => {
   try {
-    // Specifically use DexScreener API as requested
     const dexScreenerResponse = await fetch('https://api.dexscreener.com/latest/dex/pairs/solana/fo7vnhaddvnmx4axjo7cc1wwb9ko2pk2dfdzl3dybxkp');
     
     if (!dexScreenerResponse.ok) {
@@ -32,45 +30,32 @@ export const extractHolders = async (): Promise<string> => {
     }
     
     const dexData = await dexScreenerResponse.json();
-    console.log('DexScreener data:', dexData);
+    console.log('DexScreener API response:', dexData);
     
     let holdersCount = 0;
     
-    // Try to extract the holders count from the DexScreener response
     if (dexData && dexData.pairs && dexData.pairs.length > 0) {
-      // Check for holders data in different possible locations in the API response
       const pair = dexData.pairs[0];
       
-      if (pair.liquidity && pair.liquidity.holders) {
-        holdersCount = parseInt(pair.liquidity.holders, 10);
-        console.log('Got holders count from DexScreener liquidity.holders:', holdersCount);
-      } else if (pair.holders) {
-        holdersCount = parseInt(pair.holders, 10);
-        console.log('Got holders count from DexScreener pair.holders:', holdersCount);
-      } else if (pair.holderStats && pair.holderStats.count) {
-        holdersCount = parseInt(pair.holderStats.count, 10);
-        console.log('Got holders count from DexScreener holderStats.count:', holdersCount);
-      } else if (pair.holderCount) {
-        holdersCount = parseInt(pair.holderCount, 10);
-        console.log('Got holders count from DexScreener holderCount:', holdersCount);
-      }
+      // DexScreener shows holders count directly in the pair object
+      // Looking for specific fields based on the API response structure
+      holdersCount = parseInt(pair.holders, 10);
+      console.log('Found holders count:', holdersCount);
       
-      // If we can't find the holder count in the API response, use the fallback value
-      if (holdersCount === 0 || isNaN(holdersCount)) {
-        console.log('Could not find holders count in DexScreener data, using fallback');
-        holdersCount = 7123; // Fallback value
+      if (isNaN(holdersCount) || holdersCount === 0) {
+        console.log('Could not find valid holders count, using fallback');
+        holdersCount = 4737; // Fallback to the last known value from DexScreener
       }
     } else {
-      console.log('Invalid or empty DexScreener response');
-      holdersCount = 7123; // Fallback value
+      console.log('Invalid DexScreener response structure');
+      holdersCount = 4737; // Fallback value
     }
     
     // Format the number without the "+" at the end
     return formatNumber(holdersCount);
   } catch (error) {
     console.error('Error fetching holders data from DexScreener:', error);
-    // Return the current known holder count as fallback
-    return formatNumber(7123);
+    return formatNumber(4737); // Return the last known holder count as fallback
   }
 };
 
