@@ -31,7 +31,7 @@ const Navbar = () => {
     closeMenu();
   };
 
-  return <header className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out border-none", scrolled ? "py-3 neo-glass" : "py-5 bg-transparent")}>
+  return <header className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out", scrolled ? "py-3 neo-glass" : "py-5 bg-transparent")}>
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a href="#" className="relative text-2xl font-display font-bold flex items-center">
           <img src="/lovable-uploads/9736f09c-0f57-4e9f-86de-eb5f875fad9b.png" alt="AWR Lifestyle" className="mr-2 h-12 w-auto" />
