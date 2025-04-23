@@ -1,8 +1,8 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { formatCurrency, formatNumber, extractHolders } from '@/utils/marketData';
 
 const Hero = () => {
   const orbitRef = useRef<HTMLDivElement>(null);
@@ -32,8 +32,7 @@ const Hero = () => {
         
         let marketCapValue = 0;
         let formattedMarketCap = '$1.8B+'; // Default fallback
-        let holdersCount = '0'; // Default empty value
-
+        
         // Check if we have pair data directly or in the pairs array
         const pairData = data.pair || (data.pairs && data.pairs.length > 0 ? data.pairs[0] : null);
         
@@ -43,21 +42,11 @@ const Hero = () => {
             marketCapValue = parseFloat(pairData.fdv);
             formattedMarketCap = formatCurrency(marketCapValue);
           }
-          
-          // Get holders directly from the API response
-          if (pairData.holders) {
-            holdersCount = formatNumber(pairData.holders);
-          } else if (pairData.info && pairData.info.holders) {
-            holdersCount = formatNumber(pairData.info.holders);
-          } else {
-            // Fallback for when holders isn't available or in a different location
-            console.log('Holders count not found in API response, using current value');
-            holdersCount = marketData.holders;
-          }
         }
         
-        console.log('Formatted market cap:', formattedMarketCap);
-        console.log('Holders count:', holdersCount);
+        // Extract holders using our new utility function
+        const holdersCount = extractHolders(data);
+        console.log('Extracted holders count:', holdersCount);
         
         setMarketData({
           marketCap: formattedMarketCap,
@@ -72,21 +61,6 @@ const Hero = () => {
     fetchMarketData();
     
     const refreshInterval = setInterval(fetchMarketData, 300000); // Refresh every 5 minutes
-    
-    const formatCurrency = (value: number): string => {
-      if (value >= 1e9) {
-        return `$${(value / 1e9).toFixed(1)}B+`;
-      } else if (value >= 1e6) {
-        return `$${(value / 1e6).toFixed(1)}M+`;
-      } else if (value >= 1e3) {
-        return `$${(value / 1e3).toFixed(1)}K+`;
-      } else {
-        return `$${Math.round(value).toLocaleString()}+`;
-      }
-    };
-    const formatNumber = (value: number): string => {
-      return Math.round(value).toLocaleString();
-    };
     
     const animateHeading = () => {
       if (financialRef.current && secureRef.current && futureRef.current) {

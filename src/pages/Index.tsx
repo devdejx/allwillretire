@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Music, ShoppingBag } from 'lucide-react';
 import Glitter from '@/components/Glitter';
+import { formatCurrency, formatNumber, extractHolders } from '@/utils/marketData';
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -103,7 +104,6 @@ const Index = () => {
         
         let marketCapValue = 0;
         let formattedMarketCap = '$1.8B+'; // Default fallback
-        let holdersCount = '0'; // Default empty value
 
         const pairData = data.pair || (data.pairs && data.pairs.length > 0 ? data.pairs[0] : null);
         
@@ -112,19 +112,10 @@ const Index = () => {
             marketCapValue = parseFloat(pairData.fdv);
             formattedMarketCap = formatCurrency(marketCapValue);
           }
-          
-          if (pairData.holders) {
-            holdersCount = formatNumber(pairData.holders);
-          } else if (pairData.info && pairData.info.holders) {
-            holdersCount = formatNumber(pairData.info.holders);
-          } else {
-            console.log('Holders count not found in API response, using current value');
-            holdersCount = marketData.holders;
-          }
         }
         
-        console.log('Formatted market cap:', formattedMarketCap);
-        console.log('Holders count:', holdersCount);
+        const holdersCount = extractHolders(data);
+        console.log('Extracted holders count:', holdersCount);
         
         setMarketData({
           marketCap: formattedMarketCap,
