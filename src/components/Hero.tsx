@@ -33,19 +33,16 @@ const Hero = () => {
         let marketCapValue = 0;
         let formattedMarketCap = '$1.8B+'; // Default fallback
         
-        // Check if we have pair data directly or in the pairs array
         const pairData = data.pair || (data.pairs && data.pairs.length > 0 ? data.pairs[0] : null);
         
         if (pairData) {
-          // Get market cap from fdv (fully diluted value)
           if (pairData.fdv) {
             marketCapValue = parseFloat(pairData.fdv);
             formattedMarketCap = formatCurrency(marketCapValue);
           }
         }
         
-        // Extract holders using our updated utility function
-        const holdersCount = extractHolders(data);
+        const holdersCount = await extractHolders(data);
         console.log('Extracted holders count:', holdersCount);
         
         setMarketData({

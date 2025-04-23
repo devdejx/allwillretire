@@ -22,38 +22,20 @@ export const formatNumber = (value: number | string): string => {
   return isNaN(value) ? '0' : Math.round(value).toLocaleString();
 };
 
-// For this specific project, based on API response pattern, 
-// we'll estimate holders to be approximately 1/1000th of the market cap
-// since actual holder data isn't directly available in the API
-export const extractHolders = (data: any): string => {
+export const extractHolders = async (data: any): Promise<string> => {
   try {
-    // Check different paths where data might be located
-    const pair = data.pair || (data.pairs && data.pairs.length > 0 ? data.pairs[0] : null);
+    // Fetch holders data from holderscan.com
+    const response = await fetch('https://holderscan.com/_next/data/M8MiYZSGAA_sPQNxrf3Xp/token/Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump.json');
+    const holdersData = await response.json();
     
-    if (!pair) {
-      console.error('No pair data found in API response');
-      return '1,800+'; // Fallback if no pair data found
-    }
+    // Extract holders count from the response
+    const holdersCount = holdersData?.pageProps?.holders?.length || 1800;
+    console.log('Holders data from holderscan:', holdersCount);
     
-    // Use the market cap to estimate holders if available
-    if (pair.marketCap) {
-      const marketCap = parseFloat(pair.marketCap);
-      // For AWR token, the observed pattern is approximately 1800 holders 
-      // for a ~$5.3M market cap (see API response)
-      if (!isNaN(marketCap)) {
-        return '1,800+';
-      }
-    }
-    
-    // Fallback to direct holder count if somehow available
-    if (pair.holders) {
-      return formatNumber(pair.holders);
-    }
-    
-    console.log('Using default holders count since actual data not found');
-    return '1,800+'; // Default fallback
+    return formatNumber(holdersCount) + '+';
   } catch (error) {
-    console.error('Error extracting holders count:', error);
+    console.error('Error fetching holders from holderscan:', error);
     return '1,800+'; // Fallback in case of errors
   }
 };
+

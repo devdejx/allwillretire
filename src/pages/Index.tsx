@@ -114,7 +114,8 @@ const Index = () => {
           }
         }
         
-        const holdersCount = extractHolders(data);
+        // Extract holders using our updated async utility function
+        const holdersCount = await extractHolders(data);
         console.log('Extracted holders count:', holdersCount);
         
         setMarketData({
@@ -127,6 +128,7 @@ const Index = () => {
         setIsLoading(false);
       }
     };
+    
     fetchMarketData();
     
     const refreshInterval = setInterval(fetchMarketData, 300000);
