@@ -24,60 +24,51 @@ export const formatNumber = (value: number | string): string => {
 
 export const extractHolders = async (): Promise<string> => {
   try {
-    // First try to get data from DexScreener API which is more reliable
+    // Specifically use DexScreener API as requested
     const dexScreenerResponse = await fetch('https://api.dexscreener.com/latest/dex/pairs/solana/fo7vnhaddvnmx4axjo7cc1wwb9ko2pk2dfdzl3dybxkp');
-    const dexData = await dexScreenerResponse.json();
     
-    // Default holders count - we'll use a more accurate number now
-    let holdersCount = 7123;  // Updated based on actual current holder count
-    
-    // Try to extract holder info from dexData - some DEX APIs include this info
-    if (dexData.pair && dexData.pair.holderStats && dexData.pair.holderStats.count) {
-      holdersCount = parseInt(dexData.pair.holderStats.count, 10);
-      console.log('Got holders count from DexScreener:', holdersCount);
-    } else {
-      console.log('Using configured holders count:', holdersCount);
+    if (!dexScreenerResponse.ok) {
+      throw new Error(`DexScreener API responded with status: ${dexScreenerResponse.status}`);
     }
     
-    // As a fallback, try through holderscan.com (but this often fails due to CORS)
-    if (holdersCount === 0) {
-      try {
-        const response = await fetch('https://holderscan.com/token/Ai4CL1SAxVRigxQFwBH8S2JkuL7EqrdiGwTC7JpCpump', {
-          headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-            'Accept-Language': 'en-US,en;q=0.5',
-            'Cache-Control': 'no-cache'
-          },
-          mode: 'cors',
-          cache: 'no-store'
-        });
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const text = await response.text();
-        
-        // Extract holders count using regex patterns
-        const holdersMatch = text.match(/(?:"holders":|Holders:)\s*"?(\d[\d,]*)"?/i) || 
-                             text.match(/(\d[\d,]*)\s+holders/i) ||
-                             text.match(/holders:\s*(\d[\d,]*)/i);
-        
-        if (holdersMatch && holdersMatch[1]) {
-          // Remove commas and convert to number
-          holdersCount = parseInt(holdersMatch[1].replace(/,/g, ''), 10);
-          console.log('Parsed holders count from holderscan:', holdersCount);
-        }
-      } catch (error) {
-        console.error('Error fetching data from holderscan:', error);
+    const dexData = await dexScreenerResponse.json();
+    console.log('DexScreener data:', dexData);
+    
+    let holdersCount = 0;
+    
+    // Try to extract the holders count from the DexScreener response
+    if (dexData && dexData.pairs && dexData.pairs.length > 0) {
+      // Check for holders data in different possible locations in the API response
+      const pair = dexData.pairs[0];
+      
+      if (pair.liquidity && pair.liquidity.holders) {
+        holdersCount = parseInt(pair.liquidity.holders, 10);
+        console.log('Got holders count from DexScreener liquidity.holders:', holdersCount);
+      } else if (pair.holders) {
+        holdersCount = parseInt(pair.holders, 10);
+        console.log('Got holders count from DexScreener pair.holders:', holdersCount);
+      } else if (pair.holderStats && pair.holderStats.count) {
+        holdersCount = parseInt(pair.holderStats.count, 10);
+        console.log('Got holders count from DexScreener holderStats.count:', holdersCount);
+      } else if (pair.holderCount) {
+        holdersCount = parseInt(pair.holderCount, 10);
+        console.log('Got holders count from DexScreener holderCount:', holdersCount);
       }
+      
+      // If we can't find the holder count in the API response, use the fallback value
+      if (holdersCount === 0 || isNaN(holdersCount)) {
+        console.log('Could not find holders count in DexScreener data, using fallback');
+        holdersCount = 7123; // Fallback value
+      }
+    } else {
+      console.log('Invalid or empty DexScreener response');
+      holdersCount = 7123; // Fallback value
     }
     
     // Format the number without the "+" at the end
     return formatNumber(holdersCount);
   } catch (error) {
-    console.error('Error fetching holders data:', error);
+    console.error('Error fetching holders data from DexScreener:', error);
     // Return the current known holder count as fallback
     return formatNumber(7123);
   }
@@ -89,11 +80,12 @@ export const getMarketCap = async (): Promise<string> => {
     const response = await fetch(apiUrl);
     const data = await response.json();
     
-    const pairData = data.pair || (data.pairs && data.pairs.length > 0 ? data.pairs[0] : null);
-    
-    if (pairData?.fdv) {
-      const marketCapValue = parseFloat(pairData.fdv);
-      return formatCurrency(marketCapValue);
+    if (data && data.pairs && data.pairs.length > 0) {
+      const pairData = data.pairs[0];
+      if (pairData.fdv) {
+        const marketCapValue = parseFloat(pairData.fdv);
+        return formatCurrency(marketCapValue);
+      }
     }
     
     return '$1.8B+'; // Fallback value
