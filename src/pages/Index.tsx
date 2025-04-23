@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Music, ShoppingBag } from 'lucide-react';
 import Glitter from '@/components/Glitter';
-import { formatCurrency, formatNumber, extractHolders } from '@/utils/marketData';
+import { formatCurrency, formatNumber, extractHolders, getMarketCap } from '@/utils/marketData';
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -96,26 +96,10 @@ const Index = () => {
     const fetchMarketData = async () => {
       try {
         setIsLoading(true);
-        const apiUrl = 'https://api.dexscreener.com/latest/dex/pairs/solana/fo7vnhaddvnmx4axjo7cc1wwb9ko2pk2dfdzl3dybxkp';
-        console.log('Fetching market data from:', apiUrl);
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        console.log('DEXScreener API response:', data);
         
-        let marketCapValue = 0;
-        let formattedMarketCap = '$1.8B+'; // Default fallback
-
-        const pairData = data.pair || (data.pairs && data.pairs.length > 0 ? data.pairs[0] : null);
+        const formattedMarketCap = await getMarketCap();
         
-        if (pairData) {
-          if (pairData.fdv) {
-            marketCapValue = parseFloat(pairData.fdv);
-            formattedMarketCap = formatCurrency(marketCapValue);
-          }
-        }
-        
-        // Extract holders using our updated async utility function
-        const holdersCount = await extractHolders(data);
+        const holdersCount = await extractHolders();
         console.log('Extracted holders count:', holdersCount);
         
         setMarketData({
