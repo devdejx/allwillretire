@@ -14,7 +14,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Music, ShoppingBag } from 'lucide-react';
 import Glitter from '@/components/Glitter';
 import { formatCurrency, formatNumber, extractHolders, getMarketCap } from '@/utils/marketData';
-
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -22,13 +21,11 @@ const Index = () => {
   const testimonialsRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
-  
   const orbitRef = useRef<HTMLDivElement>(null);
   const financialRef = useRef<HTMLSpanElement>(null);
   const secureRef = useRef<HTMLSpanElement>(null);
   const futureRef = useRef<HTMLSpanElement>(null);
   const audioRef = useRef<HTMLIFrameElement>(null);
-  
   const [scrollLocked, setScrollLocked] = useState(false);
   const [showOrbit, setShowOrbit] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -38,12 +35,10 @@ const Index = () => {
     holders: '1,800+'
   });
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     if (scrollLocked) {
       document.body.style.overflow = 'hidden';
     }
-    
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -64,15 +59,12 @@ const Index = () => {
     document.querySelectorAll('.reveal').forEach(el => {
       observer.observe(el);
     });
-
     const handleScroll = () => {
       const scrollY = window.scrollY;
-
       document.querySelectorAll('.parallax').forEach(el => {
         const speed = parseFloat(el.getAttribute('data-speed') || '0.2');
         (el as HTMLElement).style.transform = `translateY(${scrollY * speed}px)`;
       });
-
       const sections = [heroRef.current, aboutRef.current, featuresRef.current, testimonialsRef.current, ctaRef.current];
       sections.forEach(section => {
         if (!section) return;
@@ -92,16 +84,12 @@ const Index = () => {
       });
     };
     window.addEventListener('scroll', handleScroll);
-    
     const fetchMarketData = async () => {
       try {
         setIsLoading(true);
-        
         const formattedMarketCap = await getMarketCap();
-        
         const holdersCount = await extractHolders();
         console.log('Extracted holders count:', holdersCount);
-        
         setMarketData({
           marketCap: formattedMarketCap,
           holders: holdersCount
@@ -112,11 +100,8 @@ const Index = () => {
         setIsLoading(false);
       }
     };
-    
     fetchMarketData();
-    
     const refreshInterval = setInterval(fetchMarketData, 300000);
-    
     const animateHeading = () => {
       if (financialRef.current && secureRef.current && futureRef.current) {
         const time = Date.now() / 1000;
@@ -127,19 +112,11 @@ const Index = () => {
       requestAnimationFrame(animateHeading);
     };
     const animationId = requestAnimationFrame(animateHeading);
-
-    const imagesToPreload = [
-      '/lovable-uploads/31c0fdc7-f525-4410-b81b-0faed111eeed.png',
-      '/lovable-uploads/4f24766a-a232-41b2-8cb0-5504af1e57e4.png',
-      '/lovable-uploads/c41d9d7a-72c7-4323-9246-02b391542c98.png',
-      '/lovable-uploads/b06265ed-2736-47a3-81ca-e7555cf0baa4.png'
-    ];
-    
+    const imagesToPreload = ['/lovable-uploads/31c0fdc7-f525-4410-b81b-0faed111eeed.png', '/lovable-uploads/4f24766a-a232-41b2-8cb0-5504af1e57e4.png', '/lovable-uploads/c41d9d7a-72c7-4323-9246-02b391542c98.png', '/lovable-uploads/b06265ed-2736-47a3-81ca-e7555cf0baa4.png'];
     imagesToPreload.forEach(src => {
       const img = new Image();
       img.src = src;
     });
-
     return () => {
       document.querySelectorAll('.reveal').forEach(el => {
         observer.unobserve(el);
@@ -150,7 +127,6 @@ const Index = () => {
       document.body.style.overflow = '';
     };
   }, [scrollLocked]);
-
   const formatCurrency = (value: number): string => {
     if (value >= 1e9) {
       return `$${(value / 1e9).toFixed(1)}B+`;
@@ -162,16 +138,13 @@ const Index = () => {
       return `$${Math.round(value).toLocaleString()}+`;
     }
   };
-  
   const formatNumber = (value: number): string => {
     return Math.round(value).toLocaleString();
   };
-
   const handleLearnMoreClick = () => {
     if (audioRef.current && !isPlaying) {
       if (audioRef.current.src === '') {
         audioRef.current.src = 'https://www.youtube.com/embed/AKDLoUSaPV8?autoplay=1&enablejsapi=1';
-        
         let volume = 0;
         const volumeInterval = setInterval(() => {
           volume += 0.05;
@@ -189,7 +162,6 @@ const Index = () => {
         if (contentWindow) {
           contentWindow.postMessage('{"event":"command","func":"setVolume","args":[0]}', '*');
           contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-          
           let volume = 0;
           const volumeInterval = setInterval(() => {
             volume += 0.05;
@@ -205,7 +177,6 @@ const Index = () => {
       setShowGlitter(true);
     }
   };
-
   return <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
       
@@ -239,13 +210,7 @@ const Index = () => {
           
           <div className="w-full relative">
             <AspectRatio ratio={16 / 9} className="w-full">
-              <OptimizedImage 
-                src="/lovable-uploads/31c0fdc7-f525-4410-b81b-0faed111eeed.png" 
-                alt="Person celebrating sunset" 
-                className="w-full h-full object-cover" 
-                priority={true} 
-                blur={false}
-              />
+              <OptimizedImage src="/lovable-uploads/31c0fdc7-f525-4410-b81b-0faed111eeed.png" alt="Person celebrating sunset" className="w-full h-full object-cover" priority={true} blur={false} />
               
               <div className="absolute inset-0 bg-black/60 z-[5]"></div>
               
@@ -253,38 +218,33 @@ const Index = () => {
                 <div className="container mx-auto px-6 text-center">
                   <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
                     <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-fade-up tracking-tight text-white" style={{
-                      animationDelay: '0.2s',
-                      letterSpacing: '-0.015em',
-                      textShadow: '0 2px 4px rgba(0,0,0,0.5)',
-                      marginTop: isMobile ? '180px' : '0'
-                    }}>
+                    animationDelay: '0.2s',
+                    letterSpacing: '-0.015em',
+                    textShadow: '0 2px 4px rgba(0,0,0,0.5)',
+                    marginTop: isMobile ? '180px' : '0'
+                  }}>
                       <span ref={secureRef} className="relative font-artistic font-semibold inline-block transition-transform duration-1000">
                         {isMobile ? 'Building' : 'BUILDING YOUR'}
                       </span>
                       {isMobile && <br />}
                       {!isMobile && ' '}
                       <span ref={financialRef} className="text-gold-500 font-artistic font-bold inline-block transition-transform duration-1000" style={{
-                        textShadow: '1px 1px 0 #333333, -1px -1px 0 #333333, -1px 1px 0 #333333, 1px -1px 0 #333333'
-                      }}>Financial</span>{' '}
+                      textShadow: '1px 1px 0 #333333, -1px -1px 0 #333333, -1px 1px 0 #333333, 1px -1px 0 #333333'
+                    }}>Financial</span>{' '}
                       <span ref={futureRef} className="font-elegant italic font-semibold inline-block transition-transform duration-1000">Future</span>
                     </h1>
                     
                     <p className={`${isMobile ? 'text-base px-2' : 'text-xl'} text-white mb-10 max-w-2xl mx-auto animate-fade-up font-elegant`} style={{
-                      animationDelay: '0.4s',
-                      textShadow: '0 1px 3px rgba(0,0,0,0.7)'
-                    }}>
-                      {isMobile 
-                        ? 'All Will Retire: supporting your vision of financial independence and a future of opulence.' 
-                        : 'All Will Retire: supporting your vision of financial independence and a future of opulence.'}
+                    animationDelay: '0.4s',
+                    textShadow: '0 1px 3px rgba(0,0,0,0.7)'
+                  }}>
+                      {isMobile ? 'All Will Retire: supporting your vision of financial independence and a future of opulence.' : 'All Will Retire: supporting your vision of financial independence and a future of opulence.'}
                     </p>
                     
                     <div className={`flex flex-col sm:flex-row gap-4 ${isMobile ? 'mb-6' : 'mb-8'} animate-fade-up`} style={{
-                      animationDelay: '0.6s'
-                    }}>
-                      <button 
-                        className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur text-black px-8 py-4 rounded-xl font-bold shadow-lg transition-all duration-300 hover:scale-105 overflow-hidden group"
-                        onClick={handleLearnMoreClick}
-                      >
+                    animationDelay: '0.6s'
+                  }}>
+                      <button className="relative bg-gradient-to-r from-transparent via-gold-500/30 to-transparent backdrop-blur text-black px-8 py-4 rounded-xl font-bold shadow-lg transition-all duration-300 hover:scale-105 overflow-hidden group" onClick={handleLearnMoreClick}>
                         <span className="relative z-10 flex items-center gap-2">
                           <span className="font-artistic">Tap HERE</span> <Music size={16} className="text-black" />
                         </span>
@@ -294,12 +254,12 @@ const Index = () => {
                     </div>
                     
                     <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up mb-12" style={{
-                      animationDelay: '0.8s'
-                    }}>
+                    animationDelay: '0.8s'
+                  }}>
                       <div className="flex flex-col items-center">
                         {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500" style={{
-                            textShadow: '1px 1px 0 #997500, -1px -1px 0 #997500, -1px 1px 0 #997500, 1px -1px 0 #997500'
-                          }}>
+                        textShadow: '1px 1px 0 #997500, -1px -1px 0 #997500, -1px 1px 0 #997500, 1px -1px 0 #997500'
+                      }}>
                             {marketData.marketCap}
                           </span>}
                         <span className="text-sm text-gold-400 font-medium">Market Cap</span>
@@ -307,8 +267,8 @@ const Index = () => {
                       <div className="w-px h-12 bg-white/10"></div>
                       <div className="flex flex-col items-center">
                         {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500" style={{
-                            textShadow: '1px 1px 0 #997500, -1px -1px 0 #997500, -1px 1px 0 #997500, 1px -1px 0 #997500'
-                          }}>
+                        textShadow: '1px 1px 0 #997500, -1px -1px 0 #997500, -1px 1px 0 #997500, 1px -1px 0 #997500'
+                      }}>
                             {marketData.holders}
                           </span>}
                         <span className="text-sm text-gold-400 font-medium">Holders</span>
@@ -338,13 +298,7 @@ const Index = () => {
           
           <div className="w-full">
             <AspectRatio ratio={16 / 9} className="w-full">
-              <OptimizedImage 
-                src="/lovable-uploads/4f24766a-a232-41b2-8cb0-5504af1e57e4.png" 
-                alt="All Will Retire Community" 
-                className="w-full h-full object-cover" 
-                priority={true} 
-                blur={false}
-              />
+              <OptimizedImage src="/lovable-uploads/4f24766a-a232-41b2-8cb0-5504af1e57e4.png" alt="All Will Retire Community" className="w-full h-full object-cover" priority={true} blur={false} />
             </AspectRatio>
           </div>
           
@@ -360,33 +314,16 @@ const Index = () => {
           
           <div className="w-full">
             <AspectRatio ratio={16 / 9} className="w-full">
-              <OptimizedImage 
-                src="/lovable-uploads/c41d9d7a-72c7-4323-9246-02b391542c98.png" 
-                alt="Luxury Beach Lifestyle" 
-                className="w-full h-full object-cover" 
-                priority={true} 
-                blur={false}
-              />
+              <OptimizedImage src="/lovable-uploads/c41d9d7a-72c7-4323-9246-02b391542c98.png" alt="Luxury Beach Lifestyle" className="w-full h-full object-cover" priority={true} blur={false} />
               
               <div className="absolute inset-0 bg-black/65 z-[5]"></div>
               
               <div className="absolute inset-0 flex items-center justify-center z-10">
                 <div className="w-64 md:w-80 lg:w-96 h-auto animate-fade-in">
-                  <OptimizedImage 
-                    src="/lovable-uploads/b06265ed-2736-47a3-81ca-e7555cf0baa4.png" 
-                    alt="AWR Lifestyle" 
-                    className="w-full h-full object-contain" 
-                    priority={true} 
-                    blur={false}
-                  />
+                  <OptimizedImage src="/lovable-uploads/b06265ed-2736-47a3-81ca-e7555cf0baa4.png" alt="AWR Lifestyle" className="w-full h-full object-contain" priority={true} blur={false} />
 
                   <div className="flex justify-center mt-8">
-                    <a 
-                      href="https://store.allwillretire.com/password" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="relative bg-gradient-to-r from-transparent via-gold-500/40 to-transparent backdrop-blur-sm border-2 border-gold-400/70 text-black overflow-hidden group transition-all duration-300 hover:scale-105 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium h-11 px-8 shadow-[0_0_15px_rgba(255,195,0,0.5)] hover:shadow-[0_0_25px_rgba(255,195,0,0.8)]"
-                    >
+                    <a href="https://store.allwillretire.com/password" target="_blank" rel="noopener noreferrer" className="relative bg-gradient-to-r from-transparent via-gold-500/40 to-transparent backdrop-blur-sm border-2 border-gold-400/70 text-black overflow-hidden group transition-all duration-300 hover:scale-105 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium h-11 px-8 shadow-[0_0_15px_rgba(255,195,0,0.5)] hover:shadow-[0_0_25px_rgba(255,195,0,0.8)]">
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
                       <span className="relative z-10 flex items-center gap-2 font-bold">
                         Go to MERCH Shop <ShoppingBag size={16} className="text-black" />
@@ -408,5 +345,4 @@ const Index = () => {
       <Footer />
     </div>;
 };
-
 export default Index;
