@@ -1,8 +1,9 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Skeleton } from './ui/skeleton';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { formatCurrency, formatNumber, extractHolders, getMarketCap } from '@/utils/marketData';
+import { formatCurrency, getMarketCap } from '@/utils/marketData';
 
 const Hero = () => {
   const orbitRef = useRef<HTMLDivElement>(null);
@@ -14,8 +15,7 @@ const Hero = () => {
   const [showOrbit, setShowOrbit] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [marketData, setMarketData] = useState({
-    marketCap: '$1.8B+',
-    holders: '1,800+'
+    marketCap: '$1.8B+'
   });
   const [isLoading, setIsLoading] = useState(true);
   const isMobile = useIsMobile();
@@ -27,12 +27,8 @@ const Hero = () => {
         
         const formattedMarketCap = await getMarketCap();
         
-        const holdersCount = await extractHolders();
-        console.log('Extracted holders count:', holdersCount);
-        
         setMarketData({
-          marketCap: formattedMarketCap,
-          holders: holdersCount
+          marketCap: formattedMarketCap
         });
       } catch (error) {
         console.error('Failed to fetch market data:', error);
@@ -153,7 +149,7 @@ const Hero = () => {
               </button>
             </div>
             
-            <div className={`flex justify-center items-center ${isMobile ? 'gap-4 mb-12' : 'gap-6 md:gap-12'} animate-fade-up`} style={{
+            <div className="flex justify-center items-center animate-fade-up" style={{
               animationDelay: '0.8s'
             }}>
               <div className="flex flex-col items-center">
@@ -161,13 +157,6 @@ const Hero = () => {
                     {marketData.marketCap}
                   </span>}
                 <span className="text-sm text-gold-400 font-medium">Market Cap</span>
-              </div>
-              <div className="w-px h-12 bg-black/10"></div>
-              <div className="flex flex-col items-center">
-                {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className={`${isMobile ? 'text-3xl' : 'text-4xl'} font-artistic font-bold text-gold-500`}>
-                    {marketData.holders}
-                  </span>}
-                <span className="text-sm text-gold-400 font-medium">Holders</span>
               </div>
             </div>
           </div>
