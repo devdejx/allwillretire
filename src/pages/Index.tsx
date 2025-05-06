@@ -13,7 +13,8 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Music, ShoppingBag } from 'lucide-react';
 import Glitter from '@/components/Glitter';
-import { formatCurrency, formatNumber, extractHolders, getMarketCap } from '@/utils/marketData';
+import { formatCurrency, formatNumber, getMarketCap } from '@/utils/marketData';
+
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -31,10 +32,10 @@ const Index = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showGlitter, setShowGlitter] = useState(false);
   const [marketData, setMarketData] = useState({
-    marketCap: '$1.8B+',
-    holders: '1,800+'
+    marketCap: '$1.8B+'
   });
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     if (scrollLocked) {
       document.body.style.overflow = 'hidden';
@@ -84,15 +85,14 @@ const Index = () => {
       });
     };
     window.addEventListener('scroll', handleScroll);
+    
     const fetchMarketData = async () => {
       try {
         setIsLoading(true);
         const formattedMarketCap = await getMarketCap();
-        const holdersCount = await extractHolders();
-        console.log('Extracted holders count:', holdersCount);
+        
         setMarketData({
-          marketCap: formattedMarketCap,
-          holders: holdersCount
+          marketCap: formattedMarketCap
         });
       } catch (error) {
         console.error('Failed to fetch market data:', error);
@@ -100,8 +100,10 @@ const Index = () => {
         setIsLoading(false);
       }
     };
+    
     fetchMarketData();
     const refreshInterval = setInterval(fetchMarketData, 300000);
+    
     const animateHeading = () => {
       if (financialRef.current && secureRef.current && futureRef.current) {
         const time = Date.now() / 1000;
@@ -111,12 +113,15 @@ const Index = () => {
       }
       requestAnimationFrame(animateHeading);
     };
+    
     const animationId = requestAnimationFrame(animateHeading);
+    
     const imagesToPreload = ['/lovable-uploads/31c0fdc7-f525-4410-b81b-0faed111eeed.png', '/lovable-uploads/4f24766a-a232-41b2-8cb0-5504af1e57e4.png', '/lovable-uploads/c41d9d7a-72c7-4323-9246-02b391542c98.png', '/lovable-uploads/b06265ed-2736-47a3-81ca-e7555cf0baa4.png'];
     imagesToPreload.forEach(src => {
       const img = new Image();
       img.src = src;
     });
+    
     return () => {
       document.querySelectorAll('.reveal').forEach(el => {
         observer.unobserve(el);
@@ -127,6 +132,8 @@ const Index = () => {
       document.body.style.overflow = '';
     };
   }, [scrollLocked]);
+
+  // Keep these formatters for now as they might be used elsewhere
   const formatCurrency = (value: number): string => {
     if (value >= 1e9) {
       return `$${(value / 1e9).toFixed(1)}B+`;
@@ -138,9 +145,11 @@ const Index = () => {
       return `$${Math.round(value).toLocaleString()}+`;
     }
   };
+  
   const formatNumber = (value: number): string => {
     return Math.round(value).toLocaleString();
   };
+  
   const handleLearnMoreClick = () => {
     if (audioRef.current && !isPlaying) {
       if (audioRef.current.src === '') {
@@ -177,6 +186,7 @@ const Index = () => {
       setShowGlitter(true);
     }
   };
+  
   return <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
       
@@ -253,7 +263,7 @@ const Index = () => {
                       </button>
                     </div>
                     
-                    <div className="flex justify-center items-center gap-6 md:gap-12 animate-fade-up mb-12" style={{
+                    <div className="flex justify-center items-center animate-fade-up mb-12" style={{
                     animationDelay: '0.8s'
                   }}>
                       <div className="flex flex-col items-center">
@@ -263,15 +273,6 @@ const Index = () => {
                             {marketData.marketCap}
                           </span>}
                         <span className="text-sm text-gold-400 font-medium">Market Cap</span>
-                      </div>
-                      <div className="w-px h-12 bg-white/10"></div>
-                      <div className="flex flex-col items-center">
-                        {isLoading ? <Skeleton className="h-10 w-24 rounded-md" /> : <span className="text-4xl font-artistic font-bold text-gold-500" style={{
-                        textShadow: '1px 1px 0 #997500, -1px -1px 0 #997500, -1px 1px 0 #997500, 1px -1px 0 #997500'
-                      }}>
-                            {marketData.holders}
-                          </span>}
-                        <span className="text-sm text-gold-400 font-medium">Holders</span>
                       </div>
                     </div>
                   </div>
@@ -345,4 +346,5 @@ const Index = () => {
       <Footer />
     </div>;
 };
+
 export default Index;
